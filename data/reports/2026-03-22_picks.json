@@ -1,0 +1,56 @@
+{
+  "date": "2026-03-22",
+  "market_context": {
+    "vix": 26.780000686645508,
+    "regime": "high",
+    "trend": "rising"
+  },
+  "picks": [
+    {
+      "ticker": "SLV",
+      "direction": "put",
+      "strike": 60.0,
+      "expiry": "2026-03-27",
+      "premium": 1.91,
+      "composite_score": 76.57,
+      "confidence": 1.0
+    },
+    {
+      "ticker": "BA",
+      "direction": "put",
+      "strike": 195.0,
+      "expiry": "2026-03-27",
+      "premium": 3.98,
+      "composite_score": 76.15,
+      "confidence": 0.333
+    },
+    {
+      "ticker": "HD",
+      "direction": "put",
+      "strike": 315.0,
+      "expiry": "2026-03-27",
+      "premium": 3.26,
+      "composite_score": 75.83,
+      "confidence": 0.333
+    },
+    {
+      "ticker": "SMCI",
+      "direction": "put",
+      "strike": 20.0,
+      "expiry": "2026-03-27",
+      "premium": 1.27,
+      "composite_score": 75.65,
+      "confidence": 0.333
+    },
+    {
+      "ticker": "QCOM",
+      "direction": "call",
+      "strike": 135.0,
+      "expiry": "2026-03-27",
+      "premium": 0.77,
+      "composite_score": 66.64,
+      "confidence": 0.0
+    }
+  ],
+  "generated_at": "2026-03-22T17:54:24.891187"
+}

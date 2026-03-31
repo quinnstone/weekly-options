@@ -1,0 +1,90 @@
+{
+  "vix": {
+    "current": 26.780000686645508,
+    "previous_close": 24.059999465942383,
+    "change": 2.72,
+    "change_pct": 11.31,
+    "trend_20d": "Date\n2026-02-23 00:00:00-06:00    21.010000\n2026-02-24 00:00:00-06:00    19.549999\n2026-02-25 00:00:00-06:00    17.930000\n2026-02-26 00:00:00-06:00    18.629999\n2026-02-27 00:00:00-06:00    19.860001\n2026-03-02 00:00:00-06:00    21.440001\n2026-03-03 00:00:00-06:00    23.570000\n2026-03-04 00:00:00-06:00    21.150000\n2026-03-05 00:00:00-06:00    23.750000\n2026-03-06 00:00:00-06:00    29.490000\n2026-03-09 00:00:00-05:00    25.500000\n2026-03-10 00:00:00-05:00    24.930000\n2026-03-11 00:00:00-05:00    24.230000\n2026-03-12 00:00:00-05:00    27.290001\n2026-03-13 00:00:00-05:00    27.190001\n2026-03-16 00:00:00-05:00    23.510000\n2026-03-17 00:00:00-05:00    22.370001\n2026-03-18 00:00:00-05:00    25.090000\n2026-03-19 00:00:00-05:00    24.059999\n2026-03-20 00:00:00-05:00    26.780001\nName: Close, dtype: float64",
+    "sma_20": 23.37,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "high",
+    "vix_level": 26.780000686645508,
+    "description": "High volatility - large swings likely, reduce position size",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": -1.43,
+    "rsp_return_1d": -1.47,
+    "breadth_spread_1d": -0.04,
+    "spy_return_5d": -1.8,
+    "rsp_return_5d": -1.57,
+    "breadth_spread_5d": 0.23,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 3.47,
+    "yield_10y": 4.13,
+    "spread_2s10s": 0.66,
+    "curve_signal": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "timestamp": "2026-03-22T17:46:06.112038"
+}

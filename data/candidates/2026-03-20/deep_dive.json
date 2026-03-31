@@ -1,0 +1,912 @@
+[
+  {
+    "ticker": "ULTA",
+    "technical": {
+      "ticker": "ULTA",
+      "price": 527.73,
+      "rsi": 19.79,
+      "rsi_prev": 20.62,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 753.22,
+      "bb_middle": 622.65,
+      "bb_lower": 492.09,
+      "bb_width": 41.9381,
+      "bb_pct": 0.1365,
+      "bb_squeeze": false,
+      "atr": 23.22,
+      "atr_pct": 4.4,
+      "volume": 433607,
+      "volume_sma20": 842825,
+      "volume_ratio": 0.51,
+      "sma_20": 622.65,
+      "sma_50": null,
+      "price_vs_sma20_pct": -15.25,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5039,
+    "sentiment": {
+      "ticker": "ULTA",
+      "composite_score": 0.5246,
+      "article_count": 9,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Ulta Beauty makes bold move to reach shoppers as habits shift",
+        "K-Beauty World Expands Assortment on Ulta Beauty Marketplace With 17 Viral Korean Beauty Brands",
+        "Ulta\u2019s Q4 Earnings Call: Our Top 5 Analyst Questions"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "ULTA",
+      "expiry": "2026-03-20",
+      "current_price": 527.53,
+      "pc_ratio_volume": 3.45,
+      "pc_ratio_oi": 0.691,
+      "atm_iv": 0.2562,
+      "iv_rank": 0.9,
+      "max_pain": 735.0,
+      "highest_oi_call_strike": 600.0,
+      "highest_oi_put_strike": 500.0,
+      "highest_vol_call_strike": 790.0,
+      "highest_vol_put_strike": 630.0,
+      "iv_skew": 1.2435,
+      "total_call_volume": 1797,
+      "total_put_volume": 6200,
+      "total_call_oi": 10194,
+      "total_put_oi": 7040
+    },
+    "flow": {
+      "ticker": "ULTA",
+      "current_call_vol": 3934,
+      "current_put_vol": 6664,
+      "total_vol": 10598,
+      "total_oi": 25565,
+      "vol_oi_ratio": 0.415,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 29.7997,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 76.23,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 78.75,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "GNRC",
+    "technical": {
+      "ticker": "GNRC",
+      "price": 197.2,
+      "rsi": 29.35,
+      "rsi_prev": 31.97,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 240.67,
+      "bb_middle": 214.76,
+      "bb_lower": 188.86,
+      "bb_width": 24.1228,
+      "bb_pct": 0.161,
+      "bb_squeeze": false,
+      "atr": 9.85,
+      "atr_pct": 5.0,
+      "volume": 574573,
+      "volume_sma20": 935723,
+      "volume_ratio": 0.61,
+      "sma_20": 214.76,
+      "sma_50": null,
+      "price_vs_sma20_pct": -8.18,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4978,
+    "sentiment": {
+      "ticker": "GNRC",
+      "composite_score": 0.3608,
+      "article_count": 3,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "GNRC Boosts Industrial Power Portfolio With Advanced Diesel Generators",
+        "From AI To Consumer Spending: 5 Analyst Days Investors Should Track",
+        "Generac Introduces SD1250 & SD1500 Diesel Generators: Smarter Solutions for Mission-Critical Power Applications"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "GNRC",
+      "expiry": "2026-03-20",
+      "current_price": 196.96,
+      "pc_ratio_volume": 0.724,
+      "pc_ratio_oi": 0.821,
+      "atm_iv": 0.6777,
+      "iv_rank": 4.4,
+      "max_pain": 190.0,
+      "highest_oi_call_strike": 250.0,
+      "highest_oi_put_strike": 190.0,
+      "highest_vol_call_strike": 195.0,
+      "highest_vol_put_strike": 200.0,
+      "iv_skew": 1.3395,
+      "total_call_volume": 511,
+      "total_put_volume": 370,
+      "total_call_oi": 7455,
+      "total_put_oi": 6117
+    },
+    "flow": {
+      "ticker": "GNRC",
+      "current_call_vol": 826,
+      "current_put_vol": 801,
+      "total_vol": 1627,
+      "total_oi": 17110,
+      "vol_oi_ratio": 0.095,
+      "is_unusual": false,
+      "direction_bias": "neutral"
+    },
+    "options_score": 24.8481,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 99.82252242891958,
+      "sentiment": 68.04,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 77.06,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "URI",
+    "technical": {
+      "ticker": "URI",
+      "price": 706.0,
+      "rsi": 19.38,
+      "rsi_prev": 21.05,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 914.75,
+      "bb_middle": 798.9,
+      "bb_lower": 683.05,
+      "bb_width": 29.0021,
+      "bb_pct": 0.099,
+      "bb_squeeze": false,
+      "atr": 30.64,
+      "atr_pct": 4.34,
+      "volume": 299935,
+      "volume_sma20": 641201,
+      "volume_ratio": 0.47,
+      "sma_20": 798.9,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.63,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5052,
+    "sentiment": {
+      "ticker": "URI",
+      "composite_score": 0.2568,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "United Rentals Inc. stock outperforms competitors despite losses on the day",
+        "New York Rep. Thomas Suozzi Sold Up to $215K Worth of Apple Stock",
+        "How The United Rentals (URI) Story Is Shifting With New AI Tools And Mixed Analyst Targets"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "URI",
+      "expiry": "2026-03-20",
+      "current_price": 705.77,
+      "pc_ratio_volume": 5.114,
+      "pc_ratio_oi": 0.591,
+      "atm_iv": 0.3812,
+      "iv_rank": 1.4,
+      "max_pain": 990.0,
+      "highest_oi_call_strike": 940.0,
+      "highest_oi_put_strike": 750.0,
+      "highest_vol_call_strike": 945.0,
+      "highest_vol_put_strike": 840.0,
+      "iv_skew": 1.0794,
+      "total_call_volume": 2306,
+      "total_put_volume": 11793,
+      "total_call_oi": 5423,
+      "total_put_oi": 3203
+    },
+    "flow": {
+      "ticker": "URI",
+      "current_call_vol": 2485,
+      "current_put_vol": 12103,
+      "total_vol": 14588,
+      "total_oi": 10359,
+      "vol_oi_ratio": 1.408,
+      "is_unusual": true,
+      "direction_bias": "bearish"
+    },
+    "options_score": 49.5499,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 62.839999999999996,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 76.07,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "STLD",
+    "technical": {
+      "ticker": "STLD",
+      "price": 163.96,
+      "rsi": 23.27,
+      "rsi_prev": 25.77,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 205.51,
+      "bb_middle": 183.51,
+      "bb_lower": 161.51,
+      "bb_width": 23.9742,
+      "bb_pct": 0.0556,
+      "bb_squeeze": false,
+      "atr": 6.59,
+      "atr_pct": 4.02,
+      "volume": 773091,
+      "volume_sma20": 1144584,
+      "volume_ratio": 0.68,
+      "sma_20": 183.51,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.65,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4857,
+    "sentiment": {
+      "ticker": "STLD",
+      "composite_score": 0.2227,
+      "article_count": 13,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Is It Time To Revisit Steel Dynamics (STLD) After The Recent Share Price Pullback?",
+        "Steel Dynamics (STLD) Dips More Than Broader Market: What You Should Know",
+        "Steel Dynamics Inc. stock underperforms Wednesday when compared to competitors"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "STLD",
+      "expiry": "2026-03-20",
+      "current_price": 163.89,
+      "pc_ratio_volume": 10.381,
+      "pc_ratio_oi": 0.611,
+      "atm_iv": 0.5435,
+      "iv_rank": 1.4,
+      "max_pain": 170.0,
+      "highest_oi_call_strike": 185.0,
+      "highest_oi_put_strike": 180.0,
+      "highest_vol_call_strike": 160.0,
+      "highest_vol_put_strike": 195.0,
+      "iv_skew": 2.1369,
+      "total_call_volume": 239,
+      "total_put_volume": 2481,
+      "total_call_oi": 5195,
+      "total_put_oi": 3174
+    },
+    "flow": {
+      "ticker": "STLD",
+      "current_call_vol": 591,
+      "current_put_vol": 2760,
+      "total_vol": 3351,
+      "total_oi": 25381,
+      "vol_oi_ratio": 0.132,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 101.08200000000001,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 61.135000000000005,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 75.73,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "LUV",
+    "technical": {
+      "ticker": "LUV",
+      "price": 39.08,
+      "rsi": 27.12,
+      "rsi_prev": 31.34,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 52.8,
+      "bb_middle": 44.21,
+      "bb_lower": 35.62,
+      "bb_width": 38.8478,
+      "bb_pct": 0.2013,
+      "bb_squeeze": false,
+      "atr": 2.08,
+      "atr_pct": 5.33,
+      "volume": 4279834,
+      "volume_sma20": 10236766,
+      "volume_ratio": 0.42,
+      "sma_20": 44.21,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.6,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4863,
+    "sentiment": {
+      "ticker": "LUV",
+      "composite_score": 0.2027,
+      "article_count": 22,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Travel insurance is gaining popularity among spring breakers this year \u2014 here's how to protect your trip",
+        "Southwest Airlines' CEO makes startling admission",
+        "The Zacks Analyst Blog Highlights Delta Air Lines, American Airlines, Southwest Airlines, SkyWest and Sun Country Airlines"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "LUV",
+      "expiry": "2026-03-20",
+      "current_price": 39.06,
+      "pc_ratio_volume": 11.881,
+      "pc_ratio_oi": 0.786,
+      "atm_iv": 0.8359,
+      "iv_rank": 5.5,
+      "max_pain": 40.0,
+      "highest_oi_call_strike": 40.0,
+      "highest_oi_put_strike": 40.0,
+      "highest_vol_call_strike": 40.0,
+      "highest_vol_put_strike": 50.0,
+      "iv_skew": -0.5563,
+      "total_call_volume": 1455,
+      "total_put_volume": 17287,
+      "total_call_oi": 71616,
+      "total_put_oi": 56322
+    },
+    "flow": {
+      "ticker": "LUV",
+      "current_call_vol": 2276,
+      "current_put_vol": 19232,
+      "total_vol": 21508,
+      "total_oi": 142134,
+      "vol_oi_ratio": 0.151,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 138.1842,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 60.135000000000005,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 75.53,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "DG",
+    "technical": {
+      "ticker": "DG",
+      "price": 123.1,
+      "rsi": 15.56,
+      "rsi_prev": 15.75,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 165.13,
+      "bb_middle": 143.26,
+      "bb_lower": 121.38,
+      "bb_width": 30.5416,
+      "bb_pct": 0.0393,
+      "bb_squeeze": false,
+      "atr": 4.86,
+      "atr_pct": 3.95,
+      "volume": 1752360,
+      "volume_sma20": 3408773,
+      "volume_ratio": 0.51,
+      "sma_20": 143.26,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.07,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5118,
+    "sentiment": {
+      "ticker": "DG",
+      "composite_score": 0.1089,
+      "article_count": 15,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Dixie Gold Inc. Reports Departure of Senior Executive",
+        "Dollar General Corporation (DG) Q4 2025 Earnings Call Transcript",
+        "Your local grocery store reveals a lot about you and your home price"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "DG",
+      "expiry": "2026-03-20",
+      "current_price": 123.07,
+      "pc_ratio_volume": 9.503,
+      "pc_ratio_oi": 1.044,
+      "atm_iv": 0.457,
+      "iv_rank": 1.0,
+      "max_pain": 133.0,
+      "highest_oi_call_strike": 145.0,
+      "highest_oi_put_strike": 100.0,
+      "highest_vol_call_strike": 195.0,
+      "highest_vol_put_strike": 160.0,
+      "iv_skew": 1.0017,
+      "total_call_volume": 888,
+      "total_put_volume": 8439,
+      "total_call_oi": 16356,
+      "total_put_oi": 17082
+    },
+    "flow": {
+      "ticker": "DG",
+      "current_call_vol": 1288,
+      "current_put_vol": 9074,
+      "total_vol": 10362,
+      "total_oi": 38986,
+      "vol_oi_ratio": 0.266,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 90.9627,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 55.445,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 74.59,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "SWK",
+    "technical": {
+      "ticker": "SWK",
+      "price": 67.11,
+      "rsi": 12.29,
+      "rsi_prev": 14.03,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 90.2,
+      "bb_middle": 76.9,
+      "bb_lower": 63.6,
+      "bb_width": 34.585,
+      "bb_pct": 0.1319,
+      "bb_squeeze": false,
+      "atr": 3.17,
+      "atr_pct": 4.73,
+      "volume": 837047,
+      "volume_sma20": 1713132,
+      "volume_ratio": 0.49,
+      "sma_20": 76.9,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.73,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5591,
+    "sentiment": {
+      "ticker": "SWK",
+      "composite_score": 0.1062,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Zacks Industry Outlook Highlights Stanley Black & Decker, Core & Main, Kennametal and Enerpac Tool Group",
+        "Is Stanley Black & Decker Stock Underperforming the Dow?",
+        "4 Manufacturing Tools Stocks to Watch on Prospering Industry Trends"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "SWK",
+      "expiry": "2026-03-20",
+      "current_price": 67.08,
+      "pc_ratio_volume": 9.116,
+      "pc_ratio_oi": 0.55,
+      "atm_iv": 0.6816,
+      "iv_rank": 2.6,
+      "max_pain": 72.5,
+      "highest_oi_call_strike": 92.5,
+      "highest_oi_put_strike": 72.5,
+      "highest_vol_call_strike": 60.0,
+      "highest_vol_put_strike": 80.0,
+      "iv_skew": -0.5068,
+      "total_call_volume": 467,
+      "total_put_volume": 4257,
+      "total_call_oi": 8385,
+      "total_put_oi": 4611
+    },
+    "flow": {
+      "ticker": "SWK",
+      "current_call_vol": 614,
+      "current_put_vol": 4990,
+      "total_vol": 5604,
+      "total_oi": 23641,
+      "vol_oi_ratio": 0.237,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 94.63239999999999,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 55.31,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 74.56,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "ECL",
+    "technical": {
+      "ticker": "ECL",
+      "price": 255.0,
+      "rsi": 5.13,
+      "rsi_prev": 5.74,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 318.9,
+      "bb_middle": 285.2,
+      "bb_lower": 251.5,
+      "bb_width": 23.631,
+      "bb_pct": 0.0519,
+      "bb_squeeze": false,
+      "atr": 6.82,
+      "atr_pct": 2.67,
+      "volume": 1498157,
+      "volume_sma20": 1553337,
+      "volume_ratio": 0.96,
+      "sma_20": 285.2,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.59,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5153,
+    "sentiment": {
+      "ticker": "ECL",
+      "composite_score": 0.0613,
+      "article_count": 21,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Ecolab Buying CoolIT Systems in $4.75 Billion Deal as Data Center Liquid Cooling Demand Surges",
+        "Top Midday Stories: Super Micro Places Co-Founder on Leave After Chip-Smuggling Charge; FedEx Posts Strong Earnings, Guidance",
+        "Ecolab Buys CoolIT Systems for $4.75 Billion. It\u2019s All About AI for the Struggling Stock."
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "ECL",
+      "expiry": "2026-03-20",
+      "current_price": 254.85,
+      "pc_ratio_volume": 22.671,
+      "pc_ratio_oi": 0.345,
+      "atm_iv": 0.7676,
+      "iv_rank": 6.6,
+      "max_pain": 290.0,
+      "highest_oi_call_strike": 300.0,
+      "highest_oi_put_strike": 290.0,
+      "highest_vol_call_strike": 200.0,
+      "highest_vol_put_strike": 280.0,
+      "iv_skew": -1.7389,
+      "total_call_volume": 73,
+      "total_put_volume": 1655,
+      "total_call_oi": 1073,
+      "total_put_oi": 370
+    },
+    "flow": {
+      "ticker": "ECL",
+      "current_call_vol": 1429,
+      "current_put_vol": 2082,
+      "total_vol": 3511,
+      "total_oi": 4976,
+      "vol_oi_ratio": 0.706,
+      "is_unusual": true,
+      "direction_bias": "neutral"
+    },
+    "options_score": 249.88279999999997,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 53.065,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 74.11,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "IP",
+    "technical": {
+      "ticker": "IP",
+      "price": 33.93,
+      "rsi": 18.94,
+      "rsi_prev": 19.06,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 46.46,
+      "bb_middle": 39.75,
+      "bb_lower": 33.03,
+      "bb_width": 33.7914,
+      "bb_pct": 0.0669,
+      "bb_squeeze": false,
+      "atr": 1.82,
+      "atr_pct": 5.38,
+      "volume": 4902308,
+      "volume_sma20": 6049800,
+      "volume_ratio": 0.81,
+      "sma_20": 39.75,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.63,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5759,
+    "sentiment": {
+      "ticker": "IP",
+      "composite_score": 0.0098,
+      "article_count": 13,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "$225 million development project slated for Brandon, Mississippi",
+        "International Paper to build $225M box plant in Mississippi",
+        "International Paper Plans to Build New Sustainable Packaging Facility in Rankin County, Mississippi"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "IP",
+      "expiry": "2026-03-20",
+      "current_price": 33.92,
+      "pc_ratio_volume": 6.581,
+      "pc_ratio_oi": 0.134,
+      "atm_iv": 0.6875,
+      "iv_rank": 0.3,
+      "max_pain": 54.0,
+      "highest_oi_call_strike": 45.0,
+      "highest_oi_put_strike": 40.0,
+      "highest_vol_call_strike": 36.0,
+      "highest_vol_put_strike": 40.0,
+      "iv_skew": -1.7983,
+      "total_call_volume": 260,
+      "total_put_volume": 1711,
+      "total_call_oi": 20495,
+      "total_put_oi": 2746
+    },
+    "flow": {
+      "ticker": "IP",
+      "current_call_vol": 553,
+      "current_put_vol": 1796,
+      "total_vol": 2349,
+      "total_oi": 24451,
+      "vol_oi_ratio": 0.096,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 57.5071,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 50.49,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 73.6,
+    "confidence": 0.5
+  },
+  {
+    "ticker": "PPG",
+    "technical": {
+      "ticker": "PPG",
+      "price": 97.09,
+      "rsi": 14.81,
+      "rsi_prev": 15.73,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 130.38,
+      "bb_middle": 110.94,
+      "bb_lower": 91.51,
+      "bb_width": 35.0379,
+      "bb_pct": 0.1437,
+      "bb_squeeze": false,
+      "atr": 3.66,
+      "atr_pct": 3.77,
+      "volume": 1580261,
+      "volume_sma20": 2148683,
+      "volume_ratio": 0.74,
+      "sma_20": 110.94,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.49,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.503,
+    "sentiment": {
+      "ticker": "PPG",
+      "composite_score": 0.0041,
+      "article_count": 10,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "5 High-Yield Dividend Kings Down Over the Past Year Are 2026 Bargains",
+        "Wall Street's Most Accurate Analysts Weigh In On 3 Materials Stocks Delivering High-Dividend Yields",
+        "RBC Capital Trims PPG Target as Macro Uncertainty Persists"
+      ]
+    },
+    "sentiment_priority": 0,
+    "options": {
+      "ticker": "PPG",
+      "expiry": "2026-03-20",
+      "current_price": 97.08,
+      "pc_ratio_volume": 4.292,
+      "pc_ratio_oi": 0.175,
+      "atm_iv": 0.5855,
+      "iv_rank": 8.5,
+      "max_pain": 136.0,
+      "highest_oi_call_strike": 130.0,
+      "highest_oi_put_strike": 95.0,
+      "highest_vol_call_strike": 95.0,
+      "highest_vol_put_strike": 114.0,
+      "iv_skew": -0.8843,
+      "total_call_volume": 370,
+      "total_put_volume": 1588,
+      "total_call_oi": 9097,
+      "total_put_oi": 1596
+    },
+    "flow": {
+      "ticker": "PPG",
+      "current_call_vol": 479,
+      "current_put_vol": 1661,
+      "total_vol": 2140,
+      "total_oi": 12183,
+      "vol_oi_ratio": 0.176,
+      "is_unusual": false,
+      "direction_bias": "bearish"
+    },
+    "options_score": 75.61580000000001,
+    "market_regime": {
+      "regime": "high",
+      "vix_level": 27.799999237060547,
+      "description": "High volatility - large swings likely, reduce position size",
+      "trend_direction": "rising"
+    },
+    "direction": "put",
+    "direction_confidence": 0.5,
+    "direction_hint": "put",
+    "scores": {
+      "technical": 100.0,
+      "options": 100.0,
+      "sentiment": 50.205,
+      "flow": 30.0,
+      "market_regime": 60.0
+    },
+    "composite_score": 73.54,
+    "confidence": 0.5
+  }
+]

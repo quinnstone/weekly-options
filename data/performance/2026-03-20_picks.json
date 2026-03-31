@@ -1,0 +1,86 @@
+{
+  "date": "2026-03-20",
+  "picks": [
+    {
+      "ticker": "ULTA",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 78.75,
+      "direction_confidence": 0.5,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 76.23,
+        "flow": 30.0,
+        "market_regime": 60.0
+      }
+    },
+    {
+      "ticker": "GNRC",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 77.06,
+      "direction_confidence": 0.5,
+      "scores": {
+        "technical": 100.0,
+        "options": 99.82252242891958,
+        "sentiment": 68.04,
+        "flow": 30.0,
+        "market_regime": 60.0
+      }
+    },
+    {
+      "ticker": "URI",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 76.07,
+      "direction_confidence": 0.5,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 62.839999999999996,
+        "flow": 30.0,
+        "market_regime": 60.0
+      }
+    },
+    {
+      "ticker": "STLD",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.73,
+      "direction_confidence": 0.5,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 61.135000000000005,
+        "flow": 30.0,
+        "market_regime": 60.0
+      }
+    },
+    {
+      "ticker": "LUV",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.53,
+      "direction_confidence": 0.5,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 60.135000000000005,
+        "flow": 30.0,
+        "market_regime": 60.0
+      }
+    }
+  ],
+  "recorded_at": "2026-03-20T15:15:16.663755"
+}

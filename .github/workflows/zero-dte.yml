@@ -1,0 +1,112 @@
+name: Zero-DTE Pipeline
+
+on:
+  schedule:
+    # Wednesday 7:00 AM ET (12:00 UTC during EDT, 12:00 UTC during EST)
+    - cron: '0 12 * * 3'
+    # Thursday 7:00 AM ET
+    - cron: '0 12 * * 4'
+    # Friday 7:00 AM ET
+    - cron: '0 12 * * 5'
+    # Monday 7:00 AM ET — grade last Friday's picks
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: 'Stage to run (leave empty for auto-detect)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - wednesday
+          - thursday
+          - friday
+          - scorecard
+
+permissions:
+  contents: write
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create .env file
+        run: |
+          cat > .env << 'ENVEOF'
+          FINNHUB_API_KEY=${{ secrets.FINNHUB_API_KEY }}
+          FRED_API_KEY=${{ secrets.FRED_API_KEY }}
+          DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}
+          ENVEOF
+
+      - name: Create data directories
+        run: |
+          mkdir -p data/candidates
+          mkdir -p data/reports
+          mkdir -p data/performance
+          mkdir -p data/logs
+
+      - name: Run pipeline stage
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ "${{ github.event.inputs.stage }}" = "scorecard" ]; then
+            # Find most recent Friday's picks and grade them
+            LAST_FRIDAY=$(python3 -c "
+          from datetime import datetime, timedelta
+          today = datetime.now()
+          days_back = (today.weekday() - 4) % 7
+          if days_back == 0: days_back = 7
+          print((today - timedelta(days=days_back)).strftime('%Y-%m-%d'))
+          ")
+            echo "Grading picks from ${LAST_FRIDAY}..."
+            python3 main.py scorecard --week "${LAST_FRIDAY}" || echo "No picks to grade for ${LAST_FRIDAY} — skipping"
+          elif [ -n "${{ github.event.inputs.stage }}" ]; then
+            echo "Running manual stage: ${{ github.event.inputs.stage }}"
+            python3 main.py stage --stage ${{ github.event.inputs.stage }}
+          else
+            # Auto-detect: Monday = scorecard, Wed/Thu/Fri = pipeline
+            DOW=$(date +%u)
+            if [ "$DOW" = "1" ]; then
+              LAST_FRIDAY=$(python3 -c "
+          from datetime import datetime, timedelta
+          print((datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d'))
+          ")
+              echo "Monday — grading last Friday's picks (${LAST_FRIDAY})..."
+              python3 main.py scorecard --week "${LAST_FRIDAY}" || echo "No picks to grade for ${LAST_FRIDAY} — skipping"
+            else
+              echo "Auto-detecting day and running appropriate stage..."
+              python3 main.py run
+            fi
+          fi
+
+      - name: Commit and push results
+        run: |
+          git config user.name "zero-dte-bot"
+          git config user.email "zero-dte-bot@users.noreply.github.com"
+          git add data/candidates/ data/reports/ data/performance/
+          if git diff --staged --quiet; then
+            echo "No new data to commit"
+          else
+            DATE=$(date +%Y-%m-%d)
+            DAY=$(date +%A | tr '[:upper:]' '[:lower:]')
+            git commit -m "pipeline: ${DAY} results for ${DATE}"
+            git push
+          fi

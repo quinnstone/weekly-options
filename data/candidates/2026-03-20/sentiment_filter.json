@@ -1,0 +1,2146 @@
+[
+  {
+    "ticker": "SMCI",
+    "technical": {
+      "ticker": "SMCI",
+      "price": 20.95,
+      "rsi": 18.79,
+      "rsi_prev": 43.84,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 35.98,
+      "bb_middle": 31.07,
+      "bb_lower": 26.17,
+      "bb_width": 31.5456,
+      "bb_pct": -0.5323,
+      "bb_squeeze": false,
+      "atr": 2.25,
+      "atr_pct": 10.74,
+      "volume": 192448962,
+      "volume_sma20": 32683648,
+      "volume_ratio": 5.89,
+      "sma_20": 31.07,
+      "sma_50": null,
+      "price_vs_sma20_pct": -32.57,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.8061,
+    "sentiment": {
+      "ticker": "SMCI",
+      "composite_score": 0.1212,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Top Midday Decliners",
+        "US Equity Indexes Fall After White House Plan to Pressure Iran to Reopen Strait of Hormuz",
+        "Sector Update: Tech Stocks Fall in Afternoon Trading"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "NEM",
+    "technical": {
+      "ticker": "NEM",
+      "price": 94.9,
+      "rsi": 16.64,
+      "rsi_prev": 19.21,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 134.27,
+      "bb_middle": 116.31,
+      "bb_lower": 98.34,
+      "bb_width": 30.8899,
+      "bb_pct": -0.0958,
+      "bb_squeeze": false,
+      "atr": 5.63,
+      "atr_pct": 5.94,
+      "volume": 10387092,
+      "volume_sma20": 10690584,
+      "volume_ratio": 0.97,
+      "sma_20": 116.31,
+      "sma_50": null,
+      "price_vs_sma20_pct": -18.41,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.6208,
+    "sentiment": {
+      "ticker": "NEM",
+      "composite_score": -0.0693,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Freeport-McMoRan vs Newmont: Which Crushed Mining Giant Looks Like the Cleaner Bet?",
+        "Newmont\u2019s Partner Discoveries Add Long Term Optionality To Valuation Story",
+        "The Dow's losing streak, fertilizer prices, Novo Nordisk's new Wegovy shot and more in Morning Squawk"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "MKC",
+    "technical": {
+      "ticker": "MKC",
+      "price": 53.61,
+      "rsi": 13.09,
+      "rsi_prev": 13.55,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 74.78,
+      "bb_middle": 63.14,
+      "bb_lower": 51.51,
+      "bb_width": 36.8482,
+      "bb_pct": 0.0903,
+      "bb_squeeze": false,
+      "atr": 1.87,
+      "atr_pct": 3.49,
+      "volume": 6844305,
+      "volume_sma20": 3049085,
+      "volume_ratio": 2.24,
+      "sma_20": 63.14,
+      "sma_50": null,
+      "price_vs_sma20_pct": -15.1,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.6047,
+    "sentiment": {
+      "ticker": "MKC",
+      "composite_score": 0.0728,
+      "article_count": 31,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Unusual volume S&P500 stocks in Friday's session",
+        "Unilever explores tens-of-billions food deal with McCormick via tax-free structure",
+        "McCormick Weighs Unilever Food Merger As Valuation Signals Potential Upside"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "SW",
+    "technical": {
+      "ticker": "SW",
+      "price": 36.27,
+      "rsi": 12.93,
+      "rsi_prev": 13.86,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 49.44,
+      "bb_middle": 42.7,
+      "bb_lower": 35.96,
+      "bb_width": 31.5663,
+      "bb_pct": 0.0228,
+      "bb_squeeze": false,
+      "atr": 1.77,
+      "atr_pct": 4.87,
+      "volume": 3658954,
+      "volume_sma20": 5622387,
+      "volume_ratio": 0.65,
+      "sma_20": 42.7,
+      "sma_50": null,
+      "price_vs_sma20_pct": -15.06,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5925,
+    "sentiment": {
+      "ticker": "SW",
+      "composite_score": 0.2636,
+      "article_count": 7,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Discover which S&P500 stocks are making waves on Thursday.",
+        "These S&P500 stocks are moving in today's session",
+        "These S&P500 stocks are gapping in today's session"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "IP",
+    "technical": {
+      "ticker": "IP",
+      "price": 33.8,
+      "rsi": 18.72,
+      "rsi_prev": 19.06,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 46.48,
+      "bb_middle": 39.74,
+      "bb_lower": 33.0,
+      "bb_width": 33.9112,
+      "bb_pct": 0.0592,
+      "bb_squeeze": false,
+      "atr": 1.82,
+      "atr_pct": 5.4,
+      "volume": 4828712,
+      "volume_sma20": 6046120,
+      "volume_ratio": 0.8,
+      "sma_20": 39.74,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.95,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5759,
+    "sentiment": {
+      "ticker": "IP",
+      "composite_score": 0.0098,
+      "article_count": 13,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "$225 million development project slated for Brandon, Mississippi",
+        "International Paper to build $225M box plant in Mississippi",
+        "International Paper Plans to Build New Sustainable Packaging Facility in Rankin County, Mississippi"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DELL",
+    "technical": {
+      "ticker": "DELL",
+      "price": 160.79,
+      "rsi": 72.2,
+      "rsi_prev": 69.46,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 169.15,
+      "bb_middle": 144.31,
+      "bb_lower": 119.48,
+      "bb_width": 34.4218,
+      "bb_pct": 0.8317,
+      "bb_squeeze": false,
+      "atr": 7.96,
+      "atr_pct": 4.95,
+      "volume": 15917469,
+      "volume_sma20": 9811278,
+      "volume_ratio": 1.62,
+      "sma_20": 144.31,
+      "sma_50": null,
+      "price_vs_sma20_pct": 11.42,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5658,
+    "sentiment": {
+      "ticker": "DELL",
+      "composite_score": 0.1444,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Unusual volume S&P500 stocks in Friday's session",
+        "Which S&P500 stocks are moving on Friday?",
+        "Dell Stock Is Rising. Trouble at Super Micro Could Boost Demand"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "VST",
+    "technical": {
+      "ticker": "VST",
+      "price": 148.3,
+      "rsi": 32.76,
+      "rsi_prev": 51.18,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 178.14,
+      "bb_middle": 165.02,
+      "bb_lower": 151.9,
+      "bb_width": 15.9036,
+      "bb_pct": -0.1371,
+      "bb_squeeze": false,
+      "atr": 8.27,
+      "atr_pct": 5.57,
+      "volume": 5694883,
+      "volume_sma20": 4649519,
+      "volume_ratio": 1.22,
+      "sma_20": 165.02,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.13,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5631,
+    "sentiment": {
+      "ticker": "VST",
+      "composite_score": 0.1054,
+      "article_count": 19,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Which S&P500 stocks are moving on Friday?",
+        "Friday's session: gap up and gap down stock in the S&P500 index",
+        "Forget Savings Accounts and Buy These 2 Utility ETFs Instead"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "SWK",
+    "technical": {
+      "ticker": "SWK",
+      "price": 67.16,
+      "rsi": 12.33,
+      "rsi_prev": 14.03,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 90.19,
+      "bb_middle": 76.9,
+      "bb_lower": 63.61,
+      "bb_width": 34.5648,
+      "bb_pct": 0.1334,
+      "bb_squeeze": false,
+      "atr": 3.17,
+      "atr_pct": 4.73,
+      "volume": 822063,
+      "volume_sma20": 1712383,
+      "volume_ratio": 0.48,
+      "sma_20": 76.9,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.67,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5591,
+    "sentiment": {
+      "ticker": "SWK",
+      "composite_score": 0.1062,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Zacks Industry Outlook Highlights Stanley Black & Decker, Core & Main, Kennametal and Enerpac Tool Group",
+        "Is Stanley Black & Decker Stock Underperforming the Dow?",
+        "4 Manufacturing Tools Stocks to Watch on Prospering Industry Trends"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "FCX",
+    "technical": {
+      "ticker": "FCX",
+      "price": 51.88,
+      "rsi": 23.6,
+      "rsi_prev": 26.09,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 72.23,
+      "bb_middle": 61.88,
+      "bb_lower": 51.53,
+      "bb_width": 33.4546,
+      "bb_pct": 0.0171,
+      "bb_squeeze": false,
+      "atr": 3.07,
+      "atr_pct": 5.91,
+      "volume": 12764418,
+      "volume_sma20": 19159390,
+      "volume_ratio": 0.67,
+      "sma_20": 61.88,
+      "sma_50": null,
+      "price_vs_sma20_pct": -16.15,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5491,
+    "sentiment": {
+      "ticker": "FCX",
+      "composite_score": 0.0004,
+      "article_count": 37,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "How To Find The Stock Market Dividend Stars At Investors.com",
+        "Freeport-McMoRan vs Newmont: Which Crushed Mining Giant Looks Like the Cleaner Bet?",
+        "Tim Cook\u2019s China visit reinforces country\u2019s importance to Apple as global frictions rise"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "BLDR",
+    "technical": {
+      "ticker": "BLDR",
+      "price": 80.76,
+      "rsi": 21.43,
+      "rsi_prev": 24.64,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 110.39,
+      "bb_middle": 94.7,
+      "bb_lower": 79.0,
+      "bb_width": 33.1451,
+      "bb_pct": 0.0561,
+      "bb_squeeze": false,
+      "atr": 4.33,
+      "atr_pct": 5.37,
+      "volume": 1509786,
+      "volume_sma20": 2577994,
+      "volume_ratio": 0.59,
+      "sma_20": 94.7,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.71,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5488,
+    "sentiment": {
+      "ticker": "BLDR",
+      "composite_score": -0.028,
+      "article_count": 11,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Builders FirstSource (BLDR) Suffers a Larger Drop Than the General Market: Key Insights",
+        "Why Is Builders FirstSource (BLDR) Down 24% Since Last Earnings Report?",
+        "2 Mid-Cap Stocks for Long-Term Investors and 1 We Avoid"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "BAX",
+    "technical": {
+      "ticker": "BAX",
+      "price": 16.23,
+      "rsi": 20.14,
+      "rsi_prev": 22.2,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 21.47,
+      "bb_middle": 18.54,
+      "bb_lower": 15.61,
+      "bb_width": 31.5961,
+      "bb_pct": 0.1052,
+      "bb_squeeze": false,
+      "atr": 0.81,
+      "atr_pct": 5.01,
+      "volume": 6175466,
+      "volume_sma20": 10310573,
+      "volume_ratio": 0.6,
+      "sma_20": 18.54,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.47,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5485,
+    "sentiment": {
+      "ticker": "BAX",
+      "composite_score": 0.1702,
+      "article_count": 3,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "How Is Baxter's Stock Performance Compared to Other Medical Devices Stocks?",
+        "Baxter CFO Joel Grade steps down",
+        "1 Unprofitable Stock with Impressive Fundamentals and 2 That Underwhelm"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "APA",
+    "technical": {
+      "ticker": "APA",
+      "price": 39.03,
+      "rsi": 87.54,
+      "rsi_prev": 86.01,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 38.72,
+      "bb_middle": 32.7,
+      "bb_lower": 26.67,
+      "bb_width": 36.8343,
+      "bb_pct": 1.0263,
+      "bb_squeeze": false,
+      "atr": 1.44,
+      "atr_pct": 3.69,
+      "volume": 7684142,
+      "volume_sma20": 8743222,
+      "volume_ratio": 0.88,
+      "sma_20": 32.7,
+      "sma_50": null,
+      "price_vs_sma20_pct": 19.39,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5467,
+    "sentiment": {
+      "ticker": "APA",
+      "composite_score": 0.0793,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Which S&P500 stocks are moving on Friday?",
+        "These S&P500 stocks are moving in today's session",
+        "Shares of oil-related companies are trading higher amid continued military strikes targeting energy infrastructure across the Middle East."
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "AMCR",
+    "technical": {
+      "ticker": "AMCR",
+      "price": 38.3,
+      "rsi": 8.02,
+      "rsi_prev": 8.46,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 51.6,
+      "bb_middle": 43.95,
+      "bb_lower": 36.31,
+      "bb_width": 34.7842,
+      "bb_pct": 0.1302,
+      "bb_squeeze": false,
+      "atr": 1.23,
+      "atr_pct": 3.22,
+      "volume": 5493117,
+      "volume_sma20": 5057390,
+      "volume_ratio": 1.09,
+      "sma_20": 43.95,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.86,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5312,
+    "sentiment": {
+      "ticker": "AMCR",
+      "composite_score": 0.0853,
+      "article_count": 10,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Wells Fargo Downgrades Amcor (AMCR)",
+        "A Look At Amcor (AMCR) Valuation After Recent Share Price Weakness And Conflicting DCF Signals",
+        "Arm upgraded, Strategy initiated: Wall Street's top analyst calls"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "WSM",
+    "technical": {
+      "ticker": "WSM",
+      "price": 179.31,
+      "rsi": 23.94,
+      "rsi_prev": 26.74,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 213.83,
+      "bb_middle": 192.34,
+      "bb_lower": 170.84,
+      "bb_width": 22.3537,
+      "bb_pct": 0.197,
+      "bb_squeeze": false,
+      "atr": 8.75,
+      "atr_pct": 4.88,
+      "volume": 1191751,
+      "volume_sma20": 1312312,
+      "volume_ratio": 0.91,
+      "sma_20": 192.34,
+      "sma_50": null,
+      "price_vs_sma20_pct": -6.77,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5292,
+    "sentiment": {
+      "ticker": "WSM",
+      "composite_score": 0.111,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Williams-Sonoma, Inc. (WSM) Q4 2025 Earnings Call Transcript",
+        "Barclays Maintains Equal-Weight on Williams-Sonoma, Raises Price Target to $186",
+        "RBC Capital Raises Williams-Sonoma (WSM) Target After Q4 Beat; TD Cowen Stays Positive"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "MOS",
+    "technical": {
+      "ticker": "MOS",
+      "price": 24.01,
+      "rsi": 35.15,
+      "rsi_prev": 41.9,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 30.48,
+      "bb_middle": 27.38,
+      "bb_lower": 24.28,
+      "bb_width": 22.6427,
+      "bb_pct": -0.0423,
+      "bb_squeeze": false,
+      "atr": 1.72,
+      "atr_pct": 7.17,
+      "volume": 12734790,
+      "volume_sma20": 11721719,
+      "volume_ratio": 1.09,
+      "sma_20": 27.38,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.28,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5283,
+    "sentiment": {
+      "ticker": "MOS",
+      "composite_score": -0.0493,
+      "article_count": 25,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Unusual volume S&P500 stocks in Friday's session",
+        "Which S&P500 stocks are moving on Friday?",
+        "Mosaic downgraded by Bank of America amid margin pressures"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DHI",
+    "technical": {
+      "ticker": "DHI",
+      "price": 132.24,
+      "rsi": 15.56,
+      "rsi_prev": 19.86,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 166.73,
+      "bb_middle": 148.44,
+      "bb_lower": 130.15,
+      "bb_width": 24.6441,
+      "bb_pct": 0.0571,
+      "bb_squeeze": false,
+      "atr": 4.56,
+      "atr_pct": 3.45,
+      "volume": 2763500,
+      "volume_sma20": 2468110,
+      "volume_ratio": 1.12,
+      "sma_20": 148.44,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.91,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5203,
+    "sentiment": {
+      "ticker": "DHI",
+      "composite_score": -0.1199,
+      "article_count": 5,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Mortgage Rates Hit Three-Month High as Iran War Rattles Spring Housing Market",
+        "Friday's big stock stories: What\u2019s likely to move the market in the next trading session",
+        "D.R. Horton Inc. stock underperforms Wednesday when compared to competitors"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "ARM",
+    "technical": {
+      "ticker": "ARM",
+      "price": 132.53,
+      "rsi": 63.61,
+      "rsi_prev": 60.31,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 134.5,
+      "bb_middle": 123.72,
+      "bb_lower": 112.94,
+      "bb_width": 17.4245,
+      "bb_pct": 0.9086,
+      "bb_squeeze": false,
+      "atr": 6.11,
+      "atr_pct": 4.61,
+      "volume": 6735642,
+      "volume_sma20": 3993507,
+      "volume_ratio": 1.69,
+      "sma_20": 123.72,
+      "sma_50": null,
+      "price_vs_sma20_pct": 7.12,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5186,
+    "sentiment": {
+      "ticker": "ARM",
+      "composite_score": 0.0499,
+      "article_count": 15,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Arm Holdings eyes full-chiplet CPUs, but analysts warn near-term headwinds remain",
+        "Arm upgraded, Strategy initiated: Wall Street's top analyst calls",
+        "These Stocks Are Today\u2019s Movers: Super Micro, FedEx, Firefly, Planet Labs, York Space Systems, and More"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "ES",
+    "technical": {
+      "ticker": "ES",
+      "price": 66.85,
+      "rsi": 19.23,
+      "rsi_prev": 26.4,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 76.96,
+      "bb_middle": 73.26,
+      "bb_lower": 69.56,
+      "bb_width": 10.1057,
+      "bb_pct": -0.366,
+      "bb_squeeze": false,
+      "atr": 1.78,
+      "atr_pct": 2.67,
+      "volume": 2747283,
+      "volume_sma20": 2479879,
+      "volume_ratio": 1.11,
+      "sma_20": 73.26,
+      "sma_50": null,
+      "price_vs_sma20_pct": -8.75,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.518,
+    "sentiment": {
+      "ticker": "ES",
+      "composite_score": 0.1366,
+      "article_count": 4,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Discover which S&P500 stocks are making waves on Thursday.",
+        "JPMorgan Lifts Eversource (ES) Price Target Following Model Updates",
+        "Eversource Energy stock underperforms Tuesday when compared to competitors"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CCEP",
+    "technical": {
+      "ticker": "CCEP",
+      "price": 91.59,
+      "rsi": 15.33,
+      "rsi_prev": 19.07,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 112.27,
+      "bb_middle": 102.6,
+      "bb_lower": 92.92,
+      "bb_width": 18.8602,
+      "bb_pct": -0.0689,
+      "bb_squeeze": false,
+      "atr": 2.47,
+      "atr_pct": 2.7,
+      "volume": 2555244,
+      "volume_sma20": 1788302,
+      "volume_ratio": 1.43,
+      "sma_20": 102.6,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.73,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.516,
+    "sentiment": {
+      "ticker": "CCEP",
+      "composite_score": 0.0,
+      "article_count": 0,
+      "sources": [],
+      "headlines": []
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "ECL",
+    "technical": {
+      "ticker": "ECL",
+      "price": 254.92,
+      "rsi": 5.12,
+      "rsi_prev": 5.74,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 318.91,
+      "bb_middle": 285.19,
+      "bb_lower": 251.48,
+      "bb_width": 23.6414,
+      "bb_pct": 0.051,
+      "bb_squeeze": false,
+      "atr": 6.82,
+      "atr_pct": 2.67,
+      "volume": 1476269,
+      "volume_sma20": 1552243,
+      "volume_ratio": 0.95,
+      "sma_20": 285.19,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.62,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5153,
+    "sentiment": {
+      "ticker": "ECL",
+      "composite_score": 0.0613,
+      "article_count": 21,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Ecolab Buying CoolIT Systems in $4.75 Billion Deal as Data Center Liquid Cooling Demand Surges",
+        "Top Midday Stories: Super Micro Places Co-Founder on Leave After Chip-Smuggling Charge; FedEx Posts Strong Earnings, Guidance",
+        "Ecolab Buys CoolIT Systems for $4.75 Billion. It\u2019s All About AI for the Struggling Stock."
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "EL",
+    "technical": {
+      "ticker": "EL",
+      "price": 84.87,
+      "rsi": 20.95,
+      "rsi_prev": 21.61,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 116.85,
+      "bb_middle": 96.63,
+      "bb_lower": 76.42,
+      "bb_width": 41.8405,
+      "bb_pct": 0.2091,
+      "bb_squeeze": false,
+      "atr": 4.2,
+      "atr_pct": 4.94,
+      "volume": 1645519,
+      "volume_sma20": 3959520,
+      "volume_ratio": 0.42,
+      "sma_20": 96.63,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.17,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5133,
+    "sentiment": {
+      "ticker": "EL",
+      "composite_score": 0.1609,
+      "article_count": 4,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Estee Lauder Cos. Cl A stock underperforms Wednesday when compared to competitors",
+        "188-year-old NYC pharmacy has been 'packed like sardines'\u2014all because of $40 headbands and FX's 'Love Story'",
+        "Is Estee Lauder's Fragrance Business Rising on Luxury Demand?"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DASH",
+    "technical": {
+      "ticker": "DASH",
+      "price": 155.69,
+      "rsi": 32.57,
+      "rsi_prev": 35.39,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 185.56,
+      "bb_middle": 170.39,
+      "bb_lower": 155.23,
+      "bb_width": 17.8003,
+      "bb_pct": 0.0152,
+      "bb_squeeze": false,
+      "atr": 8.06,
+      "atr_pct": 5.18,
+      "volume": 3420377,
+      "volume_sma20": 4319688,
+      "volume_ratio": 0.79,
+      "sma_20": 170.39,
+      "sma_50": null,
+      "price_vs_sma20_pct": -8.63,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5125,
+    "sentiment": {
+      "ticker": "DASH",
+      "composite_score": 0.1405,
+      "article_count": 20,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "DoorDash (DASH) Down 9.6% Since Last Earnings Report: Can It Rebound?",
+        "DoorDash vs. Shopify: Which E-Commerce Stock Has an Edge Now?",
+        "Your Kids Still Raid the Pantry. They Just Do It Digitally Now\u2014and You May Not Realize How Much They\u2019re Spending"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CNC",
+    "technical": {
+      "ticker": "CNC",
+      "price": 34.18,
+      "rsi": 25.39,
+      "rsi_prev": 28.88,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 48.36,
+      "bb_middle": 39.84,
+      "bb_lower": 31.31,
+      "bb_width": 42.792,
+      "bb_pct": 0.1681,
+      "bb_squeeze": false,
+      "atr": 1.72,
+      "atr_pct": 5.02,
+      "volume": 3533594,
+      "volume_sma20": 6013664,
+      "volume_ratio": 0.59,
+      "sma_20": 39.84,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.2,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5122,
+    "sentiment": {
+      "ticker": "CNC",
+      "composite_score": 0.2731,
+      "article_count": 10,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Assessing Centene (CNC) Valuation After Prolonged Share Price Weakness And A Flagged Intrinsic Discount",
+        "JP Morgan Maintains Neutral on Centene, Lowers Price Target to $41",
+        "HS Chief Counselor Chris Klomp, At STAT News Conference, Says They're Beginning To Read In Pharma Companies On Codifying MFN Pricing"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "GPC",
+    "technical": {
+      "ticker": "GPC",
+      "price": 96.46,
+      "rsi": 12.01,
+      "rsi_prev": 13.96,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 123.78,
+      "bb_middle": 110.38,
+      "bb_lower": 96.97,
+      "bb_width": 24.2964,
+      "bb_pct": -0.0191,
+      "bb_squeeze": false,
+      "atr": 3.26,
+      "atr_pct": 3.38,
+      "volume": 1163070,
+      "volume_sma20": 1877868,
+      "volume_ratio": 0.62,
+      "sma_20": 110.38,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.61,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5119,
+    "sentiment": {
+      "ticker": "GPC",
+      "composite_score": 0.0869,
+      "article_count": 10,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "5 High-Yield Dividend Kings Down Over the Past Year Are 2026 Bargains",
+        "Has Genuine Parts (GPC) Fallen Too Far After Recent Share Price Slump?",
+        "Why Is Genuine Parts (GPC) Down 16.7% Since Last Earnings Report?"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DG",
+    "technical": {
+      "ticker": "DG",
+      "price": 123.06,
+      "rsi": 15.54,
+      "rsi_prev": 15.75,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 165.14,
+      "bb_middle": 143.26,
+      "bb_lower": 121.37,
+      "bb_width": 30.5523,
+      "bb_pct": 0.0386,
+      "bb_squeeze": false,
+      "atr": 4.86,
+      "atr_pct": 3.95,
+      "volume": 1711669,
+      "volume_sma20": 3406738,
+      "volume_ratio": 0.5,
+      "sma_20": 143.26,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.1,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5118,
+    "sentiment": {
+      "ticker": "DG",
+      "composite_score": 0.1089,
+      "article_count": 15,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Dixie Gold Inc. Reports Departure of Senior Executive",
+        "Dollar General Corporation (DG) Q4 2025 Earnings Call Transcript",
+        "Your local grocery store reveals a lot about you and your home price"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "GE",
+    "technical": {
+      "ticker": "GE",
+      "price": 284.24,
+      "rsi": 18.49,
+      "rsi_prev": 20.97,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 359.92,
+      "bb_middle": 321.92,
+      "bb_lower": 283.92,
+      "bb_width": 23.6105,
+      "bb_pct": 0.0043,
+      "bb_squeeze": false,
+      "atr": 10.67,
+      "atr_pct": 3.75,
+      "volume": 4225646,
+      "volume_sma20": 5225417,
+      "volume_ratio": 0.81,
+      "sma_20": 321.92,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.7,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5109,
+    "sentiment": {
+      "ticker": "GE",
+      "composite_score": 0.1996,
+      "article_count": 34,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "3 Market-Beating Stocks to Research Further",
+        "GE Aerospace vs. Textron: Which Aerospace & Defense Stock Should You Bet On?",
+        "2 Cash-Producing Stocks with Promising Prospects and 1 Facing Challenges"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CEG",
+    "technical": {
+      "ticker": "CEG",
+      "price": 285.04,
+      "rsi": 35.71,
+      "rsi_prev": 56.48,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 339.04,
+      "bb_middle": 314.18,
+      "bb_lower": 289.32,
+      "bb_width": 15.8253,
+      "bb_pct": -0.086,
+      "bb_squeeze": false,
+      "atr": 14.14,
+      "atr_pct": 4.96,
+      "volume": 2526211,
+      "volume_sma20": 3143860,
+      "volume_ratio": 0.8,
+      "sma_20": 314.18,
+      "sma_50": null,
+      "price_vs_sma20_pct": -9.27,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5103,
+    "sentiment": {
+      "ticker": "CEG",
+      "composite_score": 0.1674,
+      "article_count": 28,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Which S&P500 stocks are moving on Friday?",
+        "Friday's session: gap up and gap down stock in the S&P500 index",
+        "Constellation Energy Refocuses On Low Carbon Power With $5b Gas Sale"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "LEN",
+    "technical": {
+      "ticker": "LEN",
+      "price": 90.11,
+      "rsi": 19.28,
+      "rsi_prev": 22.82,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 119.34,
+      "bb_middle": 102.75,
+      "bb_lower": 86.16,
+      "bb_width": 32.2878,
+      "bb_pct": 0.119,
+      "bb_squeeze": false,
+      "atr": 3.57,
+      "atr_pct": 3.96,
+      "volume": 2679892,
+      "volume_sma20": 2901899,
+      "volume_ratio": 0.92,
+      "sma_20": 102.75,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.3,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5097,
+    "sentiment": {
+      "ticker": "LEN",
+      "composite_score": 0.0982,
+      "article_count": 11,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "The spring housing market is on, but mortgage rates just shot higher. Here's what to know.",
+        "Lennar Corp Saw Profits Fall in Its Latest Quarter. Is It Time To Buy the Dip on This Leading Homebuilder?",
+        "Intuitive Surgical and Lennar have been highlighted as Zacks Bull and Bear of the Day"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "BA",
+    "technical": {
+      "ticker": "BA",
+      "price": 193.92,
+      "rsi": 25.1,
+      "rsi_prev": 29.06,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 241.81,
+      "bb_middle": 219.12,
+      "bb_lower": 196.42,
+      "bb_width": 20.7149,
+      "bb_pct": -0.0552,
+      "bb_squeeze": false,
+      "atr": 7.46,
+      "atr_pct": 3.85,
+      "volume": 7565416,
+      "volume_sma20": 7117675,
+      "volume_ratio": 1.06,
+      "sma_20": 219.12,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.5,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5094,
+    "sentiment": {
+      "ticker": "BA",
+      "composite_score": 0.0406,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "This Aerospace Stock Tests Support Amid Iran War, Eyes Fresh Entry As It Soars 18%",
+        "Boeing: The Triple Blow",
+        "IFQM'S FIRST MSME SYMPOSIUM CALLS FOR A 'NATIONAL QUALITY SPRINT' TO INTEGRATE WITH GLOBAL VALUE CHAINS"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DD",
+    "technical": {
+      "ticker": "DD",
+      "price": 42.21,
+      "rsi": 15.8,
+      "rsi_prev": 19.23,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 51.91,
+      "bb_middle": 46.87,
+      "bb_lower": 41.82,
+      "bb_width": 21.5342,
+      "bb_pct": 0.0385,
+      "bb_squeeze": false,
+      "atr": 1.49,
+      "atr_pct": 3.54,
+      "volume": 3057485,
+      "volume_sma20": 3818189,
+      "volume_ratio": 0.8,
+      "sma_20": 46.87,
+      "sma_50": null,
+      "price_vs_sma20_pct": -9.94,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.506,
+    "sentiment": {
+      "ticker": "DD",
+      "composite_score": 0.1097,
+      "article_count": 9,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Stocks to Watch as February's PPI Data Comes in Hotter Than Expected",
+        "Assessing DuPont (DD) Valuation After WAVE PRO Expansion Into Wider Water Treatment Markets",
+        "DuPont Pitches Reverse Stock Split to Shareholders"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "URI",
+    "technical": {
+      "ticker": "URI",
+      "price": 705.11,
+      "rsi": 19.29,
+      "rsi_prev": 21.05,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 914.85,
+      "bb_middle": 798.86,
+      "bb_lower": 682.87,
+      "bb_width": 29.0395,
+      "bb_pct": 0.0959,
+      "bb_squeeze": false,
+      "atr": 30.64,
+      "atr_pct": 4.34,
+      "volume": 296585,
+      "volume_sma20": 641034,
+      "volume_ratio": 0.46,
+      "sma_20": 798.86,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.74,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5052,
+    "sentiment": {
+      "ticker": "URI",
+      "composite_score": 0.2568,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "United Rentals Inc. stock outperforms competitors despite losses on the day",
+        "New York Rep. Thomas Suozzi Sold Up to $215K Worth of Apple Stock",
+        "How The United Rentals (URI) Story Is Shifting With New AI Tools And Mixed Analyst Targets"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CPAY",
+    "technical": {
+      "ticker": "CPAY",
+      "price": 286.55,
+      "rsi": 23.5,
+      "rsi_prev": 21.12,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 352.87,
+      "bb_middle": 319.2,
+      "bb_lower": 285.52,
+      "bb_width": 21.0998,
+      "bb_pct": 0.0152,
+      "bb_squeeze": false,
+      "atr": 12.71,
+      "atr_pct": 4.44,
+      "volume": 365638,
+      "volume_sma20": 746716,
+      "volume_ratio": 0.49,
+      "sma_20": 319.2,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.23,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5043,
+    "sentiment": {
+      "ticker": "CPAY",
+      "composite_score": -0.0636,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Automotive Parts Stock Down 31% Draws $16 Million Bet as Earnings Fall 50% Year Over Year",
+        "Which S&P500 stocks are moving on Tuesday?",
+        "How Is Corpay's Stock Performance Compared to Other Digital Payment Stocks?"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "ULTA",
+    "technical": {
+      "ticker": "ULTA",
+      "price": 527.46,
+      "rsi": 19.75,
+      "rsi_prev": 20.62,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 753.24,
+      "bb_middle": 622.64,
+      "bb_lower": 492.04,
+      "bb_width": 41.9517,
+      "bb_pct": 0.1356,
+      "bb_squeeze": false,
+      "atr": 23.22,
+      "atr_pct": 4.4,
+      "volume": 429237,
+      "volume_sma20": 842606,
+      "volume_ratio": 0.51,
+      "sma_20": 622.64,
+      "sma_50": null,
+      "price_vs_sma20_pct": -15.29,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5039,
+    "sentiment": {
+      "ticker": "ULTA",
+      "composite_score": 0.5246,
+      "article_count": 9,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Ulta Beauty makes bold move to reach shoppers as habits shift",
+        "K-Beauty World Expands Assortment on Ulta Beauty Marketplace With 17 Viral Korean Beauty Brands",
+        "Ulta\u2019s Q4 Earnings Call: Our Top 5 Analyst Questions"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "PPG",
+    "technical": {
+      "ticker": "PPG",
+      "price": 97.09,
+      "rsi": 14.81,
+      "rsi_prev": 15.73,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 130.38,
+      "bb_middle": 110.94,
+      "bb_lower": 91.51,
+      "bb_width": 35.0379,
+      "bb_pct": 0.1437,
+      "bb_squeeze": false,
+      "atr": 3.65,
+      "atr_pct": 3.76,
+      "volume": 1555840,
+      "volume_sma20": 2147462,
+      "volume_ratio": 0.72,
+      "sma_20": 110.94,
+      "sma_50": null,
+      "price_vs_sma20_pct": -12.49,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.503,
+    "sentiment": {
+      "ticker": "PPG",
+      "composite_score": 0.0041,
+      "article_count": 10,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "5 High-Yield Dividend Kings Down Over the Past Year Are 2026 Bargains",
+        "Wall Street's Most Accurate Analysts Weigh In On 3 Materials Stocks Delivering High-Dividend Yields",
+        "RBC Capital Trims PPG Target as Macro Uncertainty Persists"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "DLTR",
+    "technical": {
+      "ticker": "DLTR",
+      "price": 105.06,
+      "rsi": 22.61,
+      "rsi_prev": 23.04,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 132.81,
+      "bb_middle": 117.02,
+      "bb_lower": 101.24,
+      "bb_width": 26.9707,
+      "bb_pct": 0.1209,
+      "bb_squeeze": false,
+      "atr": 4.77,
+      "atr_pct": 4.54,
+      "volume": 1595790,
+      "volume_sma20": 2967304,
+      "volume_ratio": 0.54,
+      "sma_20": 117.02,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.22,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.5022,
+    "sentiment": {
+      "ticker": "DLTR",
+      "composite_score": 0.059,
+      "article_count": 30,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Five Below Stock Can't Stop Climbing",
+        "Why You Might Consider an Investment in Dollar Tree Today",
+        "Dollar Tree's Pricing Adjustments Are Generating Revenue Growth"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "GNRC",
+    "technical": {
+      "ticker": "GNRC",
+      "price": 196.68,
+      "rsi": 29.01,
+      "rsi_prev": 31.97,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 240.71,
+      "bb_middle": 214.74,
+      "bb_lower": 188.76,
+      "bb_width": 24.1923,
+      "bb_pct": 0.1524,
+      "bb_squeeze": false,
+      "atr": 9.85,
+      "atr_pct": 5.01,
+      "volume": 566317,
+      "volume_sma20": 935310,
+      "volume_ratio": 0.61,
+      "sma_20": 214.74,
+      "sma_50": null,
+      "price_vs_sma20_pct": -8.41,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4978,
+    "sentiment": {
+      "ticker": "GNRC",
+      "composite_score": 0.3608,
+      "article_count": 3,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "GNRC Boosts Industrial Power Portfolio With Advanced Diesel Generators",
+        "From AI To Consumer Spending: 5 Analyst Days Investors Should Track",
+        "Generac Introduces SD1250 & SD1500 Diesel Generators: Smarter Solutions for Mission-Critical Power Applications"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "SHW",
+    "technical": {
+      "ticker": "SHW",
+      "price": 302.98,
+      "rsi": 15.89,
+      "rsi_prev": 18.58,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 374.44,
+      "bb_middle": 335.81,
+      "bb_lower": 297.17,
+      "bb_width": 23.0085,
+      "bb_pct": 0.0751,
+      "bb_squeeze": false,
+      "atr": 9.7,
+      "atr_pct": 3.2,
+      "volume": 1695880,
+      "volume_sma20": 1671704,
+      "volume_ratio": 1.01,
+      "sma_20": 335.81,
+      "sma_50": null,
+      "price_vs_sma20_pct": -9.78,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4936,
+    "sentiment": {
+      "ticker": "SHW",
+      "composite_score": -0.0121,
+      "article_count": 9,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Nomura Core Equity Fund: Q4 2025 Buys, Sells, And Standouts",
+        "RBC Capital Flags Iran Conflict Risk to Sherwin-Williams Margins (SHW)",
+        "3 Cash-Producing Stocks We Find Risky"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "HOOD",
+    "technical": {
+      "ticker": "HOOD",
+      "price": 70.46,
+      "rsi": 38.39,
+      "rsi_prev": 44.7,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 82.39,
+      "bb_middle": 76.55,
+      "bb_lower": 70.71,
+      "bb_width": 15.2535,
+      "bb_pct": -0.0214,
+      "bb_squeeze": false,
+      "atr": 4.15,
+      "atr_pct": 5.89,
+      "volume": 21072819,
+      "volume_sma20": 26378645,
+      "volume_ratio": 0.8,
+      "sma_20": 76.55,
+      "sma_50": null,
+      "price_vs_sma20_pct": -7.95,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4896,
+    "sentiment": {
+      "ticker": "HOOD",
+      "composite_score": -0.0075,
+      "article_count": 36,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "3 Market-Beating Stocks to Keep an Eye On",
+        "Bitcoin rebounds as XRP, Ethereum slide amid mixed market action",
+        "How is Robinhood\u2019s Stock Performance Compared to Other Capital Markets Stock?"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "NCLH",
+    "technical": {
+      "ticker": "NCLH",
+      "price": 18.95,
+      "rsi": 29.69,
+      "rsi_prev": 33.13,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 25.03,
+      "bb_middle": 21.25,
+      "bb_lower": 17.46,
+      "bb_width": 35.6238,
+      "bb_pct": 0.1972,
+      "bb_squeeze": false,
+      "atr": 1.18,
+      "atr_pct": 6.21,
+      "volume": 14741020,
+      "volume_sma20": 22989931,
+      "volume_ratio": 0.64,
+      "sma_20": 21.25,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.79,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4896,
+    "sentiment": {
+      "ticker": "NCLH",
+      "composite_score": 0.0551,
+      "article_count": 8,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Carnival Gets Something to Celebrate",
+        "Carnival Gains From Strong Onboard Spending: A Yield Driver?",
+        "Stifel Maintains Buy on Norwegian Cruise Line, Lowers Price Target to $28"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "ZBRA",
+    "technical": {
+      "ticker": "ZBRA",
+      "price": 201.47,
+      "rsi": 23.97,
+      "rsi_prev": 26.75,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 242.84,
+      "bb_middle": 218.5,
+      "bb_lower": 194.17,
+      "bb_width": 22.2723,
+      "bb_pct": 0.15,
+      "bb_squeeze": false,
+      "atr": 9.33,
+      "atr_pct": 4.63,
+      "volume": 334750,
+      "volume_sma20": 781917,
+      "volume_ratio": 0.43,
+      "sma_20": 218.5,
+      "sma_50": null,
+      "price_vs_sma20_pct": -7.8,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4891,
+    "sentiment": {
+      "ticker": "ZBRA",
+      "composite_score": 0.231,
+      "article_count": 4,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Nomura Core Equity Fund: Q4 2025 Buys, Sells, And Standouts",
+        "Is Zebra Technologies Stock Underperforming the S&P 500?",
+        "Connection Earns Zebra Technologies\u2019 2025 Partner of the Year Award"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "MAS",
+    "technical": {
+      "ticker": "MAS",
+      "price": 58.47,
+      "rsi": 14.18,
+      "rsi_prev": 15.86,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 75.61,
+      "bb_middle": 65.66,
+      "bb_lower": 55.71,
+      "bb_width": 30.3099,
+      "bb_pct": 0.1388,
+      "bb_squeeze": false,
+      "atr": 2.09,
+      "atr_pct": 3.58,
+      "volume": 1412758,
+      "volume_sma20": 2298332,
+      "volume_ratio": 0.61,
+      "sma_20": 65.66,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.95,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4887,
+    "sentiment": {
+      "ticker": "MAS",
+      "composite_score": 0.0618,
+      "article_count": 5,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "KB Home to Report Q1 Earnings: Here's What Investors Must Know",
+        "Behr Paint Company Unveils 2026 Exterior Stain Colour of the Year, Taupe, Alongside Outdoor Accent Colour Collection",
+        "Behr Paint Company Unveils 2026 Exterior Stain Color of the Year, Taupe, Alongside Outdoor Accent Color Collection"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "TSLA",
+    "technical": {
+      "ticker": "TSLA",
+      "price": 367.48,
+      "rsi": 28.98,
+      "rsi_prev": 34.49,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 419.67,
+      "bb_middle": 398.45,
+      "bb_lower": 377.23,
+      "bb_width": 10.6509,
+      "bb_pct": -0.2297,
+      "bb_squeeze": false,
+      "atr": 12.88,
+      "atr_pct": 3.5,
+      "volume": 56921674,
+      "volume_sma20": 59173403,
+      "volume_ratio": 0.96,
+      "sma_20": 398.45,
+      "sma_50": null,
+      "price_vs_sma20_pct": -7.77,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4886,
+    "sentiment": {
+      "ticker": "TSLA",
+      "composite_score": -0.0183,
+      "article_count": 50,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Rivian and Nio Fall 7%: The EV Dream Is Getting Harder to Sell to Investors",
+        "Rivian (RIVN) to start R2 Deliveries with $58,000 Launch Edition this Spring",
+        "Tesla expects Netherlands approval for FSD soon, paving way for EU-wide rollout"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "AKAM",
+    "technical": {
+      "ticker": "AKAM",
+      "price": 109.68,
+      "rsi": 72.32,
+      "rsi_prev": 73.66,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 110.98,
+      "bb_middle": 103.34,
+      "bb_lower": 95.7,
+      "bb_width": 14.7824,
+      "bb_pct": 0.9149,
+      "bb_squeeze": false,
+      "atr": 4.59,
+      "atr_pct": 4.19,
+      "volume": 3880620,
+      "volume_sma20": 4112126,
+      "volume_ratio": 0.94,
+      "sma_20": 103.34,
+      "sma_50": null,
+      "price_vs_sma20_pct": 6.13,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4879,
+    "sentiment": {
+      "ticker": "AKAM",
+      "composite_score": 0.0196,
+      "article_count": 14,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Is Akamai Technologies Stock Outperforming the Dow?",
+        "Top S&P500 movers in Wednesday's session",
+        "Wednesday's session: top gainers and losers in the S&P500 index"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CAG",
+    "technical": {
+      "ticker": "CAG",
+      "price": 15.16,
+      "rsi": 20.38,
+      "rsi_prev": 21.62,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 20.6,
+      "bb_middle": 17.69,
+      "bb_lower": 14.78,
+      "bb_width": 32.8906,
+      "bb_pct": 0.0655,
+      "bb_squeeze": false,
+      "atr": 0.57,
+      "atr_pct": 3.77,
+      "volume": 10415142,
+      "volume_sma20": 14396362,
+      "volume_ratio": 0.72,
+      "sma_20": 17.69,
+      "sma_50": null,
+      "price_vs_sma20_pct": -14.29,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4875,
+    "sentiment": {
+      "ticker": "CAG",
+      "composite_score": -0.0561,
+      "article_count": 8,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Stocks to Watch as February's PPI Data Comes in Hotter Than Expected",
+        "Is Conagra Brands Stock Underperforming the Nasdaq?",
+        "1 S&P 500 Stock to Consider Right Now and 2 We Avoid"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "IFF",
+    "technical": {
+      "ticker": "IFF",
+      "price": 66.35,
+      "rsi": 20.58,
+      "rsi_prev": 23.35,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 85.43,
+      "bb_middle": 74.66,
+      "bb_lower": 63.88,
+      "bb_width": 28.8605,
+      "bb_pct": 0.1144,
+      "bb_squeeze": false,
+      "atr": 2.56,
+      "atr_pct": 3.85,
+      "volume": 1350877,
+      "volume_sma20": 1780448,
+      "volume_ratio": 0.76,
+      "sma_20": 74.66,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.13,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4866,
+    "sentiment": {
+      "ticker": "IFF",
+      "composite_score": 0.0851,
+      "article_count": 6,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "These S&P500 stocks are gapping in today's session",
+        "Indian Antitrust Probe Puts Spotlight On International Flavors Valuation Gap",
+        "International Flavors & Fragrances Inc. stock underperforms Wednesday when compared to competitors"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "LUV",
+    "technical": {
+      "ticker": "LUV",
+      "price": 39.09,
+      "rsi": 27.14,
+      "rsi_prev": 31.34,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 52.8,
+      "bb_middle": 44.21,
+      "bb_lower": 35.62,
+      "bb_width": 38.8419,
+      "bb_pct": 0.2019,
+      "bb_squeeze": false,
+      "atr": 2.08,
+      "atr_pct": 5.33,
+      "volume": 4223832,
+      "volume_sma20": 10233966,
+      "volume_ratio": 0.41,
+      "sma_20": 44.21,
+      "sma_50": null,
+      "price_vs_sma20_pct": -11.58,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4863,
+    "sentiment": {
+      "ticker": "LUV",
+      "composite_score": 0.2027,
+      "article_count": 22,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Travel insurance is gaining popularity among spring breakers this year \u2014 here's how to protect your trip",
+        "Southwest Airlines' CEO makes startling admission",
+        "The Zacks Analyst Blog Highlights Delta Air Lines, American Airlines, Southwest Airlines, SkyWest and Sun Country Airlines"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "PSA",
+    "technical": {
+      "ticker": "PSA",
+      "price": 268.86,
+      "rsi": 15.62,
+      "rsi_prev": 19.79,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 317.58,
+      "bb_middle": 296.21,
+      "bb_lower": 274.83,
+      "bb_width": 14.4311,
+      "bb_pct": -0.1398,
+      "bb_squeeze": false,
+      "atr": 7.96,
+      "atr_pct": 2.96,
+      "volume": 779770,
+      "volume_sma20": 1277403,
+      "volume_ratio": 0.61,
+      "sma_20": 296.21,
+      "sma_50": null,
+      "price_vs_sma20_pct": -9.23,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4861,
+    "sentiment": {
+      "ticker": "PSA",
+      "composite_score": 0.1844,
+      "article_count": 5,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Public Storage And National Storage Tie The Knot",
+        "Public Storage stock underperforms Wednesday when compared to competitors",
+        "Public Storage Deal To Create Self Storage Leader And Test Execution"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "LYB",
+    "technical": {
+      "ticker": "LYB",
+      "price": 74.4,
+      "rsi": 76.16,
+      "rsi_prev": 76.86,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 79.36,
+      "bb_middle": 65.3,
+      "bb_lower": 51.24,
+      "bb_width": 43.0744,
+      "bb_pct": 0.8235,
+      "bb_squeeze": false,
+      "atr": 3.42,
+      "atr_pct": 4.6,
+      "volume": 4470847,
+      "volume_sma20": 9684447,
+      "volume_ratio": 0.46,
+      "sma_20": 65.3,
+      "sma_50": null,
+      "price_vs_sma20_pct": 13.94,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.486,
+    "sentiment": {
+      "ticker": "LYB",
+      "composite_score": 0.1644,
+      "article_count": 17,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Deutsche Bank Maintains Hold on LyondellBasell Industries, Raises Price Target to $75",
+        "LyondellBasell Stock Is Soaring: Is It Too Late to Get In?",
+        "LyondellBasell (LYB) Soars to 52-Week High on 74% Price Target Hike"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "STLD",
+    "technical": {
+      "ticker": "STLD",
+      "price": 163.92,
+      "rsi": 23.25,
+      "rsi_prev": 25.77,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 205.51,
+      "bb_middle": 183.51,
+      "bb_lower": 161.5,
+      "bb_width": 23.9822,
+      "bb_pct": 0.0549,
+      "bb_squeeze": false,
+      "atr": 6.59,
+      "atr_pct": 4.02,
+      "volume": 759868,
+      "volume_sma20": 1143923,
+      "volume_ratio": 0.66,
+      "sma_20": 183.51,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.67,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4857,
+    "sentiment": {
+      "ticker": "STLD",
+      "composite_score": 0.2227,
+      "article_count": 13,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "Is It Time To Revisit Steel Dynamics (STLD) After The Recent Share Price Pullback?",
+        "Steel Dynamics (STLD) Dips More Than Broader Market: What You Should Know",
+        "Steel Dynamics Inc. stock underperforms Wednesday when compared to competitors"
+      ]
+    },
+    "sentiment_priority": 0
+  },
+  {
+    "ticker": "CVNA",
+    "technical": {
+      "ticker": "CVNA",
+      "price": 281.22,
+      "rsi": 34.09,
+      "rsi_prev": 38.33,
+      "macd": NaN,
+      "macd_signal": NaN,
+      "macd_histogram": NaN,
+      "macd_histogram_prev": NaN,
+      "bb_upper": 350.44,
+      "bb_middle": 315.85,
+      "bb_lower": 281.26,
+      "bb_width": 21.9048,
+      "bb_pct": -0.0005,
+      "bb_squeeze": false,
+      "atr": 19.8,
+      "atr_pct": 7.04,
+      "volume": 1343877,
+      "volume_sma20": 2925753,
+      "volume_ratio": 0.46,
+      "sma_20": 315.85,
+      "sma_50": null,
+      "price_vs_sma20_pct": -10.96,
+      "price_vs_sma50_pct": null
+    },
+    "tech_rank": 0.4853,
+    "sentiment": {
+      "ticker": "CVNA",
+      "composite_score": 0.0948,
+      "article_count": 25,
+      "sources": [
+        "finnhub"
+      ],
+      "headlines": [
+        "General Motors (GM) Moves\u00a0to Boost its Dealers\u2019 Used-car Operations",
+        "Why Is Carvana (CVNA) Down 11.6% Since Last Earnings Report?",
+        "Carvana (CVNA) Gains As Market Dips: What You Should Know"
+      ]
+    },
+    "sentiment_priority": 0
+  }
+]

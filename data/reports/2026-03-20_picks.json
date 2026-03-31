@@ -1,0 +1,56 @@
+{
+  "date": "2026-03-20",
+  "market_context": {
+    "vix": 27.799999237060547,
+    "regime": "high",
+    "trend": "rising"
+  },
+  "picks": [
+    {
+      "ticker": "ULTA",
+      "direction": "put",
+      "strike": 530.0,
+      "expiry": "2026-03-20",
+      "premium": 2.67,
+      "composite_score": 78.75,
+      "confidence": 0.5
+    },
+    {
+      "ticker": "GNRC",
+      "direction": "put",
+      "strike": 200.0,
+      "expiry": "2026-03-20",
+      "premium": 3.73,
+      "composite_score": 77.06,
+      "confidence": 0.5
+    },
+    {
+      "ticker": "URI",
+      "direction": "put",
+      "strike": 700.0,
+      "expiry": "2026-03-20",
+      "premium": 1.12,
+      "composite_score": 76.07,
+      "confidence": 0.5
+    },
+    {
+      "ticker": "STLD",
+      "direction": "put",
+      "strike": 165.0,
+      "expiry": "2026-03-20",
+      "premium": 1.2,
+      "composite_score": 75.73,
+      "confidence": 0.5
+    },
+    {
+      "ticker": "LUV",
+      "direction": "put",
+      "strike": 40.0,
+      "expiry": "2026-03-20",
+      "premium": 0.99,
+      "composite_score": 75.53,
+      "confidence": 0.5
+    }
+  ],
+  "generated_at": "2026-03-20T15:15:16.236507"
+}

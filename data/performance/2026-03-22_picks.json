@@ -1,0 +1,91 @@
+{
+  "date": "2026-03-22",
+  "picks": [
+    {
+      "ticker": "SLV",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 76.57,
+      "direction_confidence": 1.0,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 57.62500000000001,
+        "flow": 30.0,
+        "market_regime": 60.0,
+        "expected_move": 79.64722802805866
+      }
+    },
+    {
+      "ticker": "BA",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 76.15,
+      "direction_confidence": 0.333,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 50.67,
+        "flow": 30.0,
+        "market_regime": 60.0,
+        "expected_move": 82.76875490143004
+      }
+    },
+    {
+      "ticker": "HD",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.83,
+      "direction_confidence": 0.333,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 53.435,
+        "flow": 30.0,
+        "market_regime": 60.0,
+        "expected_move": 79.09814805545403
+      }
+    },
+    {
+      "ticker": "SMCI",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.65,
+      "direction_confidence": 0.333,
+      "scores": {
+        "technical": 100.0,
+        "options": 100.0,
+        "sentiment": 54.425000000000004,
+        "flow": 30.0,
+        "market_regime": 60.0,
+        "expected_move": 77.4119460063931
+      }
+    },
+    {
+      "ticker": "QCOM",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.64,
+      "direction_confidence": 0.0,
+      "scores": {
+        "technical": 73.42,
+        "options": 100.0,
+        "sentiment": 52.115,
+        "flow": 30.0,
+        "market_regime": 45.0,
+        "expected_move": 71.9561394506243
+      }
+    }
+  ],
+  "recorded_at": "2026-03-22T17:54:25.306779"
+}
