@@ -1,6 +1,6 @@
-# 0DTE Options Analysis Pipeline
+# Weekly Options Analysis Pipeline
 
-An experimental zero-days-to-expiration options analysis system that combines automated data collection, macro regime awareness, and empirically calibrated scoring to identify weekly 0DTE opportunities.
+A systematic weekly options trading system (Monday entry, Friday expiry) combining automated data collection, macro regime awareness, empirically calibrated scoring, and 8 Claude-powered AI agents that provide qualitative reasoning at every decision point.
 
 **This is a research experiment, not investment advice.**
 
@@ -8,328 +8,335 @@ An experimental zero-days-to-expiration options analysis system that combines au
 
 ## How It Works
 
-The system runs a weekly pipeline across a dynamic universe of 103+ liquid, weekly-options-eligible tickers spanning 14 sectors — plus dynamically discovered tickers showing unusual options volume, upcoming earnings, or news buzz. Mechanical data collection is automated via GitHub Actions. Intelligent analysis and judgment are provided by Claude Code agents run manually.
+The system runs a 3-stage weekly pipeline (Wed scan, Fri refresh, Mon picks) across a dynamic universe of 103+ liquid tickers. Nine cron jobs handle intraday monitoring from Monday through Saturday. Eight AI agents embedded in the pipeline provide qualitative judgment — market narratives, pre-trade analysis, position monitoring, portfolio reasoning, and post-mortem feedback. We run 3 high-conviction picks per week (not 5) — quality over quantity, less leverage, higher confidence bar.
 
-### Pipeline Overview
+### Weekly Flow
 
 ```
-Wed 8AM ET          Thu 8AM ET          Fri 8AM ET          Mon 8AM ET          Weekend
-    |                   |                   |                   |                   |
-[Backtest →         [20+10 candidates]  [20 candidates]     [Grade picks]       [Review results]
- 103 core +            |                   |                   |                   |
- dynamic tickers]   Delta-aware        Regime gate →       Fetch closing       Reflect &
-    |               Re-evaluation      Score &             prices, calc P&L    Learn
-  Scan &               |               Pick Top 3              |                   |
-  Narrow            [Re-ranked 20]         |              [Scorecard →        [Update playbook]
-    |                                  [3 picks + entry/    Discord]
-[20 + 10 bench]                         exit rules →
-                                        Discord]
+Wed 7AM ET          Fri 4PM ET           Mon 8AM ET          Mon 10AM         Mon 1PM
+    |                   |                    |                   |                |
+[Broad Scan]       [Delta-Aware          [Final Picks]     [Entry Confirm]   [Midday
+ 103+ tickers       Refresh]              Score & rank       Gap/delta        Monitor]
+ + Market          35 → 20               Portfolio           check,           P&L,
+ Narrative         candidates             Reasoner →         Pre-Trade        targets]
+ Agent]                                    best 3             Analyst +
+    |                                      + Theses           web search]
+[25 + 10 bench]                            → Discord]
+
+Tue 3PM    Wed 3PM    Thu 10AM/3PM    Fri 10AM        Fri 1:30PM     Sat 10AM
+   |          |           |              |                |              |
+[Position  [Position  [Position      [Position       [FINAL EXIT    [Scorecard +
+ Monitor    Monitor    Monitor        Monitor         Close all      Post-Mortem +
+ ROUTINE]   ROUTINE]   ELEVATED]      CRITICAL]       by 2 PM ET]    Deep Reflect]
 ```
 
-### Wednesday — Backtest + Broad Scan (103+ → 20+10)
+---
 
-**Pre-scan backtest**: Before scanning, the system runs a directional backtest (`python3 main.py backtest`) across the full 103-ticker universe using 52 weeks of historical data enriched with FRED macro data and Finnhub earnings calendar. This validates signal weights and flags any signals that have drifted.
+## Three-Tier Scoring Architecture
 
-The pipeline then starts with the 103-ticker core universe, plus dynamically discovered tickers showing:
-- **Unusual options volume** — tickers outside the core with >5,000 contracts traded
-- **Earnings this week** — upcoming earnings juice IV and create temporary liquidity
-- **News buzz** — 5+ Finnhub articles in 48 hours indicates a catalyst
+### 10-Factor Weighted Model
 
-The expanded universe is scanned with six data passes:
+| Tier | Weight | Factors |
+|------|--------|---------|
+| **Direction** (T1) | 60% | momentum (0.20), mean_reversion (0.15), trend_persistence (0.15), regime_bias (0.10) |
+| **Edge Quality** (T2) | 25% | iv_mispricing (0.10), flow_conviction (0.08), event_risk (0.07) |
+| **Execution** (T3) | 15% | liquidity (0.05), strike_efficiency (0.05), theta_cost (0.05) |
 
-- **Technical scan**: RSI, MACD, Bollinger Bands, ATR, volume ratio, SMA 20/50, intraday gap/VWAP
-- **Options chain analysis**: P/C ratios, BSM-derived ATM IV, IV/RV ratio, straddle-based implied move, max pain, OI distribution, ATM premium tracking
-- **Sentiment analysis**: Finnhub company news + VADER sentiment scoring
-- **Finviz scan**: pre-market movers, analyst ratings, short float, relative volume
-- **SEC EDGAR scan**: insider buy/sell activity from Form 4 filings (30-day lookback)
-- **Flow scan**: unusual options volume detection with direction bias across all pipeline stages
+Weights are regime-adaptive — they shift based on VIX tier. In high VIX (25-30), momentum drops to 0.7x while mean_reversion rises to 1.4x. Weights are also self-learning: the pattern library and backtest validation gate can update them weekly (see Learning Loop below).
 
-Candidates are ranked and narrowed to the top 20 + 10 bench alternates.
+### Three-Model Ensemble
 
-### Thursday — Delta-Aware Re-Evaluation (30 → 20)
+The composite score is NOT a single model. Three independent models vote, and agreement/disagreement is measured:
 
-The 20 candidates plus 10 bench tickers get fresh technical and options data. Thursday's stage performs a delta-aware comparison: how has each setup evolved since Wednesday? Candidates that improved (e.g., RSI moved further into extreme territory, volume confirmed direction) get re-ranked above those that deteriorated. The top 20 carry forward to Friday.
+| Model | Weight | Focus |
+|-------|--------|-------|
+| Linear factor | 50% | Full 10-factor weighted sum |
+| Momentum-only | 25% | momentum + trend_persistence + regime_bias + flow |
+| Mean-reversion + value | 25% | mean_reversion + iv_mispricing + event_risk + theta_cost + liquidity |
 
-### Friday — Regime Gate + Final Picks (20 → 3)
+- Model std dev < 5: +5% bonus (strong consensus)
+- Model std dev > 15: -8% penalty (disagreement)
 
-Fresh morning data is collected (including Finviz pre-market scrape, fresh options chains, and flow scan), then:
+### Confidence Calibration
 
-**1. Macro regime gate** — Before scoring, the system checks whether the current environment gives the model a statistical edge using three FRED-derived indicators:
+Raw model confidence is empirically calibrated against observed win rates. Static calibration penalizes extremes (0.85-1.0 raw confidence maps to only 0.42 calibrated — extreme unanimity is suspicious). After 10+ observations per confidence bucket, live pattern data overrides static calibration (60% live / 40% static blend).
 
-| Indicator | Source | Best Regime | Accuracy | Worst Regime | Accuracy |
-|-----------|--------|-------------|----------|--------------|----------|
-| Credit spread | FRED HY OAS | Normal (3-4.5%) | 57.1% | Tight (<3%) | 50.4% |
-| Financial conditions | FRED NFCI | Normal (0 to -0.5) | 59.4% | Loose (<-0.5) | 50.8% |
-| VIX regime | yfinance | High (25-35) | 72.3% | Normal (15-20) | 50.5% |
+### Regime-Adaptive Multipliers
 
-If the environment is complacent (normal VIX + tight credit + loose NFCI), all confidence scores are multiplied by 0.5x and the report flags "REGIME GATE: reduce position sizing or skip."
-
-**2. Eight-factor scoring** with regime-adaptive weights:
-
-| Signal | Base Weight | What It Captures |
-|--------|-------------|------------------|
-| Technical indicators | 18% | RSI, MACD, Bollinger, ATR, gap (regime-aware), VWAP |
-| Options data | 18% | BSM IV, IV/RV ratio, P/C ratio, max pain, bid-ask spread quality |
-| Expected move (ATR vs straddle) | 18% | Are options cheap relative to actual movement? |
-| Market regime (VIX) | 12% | Does the vol environment favour this direction? |
-| Sentiment | 12% | News sentiment via Finnhub + VADER |
-| Finviz data | 8% | Pre-market moves, analyst ratings, relative volume, short float |
-| Unusual flow | 8% | Fresh positioning signals (volume/OI ratio) |
-| SEC EDGAR insider trades | 6% | Insider buy/sell clusters from Form 4 filings |
-
-**3. Direction determination** with calibrated confidence:
-
-- Each signal casts a weighted vote for bullish or bearish
-- **Gap signal is regime-aware**: weighted 0.3x in low VIX (unreliable — backtest showed -0.080 correlation in calm markets) up to 1.2x in high VIX (reliable momentum signal, +0.088 correlation)
-- **Confidence is empirically calibrated**: raw vote ratios are mapped through a calibration curve derived from the 52-week backtest. This fixes an inverted confidence problem where the model's highest raw confidence produced its lowest accuracy (52.4%)
-
-**4. Strike selection** (expected-move-aware):
-
-- Targets ~0.40-0.45 delta (near the money)
-- Penalises strikes further than 0.7x ATR from current price (prevents deep OTM picks)
-- Computes breakeven price and required move percentage
-- Compares breakeven move to expected daily move (ATR) — if breakeven > expected, the trade is flagged as unfavorable risk/reward
-
-**5. Entry/exit guidance** included with every pick:
-
-- **Entry**: Wait 15-30 min after open, limit order at mid price, don't chase
-- **Profit target**: 50% gain on premium
-- **Stop loss**: 40% loss on premium
-- **Time stop**: Close by 12:00 ET if neither target hit — theta accelerates after noon on 0DTE
-- **Position sizing**: Max 1-2% of account per trade; halve if regime gate flags reduced edge
-
-**6. Discord delivery**: Two embeds — picks with full execution data (strike, premium, delta, breakeven, expected move, regime gate status) plus a standing execution guide with entry/exit best practices.
-
-### Options Chain Analysis
-
-The options scanner computes quant-grade metrics rather than relying on vendor-provided IV:
-
-- **BSM IV solver** — Implied volatility computed from option mid-prices via bisection method (no scipy dependency). Falls back to yfinance only when BSM fails.
-- **Realized volatility** — 20-day close-to-close annualized vol from 1-month price history
-- **IV/RV ratio** — Directly measures if options are cheap (ratio < 1.0) or expensive (ratio > 1.5) relative to actual stock movement. Replaces the broken iv_rank metric.
-- **Straddle-based implied move** — ATM straddle mid-price as percentage of stock price. More reliable than IV-derived move for near-expiry options.
-- **ATM premium tracking** — Call/put mid-prices and bid-ask spread percentages at the money
-
-### VIX Regime Awareness
-
-Strategy adapts to volatility environment — both in direction bias and in which signals carry more weight:
-
-| VIX Level | Regime | Weight Shifts | Backtest Accuracy |
-|-----------|--------|---------------|-------------------|
-| < 15 | Low | Technicals +30%, sentiment +30%, options -10% | 50.7% |
-| 15-20 | Normal | Base weights (no shift) | 50.5% |
-| 20-25 | Elevated | Options +20%, flow +30%, technicals -10% | 57.1% |
-| 25-35 | High | Options +40%, expected move +40%, technicals -30% | 72.3% |
-| > 35 | Extreme | Options +50%, expected move +50%, technicals -50% | 69.9% |
+| VIX Regime | Range | Key Shifts | Backtest Accuracy |
+|------------|-------|------------|-------------------|
+| Low | 0-15 | momentum 1.3x, mean_reversion 0.8x | ~52-54% |
+| Normal | 15-20 | Baseline (all 1.0x) | ~55-57% |
+| Elevated | 20-25 | mean_reversion 1.2x, iv_mispricing 1.3x | ~58-60% |
+| High | 25-30 | mean_reversion 1.4x, momentum 0.7x | ~56-58% |
+| Extreme | 30+ | mean_reversion 1.5x, momentum 0.5x | ~56-58% |
 
 ---
 
-## Directional Backtest
+## AI Agent System (8 Agents)
 
-The system includes a weekly directional backtester that validates signal weights against historical data before each Wednesday scan.
+All agents receive a layered context hierarchy:
+1. **METHODOLOGY.md** — Static scoring rules, thresholds, architecture
+2. **CURRENT_STATE.md** — Auto-generated live weights, pattern stats, calibration, recent reflection
+3. **TRADE_LOG.md** — Auto-generated rolling 8-week trade outcomes
+4. **playbook.md** — Accumulated strategic knowledge
+5. **known_risks.md** — Known system limitations
 
-### What It Tests
+Context is refreshed on every pipeline run and after every learning update.
 
-**Technical signals** (from price history):
-- RSI (best individual signal: 54.7% accuracy, r=+0.081)
-- MACD histogram (52.0%, r=+0.047)
-- Price vs SMA20 (52.8%, r=+0.058)
-- Gap % with regime-aware weighting (49.6% raw, r=+0.088 over 52 weeks)
-- Volume ratio (54.1%, r=+0.064)
-- Bollinger Band position (46.2%, r=+0.006 — weakest signal)
+### Agent Summary
 
-**Contextual features** (from FRED + Finnhub):
-- Earnings proximity — classifies gaps as earnings-driven vs non-earnings (Finnhub earnings calendar)
-- High-impact macro events — flags FOMC, CPI, NFP, etc. in the Wed-Fri window
-- Yield curve state — 10Y-2Y Treasury spread from FRED (inverted/flat/normal/steep)
-- Credit spread level — ICE BofA High Yield OAS from FRED (tight/normal/wide/stressed)
-- Financial conditions — Chicago Fed NFCI from FRED (loose/normal/tightening/tight)
+| Agent | When | Tool Use | Purpose |
+|-------|------|----------|---------|
+| **Market Narrative** | Wed scan | - | Synthesizes structured market data into coherent 2-3 paragraph narrative |
+| **Earnings Analyst** | Wed scan | Web search | TRADE/CAUTION/AVOID for tickers with earnings in holding window |
+| **Pre-Trade Analyst** | Mon 10AM confirm | Web search | GO/ADJUST/SKIP per pick with overnight news + thesis validation |
+| **Portfolio Reasoner** | Mon picks | - | Reviews top 6, selects optimal 3 considering concentration + macro exposure |
+| **Thesis Writer** | Mon picks | - | 2-3 sentence trading thesis per pick for Discord |
+| **Position Monitor** | Tue-Fri | - | P&L tracking, stop/target alerts, charm decay warnings |
+| **Post-Mortem** | Fri scorecard | - | WHY each pick won or lost (mechanism, not just P&L) |
+| **Deep Reflection** | Sat | - | CIO weekly review, tactical adjustments, market outlook |
 
-### Key Findings (52-week, 5,150 predictions)
+All agents run on **Claude Opus 4** — the strongest available model. At ~$50/month for ~40 calls/week, the cost is negligible relative to capital at risk in options trading.
 
-- **Overall accuracy**: 53.4% (+3.4% edge over coin flip)
-- **Regime is the edge**: 72.3% in high VIX vs 50.5% in normal — the model's value is knowing *when* to trade
-- **Credit spreads matter**: 57.1% when normal vs 50.4% when tight
-- **Financial conditions matter**: 59.4% when normal vs 50.8% when loose
-- **Gap signal is regime-dependent**: correlation flips from -0.080 (12-week) to +0.088 (52-week)
-- **BB is dead weight**: 46.2% accuracy, r=+0.006
+### Tool Use (Web Search)
 
-### Running the Backtest
+Pre-Trade Analyst and Earnings Analyst have Anthropic tool_use capability. They can search for overnight news, earnings results, and sector developments via:
+- **yfinance news** — always available, no extra API key
+- **Finnhub company news** — when FINNHUB_API_KEY is set
 
-```bash
-python3 main.py backtest              # 52-week lookback (default)
-python3 main.py backtest --weeks 12   # Short-term window
-```
+The tool-use loop runs up to 3 rounds per agent call.
 
-Results saved to `data/performance/backtest_{date}.json`.
+### Estimated API Cost
 
----
-
-## My Weekly Involvement (~11 minutes)
-
-The mechanical pipeline runs automatically. My role is running four Claude Code agents that provide the intelligent judgment layer:
-
-| Day | Agent | What I Do | Time |
-|-----|-------|-----------|------|
-| **Wednesday** | `zero-dte-context` | Run after the Action finishes. Agent searches for macro narrative, identifies key market themes, checks economic calendar. Writes `market_context.md`. | ~2 min |
-| **Thursday** | `zero-dte-catalyst` | Run after the Action finishes. Agent searches for stock-specific catalysts (analyst actions, earnings, FDA, insider trades) across the 20 candidates. Writes `catalyst_report.md`. | ~3 min |
-| **Friday** | `zero-dte-friday` | Run after the Action finishes, before market open (9:30 AM ET). Agent reads the playbook, market context, and catalyst report, reviews the pipeline's 3 picks, applies judgment, can override or swap picks, sends final version to Discord. | ~3 min |
-| **Weekend** | `zero-dte-reflect` | Run anytime. Agent checks actual outcomes via intraday data, scores each pick (WIN/PARTIAL/LOSS), analyzes which signals were predictive, and updates the playbook with lessons learned. | ~3 min |
+- ~35-40 Opus calls/week across all 8 agents
+- ~15K input tokens + ~1K output tokens per call (includes full methodology context)
+- **Total: ~$12/week or ~$50/month** at Opus pricing ($15/M input, $75/M output)
 
 ---
 
-## Performance Tracking
+## Pipeline Stages
 
-Every pick is tracked end-to-end: what we recommended, what actually happened, and whether it made money.
+### Wednesday — Broad Scan (103+ → 25)
 
-### Monday Scorecard (Automatic)
+1. Market summary (VIX, breadth, credit, COT, macro surprise, holding window)
+2. **Market Narrative Agent** — synthesizes data into trading context
+3. Core universe (103 tickers) + dynamic additions (unusual volume, earnings, news)
+4. Six data passes: technical, options chain (BSM IV), sentiment, Finviz, EDGAR insider, flow
+5. Narrow to 25 + 10 bench via weighted scan_rank
+6. **Earnings Analyst Agent** — screens candidates with earnings in Mon-Fri window
 
-Each Monday at 8 AM ET, the GitHub Action automatically grades last Friday's picks:
+### Friday — Delta-Aware Refresh (35 → 20)
 
-1. Fetches the actual closing price for each ticker on expiry day via yfinance
-2. Calculates the intrinsic value at expiry
-3. Computes P&L per contract: (intrinsic - entry premium) x 100
-4. Labels each pick: **WIN** (profitable), **PARTIAL** (ITM but didn't cover premium), **LOSS** (OTM)
-5. Sends a scorecard to Discord and commits updated results to the repo
+1. Load Wednesday's 25 + 10 bench
+2. Snapshot Wednesday data, re-run all scans
+3. Delta-aware re-ranking: how did each setup evolve? RSI trajectory, MACD change, IV premium movement
+4. Promote/demote candidates based on setup evolution
+5. Top 20 carry forward to Monday
 
-### SQLite Database
+### Monday — Final Picks (20 → 5)
 
-All picks and outcomes are stored in a local SQLite database (`data/performance/zero_dte.db`) with three tables:
+1. Fresh market summary + technical + options scans
+2. Regime gate: assess macro edge (VIX + credit + NFCI)
+3. 10-signal direction determination + 3-model ensemble scoring
+4. Mechanical diversity filter (sector, correlation dedup, direction balance)
+5. **Portfolio Reasoner Agent** — reviews top 6, selects optimal 3 for concentration risk
+6. Strike selection (0.35 delta target, BSM Greeks, IV term structure)
+7. **Thesis Writer Agent** — generates trading thesis per pick
+8. Discord delivery with full execution data + theses
+9. Save picks for tracking
 
-- **picks** — every individual pick with entry data and graded outcome
-- **weekly_results** — aggregated weekly stats (cost, return, P&L, win rate)
-- **market_snapshots** — VIX level, regime, credit spread, NFCI at time of picks
+### Monday 10AM — Entry Confirmation
+
+1. Fetch fresh quotes 30 min after market open
+2. Gap check (>2% = SKIP), delta drift (>0.15 = ADJUST), premium change
+3. **Pre-Trade Analyst Agent** — searches overnight news, validates thesis, GO/ADJUST/SKIP
+4. Discord confirmation message
+
+### Tue-Fri — Position Monitoring
+
+Runs at 9 scheduled intervals with day-appropriate urgency:
+- **ROUTINE** (Mon PM, Tue, Wed): Brief status, flag outliers
+- **ELEVATED** (Thu): Theta accelerating, flag weak positions for exit
+- **CRITICAL** (Fri): Everything closes by 2 PM ET
+
+Time-decay-aware daily targets: 40% (Mon) → 35% (Tue) → 25% (Wed) → 15% (Thu) → 10% (Fri)
+
+### Friday 1:30PM — Final Exit
+
+Mandatory close reminder. All positions get CLOSE status with explicit exit instructions. Market orders if needed.
+
+### Friday 4PM — Scorecard
+
+1. Grade each pick: WIN/PARTIAL/LOSS with P&L
+2. **Post-Mortem Agent** — explains WHY each pick won or lost
+3. Update scorecard, database, pattern library
+4. Discord scorecard notification
+
+### Saturday — Reflection
+
+1. Mechanical reflection: signal correlations, win/loss analysis, weight adjustments
+2. **Deep Reflection Agent** — CIO weekly review through 6 failure modes:
+   - Direction wrong (which signals misled?)
+   - Direction right, theta killed it (charm decay?)
+   - Regime shift mid-week
+   - IV mispriced
+   - Event dominated
+   - Pattern library insight
+3. Propose tactical adjustments (must pass validation gate)
+4. Apply learnings (if backtest validates)
+5. Refresh agent context documents
 
 ---
 
-## Scoring Roadmap
+## Greeks & IV Methodology
 
-### Implemented
-- **Regime-adaptive weights** — VIX regime dynamically shifts which signals carry more weight
-- **8-factor composite scoring** — technical, options, sentiment, flow, market regime, expected move, Finviz, insider
-- **Intraday signals** — pre-market gap, previous-day VWAP, intraday ATR
-- **BSM IV solver** — Proper implied volatility from option mid-prices, replacing broken vendor IV
-- **IV/RV ratio** — Options mispricing metric replacing the meaningless cross-strike IV rank
-- **Straddle-based implied move** — Direct market pricing of expected movement
-- **Directional backtest** — 52-week historical validation with FRED macro data and Finnhub earnings calendar
-- **Regime gate** — Macro environment assessment (VIX + credit spreads + NFCI) that flags complacent environments
-- **Confidence calibration** — Empirical calibration curve fixing inverted confidence (high raw confidence = low accuracy)
-- **Context-aware gap signal** — Gap weight varies 0.3x-1.2x by VIX regime based on backtest evidence
-- **Expected-move-aware strike selection** — OTM penalty, breakeven vs ATR comparison
-- **Entry/exit execution guidance** — Profit target, stop loss, time stop, entry timing rules in every pick
+### BSM Greeks Computed
+- **Delta** (0.35 target), **Gamma**, **Theta** (~4%/day for weeklies)
+- **Vega** (IV sensitivity)
+- **Charm** (delta decay/day — actively scored, critical for weekly holds)
+- **Vanna** (delta sensitivity to IV — display-only, pending live validation per ATLAS test-and-revert discipline)
 
-### Planned (after 4-6 weeks of scorecard data, ~50+ graded picks)
-- **Historical options backtest** — With Massive.com/Polygon.io data, backtest the 8 options-derived signals that currently can't be validated historically (P/C ratio, IV, flow, max pain, etc.)
-- **Gradient-boosted model** — Train XGBoost/LightGBM on scored picks as features, win/loss as target
-- **Ticker-class learning** — Per-sector weight overrides (TSLA responds to sentiment, JPM to macro, NVDA to flow)
-- **Kelly criterion position sizing** — Size by edge/confidence instead of equal weight
-- **Multi-leg strategies** — Graduate from single-leg directional plays to vertical spreads based on scorecard failure modes
+### IV Framework
+- **BSM IV solver** — bisection method, no scipy dependency
+- **IV/RV ratio** — options cheap (<0.9) or expensive (>1.3) vs realized vol
+- **IV term structure** — weekly vs monthly IV comparison (contango/backwardation)
+- **Earnings IV crush** — 35-50% estimated crush flagged for holding window
 
 ---
 
-## The Playbook
+## Risk Management
 
-The system maintains an evolving `playbook.md` that serves as institutional memory. After each week's reflection, it gets updated with:
+### Stop Loss Rules
+| Rule | Threshold | Notes |
+|------|-----------|-------|
+| Hard stop | -50% option value | Wider than 0DTE (weekly has recovery time) |
+| Delta stop | Delta < 0.10 | Option is nearly worthless |
+| Gap stop | >2% against thesis | Skip entry at Monday confirmation |
 
-- Which signals were reliable vs misleading
-- Patterns discovered (e.g., "VIX above 25 + RSI oversold = strong bounce signal")
-- Mistakes to avoid
-- Regime-specific observations
+### Position Sizing (Kelly Criterion)
+- Half-Kelly formula, capped at 3% per position
+- Confidence clipped to 0.30-0.70 range
+- Regime gate: multiply by 0.5x if macro_edge multiplier < 0.50
 
-The Friday analyst agent reads this playbook before reviewing picks, so the system compounds its learning week over week.
+### Portfolio Construction
+- Max 2 picks from same sector
+- 20-day rolling return correlation dedup (0.75 threshold)
+- Direction balance check (avoid all-call/all-put unless high confidence)
+- **Portfolio Reasoner Agent** reviews for macro concentration risk
+
+---
+
+## Learning Loop
+
+### Pattern Library
+Every trade outcome is recorded with a 6-component pattern key:
+`{regime}|{direction}|{dominant_signal}|{rsi_zone}|{trend_state}|{iv_state}`
+
+After 5+ observations, patterns adjust composite scores by up to ±10 points. After 10+ observations, live confidence calibration overrides static defaults.
+
+### Backtest Validation Gate
+Weight changes proposed by the learning loop must pass:
+1. Accuracy drop ≤ 2% (absolute)
+2. Sharpe drop ≤ 0.1
+3. At least one metric must improve
+
+If validation fails, proposed weights are rolled back.
+
+### Auto-Updating Agent Context
+When weights change or patterns accumulate, `CURRENT_STATE.md` and `TRADE_LOG.md` are automatically regenerated. All agents see the latest system state on their next call.
 
 ---
 
 ## Data Sources
 
-| Source | Data | Endpoint | Used In |
-|--------|------|----------|---------|
-| **yfinance** | Price history, options chains, VIX | Open source | All stages, backtest |
-| **Finnhub** (free tier) | Company news, earnings calendar | `/company-news`, `/calendar/earnings` | Sentiment, backtest gap classification |
-| **FRED** | Treasury yields, HY OAS credit spread, NFCI financial conditions | Federal Reserve API | Market scanner, regime gate, backtest |
-| **VADER** | Sentiment scoring on news headlines | Local NLP library | Sentiment scanner |
-| **Finviz** | Pre-market moves, analyst ratings, short float, insider snapshot | Web scraping (free) | Finviz scanner, scoring |
-| **SEC EDGAR** | Insider buy/sell activity (Form 4 filings) | `data.sec.gov` API (free) | Insider scanner |
+| Source | Data | Cost | Used In |
+|--------|------|------|---------|
+| **yfinance** | Price history, options chains, VIX, news | Free | All stages |
+| **Finnhub** | Company news, earnings calendar, macro events | Free tier | Sentiment, backtest, agent web search |
+| **FRED** | Treasury yields, HY OAS, NFCI | Free | Market scanner, regime gate |
+| **CFTC COT** | Speculator positioning (S&P futures) | Free | Contrarian signal in scoring |
+| **VADER** | Sentiment scoring on news headlines | Local NLP | Sentiment scanner |
+| **Finviz** | Pre-market movers, analyst ratings, short float | Free (scrape) | Finviz scanner |
+| **SEC EDGAR** | Insider Form 4 filings | Free | Insider scanner |
+| **Anthropic API** | Claude Opus 4 for 8 AI agents | ~$50/mo | All agent analysis |
+| **Tradier** | Real-time options chains, Greeks (dormant) | Free w/ account | Optional, activates if key set |
 
 ---
 
-## Curated Universe (103 Tickers)
+## Cron Schedule (GitHub Actions)
 
-Organized across 14 sectors, selected for liquid weekly options availability:
-
-**Indices/ETFs**: SPY, QQQ, IWM, DIA, XLF, XLE, XLK, GLD, SLV, TLT, HYG, EEM, ARKK
-**Mega Cap Tech**: AAPL, MSFT, GOOG, GOOGL, AMZN, META, NVDA, TSLA
-**Semiconductors**: AMD, INTC, MU, QCOM, AVGO, MRVL, ON, SMCI
-**Software/Cloud**: CRM, SNOW, PLTR, NET, DDOG, ZS, CRWD, PANW
-**Fintech/Payments**: XYZ, PYPL, COIN, HOOD, SOFI, V, MA
-**Banks/Finance**: JPM, GS, MS, BAC, WFC, C, SCHW
-**Energy**: XOM, CVX, OXY, SLB, HAL, DVN, MPC
-**Retail/Consumer**: WMT, COST, TGT, HD, LOW, NKE, SBUX, MCD
-**Healthcare/Biotech**: UNH, JNJ, PFE, MRNA, ABBV, LLY, AMGN
-**Industrials**: BA, CAT, DE, GE, RTX, LMT, UPS, FDX
-**Media/Entertainment**: NFLX, DIS, CMCSA, WBD, PSKY, ROKU
-**Travel/Leisure**: DAL, UAL, LUV, AAL, ABNB, MAR, WYNN
-**Auto/EV**: F, GM, RIVN, LCID, NIO, LI
-**Telecom**: T, VZ, TMUS
-
----
-
-## Tech Stack
-
-- **Python 3.11** — pipeline logic
-- **GitHub Actions** — automated Wed/Thu/Fri data collection + Monday scorecard (free tier)
-- **Claude Code agents** — intelligent judgment layer (market context, catalyst scanning, pick review, reflection)
-- **Discord webhooks** — pick delivery with execution guidance + weekly scorecard results
-- **SQLite** — persistent backend for all picks, outcomes, and performance analytics
-- **FRED API** — macro regime data (credit spreads, financial conditions, Treasury yields)
-- **Finnhub API** — earnings calendar, economic events, company news
-- **macOS launchd** — optional local scheduling (backup)
+| Time (ET) | Day | Stage | Agent(s) |
+|-----------|-----|-------|----------|
+| 7:00 AM | Wednesday | Broad scan | Market Narrative, Earnings Analyst |
+| 4:00 PM | Friday | Delta-aware refresh | — |
+| 4:30 PM | Friday | Scorecard grading | Post-Mortem |
+| 8:00 AM | Monday | Final picks | Portfolio Reasoner, Thesis Writer |
+| 10:00 AM | Monday | Entry confirmation | Pre-Trade Analyst (web search) |
+| 1:00 PM | Monday | Midday monitor | Position Monitor (ROUTINE) |
+| 3:00 PM | Tue/Wed | EOD check | Position Monitor (ROUTINE) |
+| 10:00 AM | Thursday | Morning check | Position Monitor (ELEVATED) |
+| 3:00 PM | Thursday | EOD check | Position Monitor (ELEVATED) |
+| 10:00 AM | Friday | Morning check | Position Monitor (CRITICAL) |
+| 1:30 PM | Friday | Final exit | Position Monitor (CRITICAL) |
+| 10:00 AM | Saturday | Deep reflection | Deep Reflection |
 
 ---
 
 ## Project Structure
 
 ```
-zero-dte/
-├── main.py                  # CLI entry point
-├── config.py                # Environment config
+weekly-options/
+├── main.py                      # CLI entry point
+├── config.py                    # Environment config (API keys, paths)
 ├── requirements.txt
 ├── .github/workflows/
-│   └── zero-dte.yml         # Automated pipeline schedule
+│   └── zero-dte.yml             # 9 cron jobs + workflow dispatch
 ├── universe/
-│   ├── robinhood.py         # Curated 103-ticker core universe
-│   └── dynamic.py           # Dynamic expansion (unusual volume, earnings, news)
+│   ├── robinhood.py             # 103-ticker core universe
+│   └── dynamic.py               # Dynamic expansion (unusual volume, earnings, news)
 ├── scanners/
-│   ├── market.py            # VIX, breadth, yields, credit spread, NFCI, economic calendar
-│   ├── technical.py         # RSI, MACD, Bollinger, ATR, volume
-│   ├── options.py           # BSM IV solver, IV/RV ratio, straddle implied move, optimal strikes
-│   ├── sentiment.py         # News sentiment via Finnhub + VADER
-│   ├── flow.py              # Unusual options activity detection
-│   ├── finviz.py            # Finviz web scraping (pre-market, analysts, short float)
-│   └── edgar.py             # SEC EDGAR Form 4 insider trading data
+│   ├── market.py                # VIX, breadth, yields, credit, COT, macro surprise, events
+│   ├── technical.py             # RSI, MACD, Bollinger, ATR, ADX, momentum, SMA slopes
+│   ├── options.py               # BSM IV/Greeks, IV term structure, earnings crush, strikes
+│   ├── sentiment.py             # News sentiment (Finnhub + VADER)
+│   ├── flow.py                  # Unusual options volume detection
+│   ├── finviz.py                # Pre-market movers, analyst ratings, short float
+│   ├── edgar.py                 # SEC Form 4 insider trades
+│   └── tradier.py               # Tradier API client (dormant, activates with key)
 ├── analysis/
-│   ├── scoring.py           # 8-factor scoring, regime gate, confidence calibration, direction
-│   ├── narrowing.py         # Stage-based filtering + diversity
-│   └── backtest.py          # 52-week directional backtest with FRED/Finnhub enrichment
+│   ├── scoring.py               # 10-factor scoring, 3-model ensemble, regime gate, calibration
+│   ├── narrowing.py             # Stage filters, correlation dedup, Kelly sizing
+│   ├── patterns.py              # Pattern library, confidence calibration, validation gate
+│   └── backtest.py              # Directional backtester with BSM pricing
 ├── pipeline/
-│   ├── stages.py            # Wed/Thu/Fri stage orchestration with regime gate
-│   └── runner.py            # Top-level dispatcher
+│   ├── stages.py                # All pipeline stages (Wed/Fri/Mon/confirm/monitor/exit)
+│   └── runner.py                # Top-level dispatcher
+├── agents/
+│   ├── base.py                  # Base agent (context loading, tool use, Anthropic API)
+│   ├── METHODOLOGY.md           # Static reference (scoring rules, thresholds, architecture)
+│   ├── CURRENT_STATE.md         # Auto-generated live state (weights, patterns, calibration)
+│   ├── TRADE_LOG.md             # Auto-generated rolling 8-week trade outcomes
+│   ├── state_generator.py       # Generates CURRENT_STATE.md and TRADE_LOG.md
+│   ├── market_narrative.py      # Market context synthesis (Wednesday)
+│   ├── earnings_analyst.py      # Earnings risk assessment (Wednesday)
+│   ├── pre_trade.py             # Entry validation with web search (Monday 10AM)
+│   ├── portfolio_reasoner.py    # Portfolio construction reasoning (Monday)
+│   ├── thesis_writer.py         # Trading thesis generation (Monday)
+│   ├── position_monitor.py      # Intraday P&L monitoring (Tue-Fri)
+│   ├── post_mortem.py           # Pick outcome analysis (Friday scorecard)
+│   └── deep_reflection.py       # CIO weekly review (Saturday)
 ├── notifications/
-│   └── discord.py           # Discord picks + execution guide + scorecard delivery
+│   └── discord.py               # Discord embeds (picks, monitor, scorecard, exit)
 ├── tracking/
-│   ├── tracker.py           # Pick recording
-│   ├── reflector.py         # Weekly outcome analysis
-│   ├── scorecard.py         # P&L grading + Discord scorecard
-│   └── database.py          # SQLite backend for all performance data
-├── data/
-│   ├── candidates/          # Daily scan results (JSON)
-│   ├── reports/             # Final pick reports
-│   └── performance/         # Backtest results, playbook, scorecard, SQLite DB
-└── .claude/agents/
-    ├── zero-dte-context.md  # Wednesday market narrative agent
-    ├── zero-dte-catalyst.md # Thursday catalyst scanner agent
-    ├── zero-dte-friday.md   # Friday analyst agent
-    └── zero-dte-reflect.md  # Weekend reflection agent
+│   ├── tracker.py               # Pick recording
+│   ├── reflector.py             # Weekly reflection + learning loop
+│   ├── scorecard.py             # P&L grading + post-mortem integration
+│   └── database.py              # SQLite backend
+└── data/
+    ├── candidates/              # Daily scan results + market narratives
+    ├── reports/                  # Final pick reports
+    └── performance/             # Weights, patterns, calibration, backtest, scorecard, DB
 ```
 
 ---
@@ -339,19 +346,27 @@ zero-dte/
 1. Clone the repo
 2. `pip install -r requirements.txt`
 3. Copy `.env.example` to `.env` and fill in API keys
-4. Add API keys as GitHub Secrets (`FINNHUB_API_KEY`, `FRED_API_KEY`, `DISCORD_WEBHOOK_URL`)
-5. The pipeline runs automatically on schedule via GitHub Actions
+4. Add secrets to GitHub Actions:
+   - `FINNHUB_API_KEY` — free tier
+   - `FRED_API_KEY` — free
+   - `DISCORD_WEBHOOK_URL`
+   - `ANTHROPIC_API_KEY` — for AI agents (~$10-15/month)
+   - `TRADIER_API_KEY` — optional (requires brokerage account)
 
 ### Manual Run
 
 ```bash
-python3 main.py run              # Auto-detect day, run appropriate stage
-python3 main.py stage --stage wednesday   # Run specific stage
-python3 main.py picks            # Show most recent picks
-python3 main.py status           # Show pipeline status
-python3 main.py reflect          # Run weekly reflection
-python3 main.py backtest         # Run 52-week directional backtest
-python3 main.py backtest --weeks 12  # Short-term backtest
-python3 main.py scorecard --week 2026-03-22  # Grade a week's picks
-python3 main.py scorecard        # Show all-time scorecard
+python3 main.py run                          # Auto-detect day, run appropriate stage
+python3 main.py stage --stage wednesday      # Run specific stage
+python3 main.py stage --stage monday         # Monday picks
+python3 main.py stage --stage confirm        # Monday entry confirmation
+python3 main.py stage --stage monitor        # Position monitoring
+python3 main.py stage --stage final_exit     # Friday mandatory exit
+python3 main.py picks                        # Show most recent picks
+python3 main.py status                       # Show pipeline status
+python3 main.py reflect                      # Weekly reflection + deep reflection
+python3 main.py backtest                     # 52-week directional backtest
+python3 main.py backtest --weeks 12          # Short-term backtest
+python3 main.py scorecard --week 2026-04-07  # Grade a specific week
+python3 main.py scorecard                    # Show all-time scorecard
 ```

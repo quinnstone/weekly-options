@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Zero DTE Options Analysis Pipeline"""
+"""Weekly Options Analysis Pipeline"""
 import argparse
 import sys
 import os
@@ -14,10 +14,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Zero DTE Options Analysis Pipeline')
+    parser = argparse.ArgumentParser(description='Weekly Options Analysis Pipeline')
     parser.add_argument('command', choices=['run', 'stage', 'picks', 'reflect', 'status', 'backtest', 'scorecard'],
                        help='Command to run')
-    parser.add_argument('--stage', choices=['wednesday', 'thursday', 'friday', 'reflect'],
+    parser.add_argument('--stage', choices=['wednesday', 'friday', 'monday', 'confirm', 'monitor', 'final_exit'],
                        help='Specific stage to run')
     parser.add_argument('--week', help='Week date (YYYY-MM-DD)')
     parser.add_argument('--weeks', type=int, default=52, help='Backtest lookback in weeks (default 52)')
@@ -30,16 +30,57 @@ def main():
         runner.run_day()
     elif args.command == 'stage':
         if not args.stage:
-            print("--stage required")
+            print("--stage required (wednesday, friday, monday)")
             sys.exit(1)
         runner.run_stage(args.stage)
     elif args.command == 'picks':
-        # Show current picks
         runner.show_current_picks()
     elif args.command == 'reflect':
         reflector = WeeklyReflector()
         reflection = reflector.reflect(args.week or datetime.now().strftime('%Y-%m-%d'))
         print(reflector.format_reflection(reflection))
+
+        # Run Deep Reflection agent for qualitative CIO analysis
+        try:
+            from agents.deep_reflection import DeepReflectionAgent
+            deep = DeepReflectionAgent()
+            if deep.enabled:
+                # Load scorecard if available
+                scorecard = None
+                try:
+                    from tracking.scorecard import Scorecard
+                    sc = Scorecard()
+                    week_date = args.week or datetime.now().strftime('%Y-%m-%d')
+                    scorecard = sc.grade_week(week_date)
+                except Exception:
+                    pass
+
+                # Load market summary
+                market_summary = None
+                try:
+                    from config import Config as _Cfg
+                    _cfg = _Cfg()
+                    import json as _json
+                    from datetime import timedelta
+                    for days_back in range(7):
+                        date_str = (datetime.now() - timedelta(days=days_back)).strftime('%Y-%m-%d')
+                        summary_path = _cfg.candidates_dir / date_str / "market_summary.json"
+                        if summary_path.exists():
+                            with open(summary_path) as fh:
+                                market_summary = _json.load(fh)
+                            break
+                except Exception:
+                    pass
+
+                deep_result = deep.reflect(reflection, scorecard=scorecard,
+                                           market_summary=market_summary)
+                if deep_result.get("analysis"):
+                    print("\n" + "=" * 65)
+                    print("DEEP REFLECTION (CIO Analysis)")
+                    print("=" * 65)
+                    print(deep_result["analysis"])
+        except Exception as exc:
+            logging.getLogger(__name__).error("Deep reflection agent failed: %s", exc)
     elif args.command == 'status':
         runner.show_status()
     elif args.command == 'backtest':

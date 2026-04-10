@@ -1,5 +1,5 @@
 """
-Discord notification module for the Zero-DTE Options Trading Analysis System.
+Discord notification module for the Weekly Options Trading Analysis System.
 
 Sends formatted messages to a Discord channel via webhook, including
 final pick embeds and weekly reflection summaries.
@@ -59,11 +59,11 @@ class DiscordNotifier:
     # ------------------------------------------------------------------
 
     def send_picks(self, picks: list, market_summary: dict) -> bool:
-        """Send formatted embeds with Friday picks including execution guidance.
+        """Send formatted embeds with Monday picks including execution guidance.
 
         Sends two embeds:
         1. The picks with strike, premium, breakeven, entry/exit rules
-        2. Best practices for 0DTE execution (always included as a reminder)
+        2. Best practices for weekly options execution (always included)
 
         Parameters
         ----------
@@ -156,7 +156,7 @@ class DiscordNotifier:
 
         # Picks embed
         picks_embed = {
-            "title": f"\U0001f3af Zero DTE Picks \u2014 {date_str}",
+            "title": f"\U0001f3af Weekly Picks \u2014 {date_str}",
             "color": 0x00AAFF if macro_edge.get("has_edge", True) else 0xFFAA00,
             "description": market_context,
             "fields": fields,
@@ -174,44 +174,45 @@ class DiscordNotifier:
 
     @staticmethod
     def _build_execution_guide(picks: list) -> dict:
-        """Build a Discord embed with 0DTE entry/exit best practices."""
-        # Gather exit rules from first pick (they're the same for all)
+        """Build a Discord embed with weekly options entry/exit best practices."""
         exit_info = picks[0].get("exit", {}) if picks else {}
-        profit_target = exit_info.get("profit_target_pct", 50)
-        stop_loss = exit_info.get("stop_loss_pct", 40)
-        time_stop = exit_info.get("time_stop", "12:00 ET")
+        stop_loss = exit_info.get("stop_loss_pct", 50)
 
         guide_text = (
-            "**ENTRY**\n"
-            "- Wait **15-30 min** after market open for the range to establish\n"
+            "**ENTRY (Monday)**\n"
+            "- Wait **20 min** after market open for the range to establish\n"
             "- Enter via **limit order at the mid price** or better\n"
-            "- Do NOT chase — if the move started without you, **skip it**\n"
+            "- Skip if gap > 2% — the move may already be priced in\n"
             "- Confirm direction with first 15-min candle before entering\n"
             "\n"
-            "**EXIT RULES**\n"
-            f"- **Take profit** at {profit_target}% gain on the premium\n"
-            f"- **Stop loss** at {stop_loss}% loss on the premium\n"
-            f"- **Time stop** at {time_stop} — close if neither target hit\n"
-            "- Theta accelerates sharply after noon on 0DTE\n"
+            "**EXIT RULES (time-decay aware)**\n"
+            "- **Day 1-2 (Mon-Tue):** Take profit at **40%** gain\n"
+            "- **Day 3 (Wed):** Take profit at **35%** gain\n"
+            "- **Day 4 (Thu):** Take profit at **25%** gain\n"
+            "- **Day 5 (Fri):** Take profit at **15%** gain (theta accelerating)\n"
+            f"- **Stop loss:** {stop_loss}% loss on the premium (any day)\n"
+            "- **Delta stop:** Close if delta drops below 0.10\n"
+            "- **Time stop:** Close by **2:00 PM ET Friday** at latest\n"
             "\n"
             "**STRIKE SELECTION**\n"
-            "- Strikes are chosen near the money (~0.40-0.45 delta)\n"
-            "- Breakeven move should be < expected daily move (ATR)\n"
-            "- If breakeven requires a larger move than the expected daily,\n"
+            "- Strikes are chosen at ~0.30-0.40 delta for weeklies\n"
+            "- Breakeven move should be < weekly expected move (ATR x sqrt(5))\n"
+            "- If breakeven requires a larger move than the weekly expected,\n"
             "  the risk/reward is unfavorable — consider skipping\n"
             "\n"
             "**POSITION SIZING**\n"
-            "- Max 1-2% of account per trade on 0DTE\n"
+            "- Max 2-3% of account per trade on weeklies\n"
             "- If regime gate shows REDUCED EDGE, cut size in half\n"
-            "- Never average down on a 0DTE position"
+            "- Never average down on a weekly option position\n"
+            "- Max 3 positions simultaneously (quality over quantity)"
         )
 
         return {
-            "title": "\U0001f4cb 0DTE Execution Guide",
+            "title": "\U0001f4cb Weekly Options Execution Guide",
             "color": 0x888888,
             "description": guide_text,
             "footer": {
-                "text": "These rules are based on 52-week backtest data",
+                "text": "Mon entry -> Fri expiry | Based on 52-week backtest data",
             },
         }
 
@@ -280,7 +281,7 @@ class DiscordNotifier:
                 },
             ],
             "footer": {
-                "text": "Zero DTE Analysis System",
+                "text": "Weekly Options Analysis System",
             },
             "timestamp": datetime.utcnow().isoformat(),
         }
