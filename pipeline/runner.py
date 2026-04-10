@@ -1,8 +1,13 @@
 """
-Pipeline runner for the Zero-DTE Options Trading Analysis System.
+Pipeline runner for the Weekly Options Trading Analysis System.
 
 Provides the top-level orchestration layer that maps day-of-week to the
 correct pipeline stage and manages full-week / backtest runs.
+
+Weekly cadence:
+    Monday    - Final picks (entry day: Mon open → Fri expiry)
+    Wednesday - Broad scan for next week's candidates
+    Friday    - Delta-aware refresh of Wednesday's scan
 """
 
 import sys
@@ -21,8 +26,9 @@ config = Config()
 
 # Map weekday number (0=Mon) to stage method name
 DAY_STAGE_MAP = {
-    2: "wednesday",
-    4: "friday",
+    0: "monday",      # Monday: final picks + entry
+    2: "wednesday",    # Wednesday: broad scan for next week
+    4: "friday",       # Friday: delta-aware refresh
 }
 
 
@@ -43,17 +49,15 @@ class PipelineRunner:
         Parameters
         ----------
         stage_name : str
-            One of: wednesday, friday.
-
-        Returns
-        -------
-        list[dict]
-            The candidates produced by the stage.
+            One of: wednesday, friday, monday.
         """
         dispatch = {
             "wednesday": self.stages.wednesday_scan,
-            "thursday": self.stages.thursday_refresh,
-            "friday": self.stages.friday_picks,
+            "friday": self.stages.friday_refresh,
+            "monday": self.stages.monday_picks,
+            "confirm": self.stages.monday_entry_confirmation,
+            "monitor": self.stages.position_monitor,
+            "final_exit": self.stages.final_exit,
         }
 
         handler = dispatch.get(stage_name.lower())
@@ -77,13 +81,8 @@ class PipelineRunner:
         Parameters
         ----------
         day : str or None
-            Explicit stage name (e.g. 'wednesday', 'friday'). If None,
-            uses today's actual weekday.
-
-        Returns
-        -------
-        list[dict]
-            The candidates produced by the stage.
+            Explicit stage name (e.g. 'wednesday', 'friday', 'monday').
+            If None, uses today's actual weekday.
         """
         if day is not None:
             return self.run_stage(day)
@@ -92,7 +91,7 @@ class PipelineRunner:
         day = DAY_STAGE_MAP.get(weekday_num)
         if day is None:
             logger.info(
-                "Today is weekday %d — no pipeline stage scheduled (Wed=2, Fri=4).",
+                "Today is weekday %d — no pipeline stage scheduled (Mon=0, Wed=2, Fri=4).",
                 weekday_num,
             )
             return []
@@ -105,7 +104,7 @@ class PipelineRunner:
     # ------------------------------------------------------------------
 
     def run_full_week(self) -> dict:
-        """Run both stages sequentially (for backtesting).
+        """Run all three stages sequentially (for backtesting).
 
         Returns
         -------
@@ -114,7 +113,7 @@ class PipelineRunner:
         """
         logger.info("=== RUNNING FULL WEEK PIPELINE ===")
         results = {}
-        for stage_name in ("wednesday", "friday"):
+        for stage_name in ("wednesday", "friday", "monday"):
             try:
                 candidates = self.run_stage(stage_name)
                 results[stage_name] = candidates
@@ -150,21 +149,24 @@ class PipelineRunner:
 
         for days_back in range(7):
             date_str = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
-            picks = self.narrower.load_stage_results("friday_picks", date_str)
+            picks = self.narrower.load_stage_results("monday_picks", date_str)
             if picks:
-                print(f"\nFinal picks from {date_str}:")
-                print("-" * 60)
+                print(f"\nWeekly picks from {date_str} (Mon entry → Fri expiry):")
+                print("-" * 65)
                 for i, p in enumerate(picks, 1):
                     direction = p.get("direction", "?").upper()
                     ticker = p.get("ticker", "?")
                     score = p.get("composite_score", 0)
                     strike = p.get("strike", "TBD")
                     conf = p.get("direction_confidence", p.get("confidence", 0))
+                    expiry = p.get("expiry", "?")
+                    earnings = " [EARNINGS]" if p.get("earnings_warning") else ""
                     print(
                         f"  {i}. {ticker:6s} {direction:4s}  "
                         f"Strike: {strike}  "
                         f"Score: {score:.1f}  "
-                        f"Confidence: {conf:.0%}"
+                        f"Confidence: {conf:.0%}  "
+                        f"Expiry: {expiry}{earnings}"
                     )
                 print()
                 return
@@ -175,10 +177,10 @@ class PipelineRunner:
         """Display current pipeline status — which stages have run this week."""
         from datetime import timedelta
 
-        print("\nPipeline Status")
-        print("=" * 60)
+        print("\nWeekly Pipeline Status")
+        print("=" * 65)
 
-        stages = ["wednesday_scan", "friday_picks"]
+        stages = ["wednesday_scan", "friday_refresh", "monday_picks"]
 
         for days_back in range(7):
             date_str = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")

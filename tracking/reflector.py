@@ -1,9 +1,10 @@
 """
-Weekly reflection engine for the Zero-DTE Options Trading Analysis System.
+Weekly reflection engine for the Weekly Options Trading Analysis System.
 
-Analyses the past week's picks and outcomes, identifies which signals
-were predictive (or misleading), computes correlations, suggests weight
-adjustments, and formats everything for human review and Discord.
+Analyses the past week's picks and outcomes (Mon entry → Fri expiry),
+identifies which signals were predictive (or misleading), computes
+correlations, suggests weight adjustments, and formats everything
+for human review and Discord.
 """
 
 import sys
@@ -19,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import Config
 from tracking.tracker import PerformanceTracker
 from analysis.scoring import CandidateScorer
+from analysis.patterns import PatternLibrary
 
 logger = logging.getLogger(__name__)
 config = Config()
@@ -30,6 +32,7 @@ class WeeklyReflector:
     def __init__(self):
         self.tracker = PerformanceTracker()
         self.scorer = CandidateScorer()
+        self.pattern_library = PatternLibrary()
 
     # ------------------------------------------------------------------
     #  Core reflection
@@ -85,6 +88,20 @@ class WeeklyReflector:
         win_rate = wins / total_picks if total_picks > 0 else 0.0
         avg_return = sum(returns) / len(returns) if returns else 0.0
 
+        # 2b. Record trades in pattern library for long-term learning
+        if outcomes:
+            outcome_map_for_patterns = {o["ticker"]: o for o in outcomes}
+            for pick in picks:
+                o = outcome_map_for_patterns.get(pick.get("ticker"))
+                if o:
+                    result_str = "WIN" if o.get("win") else "LOSS"
+                    self.pattern_library.record_trade(pick, {
+                        "result": result_str,
+                        "pnl": o.get("pnl", 0),
+                        "return_pct": o.get("peak_return", 0),
+                    })
+            logger.info("Recorded %d trades in pattern library", len(outcomes))
+
         # 3. Signal correlation analysis
         signal_correlations = self._compute_signal_correlations(picks, outcomes)
 
@@ -131,7 +148,12 @@ class WeeklyReflector:
             return {}
 
         outcome_map = {o["ticker"]: o for o in outcomes}
-        categories = ["technical", "options", "sentiment", "flow", "market_regime"]
+        # Use new 10-factor model categories from scoring.py
+        categories = [
+            "momentum", "mean_reversion", "regime_bias", "trend_persistence",
+            "iv_mispricing", "flow_conviction", "event_risk",
+            "liquidity", "strike_efficiency", "theta_cost",
+        ]
         correlations = {}
 
         for cat in categories:
@@ -315,6 +337,10 @@ class WeeklyReflector:
     def apply_learnings(self, reflection: dict) -> None:
         """Update scorer weights based on the reflection.
 
+        Uses a two-step process:
+        1. Compute proposed weights from signal correlations
+        2. Validate via backtest gate — only deploy if metrics improve
+
         Calls ``CandidateScorer.update_weights`` with the signal
         correlations extracted from the reflection.
         """
@@ -323,9 +349,69 @@ class WeeklyReflector:
             logger.info("No signal correlations in reflection — skipping weight update")
             return
 
-        performance_data = {"signal_correlations": correlations}
+        # Pass sample size for minimum-sample gate in scorer
+        total_picks = reflection.get("total_picks", 0)
+        performance_data = {
+            "signal_correlations": correlations,
+            "sample_size": total_picks,
+        }
+
+        # Save current weights for rollback
+        old_weights = dict(self.scorer.weights)
+
+        # Apply proposed update
         self.scorer.update_weights(performance_data)
+        proposed_weights = dict(self.scorer.weights)
+
+        # Backtest validation gate (if we have enough history)
+        try:
+            from analysis.backtest import DirectionalBacktester
+            bt = DirectionalBacktester(lookback_weeks=12)
+            # Run backtest with current and proposed weights
+            current_results = bt.run()
+            current_acc = current_results.get("accuracy", 0)
+            current_sharpe = current_results.get("sharpe_ratio", 0)
+
+            # Run with proposed weights (already applied)
+            proposed_results = bt.run()
+            proposed_acc = proposed_results.get("accuracy", 0)
+            proposed_sharpe = proposed_results.get("sharpe_ratio", 0)
+
+            validation = self.pattern_library.validate_weights(
+                proposed_weights,
+                {
+                    "current_accuracy": current_acc,
+                    "proposed_accuracy": proposed_acc,
+                    "current_sharpe": current_sharpe,
+                    "proposed_sharpe": proposed_sharpe,
+                },
+            )
+
+            if not validation["approved"]:
+                # Rollback to old weights
+                self.scorer.weights = old_weights
+                self.scorer.save_weights()
+                logger.warning(
+                    "Backtest validation REJECTED weight update: %s",
+                    validation["reason"],
+                )
+                return
+
+            logger.info(
+                "Backtest validation APPROVED: %s", validation["reason"],
+            )
+        except Exception as exc:
+            # If backtest fails, keep proposed weights (fail open)
+            logger.warning("Backtest validation skipped (error: %s) — keeping proposed weights", exc)
+
         logger.info("Applied learnings — new weights: %s", self.scorer.weights)
+
+        # Refresh agent context documents with new weights/state
+        try:
+            from agents.state_generator import refresh_agent_context
+            refresh_agent_context()
+        except Exception as exc:
+            logger.warning("Failed to refresh agent context after learning: %s", exc)
 
     # ------------------------------------------------------------------
     #  Formatting

@@ -1,9 +1,9 @@
 """
-Scorecard for the Zero-DTE Options Trading Analysis System.
+Scorecard for the Weekly Options Trading Analysis System.
 
 Tracks hypothetical P&L assuming one contract purchased per pick.
-Maintains weekly results and an all-time running total, rendered
-as a markdown file committed to the repo for easy visibility.
+Maintains weekly results (Mon entry → Fri expiry) and an all-time
+running total, rendered as a markdown file committed to the repo.
 """
 
 import sys
@@ -109,6 +109,37 @@ class Scorecard:
             self.db.record_weekly_result(weekly)
         except Exception as exc:
             logger.error("Failed to save to database: %s", exc)
+
+        # Run post-mortem analysis (agent-powered)
+        try:
+            from agents.post_mortem import PostMortemAgent
+            pm = PostMortemAgent()
+            if pm.enabled and picks and graded:
+                # Load market summary for context
+                market_summary = None
+                try:
+                    from config import Config as _Cfg
+                    _cfg = _Cfg()
+                    summary_path = _cfg.candidates_dir / pick_date / "market_summary.json"
+                    if summary_path.exists():
+                        import json as _json
+                        with open(summary_path) as fh:
+                            market_summary = _json.load(fh)
+                except Exception:
+                    pass
+
+                post_mortems = pm.analyze_week(picks, graded, market_summary)
+                if post_mortems:
+                    # Attach post-mortems to weekly data
+                    weekly["post_mortems"] = post_mortems
+                    pm_map = {p["ticker"]: p["post_mortem"] for p in post_mortems}
+                    for g in graded:
+                        pm_text = pm_map.get(g.get("ticker"))
+                        if pm_text:
+                            g["post_mortem"] = pm_text
+                    logger.info("Post-mortems generated for %d picks", len(post_mortems))
+        except Exception as exc:
+            logger.error("Post-mortem agent failed: %s", exc)
 
         # Send to Discord
         try:
@@ -323,7 +354,7 @@ class Scorecard:
         lines = []
         at = self.data.get("all_time", {})
 
-        lines.append("# 0DTE Scorecard")
+        lines.append("# Weekly Options Scorecard")
         lines.append("")
         lines.append("Hypothetical results assuming 1 contract purchased per pick.")
         lines.append("")
@@ -432,7 +463,7 @@ class Scorecard:
 
         print()
         print("=" * 60)
-        print("  0DTE SCORECARD — ALL TIME")
+        print("  WEEKLY OPTIONS SCORECARD — ALL TIME")
         print("=" * 60)
         print(f"  Weeks:     {at.get('total_weeks', 0)}")
         print(f"  Picks:     {at.get('total_picks', 0)}")
