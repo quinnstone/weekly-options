@@ -1,5 +1,5 @@
 """
-Configuration module for the Zero-DTE Options Trading Analysis System.
+Configuration module for the Weekly Options Trading Analysis System.
 
 Loads environment variables from .env and exposes them through a Config class.
 Defines directory paths and pipeline stage constants.
@@ -24,14 +24,14 @@ PERFORMANCE_DIR = DATA_DIR / "performance"
 for _dir in (DATA_DIR, CANDIDATES_DIR, REPORTS_DIR, PERFORMANCE_DIR):
     _dir.mkdir(parents=True, exist_ok=True)
 
-# Pipeline stage ordering
+# Portfolio size — 3 high-conviction picks rather than 5 to reduce leverage
+PORTFOLIO_SIZE = 3
+
+# Pipeline stage ordering (Wed/Fri/Mon cadence)
 PIPELINE_STAGES = [
-    "broad_scan",
-    "technical_filter",
-    "sentiment_filter",
-    "options_analysis",
-    "deep_dive",
-    "final_picks",
+    "wednesday_scan",
+    "friday_refresh",
+    "monday_picks",
 ]
 
 
@@ -49,24 +49,25 @@ class Config:
         return os.getenv("FRED_API_KEY", "")
 
     @property
-    def reddit_client_id(self) -> str:
-        return os.getenv("REDDIT_CLIENT_ID", "")
-
-    @property
-    def reddit_client_secret(self) -> str:
-        return os.getenv("REDDIT_CLIENT_SECRET", "")
-
-    @property
-    def reddit_user_agent(self) -> str:
-        return os.getenv("REDDIT_USER_AGENT", "ZeroDTE/1.0")
-
-    @property
     def discord_webhook_url(self) -> str:
         return os.getenv("DISCORD_WEBHOOK_URL", "")
 
     @property
     def news_api_key(self) -> str:
         return os.getenv("NEWS_API_KEY", "")
+
+    @property
+    def tradier_api_key(self) -> str:
+        return os.getenv("TRADIER_API_KEY", "")
+
+    @property
+    def anthropic_api_key(self) -> str:
+        return os.getenv("ANTHROPIC_API_KEY", "")
+
+    @property
+    def tradier_base_url(self) -> str:
+        """Tradier API base URL. Sandbox by default; switch to production when ready."""
+        return os.getenv("TRADIER_BASE_URL", "https://sandbox.tradier.com")
 
     # --- Directory Paths ---
 
@@ -100,14 +101,6 @@ class Config:
     def has_fred(self) -> bool:
         return bool(self.fred_api_key and self.fred_api_key != "your_fred_key")
 
-    def has_reddit(self) -> bool:
-        return bool(
-            self.reddit_client_id
-            and self.reddit_client_id != "your_client_id"
-            and self.reddit_client_secret
-            and self.reddit_client_secret != "your_client_secret"
-        )
-
     def has_discord(self) -> bool:
         return bool(
             self.discord_webhook_url
@@ -116,6 +109,12 @@ class Config:
 
     def has_news_api(self) -> bool:
         return bool(self.news_api_key and self.news_api_key != "your_newsapi_key")
+
+    def has_tradier(self) -> bool:
+        return bool(self.tradier_api_key and self.tradier_api_key != "your_tradier_key")
+
+    def has_anthropic(self) -> bool:
+        return bool(self.anthropic_api_key and self.anthropic_api_key != "your_anthropic_key")
 
 
 # Module-level singleton
