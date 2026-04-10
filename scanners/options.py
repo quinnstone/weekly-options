@@ -1,9 +1,9 @@
 """
-Options-chain scanner for zero-DTE trade selection.
+Options-chain scanner for weekly options trade selection.
 
 Analyzes options chains to surface put/call ratios, IV rank, max pain,
 strike-level open interest, and optimal entry strikes for directional
-zero-DTE plays.
+weekly options plays (Monday entry, Friday expiry, 5-day hold).
 """
 
 import logging
@@ -78,20 +78,146 @@ def _solve_iv(market_price, S, K, T, r, option_type="call",
     return result
 
 
+def _bsm_greeks(S, K, T, r, sigma, option_type="call"):
+    """Compute BSM Greeks for a European option.
+
+    Returns dict with:
+        delta, gamma, theta (per day), vega (per 1% IV move),
+        charm (delta decay per day), vanna (delta sensitivity to IV).
+
+    NOTE on vanna/charm usage (2026-04-09 design decision):
+        Charm is used as a scoring input via the theta_cost sub-score — it
+        directly tells us how much our delta erodes overnight even if the stock
+        doesn't move, which is critical for weekly hold decisions.
+
+        Vanna is DISPLAY-ONLY for now. It quantifies how delta shifts when IV
+        changes (e.g., post-earnings IV crush), but we lack sufficient live data
+        to calibrate its scoring weight. After 4-6 weeks of scorecard data, if
+        IV-crush-adjusted delta predictions outperform raw delta, promote vanna
+        to a scoring input. Until then, it's informational on pick output only.
+        This follows the test-and-revert discipline from ATLAS lessons.
+    """
+    if T <= 0 or sigma <= 0 or S <= 0:
+        return {"delta": 0, "gamma": 0, "theta": 0, "vega": 0,
+                "charm": 0, "vanna": 0}
+
+    sqrt_T = _msqrt(T)
+    d1 = (_mlog(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * sqrt_T)
+    d2 = d1 - sigma * sqrt_T
+
+    # Standard normal PDF
+    n_d1 = _mexp(-0.5 * d1 ** 2) / _msqrt(2 * 3.14159265359)
+
+    if option_type == "call":
+        delta = _norm_cdf(d1)
+        theta_annual = (
+            -(S * n_d1 * sigma) / (2 * sqrt_T)
+            - r * K * _mexp(-r * T) * _norm_cdf(d2)
+        )
+    else:
+        delta = _norm_cdf(d1) - 1
+        theta_annual = (
+            -(S * n_d1 * sigma) / (2 * sqrt_T)
+            + r * K * _mexp(-r * T) * _norm_cdf(-d2)
+        )
+
+    gamma = n_d1 / (S * sigma * sqrt_T)
+    vega = S * n_d1 * sqrt_T / 100  # per 1% IV move
+    theta_daily = theta_annual / 365  # per calendar day
+
+    # Charm (delta bleed): d(delta)/d(time) — how much delta decays per day
+    # Charm = -n(d1) * [2*r*T - d2*sigma*sqrt(T)] / (2*T*sigma*sqrt(T))
+    # For calls; puts have opposite sign adjustment
+    charm_annual = -n_d1 * (
+        2 * r * T - d2 * sigma * sqrt_T
+    ) / (2 * T * sigma * sqrt_T)
+    if option_type == "put":
+        charm_annual += r * _mexp(-r * T) * _norm_cdf(-d1)
+    else:
+        charm_annual -= r * _mexp(-r * T) * _norm_cdf(-d1)
+    charm_daily = charm_annual / 365
+
+    # Vanna: d(delta)/d(sigma) = d(vega)/d(S) — sensitivity of delta to IV change
+    # Vanna = -n(d1) * d2 / sigma  (per 100% IV; we scale to per 1% IV)
+    vanna = -n_d1 * d2 / sigma / 100  # per 1% IV change
+
+    return {
+        "delta": round(delta, 4),
+        "gamma": round(gamma, 6),
+        "theta": round(theta_daily, 4),
+        "vega": round(vega, 4),
+        "charm": round(charm_daily, 6),
+        "vanna": round(vanna, 6),
+    }
+
+
+def _project_greeks_over_hold(S, K, T_start, r, sigma, option_type="call",
+                               hold_days=5):
+    """Project how Greeks evolve over the holding period (Mon→Fri).
+
+    Returns list of dicts (one per trading day) showing delta, gamma,
+    theta, vega, charm, vanna, plus derived metrics:
+    - delta_change: how much delta shifted from day 1 (charm effect)
+    - cumulative_theta: total theta paid through this day
+    """
+    projections = []
+    day1_delta = None
+    cumulative_theta = 0.0
+
+    for day in range(hold_days):
+        T_remaining = max(T_start - (day / 252), 1 / 252)  # min 1 trading day
+        greeks = _bsm_greeks(S, K, T_remaining, r, sigma, option_type)
+        greeks["day"] = day + 1
+        greeks["days_to_expiry"] = round(T_remaining * 252, 1)
+
+        if day1_delta is None:
+            day1_delta = greeks["delta"]
+        greeks["delta_change"] = round(greeks["delta"] - day1_delta, 4)
+
+        cumulative_theta += greeks["theta"]
+        greeks["cumulative_theta"] = round(cumulative_theta, 4)
+
+        projections.append(greeks)
+    return projections
+
+
 class OptionsScanner:
-    """Fetch and analyze options chains with a focus on near-term expiries."""
+    """Fetch and analyze options chains with a focus on weekly expiries.
+
+    Optionally uses Tradier for real-time quotes and market-maker Greeks
+    when configured. Falls back to yfinance (adequate for our pre-market
+    cron schedule). Tradier/Polygon can be added later for intraday use.
+    """
+
+    def __init__(self):
+        self._tradier = None
+        try:
+            from scanners.tradier import TradierClient
+            client = TradierClient()
+            if client.enabled:
+                self._tradier = client
+                logger.info("OptionsScanner using Tradier as primary data source")
+            else:
+                logger.debug("Tradier not configured — using yfinance (adequate for pre-market pipeline)")
+        except ImportError:
+            pass
 
     # ------------------------------------------------------------------ #
     #  Expiry helpers
     # ------------------------------------------------------------------ #
 
-    def get_friday_expiry(self, ticker: str) -> "str | None":
-        """Return the nearest Friday (or end-of-week) expiration string.
+    def get_weekly_expiry(self, ticker: str, target_days: int = 5) -> "str | None":
+        """Find the expiry closest to target_days from today.
+
+        For Monday entry: target_days=5 finds this Friday.
+        For Wednesday scan: target_days=9 finds next Friday.
 
         Parameters
         ----------
         ticker : str
             Stock ticker symbol.
+        target_days : int
+            Number of calendar days ahead to target (default 5).
 
         Returns
         -------
@@ -107,17 +233,29 @@ class OptionsScanner:
                 return None
 
             today = datetime.now().date()
+            target_date = today + timedelta(days=target_days)
+            min_date = today + timedelta(days=3)  # never buy options expiring in < 3 days
 
-            # Walk through expirations and pick the nearest Friday (weekday 4)
+            # Collect Friday expiries that are >= min_date
+            friday_candidates = []
             for exp_str in expirations:
                 exp_date = datetime.strptime(exp_str, "%Y-%m-%d").date()
-                if exp_date >= today and exp_date.weekday() == 4:
-                    return exp_str
+                if exp_date >= min_date and exp_date.weekday() == 4:
+                    friday_candidates.append((exp_str, exp_date))
 
-            # Fallback: nearest expiry regardless of weekday
+            if friday_candidates:
+                # Pick the Friday closest to target_date, preferring the soonest
+                # that is >= min_date
+                best = min(
+                    friday_candidates,
+                    key=lambda x: abs((x[1] - target_date).days),
+                )
+                return best[0]
+
+            # Fallback: nearest expiry >= min_date regardless of weekday
             for exp_str in expirations:
                 exp_date = datetime.strptime(exp_str, "%Y-%m-%d").date()
-                if exp_date >= today:
+                if exp_date >= min_date:
                     logger.info(
                         "No Friday expiry for %s; using nearest: %s",
                         ticker,
@@ -125,11 +263,11 @@ class OptionsScanner:
                     )
                     return exp_str
 
-            logger.warning("All expirations for %s are in the past", ticker)
+            logger.warning("No valid expirations for %s (all < 3 days out)", ticker)
             return None
 
         except Exception as exc:
-            logger.error("Failed to get Friday expiry for %s: %s", ticker, exc)
+            logger.error("Failed to get weekly expiry for %s: %s", ticker, exc)
             return None
 
     # ------------------------------------------------------------------ #
@@ -163,17 +301,20 @@ class OptionsScanner:
     # ------------------------------------------------------------------ #
 
     def analyze_chain(self, ticker: str) -> dict:
-        """Compute key options metrics for the nearest Friday expiry.
+        """Compute key options metrics for the weekly expiry.
 
         Metrics
         -------
         - Put/Call ratio (by volume and OI)
-        - IV rank (current ATM IV vs 30-day range)
+        - IV rank (current ATM IV vs realized vol ratio)
         - Max pain strike
         - Highest OI strikes (calls and puts)
         - Highest volume strikes (calls and puts)
         - IV skew (OTM puts vs OTM calls)
         - ATM implied volatility
+        - Realized vol (5-day and 20-day)
+        - Weekly expected move
+        - Theta per day as % of premium
 
         Returns
         -------
@@ -181,7 +322,7 @@ class OptionsScanner:
             All computed metrics, or empty dict on failure.
         """
         try:
-            expiry = self.get_friday_expiry(ticker)
+            expiry = self.get_weekly_expiry(ticker)
             if not expiry:
                 return {}
 
@@ -218,8 +359,9 @@ class OptionsScanner:
                 calls, puts, current_price, T,
             )
 
-            # ---- Realized volatility & IV / RV ratio ----
+            # ---- Realized volatility (20-day and 5-day) & IV / RV ratio ----
             realized_vol = self._compute_realized_vol(hist)
+            realized_vol_5d = self._compute_realized_vol_5d(hist)
             iv_rv_ratio = None
             if atm_iv and realized_vol and realized_vol > 0:
                 iv_rv_ratio = round(atm_iv / realized_vol, 3)
@@ -251,6 +393,41 @@ class OptionsScanner:
                 if straddle_mid and current_price > 0 else None
             )
 
+            # ---- Weekly expected move (ATR-based) ----
+            atr_daily = float((hist["High"] - hist["Low"]).rolling(14).mean().iloc[-1])
+            weekly_expected_move_pct = round(
+                atr_daily * _msqrt(5) / current_price * 100, 2
+            ) if current_price > 0 else None
+
+            # ---- Theta per day as % of premium ----
+            theta_per_day_pct = None
+            if straddle_mid and straddle_mid > 0 and days_to_exp > 0:
+                daily_theta = straddle_mid / days_to_exp
+                theta_per_day_pct = round(daily_theta / straddle_mid * 100, 2)
+
+            # ---- Theta decay curve over holding period (BSM-based) ----
+            theta_decay_curve = None
+            if atm_iv and atm_iv > 0:
+                atm_strike = atm_premium.get("call_strike") or current_price
+                theta_decay_curve = []
+                for day_offset in range(min(days_to_exp, 5)):
+                    T_remain = max((days_to_exp - day_offset) / 365.0, 1 / 365)
+                    g = _bsm_greeks(current_price, atm_strike, T_remain,
+                                    _RISK_FREE_RATE, atm_iv, "call")
+                    theta_decay_curve.append({
+                        "day": day_offset + 1,
+                        "theta_per_day": g["theta"],
+                        "charm_per_day": g["charm"],
+                        "theta_pct_of_premium": round(
+                            abs(g["theta"]) / straddle_mid * 100, 2
+                        ) if straddle_mid and straddle_mid > 0 else None,
+                    })
+
+            # ---- Stock-level weekly vs monthly IV term structure ----
+            iv_term_structure = self._compute_iv_term_structure(
+                ticker, expiry, atm_iv, current_price,
+            )
+
             return {
                 "ticker": ticker,
                 "expiry": expiry,
@@ -280,6 +457,12 @@ class OptionsScanner:
                 "iv_rv_ratio": iv_rv_ratio,
                 "implied_move_pct": implied_move_pct,
                 "atm_straddle_mid": straddle_mid,
+                # --- New weekly fields ---
+                "realized_vol_5d": round(realized_vol_5d, 4) if realized_vol_5d is not None else None,
+                "weekly_expected_move_pct": weekly_expected_move_pct,
+                "theta_per_day_pct": theta_per_day_pct,
+                "theta_decay_curve": theta_decay_curve,
+                "iv_term_structure": iv_term_structure,
             }
 
         except Exception as exc:
@@ -296,12 +479,15 @@ class OptionsScanner:
         direction: str,
         budget_range: tuple[float, float] = (0.10, 10.00),
     ) -> dict:
-        """Find the best strike for a directional zero-DTE trade.
+        """Find the best strike for a directional weekly options trade.
+
+        Uses Tradier real-time Greeks when available (market-maker computed
+        delta, gamma, theta, vega), falls back to yfinance + BSM estimates.
 
         Strike selection is expected-move-aware: prefers strikes within
-        the stock's ATR-based daily range, targeting 0.35-0.50 delta.
-        Previous version used a flat $0.10-$5.00 filter that produced
-        strikes too far OTM on volatile stocks.
+        the stock's weekly ATR-based range, targeting 0.30-0.40 delta.
+        Weekly options use wider stops and time-decay-aware profit targets
+        compared to 0DTE plays.
 
         Parameters
         ----------
@@ -318,8 +504,15 @@ class OptionsScanner:
             strike, premium, iv, estimated_delta, volume, oi, option_type,
             plus entry/exit guidance fields.
         """
+        # --- Tradier fast-path: real-time Greeks + quotes ---
+        if self._tradier:
+            tradier_result = self._find_strikes_tradier(ticker, direction)
+            if tradier_result:
+                return tradier_result
+            logger.info("Tradier strike search failed for %s — falling back to yfinance", ticker)
+
         try:
-            expiry = self.get_friday_expiry(ticker)
+            expiry = self.get_weekly_expiry(ticker)
             if not expiry:
                 return {}
 
@@ -333,9 +526,25 @@ class OptionsScanner:
                 return {}
             current_price = float(hist["Close"].iloc[-1])
 
+            # Days to expiry
+            expiry_dt = datetime.strptime(expiry, "%Y-%m-%d").date()
+            days_to_exp = max((expiry_dt - datetime.now().date()).days, 1)
+
             # Compute ATR for expected move sizing
             atr = float((hist["High"] - hist["Low"]).rolling(14).mean().iloc[-1])
             atr_pct = atr / current_price
+
+            # Weekly expected move: ATR * sqrt(5) for 5-day hold
+            weekly_atr = atr * _msqrt(5)
+            weekly_atr_pct = weekly_atr / current_price
+            weekly_exp_move = round(weekly_atr_pct * 100, 2)
+
+            # Scale budget range for weekly options
+            min_prem = atr_pct * _msqrt(5) * 0.3 * current_price
+            max_prem = atr_pct * _msqrt(5) * 2.5 * current_price
+            # Respect caller's bounds as outer limits
+            min_prem = max(min_prem, budget_range[0])
+            max_prem = min(max_prem, budget_range[1])
 
             if direction == "bullish":
                 options = chain["calls"].copy()
@@ -355,7 +564,6 @@ class OptionsScanner:
             options["mid"] = (options["bid"] + options["ask"]) / 2
 
             # Filter: bid > 0, within budget, some volume or OI
-            min_prem, max_prem = budget_range
             mask = (
                 (options["bid"] > 0.05)
                 & (options["mid"] >= min_prem)
@@ -371,23 +579,22 @@ class OptionsScanner:
                 )
                 return {}
 
-            # Strike distance from current price as % of ATR
+            # Strike distance from current price as % of weekly ATR
+            # Target delta: 0.30-0.40 (slightly more OTM than 0DTE to reduce theta cost)
+            max_otm_distance = weekly_atr_pct * 0.5  # penalize > 0.5x weekly ATR
+
             if option_type == "call":
                 filtered["strike_dist_pct"] = (filtered["strike"] - current_price) / current_price
                 filtered["moneyness"] = current_price / filtered["strike"]
                 filtered["est_delta"] = np.clip(0.5 * filtered["moneyness"], 0.05, 0.95)
-                # Target: slightly OTM, within ~0.5 ATR of current price
-                # This keeps us close enough that a normal daily move makes us profitable
-                target_delta = 0.42
-                max_otm_distance = atr_pct * 0.7  # don't go further than 70% of daily ATR
+                target_delta = 0.35
             else:
                 filtered["strike_dist_pct"] = (current_price - filtered["strike"]) / current_price
                 filtered["moneyness"] = filtered["strike"] / current_price
                 filtered["est_delta"] = -np.clip(0.5 * filtered["moneyness"], 0.05, 0.95)
-                target_delta = -0.42
-                max_otm_distance = atr_pct * 0.7
+                target_delta = -0.35
 
-            # Penalise strikes that are too far OTM (key fix: was missing before)
+            # Penalise strikes that are too far OTM
             filtered["otm_penalty"] = np.where(
                 filtered["strike_dist_pct"] > max_otm_distance,
                 (filtered["strike_dist_pct"] - max_otm_distance) * 10,
@@ -420,9 +627,27 @@ class OptionsScanner:
                 breakeven = strike - premium
                 breakeven_move_pct = ((current_price - breakeven) / current_price) * 100
 
-            # Expected move based on ATR
-            expected_move_dollar = round(atr, 2)
-            expected_move_pct = round(atr_pct * 100, 2)
+            # Expected move based on weekly ATR
+            expected_move_dollar = round(weekly_atr, 2)
+            expected_move_pct = weekly_exp_move
+
+            # Time-decay-aware profit targets
+            day_targets = "40% day-1 / 35% day-2 / 25% day-3 / 15% day-4"
+
+            # BSM Greeks at entry
+            T = days_to_exp / 365.0
+            iv_for_greeks = iv_value if iv_value > 0.05 else 0.30
+            greeks = _bsm_greeks(current_price, strike, T, _RISK_FREE_RATE,
+                                 iv_for_greeks, option_type)
+            greeks_projection = _project_greeks_over_hold(
+                current_price, strike, T, _RISK_FREE_RATE,
+                iv_for_greeks, option_type, hold_days=min(days_to_exp, 5),
+            )
+
+            # Earnings IV crush risk
+            earnings_iv_crush = self._estimate_earnings_iv_crush(
+                ticker, expiry_dt, iv_for_greeks,
+            )
 
             return {
                 "ticker": ticker,
@@ -438,36 +663,148 @@ class OptionsScanner:
                 "volume": int(best["volume"]),
                 "oi": int(best.get("openInterest", 0)),
                 "score": round(float(best["score"]), 2),
+                # BSM Greeks
+                "greeks": greeks,
+                "greeks_projection": greeks_projection,
+                # Earnings risk
+                "earnings_iv_crush": earnings_iv_crush,
                 # Execution guidance
                 "current_price": round(current_price, 2),
                 "breakeven": round(breakeven, 2),
                 "breakeven_move_pct": round(breakeven_move_pct, 2),
-                "expected_daily_move": expected_move_dollar,
-                "expected_daily_move_pct": expected_move_pct,
+                "expected_daily_move": round(atr, 2),
+                "expected_daily_move_pct": round(atr_pct * 100, 2),
+                "expected_weekly_move": expected_move_dollar,
+                "expected_weekly_move_pct": expected_move_pct,
+                "days_to_expiry": days_to_exp,
                 "entry": {
-                    "method": "limit_after_open",
-                    "wait_minutes": 15,
+                    "method": "limit_monday_open",
+                    "wait_minutes": 20,
                     "instruction": (
-                        f"Wait 15-30 min after open for range to establish. "
-                        f"Enter on a limit order at the mid ({premium:.2f}) or better. "
-                        f"Do NOT chase — if the move has already started without you, skip."
+                        f"Enter Monday morning. Wait 15-20 min after open for spread to tighten. "
+                        f"Limit order at mid ({premium:.2f}) or better. Skip if gap > 2%."
                     ),
                 },
                 "exit": {
-                    "profit_target_pct": 50,
-                    "stop_loss_pct": 40,
-                    "time_stop": "12:00 ET",
+                    "profit_targets": {
+                        "day_1": 40,  # Take 40% profit if hit by end of Monday
+                        "day_2": 35,  # 35% by Tuesday
+                        "day_3": 25,  # 25% by Wednesday
+                        "day_4": 15,  # 15% by Thursday (theta eating gains)
+                    },
+                    "stop_loss_pct": 50,  # Wider stop for weekly (more time for thesis to play out)
+                    "delta_stop": 0.10,   # Exit if delta drops below 0.10 (nearly worthless)
                     "instruction": (
-                        f"Take profit at 50% gain (premium {premium:.2f} → {premium * 1.5:.2f}). "
-                        f"Cut loss at 40% loss (premium → {premium * 0.6:.2f}). "
-                        f"If neither hit by 12:00 ET, close — theta accelerates after noon on 0DTE. "
-                        f"Breakeven requires a {breakeven_move_pct:.1f}% move to ${breakeven:.2f}."
+                        f"Time-decay-aware exits: take {day_targets} profit. "
+                        f"Hard stop at 50% loss. Exit if delta < 0.10. "
+                        f"Breakeven requires {breakeven_move_pct:.1f}% move to ${breakeven:.2f} "
+                        f"(weekly expected move: {weekly_exp_move:.1f}%)."
                     ),
                 },
             }
 
         except Exception as exc:
             logger.error("Optimal strike search failed for %s: %s", ticker, exc)
+            return {}
+
+    # ------------------------------------------------------------------ #
+    #  Tradier-powered strike selection
+    # ------------------------------------------------------------------ #
+
+    def _find_strikes_tradier(self, ticker: str, direction: str) -> dict:
+        """Find optimal strikes using Tradier real-time data.
+
+        Returns the same dict format as find_optimal_strikes() so callers
+        don't need to know which data source was used.
+        """
+        try:
+            result = self._tradier.find_best_strike(ticker, direction)
+            if not result:
+                return {}
+
+            # Enrich with ATR-based expected move (still need yfinance for history)
+            tk = yf.Ticker(ticker)
+            hist = tk.history(period="1mo")
+            if not hist.empty:
+                atr = float((hist["High"] - hist["Low"]).rolling(14).mean().iloc[-1])
+                current_price = result["current_price"]
+                atr_pct = atr / current_price if current_price > 0 else 0
+                weekly_atr = atr * _msqrt(5)
+
+                result["expected_daily_move"] = round(atr, 2)
+                result["expected_daily_move_pct"] = round(atr_pct * 100, 2)
+                result["expected_weekly_move"] = round(weekly_atr, 2)
+                result["expected_weekly_move_pct"] = round(atr_pct * _msqrt(5) * 100, 2)
+
+            # Add Greeks projection using Tradier's real IV
+            iv = result.get("iv") or 0.30
+            strike = result["strike"]
+            current_price = result["current_price"]
+            expiry_dt = datetime.strptime(result["expiry"], "%Y-%m-%d").date()
+            days_to_exp = max((expiry_dt - datetime.now().date()).days, 1)
+            T = days_to_exp / 365.0
+            option_type = result["option_type"]
+
+            result["greeks_projection"] = _project_greeks_over_hold(
+                current_price, strike, T, _RISK_FREE_RATE,
+                iv, option_type, hold_days=min(days_to_exp, 5),
+            )
+
+            # Earnings IV crush check
+            result["earnings_iv_crush"] = self._estimate_earnings_iv_crush(
+                ticker, expiry_dt, iv,
+            )
+
+            result["days_to_expiry"] = days_to_exp
+
+            # Entry/exit guidance
+            premium = result["premium"]
+            breakeven_move_pct = result["breakeven_move_pct"]
+            breakeven = result["breakeven"]
+            weekly_exp_move = result.get("expected_weekly_move_pct", 5.0)
+            day_targets = "40% day-1 / 35% day-2 / 25% day-3 / 15% day-4"
+
+            result["entry"] = {
+                "method": "limit_monday_open",
+                "wait_minutes": 20,
+                "instruction": (
+                    f"Enter Monday morning. Wait 15-20 min after open for spread to tighten. "
+                    f"Limit order at mid ({premium:.2f}) or better. Skip if gap > 2%."
+                ),
+            }
+            result["exit"] = {
+                "profit_targets": {"day_1": 40, "day_2": 35, "day_3": 25, "day_4": 15},
+                "stop_loss_pct": 50,
+                "delta_stop": 0.10,
+                "instruction": (
+                    f"Time-decay-aware exits: take {day_targets} profit. "
+                    f"Hard stop at 50% loss. Exit if delta < 0.10. "
+                    f"Breakeven requires {breakeven_move_pct:.1f}% move to ${breakeven:.2f} "
+                    f"(weekly expected move: {weekly_exp_move:.1f}%)."
+                ),
+            }
+
+            # Opening range data for Monday entry
+            opening = self._tradier.get_opening_range(ticker)
+            if opening:
+                result["opening_range"] = opening
+                # Skip signal: gap > 2%
+                if abs(opening.get("gap_pct", 0)) > 2.0:
+                    result["entry_warning"] = (
+                        f"Gap {opening['gap_pct']:+.1f}% — consider skipping "
+                        f"(move may already be priced in)"
+                    )
+
+            logger.info(
+                "Tradier strike for %s: %s %s @ $%.2f (delta %.3f, spread %.1f%%)",
+                ticker, direction, strike, premium,
+                abs(result.get("estimated_delta", 0)),
+                result.get("spread_pct", 0),
+            )
+            return result
+
+        except Exception as exc:
+            logger.warning("Tradier strike selection failed for %s: %s", ticker, exc)
             return {}
 
     # ------------------------------------------------------------------ #
@@ -491,6 +828,200 @@ class OptionsScanner:
             time.sleep(0.3)  # Rate-limit
 
         return results
+
+    # ------------------------------------------------------------------ #
+    #  Stock-level IV term structure (weekly vs monthly)
+    # ------------------------------------------------------------------ #
+
+    def _compute_iv_term_structure(
+        self,
+        ticker: str,
+        weekly_expiry: str,
+        weekly_iv: "float | None",
+        current_price: float,
+    ) -> "dict | None":
+        """Compare weekly IV to monthly IV for the same stock.
+
+        When weekly IV < monthly IV (contango), buying the weekly is
+        relatively cheap — the market prices more risk in the longer term.
+        When weekly IV > monthly IV (backwardation), the weekly is expensive,
+        often due to a near-term event (earnings, FDA, etc.).
+
+        Returns
+        -------
+        dict or None
+            weekly_iv, monthly_iv, ratio, structure (contango/backwardation/flat),
+            mispricing_signal (cheap/fair/expensive).
+        """
+        if weekly_iv is None or weekly_iv <= 0:
+            return None
+
+        try:
+            tk = yf.Ticker(ticker)
+            expirations = tk.options
+            if not expirations or len(expirations) < 2:
+                return None
+
+            weekly_dt = datetime.strptime(weekly_expiry, "%Y-%m-%d").date()
+
+            # Find the nearest monthly expiry: 25-45 days out from today
+            today = datetime.now().date()
+            monthly_expiry = None
+            for exp_str in expirations:
+                exp_dt = datetime.strptime(exp_str, "%Y-%m-%d").date()
+                days_out = (exp_dt - today).days
+                if 25 <= days_out <= 45 and exp_dt != weekly_dt:
+                    monthly_expiry = exp_str
+                    break
+
+            if not monthly_expiry:
+                # Fallback: any expiry 20-60 days out that isn't the weekly
+                for exp_str in expirations:
+                    exp_dt = datetime.strptime(exp_str, "%Y-%m-%d").date()
+                    days_out = (exp_dt - today).days
+                    if 20 <= days_out <= 60 and exp_dt != weekly_dt:
+                        monthly_expiry = exp_str
+                        break
+
+            if not monthly_expiry:
+                return None
+
+            # Fetch monthly chain and compute ATM IV
+            monthly_chain = self.get_options_chain(ticker, monthly_expiry)
+            if not monthly_chain:
+                return None
+
+            monthly_dt = datetime.strptime(monthly_expiry, "%Y-%m-%d").date()
+            T_monthly = max((monthly_dt - today).days, 1) / 365.0
+
+            monthly_iv = self._compute_validated_atm_iv(
+                monthly_chain["calls"], monthly_chain["puts"],
+                current_price, T_monthly,
+            )
+
+            if monthly_iv is None or monthly_iv <= 0:
+                return None
+
+            ratio = weekly_iv / monthly_iv
+
+            # Classify structure
+            if ratio < 0.90:
+                structure = "contango"       # weekly cheap vs monthly
+                mispricing = "cheap"         # favorable for buying weeklies
+            elif ratio > 1.10:
+                structure = "backwardation"  # weekly expensive (event premium)
+                mispricing = "expensive"
+            else:
+                structure = "flat"
+                mispricing = "fair"
+
+            return {
+                "weekly_iv": round(weekly_iv, 4),
+                "monthly_iv": round(monthly_iv, 4),
+                "weekly_expiry": weekly_expiry,
+                "monthly_expiry": monthly_expiry,
+                "ratio": round(ratio, 3),
+                "structure": structure,
+                "mispricing_signal": mispricing,
+            }
+
+        except Exception as exc:
+            logger.debug("IV term structure failed for %s: %s", ticker, exc)
+            return None
+
+    # ------------------------------------------------------------------ #
+    #  Earnings IV crush estimation
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _estimate_earnings_iv_crush(
+        ticker: str,
+        expiry_date,
+        current_iv: float,
+    ) -> dict:
+        """Estimate earnings-related IV crush risk within the holding window.
+
+        Checks if an earnings date falls between now and expiry.
+        If so, estimates the post-earnings IV crush (typically 30-60% of
+        pre-earnings IV for weekly options) and the premium at risk.
+
+        Parameters
+        ----------
+        ticker : str
+            Stock symbol.
+        expiry_date : date
+            Option expiry date.
+        current_iv : float
+            Current implied volatility (annualized decimal).
+
+        Returns
+        -------
+        dict
+            earnings_in_window (bool), earnings_date (str or None),
+            estimated_iv_crush_pct (float), premium_at_risk_pct (float).
+        """
+        result = {
+            "earnings_in_window": False,
+            "earnings_date": None,
+            "estimated_iv_crush_pct": 0,
+            "premium_at_risk_pct": 0,
+        }
+
+        try:
+            tk = yf.Ticker(ticker)
+            cal = tk.calendar
+            if cal is None:
+                return result
+
+            # yfinance returns calendar as a dict or DataFrame
+            earnings_date = None
+            if isinstance(cal, dict):
+                ed = cal.get("Earnings Date")
+                if ed:
+                    if isinstance(ed, list) and len(ed) > 0:
+                        earnings_date = pd.Timestamp(ed[0]).date()
+                    else:
+                        earnings_date = pd.Timestamp(ed).date()
+            elif isinstance(cal, pd.DataFrame):
+                if "Earnings Date" in cal.columns:
+                    vals = cal["Earnings Date"].dropna()
+                    if not vals.empty:
+                        earnings_date = pd.Timestamp(vals.iloc[0]).date()
+
+            if earnings_date is None:
+                return result
+
+            today = datetime.now().date()
+            if today <= earnings_date <= expiry_date:
+                result["earnings_in_window"] = True
+                result["earnings_date"] = str(earnings_date)
+
+                # IV crush model: weeklies typically lose 35-50% of IV
+                # post-earnings. Use 40% as base, scale by current IV level.
+                base_crush = 0.40
+                # Higher IV → more crush (convex relationship)
+                if current_iv > 0.60:
+                    crush_factor = 0.50
+                elif current_iv > 0.40:
+                    crush_factor = 0.45
+                else:
+                    crush_factor = base_crush
+
+                result["estimated_iv_crush_pct"] = round(crush_factor * 100, 1)
+                # Vega-based premium impact: rough estimate
+                # Premium at risk ≈ crush_factor × current_iv × vega_sensitivity
+                # For ATM weekly: vega ≈ 0.04-0.08 per 1% IV per $100 underlying
+                # Simplified: premium drops ~crush_factor × (IV_portion_of_premium)
+                # For weeklies, IV is ~60-80% of the premium (rest is intrinsic)
+                iv_portion = 0.70  # typical for near-ATM weekly
+                result["premium_at_risk_pct"] = round(
+                    crush_factor * iv_portion * 100, 1
+                )
+
+        except Exception as exc:
+            logger.debug("Earnings IV crush check failed for %s: %s", ticker, exc)
+
+        return result
 
     # ================================================================== #
     #  Private helpers
@@ -583,13 +1114,28 @@ class OptionsScanner:
         return daily_std * np.sqrt(252)
 
     @staticmethod
+    def _compute_realized_vol_5d(hist, window: int = 5) -> "float | None":
+        """5-day annualized realized vol for weekly comparison."""
+        if hist is None or len(hist) < 6:
+            return None
+
+        closes = hist["Close"].tail(min(window + 1, len(hist)))
+        returns = closes.pct_change().dropna()
+
+        if len(returns) < 3:
+            return None
+
+        daily_std = float(returns.std())
+        return daily_std * np.sqrt(252)
+
+    @staticmethod
     def _iv_rank_from_rv_ratio(iv_rv_ratio: "float | None") -> "float | None":
         """Map IV / RV ratio to a 0-100 rank (options cheapness / richness).
 
-        For *buying* 0-DTE:
-        - iv_rv < 0.8  → cheap options → high opportunity rank (70-100)
-        - iv_rv ~ 1.0  → fair              → moderate rank (40-60)
-        - iv_rv > 1.5  → expensive          → low rank (0-30)
+        For *buying* weekly options:
+        - iv_rv < 0.8  -> cheap options -> high opportunity rank (70-100)
+        - iv_rv ~ 1.0  -> fair              -> moderate rank (40-60)
+        - iv_rv > 1.5  -> expensive          -> low rank (0-30)
 
         The ranking intentionally inverts so that *higher rank = better
         buying opportunity* (consistent with how downstream scoring uses

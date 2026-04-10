@@ -2,18 +2,21 @@
 Technical analysis scanner for individual tickers.
 
 Computes standard indicators (RSI, MACD, Bollinger Bands, ATR, volume,
-moving averages) via the ``ta`` library and identifies actionable setups
-suitable for zero-DTE options trades.
+moving averages) plus weekly-specific signals (multi-day momentum, ADX,
+trend strength, SMA slopes, 52-week context, weekly expected move) via
+the ``ta`` library and identifies actionable setups suitable for weekly
+options trades (5-day hold, Monday entry, Friday expiry).
 """
 
 import logging
+import math
 import time
 
 import numpy as np
 import pandas as pd
 import yfinance as yf
 from ta.momentum import RSIIndicator
-from ta.trend import MACD, SMAIndicator
+from ta.trend import ADXIndicator, MACD, SMAIndicator
 from ta.volatility import AverageTrueRange, BollingerBands
 
 from config import Config
@@ -23,21 +26,27 @@ config = Config()
 
 
 class TechnicalScanner:
-    """Compute technical indicators for one or many tickers and flag setups."""
+    """Compute technical indicators for one or many tickers and flag setups
+    suitable for weekly options trades."""
 
     # ------------------------------------------------------------------ #
     #  Single-ticker scan
     # ------------------------------------------------------------------ #
 
-    def scan_ticker(self, ticker: str, period: str = "1mo") -> dict:
+    def scan_ticker(self, ticker: str, period: str = "3mo") -> dict:
         """Fetch price data for *ticker* and compute technical indicators.
+
+        Designed for weekly options analysis: includes daily indicators,
+        multi-day momentum, trend strength, and weekly expected move
+        alongside intraday execution signals for Monday-morning entry.
 
         Parameters
         ----------
         ticker : str
             Stock ticker symbol.
         period : str
-            yfinance history period (default ``'1mo'``).
+            yfinance history period (default ``'3mo'`` to support 50-day
+            SMA and momentum look-backs).
 
         Returns
         -------
@@ -45,7 +54,8 @@ class TechnicalScanner:
             Indicator values keyed by name, or empty dict on failure.
         """
         try:
-            data = yf.Ticker(ticker).history(period=period)
+            yf_ticker = yf.Ticker(ticker)
+            data = yf_ticker.history(period=period)
 
             if data.empty or len(data) < 20:
                 logger.warning(
@@ -100,7 +110,8 @@ class TechnicalScanner:
             volume_ratio = current_vol / vol_sma_20 if vol_sma_20 > 0 else 0.0
 
             # --- SMAs ---
-            sma_20 = float(SMAIndicator(close=close, window=20).sma_indicator().iloc[-1])
+            sma_20_series = SMAIndicator(close=close, window=20).sma_indicator()
+            sma_20 = float(sma_20_series.iloc[-1])
             sma_50_series = SMAIndicator(close=close, window=50).sma_indicator()
             sma_50 = float(sma_50_series.iloc[-1]) if not sma_50_series.isna().iloc[-1] else None
 
@@ -108,12 +119,42 @@ class TechnicalScanner:
             price_vs_sma20 = ((current_price / sma_20) - 1) * 100 if sma_20 else None
             price_vs_sma50 = ((current_price / sma_50) - 1) * 100 if sma_50 else None
 
-            # --- Intraday signals (0DTE-specific) ---
-            intraday = self._scan_intraday(ticker, current_price)
+            # --- Multi-day momentum returns (weekly-specific) ---
+            return_1d = self._pct_return(close, 1)
+            return_5d = self._pct_return(close, 5)
+            return_10d = self._pct_return(close, 10)
+            return_21d = self._pct_return(close, 21)
+
+            # --- ADX (14) ---
+            adx_val, plus_di, minus_di = self._compute_adx(high, low, close)
+
+            # --- SMA slopes (trend persistence) ---
+            sma20_slope = self._sma_slope(sma_20_series, periods=10, price=current_price)
+            sma50_slope = self._sma_slope(sma_50_series, periods=10, price=current_price)
+
+            # --- Trend strength classification ---
+            trend_strength = self._classify_trend(
+                adx=adx_val,
+                price_vs_sma20=price_vs_sma20,
+                sma20_slope=sma20_slope,
+            )
+
+            # --- Weekly expected move ---
+            atr_pct = round((atr / current_price) * 100, 2)
+            weekly_atr_pct = round(atr_pct * math.sqrt(5), 2)
+
+            # --- 52-week context ---
+            pct_from_52w_high, pct_from_52w_low = self._compute_52w_context(
+                yf_ticker, current_price
+            )
+
+            # --- Execution signals (intraday, for Monday entry timing) ---
+            intraday = self._scan_execution_signals(ticker, current_price)
 
             result = {
                 "ticker": ticker,
                 "price": round(current_price, 2),
+                # Daily indicators (unchanged field names)
                 "rsi": round(rsi, 2) if rsi is not None else None,
                 "rsi_prev": round(rsi_prev, 2) if rsi_prev is not None else None,
                 "macd": round(macd_val, 4) if macd_val is not None else None,
@@ -127,7 +168,7 @@ class TechnicalScanner:
                 "bb_pct": round(bb_pct, 4),
                 "bb_squeeze": bb_squeeze,
                 "atr": round(atr, 2),
-                "atr_pct": round((atr / current_price) * 100, 2),
+                "atr_pct": atr_pct,
                 "volume": int(current_vol),
                 "volume_sma20": int(vol_sma_20),
                 "volume_ratio": round(volume_ratio, 2),
@@ -135,6 +176,20 @@ class TechnicalScanner:
                 "sma_50": round(sma_50, 2) if sma_50 is not None else None,
                 "price_vs_sma20_pct": round(price_vs_sma20, 2) if price_vs_sma20 is not None else None,
                 "price_vs_sma50_pct": round(price_vs_sma50, 2) if price_vs_sma50 is not None else None,
+                # Weekly signals (new)
+                "return_1d": return_1d,
+                "return_5d": return_5d,
+                "return_10d": return_10d,
+                "return_21d": return_21d,
+                "adx": round(adx_val, 2) if adx_val is not None else None,
+                "plus_di": round(plus_di, 2) if plus_di is not None else None,
+                "minus_di": round(minus_di, 2) if minus_di is not None else None,
+                "trend_strength": trend_strength,
+                "sma20_slope": round(sma20_slope, 4) if sma20_slope is not None else None,
+                "sma50_slope": round(sma50_slope, 4) if sma50_slope is not None else None,
+                "pct_from_52w_high": round(pct_from_52w_high, 2) if pct_from_52w_high is not None else None,
+                "pct_from_52w_low": round(pct_from_52w_low, 2) if pct_from_52w_low is not None else None,
+                "weekly_atr_pct": weekly_atr_pct,
             }
             result.update(intraday)
             return result
@@ -144,16 +199,148 @@ class TechnicalScanner:
             return {}
 
     # ------------------------------------------------------------------ #
-    #  Intraday signals (0DTE-specific)
+    #  Helper: multi-day percentage return
     # ------------------------------------------------------------------ #
 
-    def _scan_intraday(self, ticker: str, current_price: float) -> dict:
-        """Compute intraday signals for 0DTE decision-making.
+    @staticmethod
+    def _pct_return(close: pd.Series, days: int) -> float | None:
+        """Return the percentage change over the last *days* trading days."""
+        if len(close) <= days:
+            return None
+        current = float(close.iloc[-1])
+        prior = float(close.iloc[-1 - days])
+        if prior == 0:
+            return None
+        return round(((current / prior) - 1) * 100, 2)
+
+    # ------------------------------------------------------------------ #
+    #  Helper: ADX calculation
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _compute_adx(
+        high: pd.Series, low: pd.Series, close: pd.Series
+    ) -> tuple[float | None, float | None, float | None]:
+        """Compute ADX, +DI, and -DI using a 14-period window.
+
+        Returns (adx, plus_di, minus_di); all None if insufficient data.
+        """
+        try:
+            adx_ind = ADXIndicator(high=high, low=low, close=close, window=14)
+            adx = adx_ind.adx()
+            plus_di = adx_ind.adx_pos()
+            minus_di = adx_ind.adx_neg()
+
+            adx_val = float(adx.iloc[-1]) if not adx.isna().iloc[-1] else None
+            plus_val = float(plus_di.iloc[-1]) if not plus_di.isna().iloc[-1] else None
+            minus_val = float(minus_di.iloc[-1]) if not minus_di.isna().iloc[-1] else None
+
+            return adx_val, plus_val, minus_val
+        except Exception:
+            return None, None, None
+
+    # ------------------------------------------------------------------ #
+    #  Helper: SMA slope (normalized % per day)
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _sma_slope(sma_series: pd.Series, periods: int = 10, price: float = 1.0) -> float | None:
+        """Linear-regression slope of *sma_series* over the last *periods*
+        data points, normalized as percent-of-price per day.
+
+        Returns None if the series has insufficient non-NaN data.
+        """
+        tail = sma_series.dropna().tail(periods)
+        if len(tail) < max(periods, 5):
+            return None
+        y = tail.values.astype(float)
+        x = np.arange(len(y), dtype=float)
+        # slope via least-squares: slope = cov(x,y) / var(x)
+        x_mean = x.mean()
+        y_mean = y.mean()
+        slope = float(np.sum((x - x_mean) * (y - y_mean)) / np.sum((x - x_mean) ** 2))
+        # Normalize as % of current price per day
+        if price == 0:
+            return None
+        return (slope / price) * 100
+
+    # ------------------------------------------------------------------ #
+    #  Helper: trend strength classification
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _classify_trend(
+        adx: float | None,
+        price_vs_sma20: float | None,
+        sma20_slope: float | None,
+    ) -> str:
+        """Classify the current trend into one of five buckets.
+
+        Logic:
+        - ADX > 25 means a meaningful trend is present.
+        - Direction determined by price vs SMA20 and SMA20 slope.
+        - "strong" variants require both ADX > 25 and agreement between
+          price position and slope direction.
+        """
+        if adx is None or price_vs_sma20 is None:
+            return "flat"
+
+        trending = adx > 25
+        above_sma = price_vs_sma20 > 0
+        slope_up = (sma20_slope is not None and sma20_slope > 0)
+        slope_down = (sma20_slope is not None and sma20_slope < 0)
+
+        if trending and above_sma and slope_up:
+            return "strong_up"
+        if above_sma or slope_up:
+            return "up"
+        if trending and (not above_sma) and slope_down:
+            return "strong_down"
+        if (not above_sma) or slope_down:
+            return "down"
+        return "flat"
+
+    # ------------------------------------------------------------------ #
+    #  Helper: 52-week context
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _compute_52w_context(
+        yf_ticker, current_price: float
+    ) -> tuple[float | None, float | None]:
+        """Fetch 1-year data and compute distance from 52-week high/low.
+
+        Returns (pct_from_52w_high, pct_from_52w_low) where:
+        - pct_from_52w_high is negative (how far below the high)
+        - pct_from_52w_low is positive (how far above the low)
+        """
+        try:
+            yearly = yf_ticker.history(period="1y")
+            if yearly.empty:
+                return None, None
+            high_52w = float(yearly["High"].max())
+            low_52w = float(yearly["Low"].min())
+
+            pct_from_high = ((current_price / high_52w) - 1) * 100 if high_52w > 0 else None
+            pct_from_low = ((current_price / low_52w) - 1) * 100 if low_52w > 0 else None
+
+            return pct_from_high, pct_from_low
+        except Exception:
+            return None, None
+
+    # ------------------------------------------------------------------ #
+    #  Execution signals (intraday, for Monday entry timing)
+    # ------------------------------------------------------------------ #
+
+    def _scan_execution_signals(self, ticker: str, current_price: float) -> dict:
+        """Compute intraday execution signals for weekly options entry timing.
 
         Fetches 5-minute bars for the last 5 days to calculate:
         - Pre-market gap from previous close
         - Previous day's high, low, and VWAP (key support/resistance)
         - Intraday ATR (actual intraday movement vs daily ATR)
+
+        These help optimize ENTRY TIMING on Monday morning.
 
         Returns neutral defaults if intraday data is unavailable.
         """
@@ -226,22 +413,24 @@ class TechnicalScanner:
             }
 
         except Exception as exc:
-            logger.debug("Intraday scan failed for %s: %s", ticker, exc)
+            logger.debug("Execution signal scan failed for %s: %s", ticker, exc)
             return defaults
 
     # ------------------------------------------------------------------ #
     #  Batch scan
     # ------------------------------------------------------------------ #
 
-    def scan_batch(self, tickers: list, period: str = "1mo") -> pd.DataFrame:
+    def scan_batch(self, tickers: list, period: str = "3mo") -> pd.DataFrame:
         """Scan multiple tickers and return a combined DataFrame.
+
+        Designed for weekly options screening across a watchlist.
 
         Parameters
         ----------
         tickers : list[str]
             Ticker symbols.
         period : str
-            yfinance period string.
+            yfinance period string (default ``'3mo'``).
 
         Returns
         -------
@@ -269,6 +458,10 @@ class TechnicalScanner:
 
     def identify_setups(self, df: pd.DataFrame) -> list[dict]:
         """Screen scan results for actionable technical setups.
+
+        Evaluates weekly options setups: mean-reversion, trend
+        continuation, squeeze breakouts, volume breakouts, and MACD
+        crossovers.
 
         Parameters
         ----------
