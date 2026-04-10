@@ -1019,6 +1019,85 @@ class MarketScanner:
             return {"signal": "unavailable"}
 
     # ------------------------------------------------------------------ #
+    #  Cross-Asset Leading Indicators
+    # ------------------------------------------------------------------ #
+
+    def get_cross_asset_signals(self) -> dict:
+        """Fetch leading indicators from bonds, dollar, and oil.
+
+        These assets often lead equity moves by 1-2 days:
+        - TLT (20yr bonds): inverse to equities, rate-sensitive
+        - UUP (US dollar): strong dollar hurts exporters, emerging markets
+        - USO (crude oil): energy sector proxy, inflation signal
+
+        Returns
+        -------
+        dict
+            Per-asset 5d return, direction, and composite equity signal.
+        """
+        assets = {
+            "TLT": {"name": "bonds_20y", "equity_inverse": True},
+            "UUP": {"name": "us_dollar", "equity_inverse": True},
+            "USO": {"name": "crude_oil", "equity_inverse": False},
+        }
+        signals = {}
+        equity_headwinds = 0
+        equity_tailwinds = 0
+
+        for ticker, meta in assets.items():
+            try:
+                data = yf.Ticker(ticker).history(period="10d")
+                if data.empty or len(data) < 5:
+                    signals[meta["name"]] = {"return_5d": None, "signal": "no_data"}
+                    continue
+
+                ret_5d = (data["Close"].iloc[-1] / data["Close"].iloc[-5] - 1) * 100
+                ret_1d = (data["Close"].iloc[-1] / data["Close"].iloc[-2] - 1) * 100
+
+                # Determine equity impact
+                if meta["equity_inverse"]:
+                    # TLT/UUP up = equity headwind, down = tailwind
+                    if ret_5d > 1.0:
+                        equity_headwinds += 1
+                    elif ret_5d < -1.0:
+                        equity_tailwinds += 1
+                else:
+                    # USO up = mixed (energy bullish, inflation concern)
+                    if ret_5d > 3.0:
+                        equity_headwinds += 1  # Oil spike = inflation fear
+                    elif ret_5d < -3.0:
+                        equity_headwinds += 1  # Oil crash = demand fear
+
+                signals[meta["name"]] = {
+                    "return_5d": round(ret_5d, 2),
+                    "return_1d": round(ret_1d, 2),
+                    "signal": "headwind" if (meta["equity_inverse"] and ret_5d > 1.0)
+                             else "tailwind" if (meta["equity_inverse"] and ret_5d < -1.0)
+                             else "neutral",
+                }
+            except Exception as exc:
+                logger.debug("Cross-asset fetch failed for %s: %s", ticker, exc)
+                signals[meta["name"]] = {"return_5d": None, "signal": "no_data"}
+
+        # Composite signal
+        if equity_headwinds >= 2:
+            composite = "risk_off"
+        elif equity_tailwinds >= 2:
+            composite = "risk_on"
+        else:
+            composite = "mixed"
+
+        signals["composite"] = composite
+        signals["headwinds"] = equity_headwinds
+        signals["tailwinds"] = equity_tailwinds
+
+        logger.info(
+            "Cross-asset signals: %s (headwinds=%d, tailwinds=%d)",
+            composite, equity_headwinds, equity_tailwinds,
+        )
+        return signals
+
+    # ------------------------------------------------------------------ #
     #  Combined Summary
     # ------------------------------------------------------------------ #
 
@@ -1048,6 +1127,7 @@ class MarketScanner:
         vix_term = self.get_vix_term_structure()
         cot = self.get_cot_positioning()
         macro_surprise = self.get_macro_surprise()
+        cross_asset = self.get_cross_asset_signals()
 
         summary = {
             "vix": vix_data,
@@ -1068,6 +1148,7 @@ class MarketScanner:
             "vix_term_structure": vix_term,
             "cot_positioning": cot,
             "macro_surprise": macro_surprise,
+            "cross_asset": cross_asset,
             "timestamp": datetime.now().isoformat(),
         }
 

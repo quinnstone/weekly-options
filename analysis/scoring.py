@@ -255,6 +255,19 @@ class CandidateScorer:
         elif persistence.get("transition_direction") == "calming" and direction == "call":
             score += 5  # VIX falling = calls recover
 
+        # Cross-asset leading indicators
+        # Bonds/dollar moves lead equities by 1-2 days
+        cross_asset = data.get("cross_asset", {})
+        composite = cross_asset.get("composite", "mixed")
+        if composite == "risk_off" and direction == "put":
+            score += 10  # Bonds/dollar confirm bearish thesis
+        elif composite == "risk_off" and direction == "call":
+            score -= 8  # Cross-asset headwinds against bullish thesis
+        elif composite == "risk_on" and direction == "call":
+            score += 8  # Cross-asset tailwinds support bullish thesis
+        elif composite == "risk_on" and direction == "put":
+            score -= 5  # Cross-asset tailwinds weaken bearish thesis
+
         return float(np.clip(score, 0, 100))
 
     def _trend_persistence_score(self, data: dict) -> float:
@@ -447,6 +460,41 @@ class CandidateScorer:
         elif insider_signal == "bearish" and direction == "put":
             score += 5
 
+        # Earnings during Mon-Fri holding window — hard penalty.
+        # Earnings create gamma spikes and IV crush that invalidate
+        # the delta/theta assumptions the rest of the model relies on.
+        earnings_date = (
+            data.get("earnings_date")
+            or fv.get("earnings_date")
+            or data.get("finviz", {}).get("earnings_date")
+        )
+        if earnings_date:
+            # If we have a date string, check if it's this week
+            try:
+                from datetime import datetime as _dt, timedelta
+                if isinstance(earnings_date, str):
+                    # Try common formats
+                    for fmt in ("%Y-%m-%d", "%b %d", "%m/%d/%Y"):
+                        try:
+                            ed = _dt.strptime(earnings_date, fmt)
+                            if fmt == "%b %d":
+                                ed = ed.replace(year=_dt.now().year)
+                            today = _dt.now()
+                            # Monday of this week to Friday
+                            mon = today - timedelta(days=today.weekday())
+                            fri = mon + timedelta(days=4)
+                            if mon.date() <= ed.date() <= fri.date():
+                                score -= 25  # Heavy penalty: earnings in hold window
+                                data["_earnings_in_window"] = True
+                            break
+                        except ValueError:
+                            continue
+            except Exception:
+                pass
+        # Also flag the boolean from narrowing/finviz
+        if data.get("earnings_warning"):
+            score -= 15  # Already flagged by upstream — additional penalty
+
         return float(np.clip(score, 0, 100))
 
     # ======================================================================
@@ -559,6 +607,23 @@ class CandidateScorer:
                     score -= 10  # charm accelerating fast (delta dying)
                 elif charm_accel > 1.5:
                     score -= 5
+
+        # Charm-adjusted delta: estimate what delta will be by Wednesday.
+        # If charm eats delta below 0.15 by mid-week, the position is
+        # effectively dead before the thesis can play out.
+        greeks = opts.get("greeks", {})
+        entry_delta = abs(greeks.get("delta") or opts.get("estimated_delta") or 0)
+        charm = abs(greeks.get("charm") or 0)
+        if entry_delta > 0 and charm > 0:
+            # Project delta at day 3 (Wednesday): delta - 3 * charm
+            wed_delta = entry_delta - (3 * charm)
+            if wed_delta < 0.10:
+                score -= 20  # Position will be nearly worthless by mid-week
+            elif wed_delta < 0.15:
+                score -= 10  # Marginal delta by mid-week — risky
+            # Also penalize if more than half of delta lost to charm by Wed
+            if charm * 3 > entry_delta * 0.5:
+                score -= 5  # Charm eating >50% of delta in 3 days
 
         # Stock-level IV term structure: cheap weekly IV = better entry
         iv_ts = opts.get("iv_term_structure")

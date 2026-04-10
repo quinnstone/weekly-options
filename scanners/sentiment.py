@@ -6,6 +6,7 @@ StockTwits, and VADER NLP into a composite score for each ticker.
 """
 
 import logging
+import os
 import time
 from datetime import datetime, timedelta
 
@@ -140,7 +141,12 @@ class SentimentScanner:
             Keyed by ticker: mentions (int), avg_sentiment (-1 to 1),
             bullish_count, bearish_count, neutral_count.
         """
-        if not config.has_reddit():
+        # Reddit integration requires PRAW + credentials in env vars.
+        # These are optional — skip gracefully if not configured.
+        reddit_id = os.getenv("REDDIT_CLIENT_ID", "")
+        reddit_secret = os.getenv("REDDIT_CLIENT_SECRET", "")
+        reddit_ua = os.getenv("REDDIT_USER_AGENT", "")
+        if not all([reddit_id, reddit_secret, reddit_ua]):
             logger.info("Reddit credentials not configured; skipping Reddit sentiment")
             return {}
 
@@ -148,9 +154,9 @@ class SentimentScanner:
             import praw
 
             reddit = praw.Reddit(
-                client_id=config.reddit_client_id,
-                client_secret=config.reddit_client_secret,
-                user_agent=config.reddit_user_agent,
+                client_id=reddit_id,
+                client_secret=reddit_secret,
+                user_agent=reddit_ua,
             )
 
             subreddits = ["wallstreetbets", "options", "stocks"]

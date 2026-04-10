@@ -605,9 +605,10 @@ class DailyStages:
             if ticker in flow_results:
                 c["flow"] = self._map_flow_data(flow_results[ticker])
             c["market_regime"] = vix_regime
-            # Attach holding window and regime persistence for scoring
+            # Attach holding window, regime persistence, and cross-asset for scoring
             c["holding_window"] = market_summary.get("holding_window", {})
             c["regime_persistence"] = market_summary.get("regime_persistence", {})
+            c["cross_asset"] = market_summary.get("cross_asset", {})
 
         # 7. Regime gate — assess whether macro environment gives us an edge
         self.scorer.set_market_summary(market_summary)
