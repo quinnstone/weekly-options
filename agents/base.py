@@ -1,0 +1,359 @@
+"""
+Base agent infrastructure for the Weekly Options Trading Analysis System.
+
+Uses the Anthropic API to run specialized Claude agents that analyze
+trade setups, monitor positions, and generate insights. Each agent
+receives structured data and returns structured analysis.
+
+Agents are optional — the pipeline runs without them if ANTHROPIC_API_KEY
+is not configured. When available, agent output is embedded in Discord
+notifications alongside the quantitative signals.
+
+Context loading hierarchy:
+1. METHODOLOGY.md — Static reference (scoring rules, thresholds, architecture)
+2. CURRENT_STATE.md — Dynamic snapshot (live weights, pattern stats, recent lessons)
+3. playbook.md / known_risks.md — Accumulated strategic knowledge from data/performance/
+"""
+
+import json
+import logging
+from pathlib import Path
+
+from config import Config
+
+logger = logging.getLogger(__name__)
+config = Config()
+
+# ---------------------------------------------------------------
+# Context document loading
+# ---------------------------------------------------------------
+
+_AGENTS_DIR = Path(__file__).parent
+_METHODOLOGY_PATH = _AGENTS_DIR / "METHODOLOGY.md"
+_CURRENT_STATE_PATH = _AGENTS_DIR / "CURRENT_STATE.md"
+
+# Cache loaded docs (cleared per-process; fresh on each cron run)
+_DOC_CACHE = {}
+
+
+def _load_doc(path: Path, label: str) -> str:
+    """Load a text file with caching. Returns empty string on failure."""
+    if path not in _DOC_CACHE:
+        try:
+            _DOC_CACHE[path] = path.read_text()
+            logger.debug("Loaded %s (%d chars)", label, len(_DOC_CACHE[path]))
+        except FileNotFoundError:
+            logger.debug("%s not found at %s — skipping", label, path)
+            _DOC_CACHE[path] = ""
+        except Exception as exc:
+            logger.warning("Failed to load %s: %s", label, exc)
+            _DOC_CACHE[path] = ""
+    return _DOC_CACHE[path]
+
+
+def _build_system_context() -> str:
+    """Assemble the full context block injected into every agent call.
+
+    Loads (in order):
+    1. METHODOLOGY.md — static scoring rules and architecture
+    2. CURRENT_STATE.md — dynamic live state (weights, patterns, lessons)
+    3. playbook.md — accumulated strategic playbook from performance dir
+    4. known_risks.md — known system limitations and caveats
+    """
+    sections = []
+
+    methodology = _load_doc(_METHODOLOGY_PATH, "METHODOLOGY.md")
+    if methodology:
+        sections.append(methodology)
+
+    current_state = _load_doc(_CURRENT_STATE_PATH, "CURRENT_STATE.md")
+    if current_state:
+        sections.append(current_state)
+
+    # Load from data/performance/ if they exist
+    playbook_path = config.performance_dir / "playbook.md"
+    playbook = _load_doc(playbook_path, "playbook.md")
+    if playbook:
+        sections.append(f"# Strategic Playbook\n\n{playbook}")
+
+    risks_path = config.performance_dir / "known_risks.md"
+    risks = _load_doc(risks_path, "known_risks.md")
+    if risks:
+        sections.append(f"# Known Risks & Limitations\n\n{risks}")
+
+    trade_log_path = _AGENTS_DIR / "TRADE_LOG.md"
+    trade_log = _load_doc(trade_log_path, "TRADE_LOG.md")
+    if trade_log:
+        sections.append(trade_log)
+
+    return "\n\n---\n\n".join(sections)
+
+
+# ---------------------------------------------------------------
+# Web search tool definition (for agents that need it)
+# ---------------------------------------------------------------
+
+WEB_SEARCH_TOOL = {
+    "name": "web_search",
+    "description": (
+        "Search the web for recent news, pre-market moves, earnings reports, "
+        "sector developments, or analyst commentary about a specific ticker or "
+        "market topic. Use this to check for overnight developments that could "
+        "affect the trading thesis. Return the search query as a string."
+    ),
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Search query — be specific. Include ticker symbol and timeframe. E.g., 'AAPL earnings results after hours April 2026' or 'FOMC rate decision impact markets today'",
+            },
+        },
+        "required": ["query"],
+    },
+}
+
+
+def _execute_web_search(query: str) -> str:
+    """Execute a web search using available providers.
+
+    Tries Finnhub news first (free, no extra API key), then falls back
+    to a simple ticker news fetch via yfinance.
+    """
+    results = []
+
+    # Strategy 1: yfinance news (always available, no extra API)
+    try:
+        import yfinance as yf
+        # Extract ticker from query if present
+        words = query.upper().split()
+        for word in words:
+            if word.isalpha() and 1 <= len(word) <= 5:
+                try:
+                    tk = yf.Ticker(word)
+                    news = tk.news
+                    if news:
+                        for article in news[:5]:
+                            title = article.get("title", "")
+                            publisher = article.get("publisher", "")
+                            link = article.get("link", "")
+                            results.append(f"- [{publisher}] {title}")
+                        break
+                except Exception:
+                    continue
+    except ImportError:
+        pass
+
+    # Strategy 2: Finnhub company news (if API key available)
+    try:
+        finnhub_key = config.finnhub_api_key
+        if finnhub_key:
+            import urllib.request
+            import urllib.parse
+            from datetime import datetime, timedelta
+            today = datetime.now().strftime("%Y-%m-%d")
+            yesterday = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
+            # Extract ticker
+            words = query.upper().split()
+            for word in words:
+                if word.isalpha() and 1 <= len(word) <= 5:
+                    url = (
+                        f"https://finnhub.io/api/v1/company-news?"
+                        f"symbol={word}&from={yesterday}&to={today}&"
+                        f"token={finnhub_key}"
+                    )
+                    try:
+                        req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
+                        with urllib.request.urlopen(req, timeout=10) as resp:
+                            data = json.loads(resp.read())
+                            for article in data[:5]:
+                                headline = article.get("headline", "")
+                                source = article.get("source", "")
+                                summary = article.get("summary", "")[:150]
+                                results.append(f"- [{source}] {headline}: {summary}")
+                            break
+                    except Exception:
+                        continue
+    except Exception:
+        pass
+
+    if results:
+        return f"Web search results for '{query}':\n" + "\n".join(results[:8])
+    return f"No recent news found for '{query}'. The search may have failed or there may be no recent coverage."
+
+
+class BaseAgent:
+    """Base class for Claude-powered analysis agents.
+
+    All agents automatically receive:
+    1. METHODOLOGY.md — static scoring rules, thresholds, architecture
+    2. CURRENT_STATE.md — dynamic live weights, pattern stats, lessons
+    3. playbook.md / known_risks.md — accumulated strategic knowledge
+    4. TRADE_LOG.md — recent trade outcomes
+
+    Agents with TOOLS defined get tool_use capability (e.g., web search).
+    """
+
+    # Subclasses set these
+    AGENT_NAME = "base"
+    MODEL = "claude-opus-4-20250514"
+    MAX_TOKENS = 1500
+    TOOLS = []  # Subclasses can add tools (e.g., [WEB_SEARCH_TOOL])
+
+    def __init__(self):
+        self.enabled = config.has_anthropic()
+        self._client = None
+        if self.enabled:
+            try:
+                import anthropic
+                self._client = anthropic.Anthropic(api_key=config.anthropic_api_key)
+                logger.info("Agent '%s' initialized", self.AGENT_NAME)
+            except Exception as exc:
+                logger.warning("Failed to initialize agent '%s': %s", self.AGENT_NAME, exc)
+                self.enabled = False
+
+    def _call(self, system_prompt: str, user_message: str) -> str:
+        """Call Claude API with full context and return text response.
+
+        Injects methodology + live state + playbook + risks into system prompt.
+        If the agent has TOOLS defined, runs a tool-use loop (max 3 rounds).
+        """
+        if not self.enabled or not self._client:
+            return ""
+
+        # Build full system context
+        context = _build_system_context()
+        if context:
+            full_system = (
+                f"{context}\n\n"
+                f"---\n\n"
+                f"# Your Role\n\n"
+                f"{system_prompt}"
+            )
+        else:
+            full_system = system_prompt
+
+        try:
+            # Simple path: no tools
+            if not self.TOOLS:
+                response = self._client.messages.create(
+                    model=self.MODEL,
+                    max_tokens=self.MAX_TOKENS,
+                    system=full_system,
+                    messages=[{"role": "user", "content": user_message}],
+                )
+                return response.content[0].text
+
+            # Tool-use path: multi-turn loop (max 3 tool calls)
+            messages = [{"role": "user", "content": user_message}]
+
+            for _ in range(3):
+                response = self._client.messages.create(
+                    model=self.MODEL,
+                    max_tokens=self.MAX_TOKENS,
+                    system=full_system,
+                    messages=messages,
+                    tools=self.TOOLS,
+                )
+
+                # Check if we got a final text response
+                if response.stop_reason == "end_turn":
+                    text_parts = [b.text for b in response.content if b.type == "text"]
+                    return "\n".join(text_parts)
+
+                # Process tool calls
+                tool_results = []
+                text_parts = []
+                for block in response.content:
+                    if block.type == "text":
+                        text_parts.append(block.text)
+                    elif block.type == "tool_use":
+                        result = self._handle_tool_call(block.name, block.input)
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": block.id,
+                            "content": result,
+                        })
+
+                if not tool_results:
+                    # No tool calls and no end_turn — return what we have
+                    return "\n".join(text_parts) if text_parts else ""
+
+                # Add assistant response and tool results to conversation
+                messages.append({"role": "assistant", "content": response.content})
+                messages.append({"role": "user", "content": tool_results})
+
+            # Exhausted tool rounds — extract final text
+            text_parts = [b.text for b in response.content if b.type == "text"]
+            return "\n".join(text_parts) if text_parts else ""
+
+        except Exception as exc:
+            logger.error("Agent '%s' API call failed: %s", self.AGENT_NAME, exc)
+            return ""
+
+    def _handle_tool_call(self, tool_name: str, tool_input: dict) -> str:
+        """Execute a tool call and return the result string."""
+        if tool_name == "web_search":
+            query = tool_input.get("query", "")
+            logger.info("Agent '%s' searching: %s", self.AGENT_NAME, query)
+            return _execute_web_search(query)
+
+        return f"Unknown tool: {tool_name}"
+
+    def _format_pick_data(self, pick: dict) -> str:
+        """Format a pick dict into a concise text summary for the agent."""
+        ticker = pick.get("ticker", "?")
+        direction = pick.get("direction", "?")
+        strike = pick.get("strike")
+        premium = pick.get("premium")
+        confidence = pick.get("confidence", pick.get("direction_confidence", 0))
+        score = pick.get("composite_score", 0)
+        current = pick.get("current_price")
+        breakeven = pick.get("breakeven")
+        be_move = pick.get("breakeven_move_pct")
+        delta = pick.get("estimated_delta")
+        expiry = pick.get("expiry")
+
+        # Ensemble info
+        ensemble = pick.get("ensemble", {})
+        consensus = ensemble.get("consensus", "unknown")
+
+        # Pattern info
+        pattern = pick.get("pattern", {})
+        pattern_wr = pattern.get("pattern_win_rate")
+
+        # Scores
+        scores = pick.get("scores", {})
+        top_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:3]
+
+        lines = [
+            f"**{ticker}** — {direction.upper()} ${strike:,.2f}" if strike else f"**{ticker}** — {direction.upper()}",
+            f"Price: ${current:,.2f}" if current else "",
+            f"Premium: ${premium:.2f} | Delta: {delta:.2f}" if premium and delta else "",
+            f"Breakeven: ${breakeven:,.2f} ({be_move:.1f}% move)" if breakeven and be_move else "",
+            f"Expiry: {expiry}" if expiry else "",
+            f"Score: {score:.1f} | Confidence: {confidence:.0%} | Consensus: {consensus}",
+            f"Top signals: {', '.join(f'{k}={v:.0f}' for k,v in top_scores)}" if top_scores else "",
+            f"Pattern win rate: {pattern_wr:.0%} ({pattern.get('pattern_observations', 0)} obs)" if pattern_wr else "",
+        ]
+        return "\n".join(l for l in lines if l)
+
+    def _format_market_context(self, market_summary: dict) -> str:
+        """Format market summary into concise text for the agent."""
+        vix = market_summary.get("vix", {})
+        regime = market_summary.get("vix_regime", {})
+        breadth = market_summary.get("breadth", {})
+        credit = market_summary.get("credit_spread", {})
+        cot = market_summary.get("cot_positioning", {})
+        macro = market_summary.get("macro_surprise", {})
+        holding = market_summary.get("holding_window", {})
+
+        lines = [
+            f"VIX: {vix.get('current', '?')} ({regime.get('regime', '?')})",
+            f"Breadth: {breadth.get('breadth_signal', '?')}",
+            f"Credit: {credit.get('credit_state', '?')} (HY OAS {credit.get('hy_oas', '?')}%)",
+            f"COT: {cot.get('signal', '?')} (percentile {cot.get('percentile', '?')})",
+            f"Macro surprise: {macro.get('signal', '?')} (score {macro.get('surprise_score', '?')})",
+            f"Holding window risk: {holding.get('risk_level', '?')}",
+        ]
+        return "\n".join(lines)
