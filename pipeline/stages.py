@@ -23,6 +23,7 @@ from scanners.market import MarketScanner
 from analysis.scoring import CandidateScorer
 from analysis.narrowing import NarrowingPipeline, enforce_diversity
 from notifications.discord import DiscordNotifier
+from tracking.agent_tracker import log_decision
 from tracking.tracker import PerformanceTracker
 
 logger = logging.getLogger(__name__)
@@ -211,6 +212,14 @@ class DailyStages:
             market_narrative = narrator.narrate(market_summary)
             if market_narrative:
                 logger.info("Market narrative generated (%d chars)", len(market_narrative))
+                log_decision(
+                    agent_name="market_narrative",
+                    ticker="MARKET",
+                    mechanical_signal="raw_data",
+                    agent_signal="narrative_generated",
+                    override_occurred=False,  # Narrative is additive, not override
+                    context={"length": len(market_narrative)},
+                )
         except Exception as exc:
             logger.error("Market narrative agent failed: %s", exc)
 
@@ -328,10 +337,19 @@ class DailyStages:
                     brief = brief_map.get(c.get("ticker"))
                     if brief:
                         c["earnings_agent"] = brief
-                        if brief["signal"] == "AVOID":
+                        avoid = brief["signal"] == "AVOID"
+                        if avoid:
                             c["earnings_warning"] = True
                             logger.warning("Earnings AVOID flag for %s: %s",
                                            brief["ticker"], brief["brief"][:80])
+                        log_decision(
+                            agent_name="earnings_analyst",
+                            ticker=brief["ticker"],
+                            mechanical_signal="INCLUDED",
+                            agent_signal=brief["signal"],
+                            override_occurred=avoid,
+                            context={"brief": brief["brief"][:200]},
+                        )
                 logger.info("Earnings analyst assessed %d tickers", len(earnings_briefs))
         except Exception as exc:
             logger.error("Earnings analyst failed: %s", exc)
@@ -630,10 +648,25 @@ class DailyStages:
             portfolio_result = reasoner.select(top_candidates, market_summary, macro_edge)
             if portfolio_result.get("reasoning"):
                 selected_tickers = set(portfolio_result["selected"])
+                mechanical_tickers = [c.get("ticker") for c in top5]
                 # Reorder top picks to match agent's recommendation
                 from config import PORTFOLIO_SIZE
                 agent_top = [c for c in scored if c.get("ticker") in selected_tickers][:PORTFOLIO_SIZE]
                 if len(agent_top) == PORTFOLIO_SIZE:
+                    agent_tickers = [c.get("ticker") for c in agent_top]
+                    override = set(agent_tickers) != set(mechanical_tickers)
+                    # Track portfolio selection decision
+                    log_decision(
+                        agent_name="portfolio_reasoner",
+                        ticker="PORTFOLIO",
+                        mechanical_signal=",".join(mechanical_tickers),
+                        agent_signal=",".join(agent_tickers),
+                        override_occurred=override,
+                        context={
+                            "dropped": portfolio_result.get("dropped", []),
+                            "reasoning": portfolio_result.get("reasoning", "")[:300],
+                        },
+                    )
                     top5 = agent_top
                     logger.info("Portfolio reasoner selected: %s",
                                  ", ".join(t.get("ticker", "?") for t in top5))
@@ -916,10 +949,23 @@ class DailyStages:
                         conf["agent_signal"] = brief["signal"]
                         conf["agent_brief"] = brief["brief"]
 
+                        mechanical = conf["signal"]
+                        override = (brief["signal"] == "SKIP" and mechanical == "GO")
+
+                        # Track every pre-trade decision for audit
+                        log_decision(
+                            agent_name="pre_trade",
+                            ticker=conf.get("ticker", "?"),
+                            mechanical_signal=mechanical,
+                            agent_signal=brief["signal"],
+                            override_occurred=override,
+                            context={"brief": brief["brief"][:200]},
+                        )
+
                         # Agent SKIP overrides mechanical GO — this is actionable,
                         # not decorative. The agent found a thesis-invalidating
                         # development the mechanical checks couldn't detect.
-                        if brief["signal"] == "SKIP" and conf["signal"] == "GO":
+                        if override:
                             conf["signal"] = "SKIP"
                             conf["detail"] = (
                                 f"[AGENT OVERRIDE] {brief['brief']}\n"
@@ -1086,6 +1132,28 @@ class DailyStages:
         except Exception as exc:
             logger.error("Position monitor failed: %s", exc)
             return {"positions": [], "alerts": [], "agent_analysis": "", "summary": {}}
+
+        # Track position monitor decisions for audit
+        for pos in result.get("positions", []):
+            if pos.get("status") in ("NO_DATA", "ERROR"):
+                continue
+            # Mechanical signal is based on thresholds alone
+            mech = pos["status"]
+            # Agent only runs on ELEVATED/CRITICAL — if it ran, it may have
+            # influenced the status interpretation via agent_analysis
+            has_agent = bool(result.get("agent_analysis"))
+            log_decision(
+                agent_name="position_monitor",
+                ticker=pos.get("ticker", "?"),
+                mechanical_signal=mech,
+                agent_signal=mech if not has_agent else f"{mech}+AGENT_REVIEW",
+                override_occurred=False,  # Monitor doesn't override yet, it advises
+                context={
+                    "urgency": urgency,
+                    "option_return_pct": pos.get("option_return_pct"),
+                    "has_agent_analysis": has_agent,
+                },
+            )
 
         # Send Discord notification
         self._send_monitor_update(result, urgency)

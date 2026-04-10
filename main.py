@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 
 def main():
     parser = argparse.ArgumentParser(description='Weekly Options Analysis Pipeline')
-    parser.add_argument('command', choices=['run', 'stage', 'picks', 'reflect', 'status', 'backtest', 'scorecard'],
+    parser.add_argument('command', choices=['run', 'stage', 'picks', 'reflect', 'status', 'backtest', 'scorecard', 'audit-agents'],
                        help='Command to run')
     parser.add_argument('--stage', choices=['wednesday', 'friday', 'monday', 'confirm', 'monitor', 'final_exit'],
                        help='Specific stage to run')
@@ -79,6 +79,21 @@ def main():
                     print("DEEP REFLECTION (CIO Analysis)")
                     print("=" * 65)
                     print(deep_result["analysis"])
+
+                    # Track deep reflection decisions
+                    from tracking.agent_tracker import log_decision
+                    proposals = deep_result.get("proposals", [])
+                    log_decision(
+                        agent_name="deep_reflection",
+                        ticker="SYSTEM",
+                        mechanical_signal="current_weights",
+                        agent_signal=f"{len(proposals)} proposals",
+                        override_occurred=bool(proposals),
+                        context={
+                            "proposals": [p[:100] if isinstance(p, str) else str(p)[:100] for p in proposals[:5]],
+                            "analysis_snippet": deep_result["analysis"][:300],
+                        },
+                    )
         except Exception as exc:
             logging.getLogger(__name__).error("Deep reflection agent failed: %s", exc)
     elif args.command == 'status':
@@ -100,6 +115,19 @@ def main():
                 print(f"Week graded: {result.get('wins', 0)}W-{result.get('losses', 0)}L-{result.get('partials', 0)}P  "
                       f"P&L: ${result.get('total_pnl', 0):,.2f}")
         sc.show()
+    elif args.command == 'audit-agents':
+        from tracking.agent_tracker import generate_audit_report, evaluate
+        report = generate_audit_report()
+        print(report)
+        # Also print actionable summary
+        eval_data = evaluate()
+        if eval_data.get("agents"):
+            cuts = [name for name, m in eval_data["agents"].items() if m["recommendation"] == "CUT"]
+            watches = [name for name, m in eval_data["agents"].items() if m["recommendation"] == "WATCH"]
+            if cuts:
+                print(f"\nACTION REQUIRED: Cut these agents (zero value): {', '.join(cuts)}")
+            if watches:
+                print(f"\nWATCH LIST (re-evaluate at 10 weeks): {', '.join(watches)}")
 
 
 if __name__ == '__main__':

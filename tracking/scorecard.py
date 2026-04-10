@@ -141,6 +141,21 @@ class Scorecard:
         except Exception as exc:
             logger.error("Post-mortem agent failed: %s", exc)
 
+        # Link agent decisions to outcomes for audit tracking
+        try:
+            from tracking.agent_tracker import link_outcomes
+            week_str = datetime.now().strftime("%Y-W%W")
+            outcome_map = {
+                g.get("ticker"): {
+                    "result": g.get("result", "unknown"),
+                    "pnl": g.get("pnl", 0),
+                }
+                for g in graded if g.get("ticker")
+            }
+            link_outcomes(week_str, outcome_map)
+        except Exception as exc:
+            logger.error("Failed to link agent outcomes: %s", exc)
+
         # Send to Discord
         try:
             from notifications.discord import DiscordNotifier
