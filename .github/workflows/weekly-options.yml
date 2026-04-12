@@ -1,0 +1,222 @@
+name: Weekly Options Pipeline
+
+on:
+  schedule:
+    # === WEEKLY ANALYSIS CADENCE ===
+    # Wednesday 7:00 AM ET (11:00 UTC, no DST / 12:00 UTC in winter)
+    - cron: '0 11 * * 3'
+    # Friday 4:00 PM ET (20:00 UTC) — delta-aware refresh after close
+    - cron: '0 20 * * 5'
+    # Friday 4:30 PM ET (20:30 UTC) — grade this week's picks after expiry
+    - cron: '30 20 * * 5'
+
+    # === MONDAY ENTRY FLOW ===
+    # Monday 8:00 AM ET (12:00 UTC) — final picks before open
+    - cron: '0 12 * * 1'
+    # Monday 10:00 AM ET (14:00 UTC) — entry confirmation (30 min after open)
+    - cron: '0 14 * * 1'
+    # Monday 1:00 PM ET (17:00 UTC) — midday position check
+    - cron: '0 17 * * 1'
+
+    # === INTRADAY POSITION MONITORING ===
+    # Tuesday 3:00 PM ET (19:00 UTC)
+    - cron: '0 19 * * 2'
+    # Wednesday 3:00 PM ET (19:00 UTC) — after scan completes
+    - cron: '0 19 * * 3'
+    # Thursday 10:00 AM ET (14:00 UTC) — theta accelerating
+    - cron: '0 14 * * 4'
+    # Thursday 3:00 PM ET (19:00 UTC) — last clean exit day
+    - cron: '0 19 * * 4'
+    # Friday 10:00 AM ET (14:00 UTC) — morning check
+    - cron: '0 14 * * 5'
+    # Friday 1:30 PM ET (17:30 UTC) — FINAL EXIT
+    - cron: '30 17 * * 5'
+
+    # === WEEKLY REFLECTION ===
+    # Saturday 10:00 AM ET (14:00 UTC)
+    - cron: '0 14 * * 6'
+
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: 'Stage to run (leave empty for auto-detect)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - wednesday
+          - friday
+          - monday
+          - confirm
+          - monitor
+          - final_exit
+          - scorecard
+          - reflect
+
+permissions:
+  contents: write
+
+env:
+  FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+  FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+  DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+  TRADIER_API_KEY: ${{ secrets.TRADIER_API_KEY }}
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+  REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+  REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+  TZ: America/New_York
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Restore pipeline data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/candidates
+            data/reports
+            data/performance
+          key: pipeline-data-${{ github.run_number }}
+          restore-keys: |
+            pipeline-data-
+
+      - name: Create data directories
+        run: |
+          mkdir -p data/candidates
+          mkdir -p data/reports
+          mkdir -p data/performance
+          mkdir -p data/logs
+
+      - name: Determine stage to run
+        id: stage
+        run: |
+          if [ -n "${{ github.event.inputs.stage }}" ]; then
+            echo "stage=${{ github.event.inputs.stage }}" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: ${{ github.event.inputs.stage }}"
+          else
+            DOW=$(date +%u)
+            HOUR=$(date +%H)
+            echo "Day=$DOW Hour=$HOUR (ET)"
+
+            if [ "$DOW" = "1" ]; then
+              if [ "$HOUR" -ge 13 ]; then
+                echo "stage=monitor" >> "$GITHUB_OUTPUT"
+              elif [ "$HOUR" -ge 10 ]; then
+                echo "stage=confirm" >> "$GITHUB_OUTPUT"
+              else
+                echo "stage=monday" >> "$GITHUB_OUTPUT"
+              fi
+            elif [ "$DOW" = "2" ] || [ "$DOW" = "4" ]; then
+              echo "stage=monitor" >> "$GITHUB_OUTPUT"
+            elif [ "$DOW" = "3" ]; then
+              if [ "$HOUR" -ge 15 ]; then
+                echo "stage=monitor" >> "$GITHUB_OUTPUT"
+              else
+                echo "stage=wednesday" >> "$GITHUB_OUTPUT"
+              fi
+            elif [ "$DOW" = "5" ]; then
+              if [ "$HOUR" -ge 16 ]; then
+                echo "stage=friday_close" >> "$GITHUB_OUTPUT"
+              elif [ "$HOUR" -ge 13 ]; then
+                echo "stage=final_exit" >> "$GITHUB_OUTPUT"
+              else
+                echo "stage=monitor" >> "$GITHUB_OUTPUT"
+              fi
+            elif [ "$DOW" = "6" ]; then
+              echo "stage=reflect" >> "$GITHUB_OUTPUT"
+            else
+              echo "stage=none" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Run pipeline
+        if: steps.stage.outputs.stage != 'none'
+        run: |
+          STAGE="${{ steps.stage.outputs.stage }}"
+          echo "========================================="
+          echo "Running stage: ${STAGE}"
+          echo "Time: $(date)"
+          echo "========================================="
+
+          case "$STAGE" in
+            wednesday)
+              python3 main.py stage --stage wednesday
+              ;;
+            friday)
+              python3 main.py stage --stage friday
+              ;;
+            monday)
+              python3 main.py stage --stage monday
+              ;;
+            confirm)
+              python3 main.py stage --stage confirm
+              ;;
+            monitor)
+              python3 main.py stage --stage monitor
+              ;;
+            final_exit)
+              python3 main.py stage --stage final_exit
+              ;;
+            friday_close)
+              # Grade this week's picks, then run Friday refresh for next week
+              LAST_MONDAY=$(python3 -c "
+          from datetime import datetime, timedelta
+          today = datetime.now()
+          days_back = (today.weekday() - 0) % 7
+          if days_back == 0: days_back = 7
+          print((today - timedelta(days=days_back)).strftime('%Y-%m-%d'))
+          ")
+              echo "Grading picks from ${LAST_MONDAY}..."
+              python3 main.py scorecard --week "${LAST_MONDAY}" || echo "No picks to grade — skipping"
+              echo "Running Friday refresh..."
+              python3 main.py stage --stage friday
+              ;;
+            scorecard)
+              LAST_MONDAY=$(python3 -c "
+          from datetime import datetime, timedelta
+          today = datetime.now()
+          days_back = (today.weekday() - 0) % 7
+          if days_back == 0: days_back = 7
+          print((today - timedelta(days=days_back)).strftime('%Y-%m-%d'))
+          ")
+              python3 main.py scorecard --week "${LAST_MONDAY}" || echo "No picks to grade — skipping"
+              ;;
+            reflect)
+              python3 main.py reflect
+              ;;
+          esac
+
+      - name: Commit and push results
+        if: steps.stage.outputs.stage != 'none'
+        run: |
+          git config user.name "weekly-options-bot"
+          git config user.email "weekly-options-bot@users.noreply.github.com"
+          git add data/candidates/ data/reports/ data/performance/
+          if git diff --staged --quiet; then
+            echo "No new data to commit"
+          else
+            DATE=$(date +%Y-%m-%d)
+            STAGE="${{ steps.stage.outputs.stage }}"
+            git commit -m "pipeline: ${STAGE} results for ${DATE}"
+            git push
+          fi

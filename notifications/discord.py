@@ -139,6 +139,15 @@ class DiscordNotifier:
             # Build one-sentence reasoning
             reasoning = self._build_reasoning(pick)
 
+            # Social intelligence narrative
+            social = pick.get("sentiment", {}).get("social", {})
+            social_line = ""
+            if social:
+                narrative = social.get("narrative", "")
+                if narrative and narrative != "Minimal social signal":
+                    # Truncate for Discord field limit
+                    social_line = f"\n**Social:** {narrative[:200]}"
+
             value = (
                 f"**{direction}** {strike_str} @ {prem_str}\n"
                 f"Price: {price_str} | Delta: {delta_str}\n"
@@ -146,6 +155,7 @@ class DiscordNotifier:
                 f"Expected daily move: {exp_str}\n"
                 f"Score: {score:.1f} | Confidence: {confidence:.0%}\n"
                 f"_{reasoning}_"
+                f"{social_line}"
             )
 
             fields.append({
@@ -442,6 +452,19 @@ class DiscordNotifier:
             parts.append("bullish sentiment")
         elif composite < -0.3:
             parts.append("bearish sentiment")
+
+        # Social intelligence signals
+        social = sent.get("social", {})
+        if social:
+            catalysts = social.get("catalysts", [])
+            if catalysts:
+                parts.append(f"catalysts: {', '.join(catalysts[:2])}")
+            flow_consensus = social.get("flow_consensus", "neutral")
+            if flow_consensus != "neutral" and social.get("flow_conviction", 0) > 0.3:
+                parts.append(f"{flow_consensus} institutional flow")
+            risks = social.get("risks", [])
+            if risks:
+                parts.append(f"risks: {', '.join(risks[:2])}")
 
         if not parts:
             return "Multi-signal convergence"

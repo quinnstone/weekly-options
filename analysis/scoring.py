@@ -444,6 +444,36 @@ class CandidateScorer:
         elif direction == "put" and composite < -0.3:
             score += 10
 
+        # Social intelligence signals (catalysts, flow, risks)
+        social = sent.get("social", {})
+        if social:
+            # Catalyst bonus: specific catalysts being discussed = informed positioning
+            catalysts = social.get("catalysts", [])
+            if catalysts:
+                score += min(len(catalysts) * 4, 12)
+
+            # Flow alignment: institutional flow (UW sweeps) confirming direction
+            flow_consensus = social.get("flow_consensus", "neutral")
+            flow_conviction = social.get("flow_conviction", 0)
+            if flow_consensus != "neutral" and flow_conviction > 0.3:
+                if (direction == "call" and flow_consensus == "bullish") or \
+                   (direction == "put" and flow_consensus == "bearish"):
+                    score += 8  # Flow confirms thesis
+                elif (direction == "call" and flow_consensus == "bearish") or \
+                     (direction == "put" and flow_consensus == "bullish"):
+                    score -= 6  # Flow contradicts thesis — caution
+
+            # DD-quality posts: substantive analysis adds conviction
+            post_types = social.get("post_types", {})
+            dd_count = post_types.get("dd", 0)
+            if dd_count >= 2:
+                score += 6  # Multiple DD posts = informed community attention
+
+            # Risk flags from social: crowd-sourced risk detection
+            risks = social.get("risks", [])
+            if risks:
+                score -= min(len(risks) * 3, 10)
+
         # Analyst consensus (Finviz)
         fv = data.get("finviz", {})
         rating = fv.get("analyst_rating")

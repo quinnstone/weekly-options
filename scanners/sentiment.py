@@ -417,30 +417,56 @@ class SentimentScanner:
             weights.append(1)
             sources.append("stocktwits")
 
-        # --- Reddit (blend if available — try PRAW first, fall back to crawler) ---
-        try:
-            reddit = self.get_reddit_sentiment([ticker])
-            reddit_data = reddit.get(ticker, {})
-            if reddit_data and reddit_data.get("mentions", 0) > 0:
-                scores.append(reddit_data["avg_sentiment"])
-                weights.append(1)
-                sources.append("reddit")
-        except Exception as exc:
-            logger.debug("Reddit PRAW unavailable for %s: %s", ticker, exc)
-
         # --- Social crawler (headless browser — Reddit + Twitter/UW) ---
-        # Only if we have pre-crawled data (crawl_all is expensive, run once per stage)
-        if hasattr(self, "_social_data") and self._social_data:
+        # Preferred source: pre-crawled once per stage, covers Reddit + Twitter + UW
+        social_has_reddit = False
+        social_intel = {}
+        if self._social_data:
             social = self._social_data.get("ticker_sentiment", {}).get(ticker.upper(), {})
             if social and social.get("mentions", 0) > 0:
                 scores.append(social["avg_sentiment"])
-                # Weight by mention count — more mentions = more signal
-                social_weight = min(social["mentions"] / 5, 2)  # Cap at 2x
+                # Weight by signal_strength (quality-adjusted, not just volume)
+                signal = social.get("signal_strength", social["mentions"])
+                social_weight = min(signal / 5, 3)  # Cap at 3x
                 weights.append(max(social_weight, 0.5))
                 sources.append("social_crawler")
-                # High engagement bonus
-                if social.get("engagement", 0) > 100:
-                    weights[-1] *= 1.5  # Viral posts carry more weight
+
+                # Flow alignment bonus: if UW flow agrees with sentiment direction
+                flow_consensus = social.get("flow_consensus", "neutral")
+                if flow_consensus != "neutral":
+                    flow_conviction = social.get("flow_conviction", 0)
+                    if flow_conviction > 0.5:
+                        weights[-1] *= 1.3  # Directional flow adds conviction
+
+                social_has_reddit = any(
+                    s in ("reddit", "wallstreetbets", "stocks", "options", "thetagang")
+                    for s in social.get("sources", []))
+
+                # Preserve qualitative intelligence for downstream consumption
+                social_intel = {
+                    "narrative": social.get("narrative", ""),
+                    "catalysts": social.get("catalysts", []),
+                    "risks": social.get("risks", []),
+                    "flow_consensus": flow_consensus,
+                    "flow_conviction": social.get("flow_conviction", 0),
+                    "flow_signals": social.get("flow_signals", []),
+                    "signal_strength": social.get("signal_strength", 0),
+                    "top_posts": social.get("top_posts", []),
+                    "price_targets": social.get("price_targets", []),
+                    "post_types": social.get("post_types", {}),
+                }
+
+        # --- Reddit PRAW (fallback when social crawler didn't cover Reddit) ---
+        if not social_has_reddit:
+            try:
+                reddit = self.get_reddit_sentiment([ticker])
+                reddit_data = reddit.get(ticker, {})
+                if reddit_data and reddit_data.get("mentions", 0) > 0:
+                    scores.append(reddit_data["avg_sentiment"])
+                    weights.append(1)
+                    sources.append("reddit")
+            except Exception as exc:
+                logger.debug("Reddit PRAW unavailable for %s: %s", ticker, exc)
 
         # --- Weighted composite ---
         if scores:
@@ -449,13 +475,19 @@ class SentimentScanner:
         else:
             composite = 0.0
 
-        return {
+        result = {
             "ticker": ticker,
             "composite_score": round(composite, 4),
             "article_count": article_count,
             "sources": sources,
             "headlines": top_headlines,
         }
+
+        # Attach social intelligence when available
+        if social_intel:
+            result["social"] = social_intel
+
+        return result
 
     # ------------------------------------------------------------------ #
     #  Batch

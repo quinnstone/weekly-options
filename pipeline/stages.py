@@ -607,13 +607,27 @@ class DailyStages:
         if sent_scanner:
             try:
                 sent_scanner.load_social_data(tickers=tickers)
-                # Update candidates with fresh social sentiment
+                # Update candidates with fresh social intelligence
                 social_data = (sent_scanner._social_data or {}).get("ticker_sentiment", {})
                 for c in candidates:
                     ticker = c.get("ticker", "")
                     social = social_data.get(ticker, {})
                     if social and social.get("mentions", 0) > 0:
-                        c.setdefault("sentiment", {})["social"] = social
+                        c.setdefault("sentiment", {})["social"] = {
+                            "narrative": social.get("narrative", ""),
+                            "catalysts": social.get("catalysts", []),
+                            "risks": social.get("risks", []),
+                            "flow_consensus": social.get("flow_consensus", "neutral"),
+                            "flow_conviction": social.get("flow_conviction", 0),
+                            "flow_signals": social.get("flow_signals", []),
+                            "signal_strength": social.get("signal_strength", 0),
+                            "top_posts": social.get("top_posts", []),
+                            "price_targets": social.get("price_targets", []),
+                            "post_types": social.get("post_types", {}),
+                            "avg_sentiment": social.get("avg_sentiment", 0),
+                            "consensus": social.get("consensus", "unknown"),
+                            "mentions": social.get("mentions", 0),
+                        }
             except Exception as exc:
                 logger.warning("Monday social crawl failed (non-fatal): %s", exc)
 

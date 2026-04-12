@@ -104,6 +104,22 @@ def discover_dynamic_tickers(max_additions: int = 20) -> list:
         if _check_news_buzz(ticker):
             candidates.setdefault(ticker, set()).add("news_buzz")
 
+    # 4. Social trending (Reddit/Twitter buzz from social crawler)
+    logger.info("Checking social trending tickers...")
+    try:
+        from scanners.social_crawler import SocialCrawler
+        crawler = SocialCrawler()
+        social_data = crawler.crawl_all()
+        for item in social_data.get("combined_trending", []):
+            ticker = item.get("ticker", "")
+            mentions = item.get("mentions", 0)
+            if ticker and ticker not in core and mentions >= 3:
+                candidates.setdefault(ticker, set()).add("social_trending")
+    except ImportError:
+        logger.debug("Social crawler not available for dynamic discovery")
+    except Exception as exc:
+        logger.debug("Social trending scan failed (non-fatal): %s", exc)
+
     if not candidates:
         logger.info("No dynamic candidates found this week")
         return []

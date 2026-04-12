@@ -1,13 +1,14 @@
 """
-Social Media Crawler — headless browser scraping for financial sentiment.
+Social Media Crawler — intelligent scraping for financial signal extraction.
 
-Crawls public pages from Reddit and finance Twitter/Unusual Whales to capture
-retail sentiment, trending tickers, and consensus direction. Uses Playwright
-for reliable rendering of dynamic content.
+Goes beyond mention counting: classifies post types (DD, catalyst, position,
+meme), extracts specific narratives (price targets, catalysts, risks, flow
+direction), and weights by post quality and engagement.
 
 Sources:
     Reddit: r/wallstreetbets, r/stocks, r/options, r/thetagang, r/personalfinance
-    Finance: Unusual Whales flow page, StockTwits trending
+    Finance: Unusual Whales flow page
+    Twitter: @unusual_whales, @DeItaone, @zaboravom via Nitter mirrors
 
 Rate-limited and respectful: 2-3 second delays between pages, headless only.
 """
@@ -22,13 +23,13 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 logger = logging.getLogger(__name__)
 VADER = SentimentIntensityAnalyzer()
 
-# Common ticker patterns — avoid matching common English words
-# Only match 1-5 char uppercase preceded by $ or in known context
+# ------------------------------------------------------------------
+#  Ticker extraction patterns
+# ------------------------------------------------------------------
+
 TICKER_PATTERN = re.compile(r'\$([A-Z]{1,5})\b')
-# Secondary pattern for standalone tickers (less reliable, needs context)
 LOOSE_TICKER = re.compile(r'\b([A-Z]{2,5})\b')
 
-# Words that look like tickers but aren't
 TICKER_BLACKLIST = {
     "THE", "AND", "FOR", "ARE", "BUT", "NOT", "YOU", "ALL", "CAN", "HER",
     "WAS", "ONE", "OUR", "OUT", "HAS", "ITS", "HIS", "HOW", "MAN", "NEW",
@@ -49,6 +50,52 @@ TICKER_BLACKLIST = {
     "BID", "GAP", "RED", "MAX", "NET",
 }
 
+# ------------------------------------------------------------------
+#  Post classification patterns
+# ------------------------------------------------------------------
+
+# Post type detection — ordered by signal quality (DD > catalyst > position > news > meme)
+_DD_PATTERNS = re.compile(
+    r'\b(DD|due diligence|deep dive|analysis|thesis|bull case|bear case|'
+    r'valuation|dcf|price target|fair value|undervalued|overvalued|'
+    r'free cash flow|revenue growth|margin expansion|TAM|moat)\b',
+    re.IGNORECASE,
+)
+_CATALYST_PATTERNS = re.compile(
+    r'\b(FDA|approval|phase \d|trial|earnings|guidance|buyback|'
+    r'dividend|split|acquisition|merger|M&A|partnership|deal|'
+    r'contract|launch|release|upgrade|downgrade|recall|investigation|'
+    r'lawsuit|settlement|tariff|regulation|ban|shortage|delay)\b',
+    re.IGNORECASE,
+)
+_POSITION_PATTERNS = re.compile(
+    r'\b(bought|sold|opened|closed|holding|position|shares|contracts|'
+    r'calls?|puts?|spread|straddle|strangle|iron condor|'
+    r'wheel|CSP|CC|LEAPS?|FD|weeklies?|monthlies?|'
+    r'\d+[cp]\s|\d+\s*strike)\b',
+    re.IGNORECASE,
+)
+_RISK_PATTERNS = re.compile(
+    r'\b(warning|risk|danger|overextended|overbought|oversold|'
+    r'bubble|crash|correction|pullback|resistance|breakdown|'
+    r'dilution|shelf offering|secondary|insider sell|lock.?up|'
+    r'short report|citron|hindenburg|muddy waters|grizzly)\b',
+    re.IGNORECASE,
+)
+_PRICE_TARGET_PATTERN = re.compile(
+    r'(?:price target|pt|target|fair value)[:\s]*\$?\s*(\d+(?:\.\d+)?)',
+    re.IGNORECASE,
+)
+_POSITION_SIZE_PATTERN = re.compile(
+    r'(\d+)\s*(?:shares|contracts|calls|puts|options)',
+    re.IGNORECASE,
+)
+
+# Unusual Whales flow — extract premium size for weighting
+_PREMIUM_PATTERN = re.compile(r'\$[\d,.]+[KMB]|\$[\d,]+(?:\.\d+)?')
+_EXPIRY_PATTERN = re.compile(r'(\d{1,2}/\d{1,2}(?:/\d{2,4})?)')
+_STRIKE_PATTERN = re.compile(r'\$?(\d+(?:\.\d+)?)\s*(?:c|p|call|put)', re.IGNORECASE)
+
 REDDIT_SUBS = [
     "wallstreetbets",
     "stocks",
@@ -57,25 +104,103 @@ REDDIT_SUBS = [
     "personalfinance",
 ]
 
-# Finance Twitter accounts to check via Nitter instances or direct scrape
 FINANCE_TWITTER = [
     "unusual_whales",
-    "DeItaone",      # Walter Bloomberg — breaking financial news
-    "zaboravom",     # Market commentary
+    "DeItaone",
+    "zaboravom",
 ]
 
 
+def _classify_post(text: str) -> dict:
+    """Classify a post's type and extract structured signals.
+
+    Returns
+    -------
+    dict
+        'post_type' (str): dd, catalyst, position, risk_flag, news, meme
+        'quality_score' (float): 0-1 quality multiplier for weighting
+        'catalysts' (list[str]): specific catalysts mentioned
+        'risks' (list[str]): specific risks flagged
+        'price_targets' (list[float]): any price targets mentioned
+        'positions_disclosed' (list[str]): disclosed positions
+        'flow_direction' (str|None): bullish/bearish from options flow
+    """
+    result = {
+        "post_type": "noise",
+        "quality_score": 0.1,
+        "catalysts": [],
+        "risks": [],
+        "price_targets": [],
+        "positions_disclosed": [],
+        "flow_direction": None,
+    }
+
+    text_lower = text.lower()
+
+    # Classify post type (highest-signal type wins)
+    dd_matches = _DD_PATTERNS.findall(text)
+    catalyst_matches = _CATALYST_PATTERNS.findall(text)
+    position_matches = _POSITION_PATTERNS.findall(text)
+    risk_matches = _RISK_PATTERNS.findall(text)
+
+    if dd_matches:
+        result["post_type"] = "dd"
+        result["quality_score"] = 0.9
+    elif catalyst_matches:
+        result["post_type"] = "catalyst"
+        result["quality_score"] = 0.8
+    elif risk_matches:
+        result["post_type"] = "risk_flag"
+        result["quality_score"] = 0.7
+    elif position_matches:
+        result["post_type"] = "position"
+        result["quality_score"] = 0.5
+    else:
+        # Check if it's at least news-like (has numbers, dates, specifics)
+        has_numbers = bool(re.search(r'\d+%|\$\d+', text))
+        has_length = len(text) > 100
+        if has_numbers and has_length:
+            result["post_type"] = "news"
+            result["quality_score"] = 0.4
+        else:
+            result["post_type"] = "noise"
+            result["quality_score"] = 0.1
+
+    # Extract catalysts
+    if catalyst_matches:
+        result["catalysts"] = list(set(m.lower() for m in catalyst_matches))
+
+    # Extract risks
+    if risk_matches:
+        result["risks"] = list(set(m.lower() for m in risk_matches))
+
+    # Extract price targets
+    pt_matches = _PRICE_TARGET_PATTERN.findall(text)
+    if pt_matches:
+        result["price_targets"] = [float(pt) for pt in pt_matches]
+
+    # Detect flow direction from options language
+    call_signals = len(re.findall(r'\bbought?\s+calls?\b|\blong\s+calls?\b|\bbullish\s+flow\b', text_lower))
+    put_signals = len(re.findall(r'\bbought?\s+puts?\b|\blong\s+puts?\b|\bbearish\s+flow\b', text_lower))
+    if call_signals > put_signals:
+        result["flow_direction"] = "bullish"
+    elif put_signals > call_signals:
+        result["flow_direction"] = "bearish"
+
+    # Extract position disclosures
+    positions = _POSITION_SIZE_PATTERN.findall(text)
+    if positions:
+        # Reconstruct position strings from surrounding context
+        for m in re.finditer(r'(\d+)\s*(shares|contracts|calls|puts|options)', text, re.IGNORECASE):
+            result["positions_disclosed"].append(m.group(0))
+
+    return result
+
+
 class SocialCrawler:
-    """Crawl Reddit and finance social media for ticker sentiment."""
+    """Crawl Reddit and finance social media for intelligent signal extraction."""
 
     def __init__(self, target_tickers: list = None):
-        """Initialize crawler.
-
-        Parameters
-        ----------
-        target_tickers : list or None
-            Specific tickers to track. If None, discovers trending tickers.
-        """
         self.target_tickers = set(t.upper() for t in (target_tickers or []))
         self._browser = None
         self._context = None
@@ -112,35 +237,19 @@ class SocialCrawler:
         self._context = None
 
     def _extract_tickers(self, text: str) -> list:
-        """Extract ticker symbols from text.
-
-        Uses $TICKER pattern (high confidence) and loose uppercase
-        matching (lower confidence, filtered against blacklist).
-        """
+        """Extract ticker symbols from text."""
         tickers = set()
-
-        # High confidence: $AAPL, $TSLA etc
         for match in TICKER_PATTERN.findall(text):
             if match not in TICKER_BLACKLIST:
                 tickers.add(match)
-
-        # Lower confidence: standalone uppercase words, only if we have
-        # target tickers to match against (avoids false positives)
         if self.target_tickers:
             for match in LOOSE_TICKER.findall(text):
                 if match in self.target_tickers:
                     tickers.add(match)
-
         return list(tickers)
 
     def _score_text(self, text: str) -> dict:
-        """Score text sentiment using VADER.
-
-        Returns
-        -------
-        dict
-            'compound' (-1 to 1), 'positive', 'negative', 'neutral'.
-        """
+        """Score text sentiment using VADER."""
         scores = VADER.polarity_scores(text)
         return {
             "compound": scores["compound"],
@@ -154,15 +263,7 @@ class SocialCrawler:
     # ------------------------------------------------------------------
 
     def crawl_reddit(self) -> dict:
-        """Crawl all target subreddits for ticker mentions and sentiment.
-
-        Uses old.reddit.com for simpler HTML parsing.
-
-        Returns
-        -------
-        dict
-            'posts' (list), 'ticker_mentions' (dict), 'trending' (list).
-        """
+        """Crawl target subreddits with intelligent post analysis."""
         self._ensure_browser()
         all_posts = []
 
@@ -173,15 +274,13 @@ class SocialCrawler:
                 logger.info("Crawled r/%s: %d posts", sub, len(posts))
             except Exception as exc:
                 logger.error("Failed to crawl r/%s: %s", sub, exc)
-            time.sleep(2)  # Respectful delay between subs
+            time.sleep(2)
 
-        # Aggregate ticker mentions
         ticker_data = self._aggregate_mentions(all_posts)
 
-        # Find trending tickers (most mentioned)
         trending = sorted(
             ticker_data.items(),
-            key=lambda x: x[1]["mentions"],
+            key=lambda x: x[1]["signal_strength"],
             reverse=True,
         )[:20]
 
@@ -196,21 +295,7 @@ class SocialCrawler:
         }
 
     def _crawl_subreddit(self, subreddit: str, limit: int = 50) -> list:
-        """Crawl a single subreddit's hot posts.
-
-        Parameters
-        ----------
-        subreddit : str
-            Subreddit name (without r/ prefix).
-        limit : int
-            Max posts to scrape per page.
-
-        Returns
-        -------
-        list[dict]
-            Each with 'title', 'body', 'score', 'comments', 'tickers',
-            'sentiment', 'subreddit', 'url'.
-        """
+        """Crawl a subreddit with post classification and narrative extraction."""
         page = self._context.new_page()
         posts = []
 
@@ -219,13 +304,16 @@ class SocialCrawler:
             page.goto(url, timeout=15000, wait_until="domcontentloaded")
             page.wait_for_timeout(1500)
 
-            # Parse post entries from old.reddit.com
             entries = page.query_selector_all("div.thing.link")
 
             for entry in entries[:limit]:
                 try:
                     title_el = entry.query_selector("a.title")
                     title = title_el.inner_text().strip() if title_el else ""
+
+                    # Extract flair (DD, Discussion, YOLO, etc.)
+                    flair_el = entry.query_selector("span.linkflairlabel")
+                    flair = flair_el.inner_text().strip() if flair_el else ""
 
                     score_el = entry.query_selector("div.score.unvoted")
                     score_text = score_el.inner_text().strip() if score_el else "0"
@@ -241,22 +329,38 @@ class SocialCrawler:
                     except (ValueError, AttributeError):
                         comments = 0
 
-                    # Only process posts with meaningful engagement
                     if score < 5 and comments < 3:
                         continue
 
                     tickers = self._extract_tickers(title)
                     sentiment = self._score_text(title)
+                    classification = _classify_post(title)
+
+                    # Flair boosts quality score — Reddit's own categorization
+                    flair_lower = flair.lower()
+                    if flair_lower in ("dd", "due diligence", "research", "analysis"):
+                        classification["quality_score"] = max(classification["quality_score"], 0.9)
+                        classification["post_type"] = "dd"
+                    elif flair_lower in ("catalyst", "news"):
+                        classification["quality_score"] = max(classification["quality_score"], 0.7)
+                    elif flair_lower in ("yolo", "gain", "loss"):
+                        # YOLO/gain/loss posts reveal positioning, not analysis
+                        classification["quality_score"] = max(classification["quality_score"], 0.3)
+                        classification["post_type"] = "position"
+                    elif flair_lower in ("meme", "shitpost"):
+                        classification["quality_score"] = 0.05
 
                     post_url_el = entry.query_selector("a.title")
                     post_url = post_url_el.get_attribute("href") if post_url_el else ""
 
                     posts.append({
                         "title": title,
+                        "flair": flair,
                         "score": score,
                         "comments": comments,
                         "tickers": tickers,
                         "sentiment": sentiment,
+                        "classification": classification,
                         "subreddit": subreddit,
                         "url": post_url,
                     })
@@ -276,19 +380,10 @@ class SocialCrawler:
     # ------------------------------------------------------------------
 
     def crawl_finance_twitter(self) -> dict:
-        """Crawl finance accounts via Nitter instances or direct scrape.
-
-        Falls back gracefully if Nitter instances are down (common).
-
-        Returns
-        -------
-        dict
-            'posts' (list), 'ticker_mentions' (dict), 'trending' (list).
-        """
+        """Crawl finance Twitter accounts with narrative extraction."""
         self._ensure_browser()
         all_posts = []
 
-        # Try Nitter instances (public Twitter mirrors)
         nitter_instances = [
             "nitter.privacydev.net",
             "nitter.poast.org",
@@ -316,7 +411,7 @@ class SocialCrawler:
 
             time.sleep(2)
 
-        # Also try Unusual Whales flow page directly
+        # Unusual Whales flow page
         try:
             uw_posts = self._crawl_unusual_whales()
             all_posts.extend(uw_posts)
@@ -328,7 +423,7 @@ class SocialCrawler:
 
         trending = sorted(
             ticker_data.items(),
-            key=lambda x: x[1]["mentions"],
+            key=lambda x: x[1]["signal_strength"],
             reverse=True,
         )[:20]
 
@@ -343,22 +438,7 @@ class SocialCrawler:
 
     def _crawl_nitter(self, instance: str, account: str,
                       limit: int = 30) -> list:
-        """Crawl a Twitter account via a Nitter instance.
-
-        Parameters
-        ----------
-        instance : str
-            Nitter mirror hostname.
-        account : str
-            Twitter handle (without @).
-        limit : int
-            Max tweets to scrape.
-
-        Returns
-        -------
-        list[dict]
-            Each with 'text', 'tickers', 'sentiment', 'source', 'account'.
-        """
+        """Crawl a Twitter account via Nitter with content classification."""
         page = self._context.new_page()
         posts = []
 
@@ -367,7 +447,6 @@ class SocialCrawler:
             page.goto(url, timeout=10000, wait_until="domcontentloaded")
             page.wait_for_timeout(1500)
 
-            # Nitter uses .timeline-item for tweets
             items = page.query_selector_all(".timeline-item")
 
             for item in items[:limit]:
@@ -379,11 +458,24 @@ class SocialCrawler:
 
                     tickers = self._extract_tickers(text)
                     sentiment = self._score_text(text)
+                    classification = _classify_post(text)
+
+                    # Finance Twitter accounts are inherently higher quality
+                    # than random Reddit posts — boost quality floor
+                    classification["quality_score"] = max(
+                        classification["quality_score"], 0.5)
+
+                    # @DeItaone (Walter Bloomberg) is breaking news — treat as catalyst
+                    if account == "DeItaone" and tickers:
+                        classification["post_type"] = "catalyst"
+                        classification["quality_score"] = max(
+                            classification["quality_score"], 0.8)
 
                     posts.append({
-                        "title": text[:200],
+                        "title": text[:300],
                         "tickers": tickers,
                         "sentiment": sentiment,
+                        "classification": classification,
                         "source": "twitter",
                         "account": account,
                     })
@@ -398,13 +490,7 @@ class SocialCrawler:
         return posts
 
     def _crawl_unusual_whales(self) -> list:
-        """Crawl Unusual Whales public flow/trending page.
-
-        Returns
-        -------
-        list[dict]
-            Ticker mentions with flow direction context.
-        """
+        """Crawl Unusual Whales with structured flow extraction."""
         page = self._context.new_page()
         posts = []
 
@@ -413,7 +499,6 @@ class SocialCrawler:
                        timeout=15000, wait_until="domcontentloaded")
             page.wait_for_timeout(3000)
 
-            # UW renders a table of unusual flow — extract ticker + direction
             rows = page.query_selector_all("table tbody tr")
 
             for row in rows[:50]:
@@ -422,28 +507,70 @@ class SocialCrawler:
                     if len(cells) < 4:
                         continue
 
-                    text = " ".join(c.inner_text().strip() for c in cells)
+                    cell_texts = [c.inner_text().strip() for c in cells]
+                    text = " ".join(cell_texts)
                     tickers = self._extract_tickers(text)
 
-                    # Try to detect call/put direction from the row
                     text_lower = text.lower()
-                    if "call" in text_lower:
+
+                    # Structured flow extraction
+                    is_call = "call" in text_lower
+                    is_put = "put" in text_lower
+
+                    # Extract premium size for institutional signal detection
+                    premiums = _PREMIUM_PATTERN.findall(text)
+                    premium_str = premiums[0] if premiums else ""
+
+                    # Detect sweep vs block (sweeps = more urgency)
+                    is_sweep = "sweep" in text_lower
+                    is_block = "block" in text_lower
+
+                    # Extract strike and expiry for context
+                    strikes = _STRIKE_PATTERN.findall(text)
+                    expiries = _EXPIRY_PATTERN.findall(text)
+
+                    if is_call:
                         direction = "bullish"
-                        sentiment = {"compound": 0.3, "positive": 0.3,
-                                     "negative": 0.0, "neutral": 0.7}
-                    elif "put" in text_lower:
+                        sentiment = {"compound": 0.4, "positive": 0.4,
+                                     "negative": 0.0, "neutral": 0.6}
+                    elif is_put:
                         direction = "bearish"
-                        sentiment = {"compound": -0.3, "positive": 0.0,
-                                     "negative": 0.3, "neutral": 0.7}
+                        sentiment = {"compound": -0.4, "positive": 0.0,
+                                     "negative": 0.4, "neutral": 0.6}
                     else:
                         direction = "neutral"
                         sentiment = self._score_text(text)
 
+                    # Institutional flow = high quality signal
+                    quality = 0.7
+                    if is_sweep:
+                        quality = 0.9  # Sweeps indicate urgency
+                    if premium_str and any(c in premium_str for c in "MBmb"):
+                        quality = 0.95  # Million+ premium = institutional
+
+                    classification = {
+                        "post_type": "flow",
+                        "quality_score": quality,
+                        "catalysts": [],
+                        "risks": [],
+                        "price_targets": [],
+                        "positions_disclosed": [],
+                        "flow_direction": direction,
+                        "flow_details": {
+                            "type": "sweep" if is_sweep else "block" if is_block else "standard",
+                            "premium": premium_str,
+                            "strike": strikes[0] if strikes else None,
+                            "expiry": expiries[0] if expiries else None,
+                            "direction": direction,
+                        },
+                    }
+
                     if tickers:
                         posts.append({
-                            "title": text[:200],
+                            "title": text[:300],
                             "tickers": tickers,
                             "sentiment": sentiment,
+                            "classification": classification,
                             "source": "unusual_whales",
                             "direction": direction,
                         })
@@ -458,22 +585,18 @@ class SocialCrawler:
         return posts
 
     # ------------------------------------------------------------------
-    #  Aggregation
+    #  Intelligent Aggregation
     # ------------------------------------------------------------------
 
     def _aggregate_mentions(self, posts: list) -> dict:
-        """Aggregate all posts into per-ticker sentiment data.
+        """Aggregate posts into per-ticker intelligence, not just counts.
 
-        Parameters
-        ----------
-        posts : list
-            Raw posts from all sources.
-
-        Returns
-        -------
-        dict
-            Keyed by ticker: mentions, avg_sentiment, bullish/bearish counts,
-            engagement_score, sources.
+        Output per ticker includes:
+        - Quality-weighted sentiment (DD posts count more than memes)
+        - Extracted catalysts and risks
+        - Institutional flow signals
+        - Top narratives (highest-quality posts summarized)
+        - Signal strength (composite of quality, engagement, conviction)
         """
         ticker_data = {}
 
@@ -482,18 +605,30 @@ class SocialCrawler:
                 if ticker not in ticker_data:
                     ticker_data[ticker] = {
                         "mentions": 0,
-                        "sentiments": [],
+                        "_weighted_sentiments": [],
+                        "_raw_sentiments": [],
                         "bullish": 0,
                         "bearish": 0,
                         "neutral": 0,
                         "engagement": 0,
                         "sources": set(),
+                        "catalysts": [],
+                        "risks": [],
+                        "price_targets": [],
+                        "flow_signals": [],
+                        "top_posts": [],
+                        "post_types": {},
                     }
 
                 td = ticker_data[ticker]
                 td["mentions"] += 1
+
                 compound = post.get("sentiment", {}).get("compound", 0)
-                td["sentiments"].append(compound)
+                cls = post.get("classification", {})
+                quality = cls.get("quality_score", 0.1)
+
+                td["_weighted_sentiments"].append((compound, quality))
+                td["_raw_sentiments"].append(compound)
 
                 if compound >= 0.05:
                     td["bullish"] += 1
@@ -502,17 +637,68 @@ class SocialCrawler:
                 else:
                     td["neutral"] += 1
 
-                # Engagement = upvotes + comments (Reddit) or just count (Twitter)
-                td["engagement"] += post.get("score", 0) + post.get("comments", 0)
-                td["sources"].add(post.get("source", post.get("subreddit", "unknown")))
+                # Engagement weighted by quality — a DD post with 500 upvotes
+                # means more than a meme with 500 upvotes
+                raw_engagement = post.get("score", 0) + post.get("comments", 0)
+                td["engagement"] += raw_engagement * quality
 
-        # Compute averages and clean up
+                td["sources"].add(
+                    post.get("source", post.get("subreddit", "unknown")))
+
+                # Accumulate qualitative signals
+                post_type = cls.get("post_type", "noise")
+                td["post_types"][post_type] = td["post_types"].get(post_type, 0) + 1
+
+                if cls.get("catalysts"):
+                    td["catalysts"].extend(cls["catalysts"])
+                if cls.get("risks"):
+                    td["risks"].extend(cls["risks"])
+                if cls.get("price_targets"):
+                    td["price_targets"].extend(cls["price_targets"])
+
+                # Flow signals from UW or position disclosures
+                flow_dir = cls.get("flow_direction")
+                if flow_dir:
+                    flow_entry = {"direction": flow_dir, "source": post.get("source", "?")}
+                    flow_details = cls.get("flow_details")
+                    if flow_details:
+                        flow_entry.update(flow_details)
+                    td["flow_signals"].append(flow_entry)
+
+                # Track top posts by quality * engagement
+                post_signal = quality * max(raw_engagement, 1)
+                td["top_posts"].append({
+                    "title": post.get("title", "")[:200],
+                    "type": post_type,
+                    "quality": quality,
+                    "engagement": raw_engagement,
+                    "signal": post_signal,
+                    "source": post.get("source", post.get("subreddit", "?")),
+                    "sentiment": compound,
+                    "catalysts": cls.get("catalysts", []),
+                    "risks": cls.get("risks", []),
+                })
+
+        # Finalize each ticker's intelligence
         for ticker, td in ticker_data.items():
-            sents = td.pop("sentiments")
-            td["avg_sentiment"] = round(sum(sents) / len(sents), 4) if sents else 0
+            # Quality-weighted sentiment (DD and catalyst posts weigh more)
+            weighted = td.pop("_weighted_sentiments")
+            raw = td.pop("_raw_sentiments")
+
+            if weighted:
+                total_weight = sum(w for _, w in weighted)
+                td["avg_sentiment"] = round(
+                    sum(s * w for s, w in weighted) / total_weight, 4
+                ) if total_weight > 0 else 0
+            else:
+                td["avg_sentiment"] = 0
+
+            td["raw_avg_sentiment"] = round(
+                sum(raw) / len(raw), 4) if raw else 0
+
             td["sources"] = sorted(td["sources"])
 
-            # Consensus direction
+            # Consensus
             total = td["bullish"] + td["bearish"] + td["neutral"]
             if total > 0:
                 bull_pct = td["bullish"] / total
@@ -526,20 +712,120 @@ class SocialCrawler:
             else:
                 td["consensus"] = "unknown"
 
+            # Deduplicate catalysts and risks
+            td["catalysts"] = sorted(set(td["catalysts"]))
+            td["risks"] = sorted(set(td["risks"]))
+
+            # Aggregate flow direction
+            flow_bulls = sum(1 for f in td["flow_signals"] if f["direction"] == "bullish")
+            flow_bears = sum(1 for f in td["flow_signals"] if f["direction"] == "bearish")
+            if flow_bulls + flow_bears > 0:
+                td["flow_consensus"] = "bullish" if flow_bulls > flow_bears else "bearish"
+                td["flow_conviction"] = abs(flow_bulls - flow_bears) / (flow_bulls + flow_bears)
+            else:
+                td["flow_consensus"] = "neutral"
+                td["flow_conviction"] = 0
+
+            # Keep only top 5 posts by signal strength
+            td["top_posts"] = sorted(
+                td["top_posts"], key=lambda x: x["signal"], reverse=True
+            )[:5]
+
+            # Build narrative summary — the key qualitative output
+            td["narrative"] = self._build_narrative(td)
+
+            # Signal strength: composite that accounts for quality, not just volume
+            # DD mention + catalyst + flow alignment > 10 meme mentions
+            dd_count = td["post_types"].get("dd", 0)
+            catalyst_count = td["post_types"].get("catalyst", 0)
+            flow_count = td["post_types"].get("flow", 0)
+            risk_count = td["post_types"].get("risk_flag", 0)
+
+            quality_mentions = (
+                dd_count * 3
+                + catalyst_count * 2.5
+                + flow_count * 2
+                + risk_count * 1.5
+                + td["post_types"].get("position", 0) * 0.5
+                + td["post_types"].get("news", 0) * 0.5
+                + td["post_types"].get("noise", 0) * 0.1
+            )
+            engagement_factor = min(td["engagement"] / 500, 3)  # Cap at 3x
+            td["signal_strength"] = round(quality_mentions * (1 + engagement_factor), 2)
+
         return ticker_data
+
+    @staticmethod
+    def _build_narrative(td: dict) -> str:
+        """Build a human-readable narrative summary of what social is saying.
+
+        This is the qualitative output that scoring and Discord can use
+        to understand *what* people are talking about, not just how many.
+        """
+        parts = []
+
+        # Mention volume context
+        mentions = td["mentions"]
+        if mentions >= 10:
+            parts.append(f"High social activity ({mentions} mentions)")
+        elif mentions >= 5:
+            parts.append(f"Moderate buzz ({mentions} mentions)")
+
+        # What type of discussion
+        dd_count = td["post_types"].get("dd", 0)
+        if dd_count:
+            parts.append(f"{dd_count} DD/analysis post{'s' if dd_count > 1 else ''}")
+
+        # Catalysts being discussed
+        catalysts = td.get("catalysts", [])
+        if catalysts:
+            parts.append(f"Catalysts: {', '.join(catalysts[:4])}")
+
+        # Risks being flagged
+        risks = td.get("risks", [])
+        if risks:
+            parts.append(f"Risks flagged: {', '.join(risks[:3])}")
+
+        # Price targets
+        pts = td.get("price_targets", [])
+        if pts:
+            avg_pt = sum(pts) / len(pts)
+            parts.append(f"Avg price target: ${avg_pt:.0f}")
+
+        # Flow signals
+        flow_signals = td.get("flow_signals", [])
+        sweeps = [f for f in flow_signals if f.get("type") == "sweep"]
+        if sweeps:
+            direction = sweeps[0].get("direction", "?")
+            parts.append(f"{len(sweeps)} {direction} sweep{'s' if len(sweeps) > 1 else ''} on UW")
+        elif flow_signals:
+            parts.append(f"Options flow: {td.get('flow_consensus', '?')}")
+
+        # Top post snippet
+        top = td.get("top_posts", [])
+        if top and top[0]["quality"] >= 0.5:
+            best = top[0]
+            # Truncate title for narrative
+            title_short = best["title"][:80]
+            if len(best["title"]) > 80:
+                title_short += "..."
+            parts.append(f"Top signal ({best['type']}): \"{title_short}\"")
+
+        return " | ".join(parts) if parts else "Minimal social signal"
 
     # ------------------------------------------------------------------
     #  Public API
     # ------------------------------------------------------------------
 
     def crawl_all(self) -> dict:
-        """Run all crawlers and merge results.
+        """Run all crawlers, merge, and produce intelligence output.
 
         Returns
         -------
         dict
-            'reddit' (dict), 'twitter' (dict), 'combined_trending' (list),
-            'ticker_sentiment' (dict — merged from all sources).
+            'reddit', 'twitter': raw source data
+            'combined_trending': top tickers by signal_strength
+            'ticker_sentiment': per-ticker intelligence with narratives
         """
         try:
             self._ensure_browser()
@@ -564,42 +850,17 @@ class SocialCrawler:
         except Exception as exc:
             logger.error("Twitter crawl failed: %s", exc)
 
-        # Merge ticker sentiment from all sources
-        merged = {}
-        for source_data in [reddit_data, twitter_data]:
-            for ticker, data in source_data.get("ticker_mentions", {}).items():
-                if ticker not in merged:
-                    merged[ticker] = {
-                        "mentions": 0, "avg_sentiment": 0, "sentiments": [],
-                        "bullish": 0, "bearish": 0, "neutral": 0,
-                        "engagement": 0, "sources": [],
-                    }
-                m = merged[ticker]
-                m["mentions"] += data["mentions"]
-                m["sentiments"].append(data["avg_sentiment"])
-                m["bullish"] += data["bullish"]
-                m["bearish"] += data["bearish"]
-                m["neutral"] += data["neutral"]
-                m["engagement"] += data["engagement"]
-                m["sources"].extend(data.get("sources", []))
+        # Merge all posts and re-aggregate for combined intelligence
+        all_posts = []
+        for source in [reddit_data, twitter_data]:
+            all_posts.extend(source.get("posts", []))
 
-        # Finalize merged averages
-        for ticker, m in merged.items():
-            sents = m.pop("sentiments")
-            m["avg_sentiment"] = round(sum(sents) / len(sents), 4) if sents else 0
-            m["sources"] = sorted(set(m["sources"]))
-            total = m["bullish"] + m["bearish"] + m["neutral"]
-            if total > 0:
-                bull_pct = m["bullish"] / total
-                bear_pct = m["bearish"] / total
-                m["consensus"] = "bullish" if bull_pct > 0.6 else "bearish" if bear_pct > 0.6 else "mixed"
-            else:
-                m["consensus"] = "unknown"
+        merged = self._aggregate_mentions(all_posts)
 
-        # Combined trending by total mentions
+        # Combined trending by signal strength (not just mention count)
         combined_trending = sorted(
             [{"ticker": t, **d} for t, d in merged.items()],
-            key=lambda x: x["mentions"],
+            key=lambda x: x["signal_strength"],
             reverse=True,
         )[:25]
 
@@ -614,30 +875,17 @@ class SocialCrawler:
         }
 
     def get_ticker_sentiment(self, tickers: list) -> dict:
-        """Get sentiment for specific tickers only.
-
-        More efficient than crawl_all when you already know which tickers
-        to check — still crawls all sources but only returns matches.
-
-        Parameters
-        ----------
-        tickers : list
-            Tickers to get sentiment for.
-
-        Returns
-        -------
-        dict
-            Keyed by ticker: mentions, avg_sentiment, consensus, sources.
-        """
+        """Get intelligence for specific tickers only."""
         self.target_tickers = set(t.upper() for t in tickers)
         result = self.crawl_all()
         all_sentiment = result.get("ticker_sentiment", {})
 
-        # Return only requested tickers
         return {
             t.upper(): all_sentiment.get(t.upper(), {
                 "mentions": 0, "avg_sentiment": 0,
                 "consensus": "unknown", "sources": [],
+                "signal_strength": 0, "narrative": "No social signal",
+                "catalysts": [], "risks": [], "flow_signals": [],
             })
             for t in tickers
         }
