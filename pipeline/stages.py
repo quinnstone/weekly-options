@@ -276,6 +276,11 @@ class DailyStages:
         sent_results = {}
         sent_scanner = self._get_sentiment_scanner()
         if sent_scanner:
+            # Pre-crawl social media once (Reddit + Twitter/UW) before per-ticker scans
+            try:
+                sent_scanner.load_social_data(tickers=tickers)
+            except Exception as exc:
+                logger.warning("Social crawl failed (non-fatal): %s", exc)
             sent_results = self._batch_scan(sent_scanner, "analyze_ticker_sentiment", tickers, rate_limit=1.5)
         else:
             logger.warning("Skipping sentiment scan — scanner unavailable")
@@ -435,6 +440,10 @@ class DailyStages:
 
         sent_scanner = self._get_sentiment_scanner()
         if sent_scanner:
+            try:
+                sent_scanner.load_social_data(tickers=tickers)
+            except Exception as exc:
+                logger.warning("Social crawl failed (non-fatal): %s", exc)
             sent_results = self._batch_scan(sent_scanner, "analyze_ticker_sentiment", tickers, rate_limit=1.5)
         else:
             sent_results = {}
@@ -592,6 +601,21 @@ class DailyStages:
             flow_results = self._batch_scan(flow_scanner, "detect_unusual_volume", tickers, rate_limit=0.3)
         else:
             logger.warning("Skipping flow scan — scanner unavailable")
+
+        # 5b. Fresh social sentiment (Monday morning — most relevant for entry)
+        sent_scanner = self._get_sentiment_scanner()
+        if sent_scanner:
+            try:
+                sent_scanner.load_social_data(tickers=tickers)
+                # Update candidates with fresh social sentiment
+                social_data = (sent_scanner._social_data or {}).get("ticker_sentiment", {})
+                for c in candidates:
+                    ticker = c.get("ticker", "")
+                    social = social_data.get(ticker, {})
+                    if social and social.get("mentions", 0) > 0:
+                        c.setdefault("sentiment", {})["social"] = social
+            except Exception as exc:
+                logger.warning("Monday social crawl failed (non-fatal): %s", exc)
 
         # 6. Merge fresh data into candidates
         for c in candidates:

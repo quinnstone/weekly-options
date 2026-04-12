@@ -25,6 +25,45 @@ VADER = SentimentIntensityAnalyzer()
 class SentimentScanner:
     """Aggregate sentiment from multiple free data sources."""
 
+    def __init__(self):
+        self._social_data = None
+
+    def load_social_data(self, tickers: list = None):
+        """Pre-crawl social media once per pipeline stage.
+
+        Call this before scan_batch() to avoid launching the browser
+        per-ticker. Results are cached in self._social_data.
+
+        Parameters
+        ----------
+        tickers : list or None
+            Target tickers to track (improves loose matching accuracy).
+        """
+        try:
+            from scanners.social_crawler import SocialCrawler
+            crawler = SocialCrawler(target_tickers=tickers)
+            self._social_data = crawler.crawl_all()
+            mention_count = len(self._social_data.get("ticker_sentiment", {}))
+            logger.info("Social crawl complete: %d tickers mentioned", mention_count)
+        except ImportError:
+            logger.warning("Playwright not installed — skipping social crawl. "
+                           "Run: pip install playwright && playwright install chromium")
+        except Exception as exc:
+            logger.error("Social crawl failed: %s", exc)
+            self._social_data = None
+
+    def get_social_trending(self) -> list:
+        """Return trending tickers from the most recent social crawl.
+
+        Returns
+        -------
+        list[dict]
+            Top trending tickers with mentions, sentiment, consensus.
+        """
+        if not self._social_data:
+            return []
+        return self._social_data.get("combined_trending", [])
+
     # ------------------------------------------------------------------ #
     #  Finnhub News
     # ------------------------------------------------------------------ #
@@ -378,7 +417,7 @@ class SentimentScanner:
             weights.append(1)
             sources.append("stocktwits")
 
-        # --- Reddit (blend if available) ---
+        # --- Reddit (blend if available — try PRAW first, fall back to crawler) ---
         try:
             reddit = self.get_reddit_sentiment([ticker])
             reddit_data = reddit.get(ticker, {})
@@ -387,7 +426,21 @@ class SentimentScanner:
                 weights.append(1)
                 sources.append("reddit")
         except Exception as exc:
-            logger.debug("Reddit sentiment unavailable for %s: %s", ticker, exc)
+            logger.debug("Reddit PRAW unavailable for %s: %s", ticker, exc)
+
+        # --- Social crawler (headless browser — Reddit + Twitter/UW) ---
+        # Only if we have pre-crawled data (crawl_all is expensive, run once per stage)
+        if hasattr(self, "_social_data") and self._social_data:
+            social = self._social_data.get("ticker_sentiment", {}).get(ticker.upper(), {})
+            if social and social.get("mentions", 0) > 0:
+                scores.append(social["avg_sentiment"])
+                # Weight by mention count — more mentions = more signal
+                social_weight = min(social["mentions"] / 5, 2)  # Cap at 2x
+                weights.append(max(social_weight, 0.5))
+                sources.append("social_crawler")
+                # High engagement bonus
+                if social.get("engagement", 0) > 100:
+                    weights[-1] *= 1.5  # Viral posts carry more weight
 
         # --- Weighted composite ---
         if scores:
