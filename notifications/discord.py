@@ -1,8 +1,8 @@
 """
 Discord notification module for the Weekly Options Trading Analysis System.
 
-Sends formatted messages to a Discord channel via webhook, including
-final pick embeds and weekly reflection summaries.
+Sends explicit, actionable messages to Discord — every message tells Quinn
+exactly what to do, with dollar amounts, strike prices, and exit targets.
 """
 
 import sys
@@ -14,7 +14,7 @@ from datetime import datetime
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import Config
+from config import Config, CONTRACTS_PER_TRADE
 
 logger = logging.getLogger(__name__)
 config = Config()
@@ -24,7 +24,6 @@ class DiscordNotifier:
     """Send notifications to a Discord channel via webhook."""
 
     def __init__(self):
-        """Load webhook URL from config."""
         self.webhook_url = config.discord_webhook_url
         self.enabled = config.has_discord()
         if not self.enabled:
@@ -35,56 +34,25 @@ class DiscordNotifier:
     # ------------------------------------------------------------------
 
     def send_message(self, content: str) -> bool:
-        """Send a simple text message to Discord.
-
-        Parameters
-        ----------
-        content : str
-            Plain text message (max 2000 characters for Discord).
-
-        Returns
-        -------
-        bool
-            True if the message was sent successfully.
-        """
         if not self.enabled:
             logger.info("Discord disabled — would have sent: %s", content[:100])
             return False
-
         payload = {"content": content[:2000]}
         return self._post_webhook(payload)
 
     # ------------------------------------------------------------------
-    #  Picks embed
+    #  Monday Picks — explicit entry instructions
     # ------------------------------------------------------------------
 
     def send_picks(self, picks: list, market_summary: dict) -> bool:
-        """Send formatted embeds with Monday picks including execution guidance.
-
-        Sends two embeds:
-        1. The picks with strike, premium, breakeven, entry/exit rules
-        2. Best practices for weekly options execution (always included)
-
-        Parameters
-        ----------
-        picks : list[dict]
-            Final pick candidates, each with ticker, direction, strike,
-            entry/exit guidance, etc.
-        market_summary : dict
-            Market context (VIX, regime, breadth, credit, conditions).
-
-        Returns
-        -------
-        bool
-            True if sent successfully.
-        """
         if not self.enabled:
             logger.info("Discord disabled — %d picks not sent", len(picks))
             return False
 
         date_str = datetime.now().strftime("%A %B %d, %Y")
+        contracts = CONTRACTS_PER_TRADE
 
-        # Build market context string
+        # Market context
         vix_data = market_summary.get("vix", {})
         vix_regime = market_summary.get("vix_regime", {})
         vix_level = vix_data.get("current", "N/A")
@@ -93,7 +61,6 @@ class DiscordNotifier:
         credit = market_summary.get("credit_spread", {})
         conditions = market_summary.get("financial_conditions", {})
 
-        # Macro edge assessment
         macro_edge = picks[0].get("macro_edge", {}) if picks else {}
         edge_status = "MODEL HAS EDGE" if macro_edge.get("has_edge", True) else "REDUCED EDGE — size down"
         conf_mult = macro_edge.get("confidence_multiplier", 1.0)
@@ -110,6 +77,8 @@ class DiscordNotifier:
 
         # Build fields for each pick
         fields = []
+        total_cost = 0
+
         for i, pick in enumerate(picks, 1):
             ticker = pick.get("ticker", "?")
             direction = pick.get("direction", "?").upper()
@@ -122,8 +91,9 @@ class DiscordNotifier:
             be_move = pick.get("breakeven_move_pct")
             exp_move = pick.get("expected_daily_move_pct")
             delta = pick.get("estimated_delta")
+            expiry = pick.get("expiry", "Friday")
+            earnings_warn = pick.get("earnings_warning", False)
 
-            # Format strike info
             strike_str = f"${strike:,.2f}" if strike else "TBD"
             prem_str = f"${premium:.2f}" if premium else "N/A"
             price_str = f"${current:,.2f}" if current else "?"
@@ -132,51 +102,76 @@ class DiscordNotifier:
             exp_str = f"{exp_move:.1f}%" if exp_move else "?"
             delta_str = f"{delta:.2f}" if delta else "?"
 
-            # Entry/exit from strike selector
-            entry_info = pick.get("entry", {})
-            exit_info = pick.get("exit", {})
+            # Dollar amounts
+            cost_per_contract = (premium * 100) if premium else 0
+            total_entry_cost = cost_per_contract * contracts
+            total_cost += total_entry_cost
 
-            # Build one-sentence reasoning
+            # Exit targets in dollars
+            target_40 = cost_per_contract * 1.40 * contracts if cost_per_contract else 0
+            target_25 = cost_per_contract * 1.25 * contracts if cost_per_contract else 0
+            stop_loss_val = cost_per_contract * 0.50 * contracts if cost_per_contract else 0
+            profit_40 = target_40 - total_entry_cost
+            profit_25 = target_25 - total_entry_cost
+            loss_50 = total_entry_cost - stop_loss_val
+
+            # Reasoning + social narrative
             reasoning = self._build_reasoning(pick)
-
-            # Social intelligence narrative
             social = pick.get("sentiment", {}).get("social", {})
             social_line = ""
             if social:
                 narrative = social.get("narrative", "")
                 if narrative and narrative != "Minimal social signal":
-                    # Truncate for Discord field limit
-                    social_line = f"\n**Social:** {narrative[:200]}"
+                    social_line = f"\n**Social Intel:** {narrative[:180]}"
+
+            earnings_line = "\n**[EARNINGS THIS WEEK]** — IV crush risk, size down" if earnings_warn else ""
 
             value = (
-                f"**{direction}** {strike_str} @ {prem_str}\n"
-                f"Price: {price_str} | Delta: {delta_str}\n"
-                f"Breakeven: {be_str} ({be_move_str} move needed)\n"
-                f"Expected daily move: {exp_str}\n"
+                f"**ACTION: BUY {contracts} {ticker} {direction} {strike_str} exp {expiry}**\n"
+                f"**Limit price:** {prem_str} per contract ({contracts}x = **${total_entry_cost:,.0f}**)\n"
+                f"\n"
+                f"Stock price: {price_str} | Delta: {delta_str}\n"
+                f"Breakeven: {be_str} (stock needs to move {be_move_str})\n"
+                f"Expected weekly move: {exp_str}\n"
                 f"Score: {score:.1f} | Confidence: {confidence:.0%}\n"
+                f"\n"
+                f"**Exit targets:**\n"
+                f"Mon-Tue: sell at **${target_40:,.0f}** (+40% = **+${profit_40:,.0f}**)\n"
+                f"Thu-Fri: sell at **${target_25:,.0f}** (+25% = **+${profit_25:,.0f}**)\n"
+                f"Stop loss: sell at **${stop_loss_val:,.0f}** (-50% = **-${loss_50:,.0f}**)\n"
+                f"\n"
                 f"_{reasoning}_"
                 f"{social_line}"
+                f"{earnings_line}"
             )
 
             fields.append({
-                "name": f"{i}. {ticker}",
+                "name": f"{i}. {ticker} — {direction}",
                 "value": value,
                 "inline": False,
             })
 
-        # Picks embed
+        # Summary field
+        fields.append({
+            "name": "Total Capital Required",
+            "value": f"**${total_cost:,.0f}** for {len(picks)} positions ({contracts} contract each)",
+            "inline": False,
+        })
+
         picks_embed = {
-            "title": f"\U0001f3af Weekly Picks \u2014 {date_str}",
+            "title": f"WEEKLY PICKS — {date_str}",
             "color": 0x00AAFF if macro_edge.get("has_edge", True) else 0xFFAA00,
-            "description": market_context,
+            "description": (
+                f"**Wait for the 10:00 AM entry confirmation before placing trades.**\n"
+                f"Enter via **limit order at the mid price** or better.\n\n"
+                f"{market_context}"
+            ),
             "fields": fields,
-            "footer": {
-                "text": "Experimental \u2014 Not Investment Advice",
-            },
+            "footer": {"text": "Experimental — Not Investment Advice"},
             "timestamp": datetime.utcnow().isoformat(),
         }
 
-        # Execution best practices embed (always sent as a reminder)
+        # Execution guide
         practices_embed = self._build_execution_guide(picks)
 
         payload = {"embeds": [picks_embed, practices_embed]}
@@ -184,144 +179,335 @@ class DiscordNotifier:
 
     @staticmethod
     def _build_execution_guide(picks: list) -> dict:
-        """Build a Discord embed with weekly options entry/exit best practices."""
         exit_info = picks[0].get("exit", {}) if picks else {}
         stop_loss = exit_info.get("stop_loss_pct", 50)
 
         guide_text = (
-            "**ENTRY (Monday)**\n"
-            "- Wait **20 min** after market open for the range to establish\n"
+            "**ENTRY (Monday after 10 AM confirmation)**\n"
+            "- Wait for the **entry confirmation message** before buying\n"
             "- Enter via **limit order at the mid price** or better\n"
-            "- Skip if gap > 2% — the move may already be priced in\n"
-            "- Confirm direction with first 15-min candle before entering\n"
+            "- If confirmation says SKIP — do not enter that trade\n"
+            "- If confirmation says ADJUST — re-check strike before entering\n"
             "\n"
             "**EXIT RULES (time-decay aware)**\n"
-            "- **Day 1-2 (Mon-Tue):** Take profit at **40%** gain\n"
-            "- **Day 3 (Wed):** Take profit at **35%** gain\n"
-            "- **Day 4 (Thu):** Take profit at **25%** gain\n"
-            "- **Day 5 (Fri):** Take profit at **15%** gain (theta accelerating)\n"
-            f"- **Stop loss:** {stop_loss}% loss on the premium (any day)\n"
-            "- **Delta stop:** Close if delta drops below 0.10\n"
-            "- **Time stop:** Close by **2:00 PM ET Friday** at latest\n"
+            "- **Mon-Tue:** Take profit at **40%** gain on premium\n"
+            "- **Wed:** Take profit at **35%** gain\n"
+            "- **Thu:** Take profit at **25%** gain (theta accelerating)\n"
+            "- **Fri:** Take profit at **15%** gain\n"
+            f"- **Stop loss:** {stop_loss}% loss on premium (any day)\n"
+            "- **Hard stop:** Close by **2:00 PM ET Friday** no matter what\n"
             "\n"
-            "**STRIKE SELECTION**\n"
-            "- Strikes are chosen at ~0.30-0.40 delta for weeklies\n"
-            "- Breakeven move should be < weekly expected move (ATR x sqrt(5))\n"
-            "- If breakeven requires a larger move than the weekly expected,\n"
-            "  the risk/reward is unfavorable — consider skipping\n"
-            "\n"
-            "**POSITION SIZING**\n"
-            "- Max 2-3% of account per trade on weeklies\n"
-            "- If regime gate shows REDUCED EDGE, cut size in half\n"
-            "- Never average down on a weekly option position\n"
-            "- Max 3 positions simultaneously (quality over quantity)"
+            "**WHAT TO DO EACH DAY**\n"
+            "- **Mon 10 AM:** Read confirmation message, enter GO trades\n"
+            "- **Tue-Thu:** Check Discord for alerts. Close if TARGET or STOP hit\n"
+            "- **Fri 1:30 PM:** Close ALL remaining positions before 2 PM\n"
+            "- If no alerts, do nothing — hold until target, stop, or Friday"
         )
 
         return {
-            "title": "\U0001f4cb Weekly Options Execution Guide",
+            "title": "EXECUTION GUIDE — Read Before Trading",
             "color": 0x888888,
             "description": guide_text,
-            "footer": {
-                "text": "Mon entry -> Fri expiry | Based on 52-week backtest data",
-            },
+            "footer": {"text": "Mon entry -> Fri expiry | Max 3 positions | Not Investment Advice"},
         }
 
     # ------------------------------------------------------------------
-    #  Weekly reflection
+    #  Entry Confirmation — GO / SKIP / ADJUST
     # ------------------------------------------------------------------
 
-    def send_weekly_reflection(self, reflection: dict) -> bool:
-        """Send the weekly reflection summary as a Discord embed.
-
-        Parameters
-        ----------
-        reflection : dict
-            Reflection data from WeeklyReflector.
-
-        Returns
-        -------
-        bool
-            True if sent successfully.
-        """
+    def send_entry_confirmations(self, confirmations: list) -> None:
+        """Public method for sending entry confirmations from stages."""
         if not self.enabled:
-            logger.info("Discord disabled — reflection not sent")
-            return False
+            logger.info("Discord disabled — confirmations not sent")
+            return
+        self._send_entry_confirmations_impl(confirmations)
 
-        week = reflection.get("week", "unknown")
-        win_rate = reflection.get("win_rate", 0)
-        total_picks = reflection.get("total_picks", 0)
-        wins = reflection.get("wins", 0)
+    def _send_entry_confirmations_impl(self, confirmations: list) -> None:
+        date_str = datetime.now().strftime("%A %B %d, %Y")
+        contracts = CONTRACTS_PER_TRADE
 
-        # Top lessons
-        lessons = reflection.get("lessons", [])
-        lessons_text = "\n".join(f"- {l}" for l in lessons[:5]) if lessons else "No lessons recorded."
+        fields = []
+        for conf in confirmations:
+            ticker = conf.get("ticker", "?")
+            signal = conf.get("signal", "?")
+            direction = conf.get("direction", "?").upper()
+            strike = conf.get("strike")
+            detail = conf.get("detail", "")
+            current = conf.get("current_price")
+            new_premium = conf.get("new_premium")
+            agent_brief = conf.get("agent_brief", "")
 
-        # Weight changes
-        weight_changes = reflection.get("weight_adjustments", {})
-        if weight_changes:
-            changes_text = "\n".join(
-                f"- {k}: {v:+.3f}" for k, v in weight_changes.items()
+            strike_str = f"${strike:,.2f}" if strike else "N/A"
+            price_str = f"${current:,.2f}" if current else "?"
+            delta_str = f"{conf['new_delta']:.2f}" if conf.get("new_delta") else "?"
+            prem_str = f"${new_premium:.2f}" if new_premium else "?"
+
+            cost = (new_premium * 100 * contracts) if new_premium else 0
+
+            if signal == "GO":
+                action = f"**ENTER NOW:** Buy {contracts} {ticker} {direction} {strike_str} at {prem_str} (${cost:,.0f})"
+            elif signal == "ADJUST":
+                action = f"**RE-CHECK STRIKE** before entering {ticker} — {detail[:150]}"
+            else:
+                action = f"**DO NOT ENTER** {ticker} — {detail[:150]}"
+
+            agent_line = f"\n_Agent: {agent_brief[:150]}_" if agent_brief else ""
+
+            value = (
+                f"{action}\n"
+                f"Stock: {price_str} | Delta: {delta_str} | Premium: {prem_str}"
+                f"{agent_line}"
             )
-        else:
-            changes_text = "No adjustments."
+
+            fields.append({
+                "name": f"{'GO' if signal == 'GO' else 'SKIP' if signal == 'SKIP' else 'ADJUST'} — {ticker}",
+                "value": value,
+                "inline": False,
+            })
+
+        go_count = sum(1 for c in confirmations if c["signal"] == "GO")
+        total = len(confirmations)
+        color = 0x22CC44 if go_count == total else (0xFFAA00 if go_count > 0 else 0xCC4422)
 
         embed = {
-            "title": f"\U0001f4ca Weekly Reflection \u2014 {week}",
-            "color": 0x22CC44 if win_rate >= 0.5 else 0xCC4422,
-            "fields": [
-                {
-                    "name": "Performance",
-                    "value": f"Win Rate: **{win_rate:.0%}** ({wins}/{total_picks})",
-                    "inline": True,
-                },
-                {
-                    "name": "Avg Return",
-                    "value": f"{reflection.get('avg_return', 0):.1%}",
-                    "inline": True,
-                },
-                {
-                    "name": "Key Lessons",
-                    "value": lessons_text,
-                    "inline": False,
-                },
-                {
-                    "name": "Weight Adjustments",
-                    "value": changes_text,
-                    "inline": False,
-                },
-            ],
-            "footer": {
-                "text": "Weekly Options Analysis System",
-            },
+            "title": f"ENTRY CONFIRMATION — {date_str} (10:00 AM ET)",
+            "color": color,
+            "description": (
+                f"**{go_count}/{total} picks confirmed for entry.**\n"
+                f"Place limit orders for GO picks now. Skip anything marked SKIP."
+            ),
+            "fields": fields,
+            "footer": {"text": "Enter via limit order at mid price | Not Investment Advice"},
             "timestamp": datetime.utcnow().isoformat(),
         }
 
-        payload = {"embeds": [embed]}
-        return self._post_webhook(payload)
+        self._post_webhook({"embeds": [embed]})
 
     # ------------------------------------------------------------------
-    #  Weekly scorecard
+    #  Position Monitor — explicit hold/close instructions
+    # ------------------------------------------------------------------
+
+    def send_monitor_update(self, result: dict, urgency: str) -> None:
+        """Public method for sending monitor updates from stages."""
+        if not self.enabled:
+            logger.info("Discord disabled — monitor update not sent")
+            return
+        self._send_monitor_update_impl(result, urgency)
+
+    def _send_monitor_update_impl(self, result: dict, urgency: str) -> None:
+        positions = result.get("positions", [])
+        alerts = result.get("alerts", [])
+        summary = result.get("summary", {})
+        agent_analysis = result.get("agent_analysis", "")
+        contracts = CONTRACTS_PER_TRADE
+
+        if not positions:
+            return
+
+        urgency_colors = {"ROUTINE": 0x3498DB, "ELEVATED": 0xFFAA00, "CRITICAL": 0xCC4422}
+        color = urgency_colors.get(urgency, 0x3498DB)
+
+        day = summary.get("day", datetime.now().strftime("%A"))
+        dte = summary.get("days_to_expiry", "?")
+
+        # Day-specific profit target
+        weekday = datetime.now().weekday()
+        if weekday <= 1:
+            target_pct = 40
+        elif weekday == 2:
+            target_pct = 35
+        elif weekday == 3:
+            target_pct = 25
+        else:
+            target_pct = 15
+
+        fields = []
+        total_pnl = 0
+
+        for p in positions:
+            ticker = p.get("ticker", "?")
+
+            if p.get("status") in ("NO_DATA", "ERROR"):
+                fields.append({
+                    "name": ticker,
+                    "value": f"_{p.get('detail', 'No data available')}_",
+                    "inline": False,
+                })
+                continue
+
+            status = p.get("status", "HOLD")
+            ret = p.get("option_return_pct", 0)
+            stock_move = p.get("stock_move_pct", 0)
+            direction = p.get("direction", "?").upper()
+            entry_premium = p.get("entry_premium", 0)
+            current_option = p.get("current_option_price", 0)
+
+            # Dollar P&L
+            entry_cost = entry_premium * 100 * contracts if entry_premium else 0
+            current_val = current_option * 100 * contracts if current_option else 0
+            dollar_pnl = current_val - entry_cost
+            total_pnl += dollar_pnl
+
+            # Target and stop in dollars
+            target_val = entry_cost * (1 + target_pct / 100)
+            stop_val = entry_cost * 0.50
+
+            # Explicit action instruction
+            if status == "TARGET_HIT":
+                action = f"**CLOSE NOW — TARGET HIT.** Sell for ~${current_val:,.0f} (+${dollar_pnl:,.0f})"
+            elif status == "STOP_HIT":
+                action = f"**CLOSE NOW — STOP HIT.** Sell to limit loss at ~${current_val:,.0f} ({'-' if dollar_pnl < 0 else '+'}${abs(dollar_pnl):,.0f})"
+            elif status == "CLOSE":
+                action = f"**CLOSE NOW.** Sell at market if needed. Current value ~${current_val:,.0f}"
+            elif status == "WARNING":
+                action = f"**WATCH CLOSELY.** Approaching stop. Current value ~${current_val:,.0f}"
+            else:
+                action = f"**HOLD.** Target: ${target_val:,.0f} (+{target_pct}%) | Stop: ${stop_val:,.0f} (-50%)"
+
+            pnl_sign = "+" if dollar_pnl >= 0 else ""
+
+            value = (
+                f"{action}\n"
+                f"{direction} | Stock: {stock_move:+.1f}% | Option: {ret:+.0f}%\n"
+                f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}**"
+            )
+
+            fields.append({
+                "name": f"{'!!' if status in ('TARGET_HIT', 'STOP_HIT', 'CLOSE') else '..'} {ticker}",
+                "value": value,
+                "inline": False,
+            })
+
+        # Portfolio total
+        pnl_sign = "+" if total_pnl >= 0 else ""
+        fields.append({
+            "name": "Portfolio Total",
+            "value": f"**{pnl_sign}${total_pnl:,.0f}** across {len([p for p in positions if p.get('status') not in ('NO_DATA', 'ERROR')])} positions | DTE: {dte}",
+            "inline": False,
+        })
+
+        # Alert summary
+        if alerts:
+            alert_text = "\n".join(f"- {a}" for a in alerts)
+            fields.append({
+                "name": "Alerts",
+                "value": alert_text,
+                "inline": False,
+            })
+
+        # Agent analysis
+        if agent_analysis:
+            truncated = agent_analysis[:900] + "..." if len(agent_analysis) > 900 else agent_analysis
+            fields.append({
+                "name": "Agent Analysis",
+                "value": truncated,
+                "inline": False,
+            })
+
+        what_to_do = {
+            "ROUTINE": f"No action needed unless an alert says CLOSE. Today's target: +{target_pct}% on premium.",
+            "ELEVATED": f"Theta is accelerating. Close any position that hits +{target_pct}% today. Tighten mental stops.",
+            "CRITICAL": "**Close ALL positions by 2:00 PM ET.** Use market orders if limits aren't filling.",
+        }
+
+        embed = {
+            "title": f"POSITION UPDATE — {day} [{urgency}]",
+            "color": color,
+            "description": what_to_do.get(urgency, ""),
+            "fields": fields,
+            "footer": {"text": "Weekly Options Monitor | Not Investment Advice"},
+            "timestamp": datetime.utcnow().isoformat(),
+        }
+
+        self._post_webhook({"embeds": [embed]})
+
+    # ------------------------------------------------------------------
+    #  Final Exit — close everything
+    # ------------------------------------------------------------------
+
+    def send_final_exit(self, result: dict) -> None:
+        """Public method for sending final exit from stages."""
+        if not self.enabled:
+            logger.info("Discord disabled — final exit not sent")
+            return
+        self._send_final_exit_impl(result)
+
+    def _send_final_exit_impl(self, result: dict) -> None:
+        positions = result.get("positions", [])
+        contracts = CONTRACTS_PER_TRADE
+
+        if not positions:
+            return
+
+        fields = []
+        total_pnl = 0
+
+        for p in positions:
+            if p.get("status") in ("NO_DATA", "ERROR"):
+                continue
+
+            ticker = p.get("ticker", "?")
+            ret = p.get("option_return_pct", 0)
+            direction = p.get("direction", "?").upper()
+            current = p.get("current_price", "?")
+            strike = p.get("strike", "?")
+            entry_premium = p.get("entry_premium", 0)
+            current_option = p.get("current_option_price", 0)
+
+            entry_cost = entry_premium * 100 * contracts if entry_premium else 0
+            current_val = current_option * 100 * contracts if current_option else 0
+            dollar_pnl = current_val - entry_cost
+            total_pnl += dollar_pnl
+
+            pnl_sign = "+" if dollar_pnl >= 0 else ""
+
+            value = (
+                f"**CLOSE NOW** — Sell {contracts} {direction} ${strike} at market\n"
+                f"Stock: ${current} | Option P&L: {ret:+.0f}% (**{pnl_sign}${dollar_pnl:,.0f}**)\n"
+                f"_Use market order if limit doesn't fill in 5 min. Do NOT hold past 2 PM._"
+            )
+
+            fields.append({
+                "name": f"!! {ticker}",
+                "value": value,
+                "inline": False,
+            })
+
+        pnl_sign = "+" if total_pnl >= 0 else ""
+        agent_analysis = result.get("agent_analysis", "")
+        if agent_analysis:
+            truncated = agent_analysis[:900] + "..." if len(agent_analysis) > 900 else agent_analysis
+            fields.append({
+                "name": "Agent Analysis",
+                "value": truncated,
+                "inline": False,
+            })
+
+        embed = {
+            "title": "FINAL EXIT — Close ALL Positions by 2:00 PM ET",
+            "color": 0xFF0000,
+            "description": (
+                f"**{len(positions)} positions must be closed NOW.**\n"
+                f"Estimated week P&L: **{pnl_sign}${total_pnl:,.0f}**\n"
+                f"Weekly options expire today — use market orders if needed."
+            ),
+            "fields": fields,
+            "footer": {"text": "MANDATORY EXIT | Not Investment Advice"},
+            "timestamp": datetime.utcnow().isoformat(),
+        }
+
+        self._post_webhook({"embeds": [embed]})
+
+    # ------------------------------------------------------------------
+    #  Weekly Scorecard — dollar P&L breakdown
     # ------------------------------------------------------------------
 
     def send_scorecard(self, weekly: dict, alltime: dict) -> bool:
-        """Send the weekly scorecard results as a Discord embed.
-
-        Parameters
-        ----------
-        weekly : dict
-            This week's graded results from Scorecard.grade_week().
-        alltime : dict
-            All-time running totals from scorecard data.
-
-        Returns
-        -------
-        bool
-            True if sent successfully.
-        """
         if not self.enabled:
             logger.info("Discord disabled — scorecard not sent")
             return False
 
+        contracts = CONTRACTS_PER_TRADE
         pick_date = weekly.get("pick_date", "?")
         expiry = weekly.get("expiry", "?")
         week_pnl = weekly.get("total_pnl", 0)
@@ -331,10 +517,8 @@ class DiscordNotifier:
         losses = weekly.get("losses", 0)
         partials = weekly.get("partials", 0)
 
-        # Color: green if profitable, red if not
         color = 0x22CC44 if week_pnl >= 0 else 0xCC4422
 
-        # Build per-pick results
         pick_lines = []
         for i, p in enumerate(weekly.get("picks", []), 1):
             ticker = p.get("ticker", "?")
@@ -345,7 +529,6 @@ class DiscordNotifier:
             pnl = p.get("pnl", 0)
             result = p.get("result", "?")
 
-            # Result markers
             if result == "WIN":
                 marker = "++"
             elif result == "PARTIAL":
@@ -355,17 +538,22 @@ class DiscordNotifier:
 
             strike_str = f"${strike:,.0f}" if strike else "N/A"
             entry_str = f"${entry:.2f}" if entry else "N/A"
-            close_str = f"${close:,.2f}" if close else "N/A"
-            pnl_sign = "+" if pnl >= 0 else ""
+            close_str = f"${close:.2f}" if close else "N/A"
+
+            # Dollar amounts
+            entry_cost = (entry * 100 * contracts) if entry else 0
+            close_val = (close * 100 * contracts) if close else 0
+            dollar_pnl = close_val - entry_cost
+            pnl_sign = "+" if dollar_pnl >= 0 else ""
 
             pick_lines.append(
                 f"`{marker}` **{ticker}** {direction} @ {strike_str}\n"
-                f"Entry: {entry_str} | Close: {close_str} | **{pnl_sign}${pnl:,.2f}**"
+                f"Bought: {entry_str} (${entry_cost:,.0f}) | Sold: {close_str} (${close_val:,.0f})\n"
+                f"**P&L: {pnl_sign}${dollar_pnl:,.0f}** ({pnl_sign}{((dollar_pnl / entry_cost * 100) if entry_cost else 0):,.0f}%)"
             )
 
         picks_text = "\n\n".join(pick_lines) if pick_lines else "No picks graded."
 
-        # Week summary line
         week_sign = "+" if week_pnl >= 0 else ""
         week_summary = (
             f"**{wins}W - {losses}L - {partials}P**\n"
@@ -373,7 +561,6 @@ class DiscordNotifier:
             f"Net P&L: **{week_sign}${week_pnl:,.2f} ({week_sign}{week_return:.1f}%)**"
         )
 
-        # All-time summary
         at_pnl = alltime.get("total_pnl", 0)
         at_sign = "+" if at_pnl >= 0 else ""
         at_wins = alltime.get("wins", 0)
@@ -389,28 +576,58 @@ class DiscordNotifier:
         )
 
         embed = {
-            "title": f"Weekly Scorecard — {pick_date}",
+            "title": f"WEEKLY SCORECARD — {pick_date}",
             "color": color,
             "fields": [
-                {
-                    "name": "Pick Results",
-                    "value": picks_text,
-                    "inline": False,
-                },
-                {
-                    "name": "Week Total",
-                    "value": week_summary,
-                    "inline": True,
-                },
-                {
-                    "name": "All-Time",
-                    "value": alltime_text,
-                    "inline": True,
-                },
+                {"name": "Pick Results", "value": picks_text, "inline": False},
+                {"name": "Week Total", "value": week_summary, "inline": True},
+                {"name": "All-Time", "value": alltime_text, "inline": True},
             ],
-            "footer": {
-                "text": f"Expiry: {expiry} | Experimental — Not Investment Advice",
-            },
+            "footer": {"text": f"Expiry: {expiry} | Not Investment Advice"},
+            "timestamp": datetime.utcnow().isoformat(),
+        }
+
+        payload = {"embeds": [embed]}
+        return self._post_webhook(payload)
+
+    # ------------------------------------------------------------------
+    #  Weekly Reflection
+    # ------------------------------------------------------------------
+
+    def send_weekly_reflection(self, reflection: dict) -> bool:
+        if not self.enabled:
+            logger.info("Discord disabled — reflection not sent")
+            return False
+
+        week = reflection.get("week", "unknown")
+        win_rate = reflection.get("win_rate", 0)
+        total_picks = reflection.get("total_picks", 0)
+        wins = reflection.get("wins", 0)
+
+        lessons = reflection.get("lessons", [])
+        lessons_text = "\n".join(f"- {l}" for l in lessons[:5]) if lessons else "No lessons recorded."
+
+        weight_changes = reflection.get("weight_adjustments", {})
+        if weight_changes:
+            changes_text = "\n".join(f"- {k}: {v:+.3f}" for k, v in weight_changes.items())
+        else:
+            changes_text = "No adjustments."
+
+        embed = {
+            "title": f"WEEKLY REFLECTION — {week}",
+            "color": 0x22CC44 if win_rate >= 0.5 else 0xCC4422,
+            "fields": [
+                {"name": "Performance", "value": f"Win Rate: **{win_rate:.0%}** ({wins}/{total_picks})", "inline": True},
+                {"name": "Avg Return", "value": f"{reflection.get('avg_return', 0):.1%}", "inline": True},
+                {"name": "Key Lessons", "value": lessons_text, "inline": False},
+                {"name": "Weight Adjustments", "value": changes_text, "inline": False},
+                {"name": "What This Means", "value": (
+                    "These weight adjustments are applied automatically to next week's scoring. "
+                    "Positive = signal worked well, getting more weight. "
+                    "Negative = signal underperformed, reduced."
+                ), "inline": False},
+            ],
+            "footer": {"text": "Weekly Options Analysis System"},
             "timestamp": datetime.utcnow().isoformat(),
         }
 
@@ -422,7 +639,6 @@ class DiscordNotifier:
     # ------------------------------------------------------------------
 
     def _build_reasoning(self, pick: dict) -> str:
-        """Build a one-sentence reasoning string for a pick."""
         parts = []
 
         tech = pick.get("technical", {})
@@ -453,7 +669,6 @@ class DiscordNotifier:
         elif composite < -0.3:
             parts.append("bearish sentiment")
 
-        # Social intelligence signals
         social = sent.get("social", {})
         if social:
             catalysts = social.get("catalysts", [])
@@ -472,18 +687,6 @@ class DiscordNotifier:
         return "Driven by " + ", ".join(parts)
 
     def _post_webhook(self, payload: dict) -> bool:
-        """POST a JSON payload to the Discord webhook URL.
-
-        Parameters
-        ----------
-        payload : dict
-            The Discord webhook payload (with 'content' and/or 'embeds').
-
-        Returns
-        -------
-        bool
-            True if the response indicates success (2xx).
-        """
         if not self.webhook_url:
             logger.warning("No webhook URL configured")
             return False

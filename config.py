@@ -27,6 +27,10 @@ for _dir in (DATA_DIR, CANDIDATES_DIR, REPORTS_DIR, PERFORMANCE_DIR):
 # Portfolio size — 3 high-conviction picks rather than 5 to reduce leverage
 PORTFOLIO_SIZE = 3
 
+# Position sizing — dollar amount per trade for P&L tracking.
+# Default assumes 1 contract per pick. Adjust to match your actual sizing.
+CONTRACTS_PER_TRADE = 1
+
 # Pipeline stage ordering (Wed/Fri/Mon cadence)
 PIPELINE_STAGES = [
     "wednesday_scan",

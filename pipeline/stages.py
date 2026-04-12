@@ -1059,57 +1059,7 @@ class DailyStages:
 
     def _send_entry_confirmations(self, confirmations: list) -> None:
         """Send entry confirmation signals to Discord."""
-        if not self.notifier.enabled:
-            logger.info("Discord disabled — confirmations not sent")
-            return
-
-        date_str = datetime.now().strftime("%A %B %d, %Y")
-        signal_emoji = {"GO": "++", "ADJUST": "+-", "SKIP": "--"}
-
-        fields = []
-        for conf in confirmations:
-            ticker = conf.get("ticker", "?")
-            signal = conf.get("signal", "?")
-            direction = conf.get("direction", "?").upper()
-            strike = conf.get("strike")
-            detail = conf.get("detail", "")
-            marker = signal_emoji.get(signal, "??")
-
-            strike_str = f"${strike:,.2f}" if strike else "N/A"
-            price_str = f"${conf['current_price']:,.2f}" if conf.get("current_price") else "?"
-            delta_str = f"{conf['new_delta']:.2f}" if conf.get("new_delta") else "?"
-            prem_str = f"${conf['new_premium']:.2f}" if conf.get("new_premium") else "?"
-
-            value = (
-                f"`{marker}` **{signal}** — {direction} {strike_str}\n"
-                f"Current: {price_str} | Delta: {delta_str} | Premium: {prem_str}\n"
-                f"_{detail}_"
-            )
-
-            fields.append({
-                "name": f"{ticker}",
-                "value": value,
-                "inline": False,
-            })
-
-        go_count = sum(1 for c in confirmations if c["signal"] == "GO")
-        total = len(confirmations)
-        color = 0x22CC44 if go_count == total else (0xFFAA00 if go_count > 0 else 0xCC4422)
-
-        embed = {
-            "title": f"Entry Confirmation — {date_str} (10:00 AM)",
-            "color": color,
-            "description": (
-                f"**{go_count}/{total} picks confirmed.** "
-                f"Enter GO picks via limit order at mid or better."
-            ),
-            "fields": fields,
-            "footer": {"text": "30 min after open | Experimental — Not Investment Advice"},
-            "timestamp": datetime.utcnow().isoformat(),
-        }
-
-        payload = {"embeds": [embed]}
-        self.notifier._post_webhook(payload)
+        self.notifier.send_entry_confirmations(confirmations)
 
     # ------------------------------------------------------------------
     #  Intraday position monitoring (Tue-Fri)
@@ -1215,95 +1165,7 @@ class DailyStages:
 
     def _send_monitor_update(self, result: dict, urgency: str) -> None:
         """Send position monitoring update to Discord."""
-        if not self.notifier.enabled:
-            logger.info("Discord disabled — monitor update not sent")
-            return
-
-        positions = result.get("positions", [])
-        alerts = result.get("alerts", [])
-        summary = result.get("summary", {})
-        agent_analysis = result.get("agent_analysis", "")
-
-        if not positions:
-            return
-
-        urgency_colors = {"ROUTINE": 0x3498DB, "ELEVATED": 0xFFAA00, "CRITICAL": 0xCC4422}
-        color = urgency_colors.get(urgency, 0x3498DB)
-
-        fields = []
-        for p in positions:
-            if p.get("status") in ("NO_DATA", "ERROR"):
-                fields.append({
-                    "name": f"{p['ticker']}",
-                    "value": f"_{p.get('detail', 'No data')}_",
-                    "inline": True,
-                })
-                continue
-
-            status = p.get("status", "HOLD")
-            ret = p.get("option_return_pct", 0)
-            stock_move = p.get("stock_move_pct", 0)
-            direction = p.get("direction", "?").upper()
-            target = p.get("today_target_pct", 25)
-            theta = p.get("theta_cost_pct", 0)
-
-            status_marker = {
-                "TARGET_HIT": "++ TARGET",
-                "STOP_HIT": "-- STOP",
-                "WARNING": "+- WARN",
-                "CLOSE": "!! CLOSE",
-                "HOLD": ".. HOLD",
-            }.get(status, status)
-
-            value = (
-                f"`{status_marker}` {direction}\n"
-                f"Option P&L: **{ret:+.0f}%** | Stock: {stock_move:+.1f}%\n"
-                f"Target: {target}% | Theta cost: -{theta:.0f}%"
-            )
-
-            fields.append({
-                "name": p["ticker"],
-                "value": value,
-                "inline": True,
-            })
-
-        # Alert summary
-        alert_text = "\n".join(f"- {a}" for a in alerts) if alerts else "No alerts."
-
-        # Agent analysis (truncated for Discord)
-        analysis_field = []
-        if agent_analysis:
-            truncated = agent_analysis[:900] + "..." if len(agent_analysis) > 900 else agent_analysis
-            analysis_field = [{
-                "name": "Agent Analysis",
-                "value": truncated,
-                "inline": False,
-            }]
-
-        day = summary.get("day", datetime.now().strftime("%A"))
-        dte = summary.get("days_to_expiry", "?")
-        avg_ret = summary.get("avg_return_pct", 0)
-
-        embed = {
-            "title": f"Position Monitor — {day} [{urgency}]",
-            "color": color,
-            "description": (
-                f"**Avg P&L: {avg_ret:+.1f}%** | "
-                f"Targets hit: {summary.get('targets_hit', 0)} | "
-                f"Stops hit: {summary.get('stops_hit', 0)} | "
-                f"DTE: {dte}"
-            ),
-            "fields": fields + [{
-                "name": "Alerts",
-                "value": alert_text,
-                "inline": False,
-            }] + analysis_field,
-            "footer": {"text": "Weekly Options Monitor | Not Investment Advice"},
-            "timestamp": datetime.utcnow().isoformat(),
-        }
-
-        payload = {"embeds": [embed]}
-        self.notifier._post_webhook(payload)
+        self.notifier.send_monitor_update(result, urgency)
 
     # ------------------------------------------------------------------
     #  Friday final exit (1:30 PM ET)
@@ -1364,60 +1226,7 @@ class DailyStages:
 
     def _send_final_exit(self, result: dict) -> None:
         """Send final exit alert to Discord."""
-        if not self.notifier.enabled:
-            logger.info("Discord disabled — final exit not sent")
-            return
-
-        positions = result.get("positions", [])
-        if not positions:
-            return
-
-        fields = []
-        for p in positions:
-            if p.get("status") in ("NO_DATA", "ERROR"):
-                continue
-
-            ret = p.get("option_return_pct", 0)
-            direction = p.get("direction", "?").upper()
-            current = p.get("current_price", "?")
-            strike = p.get("strike", "?")
-
-            value = (
-                f"**CLOSE NOW** — {direction} ${strike}\n"
-                f"Current stock: ${current} | Option P&L: {ret:+.0f}%\n"
-                f"_Use market order if needed. Do not hold past 2 PM ET._"
-            )
-
-            fields.append({
-                "name": f"!! {p['ticker']}",
-                "value": value,
-                "inline": False,
-            })
-
-        agent_analysis = result.get("agent_analysis", "")
-        if agent_analysis:
-            truncated = agent_analysis[:900] + "..." if len(agent_analysis) > 900 else agent_analysis
-            fields.append({
-                "name": "Agent Analysis",
-                "value": truncated,
-                "inline": False,
-            })
-
-        embed = {
-            "title": "FINAL EXIT — Close All Positions by 2:00 PM ET",
-            "color": 0xFF0000,
-            "description": (
-                f"**{len(positions)} positions must be closed.** "
-                f"Weekly options expire today — do not hold past 2:00 PM ET. "
-                f"Use market orders if limit orders are not filling."
-            ),
-            "fields": fields,
-            "footer": {"text": "MANDATORY EXIT | Not Investment Advice"},
-            "timestamp": datetime.utcnow().isoformat(),
-        }
-
-        payload = {"embeds": [embed]}
-        self.notifier._post_webhook(payload)
+        self.notifier.send_final_exit(result)
 
     # ------------------------------------------------------------------
     #  Stage dispatch
