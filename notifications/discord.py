@@ -146,6 +146,11 @@ class DiscordNotifier:
                     social_line = f"\n**Social Intel:** {narrative[:180]}"
 
             earnings_line = "\n**[EARNINGS THIS WEEK]** — IV crush risk, size down" if earnings_warn else ""
+            iv_crush_line = (
+                "\n**[IV CRUSH TRAP]** — high IV (>85) + earnings this week. Filter "
+                "tried to skip this pick but restored it to keep the portfolio full. "
+                "**Review manually before entering.**"
+            ) if pick.get("iv_crush_warning") else ""
 
             value = (
                 f"**ACTION: BUY {contracts} {ticker} {direction} {strike_str} exp {expiry}**\n"
@@ -171,6 +176,7 @@ class DiscordNotifier:
                 f"_{reasoning}_"
                 f"{social_line}"
                 f"{earnings_line}"
+                f"{iv_crush_line}"
             )
 
             fields.append({
