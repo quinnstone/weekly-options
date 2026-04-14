@@ -354,35 +354,35 @@ class DiscordNotifier:
             target_val = entry_cost * (1 + target_pct / 100)
             stop_val = entry_cost * 0.50
 
-            # Explicit action instruction — fall back to percentages if no dollars
+            # Explicit action instruction — no percentage here (it's on the next line)
             if status == "TARGET_HIT":
                 action = (f"**CLOSE NOW — TARGET HIT.** Sell for ~${current_val:,.0f} (+${dollar_pnl:,.0f})"
-                          if has_dollars else f"**CLOSE NOW — TARGET HIT** at {ret:+.0f}%")
+                          if has_dollars else "**CLOSE NOW — TARGET HIT.** Sell at market or mid limit.")
             elif status == "STOP_HIT":
                 action = (f"**CLOSE NOW — STOP HIT.** Sell to limit loss at ~${current_val:,.0f} ({'-' if dollar_pnl < 0 else '+'}${abs(dollar_pnl):,.0f})"
-                          if has_dollars else f"**CLOSE NOW — STOP HIT** at {ret:+.0f}%")
+                          if has_dollars else "**CLOSE NOW — STOP HIT.** Cut the loss at market.")
             elif status == "CLOSE":
                 action = (f"**CLOSE NOW.** Sell at market if needed. Current value ~${current_val:,.0f}"
-                          if has_dollars else f"**CLOSE NOW.** Sell at market if needed. P&L: {ret:+.0f}%")
+                          if has_dollars else "**CLOSE NOW.** Sell at market if needed.")
             elif status == "WARNING":
                 action = (f"**WATCH CLOSELY.** Approaching stop. Current value ~${current_val:,.0f}"
-                          if has_dollars else f"**WATCH CLOSELY.** Approaching stop at {ret:+.0f}%")
+                          if has_dollars else "**WATCH CLOSELY.** Approaching -50% stop.")
             else:
                 action = (f"**HOLD.** Target: ${target_val:,.0f} (+{target_pct}%) | Stop: ${stop_val:,.0f} (-50%)"
-                          if has_dollars else f"**HOLD.** Target +{target_pct}% | Stop -50% | Now {ret:+.0f}%")
+                          if has_dollars else f"**HOLD.** Target +{target_pct}% | Stop -50%")
 
             pnl_sign = "+" if dollar_pnl >= 0 else ""
 
             if has_dollars:
+                # Dollar line already includes %, so middle line only shows stock
+                middle_line = f"{direction} | Stock: {stock_move:+.1f}%"
                 pnl_line = f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}** ({ret:+.0f}%)"
             else:
-                pnl_line = f"**Option P&L: {ret:+.0f}%** (entry premium unavailable — dollar P&L skipped)"
+                # No dollars → middle line carries the option %
+                middle_line = f"{direction} | Stock: {stock_move:+.1f}% | **Option P&L: {ret:+.0f}%**"
+                pnl_line = "_Entry premium unavailable — dollar P&L skipped_"
 
-            value = (
-                f"{action}\n"
-                f"{direction} | Stock: {stock_move:+.1f}% | Option: {ret:+.0f}%\n"
-                f"{pnl_line}"
-            )
+            value = f"{action}\n{middle_line}\n{pnl_line}"
 
             fields.append({
                 "name": f"{'!!' if status in ('TARGET_HIT', 'STOP_HIT', 'CLOSE') else '..'} {ticker}",
