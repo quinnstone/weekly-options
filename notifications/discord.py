@@ -107,13 +107,34 @@ class DiscordNotifier:
             total_entry_cost = cost_per_contract * contracts
             total_cost += total_entry_cost
 
-            # Exit targets in dollars
+            # Exit targets in dollars — full weekday ladder
             target_40 = cost_per_contract * 1.40 * contracts if cost_per_contract else 0
+            target_35 = cost_per_contract * 1.35 * contracts if cost_per_contract else 0
             target_25 = cost_per_contract * 1.25 * contracts if cost_per_contract else 0
+            target_15 = cost_per_contract * 1.15 * contracts if cost_per_contract else 0
             stop_loss_val = cost_per_contract * 0.50 * contracts if cost_per_contract else 0
             profit_40 = target_40 - total_entry_cost
+            profit_35 = target_35 - total_entry_cost
             profit_25 = target_25 - total_entry_cost
+            profit_15 = target_15 - total_entry_cost
             loss_50 = total_entry_cost - stop_loss_val
+
+            # Strategic entry ladder — walk the limit over 10 min
+            entry_mid = premium if premium else 0
+            entry_aggressive = round(entry_mid * 1.02, 2) if entry_mid else 0   # +2% above mid
+            entry_skip = round(entry_mid * 1.05, 2) if entry_mid else 0          # skip above +5%
+
+            # IV rank context
+            iv_rank = pick.get("options", {}).get("iv_rank")
+            if iv_rank is not None:
+                if iv_rank < 30:
+                    iv_line = f"IV rank: {iv_rank:.0f} — **cheap, good buying opportunity**"
+                elif iv_rank <= 70:
+                    iv_line = f"IV rank: {iv_rank:.0f} — fair value"
+                else:
+                    iv_line = f"IV rank: {iv_rank:.0f} — **elevated, paying premium; consider size down**"
+            else:
+                iv_line = "IV rank: n/a"
 
             # Reasoning + social narrative
             reasoning = self._build_reasoning(pick)
@@ -128,16 +149,23 @@ class DiscordNotifier:
 
             value = (
                 f"**ACTION: BUY {contracts} {ticker} {direction} {strike_str} exp {expiry}**\n"
-                f"**Limit price:** {prem_str} per contract ({contracts}x = **${total_entry_cost:,.0f}**)\n"
+                f"\n"
+                f"**Entry ladder** (walk the limit; total cost ~**${total_entry_cost:,.0f}**):\n"
+                f"- Start: limit **${entry_mid:.2f}** (mid) — wait 5 min\n"
+                f"- Walk to: **${entry_aggressive:.2f}** (mid +2%) — wait 3 min\n"
+                f"- Skip if above **${entry_skip:.2f}** (mid +5%) — move on\n"
                 f"\n"
                 f"Stock price: {price_str} | Delta: {delta_str}\n"
                 f"Breakeven: {be_str} (stock needs to move {be_move_str})\n"
                 f"Expected weekly move: {exp_str}\n"
+                f"{iv_line}\n"
                 f"Score: {score:.1f} | Confidence: {confidence:.0%}\n"
                 f"\n"
-                f"**Exit targets:**\n"
+                f"**Exit targets (time-decay ladder):**\n"
                 f"Mon-Tue: sell at **${target_40:,.0f}** (+40% = **+${profit_40:,.0f}**)\n"
-                f"Thu-Fri: sell at **${target_25:,.0f}** (+25% = **+${profit_25:,.0f}**)\n"
+                f"Wed: sell at **${target_35:,.0f}** (+35% = **+${profit_35:,.0f}**)\n"
+                f"Thu: sell at **${target_25:,.0f}** (+25% = **+${profit_25:,.0f}**)\n"
+                f"Fri: sell at **${target_15:,.0f}** (+15% = **+${profit_15:,.0f}**)\n"
                 f"Stop loss: sell at **${stop_loss_val:,.0f}** (-50% = **-${loss_50:,.0f}**)\n"
                 f"\n"
                 f"_{reasoning}_"
