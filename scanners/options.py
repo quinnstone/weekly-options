@@ -1132,18 +1132,20 @@ class OptionsScanner:
     def _iv_rank_from_rv_ratio(iv_rv_ratio: "float | None") -> "float | None":
         """Map IV / RV ratio to a 0-100 rank (options cheapness / richness).
 
-        For *buying* weekly options:
-        - iv_rv < 0.8  -> cheap options -> high opportunity rank (70-100)
-        - iv_rv ~ 1.0  -> fair              -> moderate rank (40-60)
-        - iv_rv > 1.5  -> expensive          -> low rank (0-30)
+        NOTE: this is NOT industry-standard IV rank (which uses 52-week IV
+        percentile). This is a lightweight proxy derived from IV/RV ratio.
+        For weekly options IV/RV is structurally elevated, so the distribution
+        skews toward the "expensive" end vs. true IV rank. Do not treat this
+        as a broker-equivalent IV rank — see memory note iv_rank_caveats.
 
-        The ranking intentionally inverts so that *higher rank = better
-        buying opportunity* (consistent with how downstream scoring uses
-        the field).
+        Semantics (inverted for legacy compatibility):
+        - iv_rv < 0.8  -> high opportunity rank (70-100)
+        - iv_rv ~ 1.0  -> moderate rank (40-60)
+        - iv_rv > 1.5  -> low rank (0-30)
+        Higher rank = better buying opportunity.
         """
         if iv_rv_ratio is None:
             return None
-        # Invert: lower ratio = better buying opportunity = higher rank
         rank = float(np.clip((2.0 - iv_rv_ratio) / 2.0 * 100, 0, 100))
         return rank
 

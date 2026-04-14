@@ -124,17 +124,19 @@ class DiscordNotifier:
             entry_aggressive = round(entry_mid * 1.02, 2) if entry_mid else 0   # +2% above mid
             entry_skip = round(entry_mid * 1.05, 2) if entry_mid else 0          # skip above +5%
 
-            # IV rank context
+            # IV rank context — NOTE: this metric is an IV/RV-ratio proxy, NOT
+            # broker-equivalent IV rank. Semantics are inverted from industry
+            # standard: HIGHER rank = CHEAPER options relative to realized vol.
             iv_rank = pick.get("options", {}).get("iv_rank")
             if iv_rank is not None:
-                if iv_rank < 30:
-                    iv_line = f"IV rank: {iv_rank:.0f} — **cheap, good buying opportunity**"
-                elif iv_rank <= 70:
-                    iv_line = f"IV rank: {iv_rank:.0f} — fair value"
+                if iv_rank > 70:
+                    iv_line = f"IV/RV rank: {iv_rank:.0f} — **cheap vs realized vol (potential buying opportunity)**"
+                elif iv_rank >= 30:
+                    iv_line = f"IV/RV rank: {iv_rank:.0f} — fair value"
                 else:
-                    iv_line = f"IV rank: {iv_rank:.0f} — **elevated, paying premium; consider size down**"
+                    iv_line = f"IV/RV rank: {iv_rank:.0f} — **expensive vs realized vol; size down if entering**"
             else:
-                iv_line = "IV rank: n/a"
+                iv_line = "IV/RV rank: n/a"
 
             # Reasoning + social narrative
             reasoning = self._build_reasoning(pick)
@@ -146,11 +148,6 @@ class DiscordNotifier:
                     social_line = f"\n**Social Intel:** {narrative[:180]}"
 
             earnings_line = "\n**[EARNINGS THIS WEEK]** — IV crush risk, size down" if earnings_warn else ""
-            iv_crush_line = (
-                "\n**[IV CRUSH TRAP]** — high IV (>85) + earnings this week. Filter "
-                "tried to skip this pick but restored it to keep the portfolio full. "
-                "**Review manually before entering.**"
-            ) if pick.get("iv_crush_warning") else ""
 
             value = (
                 f"**ACTION: BUY {contracts} {ticker} {direction} {strike_str} exp {expiry}**\n"
@@ -176,7 +173,6 @@ class DiscordNotifier:
                 f"_{reasoning}_"
                 f"{social_line}"
                 f"{earnings_line}"
-                f"{iv_crush_line}"
             )
 
             fields.append({

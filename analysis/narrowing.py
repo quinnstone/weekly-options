@@ -672,40 +672,6 @@ class NarrowingPipeline:
         if len(confident) < 3:
             confident = sorted_candidates
 
-        # Hard skip: IV crush trap — elevated IV combined with earnings in the
-        # holding window is a near-certain loser for option buyers (pay rich
-        # premium, get IV-crushed post-earnings regardless of direction).
-        def _has_iv_crush_risk(c):
-            iv_rank = (c.get("options", {}) or {}).get("iv_rank") or 0
-            has_earnings = bool(
-                c.get("earnings_warning")
-                or c.get("earnings_date")
-                or (c.get("finviz", {}) or {}).get("earnings_date")
-            )
-            return iv_rank > 85 and has_earnings
-
-        before_count = len(confident)
-        skipped_iv_crush = [c for c in confident if _has_iv_crush_risk(c)]
-        confident = [c for c in confident if not _has_iv_crush_risk(c)]
-        if skipped_iv_crush:
-            for c in skipped_iv_crush:
-                iv_r = (c.get("options", {}) or {}).get("iv_rank", 0)
-                logger.info(
-                    "IV-crush skip: %s (IV rank %.0f + earnings this week)",
-                    c.get("ticker"), iv_r,
-                )
-        # Safety: if the filter is too aggressive and leaves <3 candidates,
-        # restore the skipped ones rather than run with empty portfolio.
-        if len(confident) < 3 and skipped_iv_crush:
-            logger.warning(
-                "IV-crush filter would leave only %d candidates — restoring skipped "
-                "picks with hard warning. Manual review recommended.",
-                len(confident),
-            )
-            for c in skipped_iv_crush:
-                c["iv_crush_warning"] = True
-            confident = confident + skipped_iv_crush
-
         # Build sector map
         sector_map = {}
         for c in confident:
