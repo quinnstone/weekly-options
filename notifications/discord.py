@@ -339,37 +339,49 @@ class DiscordNotifier:
             ret = p.get("option_return_pct", 0)
             stock_move = p.get("stock_move_pct", 0)
             direction = p.get("direction", "?").upper()
-            entry_premium = p.get("entry_premium", 0)
-            current_option = p.get("current_option_price", 0)
+            entry_premium = p.get("entry_premium") or 0
+            current_option = p.get("current_option_price") or 0
+            has_dollars = bool(entry_premium)
 
-            # Dollar P&L
-            entry_cost = entry_premium * 100 * contracts if entry_premium else 0
-            current_val = current_option * 100 * contracts if current_option else 0
+            # Dollar P&L (only meaningful when we have entry premium)
+            entry_cost = entry_premium * 100 * contracts
+            current_val = current_option * 100 * contracts
             dollar_pnl = current_val - entry_cost
-            total_pnl += dollar_pnl
+            if has_dollars:
+                total_pnl += dollar_pnl
 
             # Target and stop in dollars
             target_val = entry_cost * (1 + target_pct / 100)
             stop_val = entry_cost * 0.50
 
-            # Explicit action instruction
+            # Explicit action instruction — fall back to percentages if no dollars
             if status == "TARGET_HIT":
-                action = f"**CLOSE NOW — TARGET HIT.** Sell for ~${current_val:,.0f} (+${dollar_pnl:,.0f})"
+                action = (f"**CLOSE NOW — TARGET HIT.** Sell for ~${current_val:,.0f} (+${dollar_pnl:,.0f})"
+                          if has_dollars else f"**CLOSE NOW — TARGET HIT** at {ret:+.0f}%")
             elif status == "STOP_HIT":
-                action = f"**CLOSE NOW — STOP HIT.** Sell to limit loss at ~${current_val:,.0f} ({'-' if dollar_pnl < 0 else '+'}${abs(dollar_pnl):,.0f})"
+                action = (f"**CLOSE NOW — STOP HIT.** Sell to limit loss at ~${current_val:,.0f} ({'-' if dollar_pnl < 0 else '+'}${abs(dollar_pnl):,.0f})"
+                          if has_dollars else f"**CLOSE NOW — STOP HIT** at {ret:+.0f}%")
             elif status == "CLOSE":
-                action = f"**CLOSE NOW.** Sell at market if needed. Current value ~${current_val:,.0f}"
+                action = (f"**CLOSE NOW.** Sell at market if needed. Current value ~${current_val:,.0f}"
+                          if has_dollars else f"**CLOSE NOW.** Sell at market if needed. P&L: {ret:+.0f}%")
             elif status == "WARNING":
-                action = f"**WATCH CLOSELY.** Approaching stop. Current value ~${current_val:,.0f}"
+                action = (f"**WATCH CLOSELY.** Approaching stop. Current value ~${current_val:,.0f}"
+                          if has_dollars else f"**WATCH CLOSELY.** Approaching stop at {ret:+.0f}%")
             else:
-                action = f"**HOLD.** Target: ${target_val:,.0f} (+{target_pct}%) | Stop: ${stop_val:,.0f} (-50%)"
+                action = (f"**HOLD.** Target: ${target_val:,.0f} (+{target_pct}%) | Stop: ${stop_val:,.0f} (-50%)"
+                          if has_dollars else f"**HOLD.** Target +{target_pct}% | Stop -50% | Now {ret:+.0f}%")
 
             pnl_sign = "+" if dollar_pnl >= 0 else ""
+
+            if has_dollars:
+                pnl_line = f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}** ({ret:+.0f}%)"
+            else:
+                pnl_line = f"**Option P&L: {ret:+.0f}%** (entry premium unavailable — dollar P&L skipped)"
 
             value = (
                 f"{action}\n"
                 f"{direction} | Stock: {stock_move:+.1f}% | Option: {ret:+.0f}%\n"
-                f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}**"
+                f"{pnl_line}"
             )
 
             fields.append({
@@ -451,19 +463,26 @@ class DiscordNotifier:
             direction = p.get("direction", "?").upper()
             current = p.get("current_price", "?")
             strike = p.get("strike", "?")
-            entry_premium = p.get("entry_premium", 0)
-            current_option = p.get("current_option_price", 0)
+            entry_premium = p.get("entry_premium") or 0
+            current_option = p.get("current_option_price") or 0
+            has_dollars = bool(entry_premium)
 
-            entry_cost = entry_premium * 100 * contracts if entry_premium else 0
-            current_val = current_option * 100 * contracts if current_option else 0
+            entry_cost = entry_premium * 100 * contracts
+            current_val = current_option * 100 * contracts
             dollar_pnl = current_val - entry_cost
-            total_pnl += dollar_pnl
+            if has_dollars:
+                total_pnl += dollar_pnl
 
             pnl_sign = "+" if dollar_pnl >= 0 else ""
 
+            if has_dollars:
+                pnl_line = f"Stock: ${current} | Option P&L: {ret:+.0f}% (**{pnl_sign}${dollar_pnl:,.0f}**)"
+            else:
+                pnl_line = f"Stock: ${current} | Option P&L: {ret:+.0f}%"
+
             value = (
                 f"**CLOSE NOW** — Sell {contracts} {direction} ${strike} at market\n"
-                f"Stock: ${current} | Option P&L: {ret:+.0f}% (**{pnl_sign}${dollar_pnl:,.0f}**)\n"
+                f"{pnl_line}\n"
                 f"_Use market order if limit doesn't fill in 5 min. Do NOT hold past 2 PM._"
             )
 

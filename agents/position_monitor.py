@@ -168,12 +168,20 @@ class PositionMonitor(BaseAgent):
             else:
                 detail = f"P&L: {option_return_pct:.0f}% (target: {target_pct}% today). Stock moved {stock_move_pct:+.1f}%."
 
+            # Estimate current option price from entry premium + return
+            current_option_price = (
+                entry_premium * (1 + option_return_pct / 100)
+                if entry_premium else None
+            )
+
             positions.append({
                 "ticker": ticker,
                 "direction": direction,
                 "strike": strike,
                 "entry_price": entry_price,
                 "current_price": round(current_price, 2),
+                "entry_premium": entry_premium,
+                "current_option_price": round(current_option_price, 2) if current_option_price else None,
                 "stock_move_pct": round(stock_move_pct, 2),
                 "option_return_pct": round(option_return_pct, 1),
                 "days_held": days_held,
