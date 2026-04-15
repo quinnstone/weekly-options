@@ -30,7 +30,7 @@ class NarrowingPipeline:
     STAGE_TARGETS = {
         "wednesday_scan": 25,
         "friday_refresh": 20,
-        "monday_picks": 5,
+        "monday_picks": 3,
     }
 
     BENCH_SIZE = 10  # extra candidates saved as alternates
@@ -664,13 +664,21 @@ class NarrowingPipeline:
             reverse=True,
         )
 
-        # Filter out low confidence
+        # Filter out low confidence — METHODOLOGY.md §Confidence Calibration
+        # defines this as a HARD gate. Do not relax it even if fewer than 3
+        # picks pass; an all-low-confidence week is a signal the system is
+        # saying "no edge here" and should be respected.
         confident = [
             c for c in sorted_candidates
             if c.get("direction_confidence", c.get("confidence", 0)) >= 0.25
         ]
         if len(confident) < 3:
-            confident = sorted_candidates
+            logger.warning(
+                "Only %d candidates cleared 0.25 confidence gate; "
+                "proceeding with best available rather than diluting with "
+                "low-confidence picks",
+                len(confident),
+            )
 
         # Build sector map
         sector_map = {}

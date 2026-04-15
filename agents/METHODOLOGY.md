@@ -124,7 +124,11 @@ of the time.
 ### BSM Greeks We Compute
 - **Delta:** Price sensitivity (target: 0.35 for entries)
 - **Gamma:** Delta acceleration (bonus for winners: 1.10x return estimate)
-- **Theta:** Time decay per calendar day (~4%/day for weeklies in monitoring)
+- **Theta:** Time decay per calendar day, regime-adjusted in PositionMonitor:
+    - VIX ≥ 25 (high): ~3.0%/day — vega cushion offsets decay
+    - VIX 20-25: ~3.5%/day
+    - VIX 15-20: ~4.0%/day — baseline
+    - VIX < 15: ~4.8%/day — calm markets bleed faster
 - **Vega:** IV sensitivity per 1% move
 - **Charm:** Delta decay per day — CRITICAL for weekly holds. A 0.35 delta
   on Monday can be 0.20 by Wednesday from charm alone. Scored actively
@@ -210,10 +214,10 @@ data we don't have).
 - Cap: 3% of portfolio per position
 - Regime gate: multiply by 0.5 if macro_edge multiplier < 0.50
 
-### Portfolio Construction
-- Max 2 picks from same sector
+### Portfolio Construction (3-pick portfolio)
+- Max 1 pick per sector (enforced diversification at small portfolio size)
 - Correlation dedup: 20-day rolling return correlation > 0.75 = drop lower score
-- Direction balance: if all 5 same direction AND avg confidence < 0.75, swap one
+- Direction balance: if all 3 same direction AND avg confidence < 0.75, swap one for best contrarian from bench
 
 ---
 
