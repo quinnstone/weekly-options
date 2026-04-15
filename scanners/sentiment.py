@@ -238,7 +238,17 @@ class SentimentScanner:
                     time.sleep(1)  # Rate-limit between subreddits
 
                 except Exception as exc:
-                    logger.error("Error scanning r/%s: %s", sub_name, exc)
+                    msg = str(exc)
+                    logger.error("Error scanning r/%s: %s", sub_name, msg)
+                    # Reddit 401 = app-only OAuth rejected (script app needs
+                    # username/password since 2023). Bail early — every
+                    # subreddit will return the same error.
+                    if "401" in msg:
+                        logger.warning(
+                            "PRAW returned 401 — falling back silently. "
+                            "Social crawler JSON path is the primary Reddit source."
+                        )
+                        return {}
 
             # Compute averages
             output = {}

@@ -18,6 +18,7 @@ import re
 import time
 from datetime import datetime
 
+import requests
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 logger = logging.getLogger(__name__)
@@ -263,18 +264,25 @@ class SocialCrawler:
     # ------------------------------------------------------------------
 
     def crawl_reddit(self) -> dict:
-        """Crawl target subreddits with intelligent post analysis."""
-        self._ensure_browser()
+        """Crawl target subreddits via Reddit's public JSON API.
+
+        Uses reddit.com/r/SUB/hot.json (no OAuth needed). Falls back to
+        Playwright scrape of old.reddit.com if JSON returns nothing.
+        """
         all_posts = []
 
         for sub in REDDIT_SUBS:
             try:
-                posts = self._crawl_subreddit(sub)
+                posts = self._crawl_subreddit_json(sub)
+                if not posts:
+                    # JSON returned empty — try Playwright fallback
+                    self._ensure_browser()
+                    posts = self._crawl_subreddit(sub)
                 all_posts.extend(posts)
                 logger.info("Crawled r/%s: %d posts", sub, len(posts))
             except Exception as exc:
                 logger.error("Failed to crawl r/%s: %s", sub, exc)
-            time.sleep(2)
+            time.sleep(2)  # respect Reddit's 60 req / 10 min unauthenticated cap
 
         ticker_data = self._aggregate_mentions(all_posts)
 
@@ -293,6 +301,69 @@ class SocialCrawler:
             "total_posts": len(all_posts),
             "timestamp": datetime.now().isoformat(),
         }
+
+    def _crawl_subreddit_json(self, subreddit: str, limit: int = 50) -> list:
+        """Fetch posts via Reddit's public JSON endpoint.
+
+        Public JSON works without OAuth provided we send a unique User-Agent
+        and stay under ~60 reqs / 10 min. Returns the same post dict shape
+        that _crawl_subreddit produces so downstream aggregation is unchanged.
+        """
+        url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit={limit}"
+        headers = {
+            "User-Agent": "weekly-options-scanner/1.0 (signal aggregation; contact via repo)",
+            "Accept": "application/json",
+        }
+        try:
+            resp = requests.get(url, headers=headers, timeout=12)
+            if resp.status_code != 200:
+                logger.warning("Reddit JSON r/%s returned %d", subreddit, resp.status_code)
+                return []
+            children = resp.json().get("data", {}).get("children", [])
+        except Exception as exc:
+            logger.warning("Reddit JSON fetch failed for r/%s: %s", subreddit, exc)
+            return []
+
+        posts = []
+        for child in children:
+            d = child.get("data", {})
+            title = (d.get("title") or "").strip()
+            if not title:
+                continue
+            score = int(d.get("score") or 0)
+            comments = int(d.get("num_comments") or 0)
+            if score < 5 and comments < 3:
+                continue
+
+            flair = (d.get("link_flair_text") or "").strip()
+            tickers = self._extract_tickers(title)
+            sentiment = self._score_text(title)
+            classification = _classify_post(title)
+
+            flair_lower = flair.lower()
+            if flair_lower in ("dd", "due diligence", "research", "analysis"):
+                classification["quality_score"] = max(classification["quality_score"], 0.9)
+                classification["post_type"] = "dd"
+            elif flair_lower in ("catalyst", "news"):
+                classification["quality_score"] = max(classification["quality_score"], 0.7)
+            elif flair_lower in ("yolo", "gain", "loss"):
+                classification["quality_score"] = max(classification["quality_score"], 0.3)
+                classification["post_type"] = "position"
+            elif flair_lower in ("meme", "shitpost"):
+                classification["quality_score"] = 0.05
+
+            posts.append({
+                "title": title,
+                "flair": flair,
+                "score": score,
+                "comments": comments,
+                "tickers": tickers,
+                "sentiment": sentiment,
+                "classification": classification,
+                "subreddit": subreddit,
+                "url": d.get("permalink", ""),
+            })
+        return posts
 
     def _crawl_subreddit(self, subreddit: str, limit: int = 50) -> list:
         """Crawl a subreddit with post classification and narrative extraction."""
