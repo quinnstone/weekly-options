@@ -50,6 +50,8 @@ class Database:
                 composite_score REAL,
                 confidence REAL,
                 sector TEXT,
+                earnings_warning INTEGER DEFAULT 0,
+                pattern_key TEXT,
                 -- Outcome fields (filled in after expiry)
                 closing_price REAL,
                 exit_value REAL,
@@ -91,6 +93,14 @@ class Database:
             CREATE INDEX IF NOT EXISTS idx_picks_ticker ON picks(ticker);
             CREATE INDEX IF NOT EXISTS idx_weekly_date ON weekly_results(pick_date);
         """)
+
+        # Lightweight migrations for pre-existing DBs (pre-2026-04-15 fork)
+        cols = {row[1] for row in conn.execute("PRAGMA table_info(picks)").fetchall()}
+        if "earnings_warning" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN earnings_warning INTEGER DEFAULT 0")
+        if "pattern_key" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN pattern_key TEXT")
+
         conn.commit()
         conn.close()
 
@@ -116,10 +126,13 @@ class Database:
         conn.execute("DELETE FROM picks WHERE pick_date = ?", (pick_date,))
 
         for p in picks:
+            pattern_key = (p.get("pattern") or {}).get("pattern_key") or p.get("pattern_key")
+            earnings_warning = 1 if p.get("earnings_warning") else 0
             conn.execute("""
                 INSERT INTO picks (pick_date, expiry, ticker, direction, strike,
-                                   entry_premium, composite_score, confidence, sector)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   entry_premium, composite_score, confidence, sector,
+                                   earnings_warning, pattern_key)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 pick_date,
                 p.get("expiry"),
@@ -130,6 +143,8 @@ class Database:
                 p.get("composite_score"),
                 p.get("confidence") or p.get("direction_confidence"),
                 p.get("sector"),
+                earnings_warning,
+                pattern_key,
             ))
 
         # Save market snapshot
