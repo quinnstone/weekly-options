@@ -326,6 +326,40 @@ class BaseAgent:
         scores = pick.get("scores", {})
         top_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:3]
 
+        # Fundamental / catalyst signals — surface so agents can validate or
+        # invalidate the mechanical thesis on qualitative grounds.
+        sentiment = pick.get("sentiment", {}) or {}
+        analyst_rev = sentiment.get("analyst_revision", {}) or {}
+        sec_8k = sentiment.get("sec_8k", {}) or {}
+        social = sentiment.get("social", {}) or {}
+        insider = pick.get("insider", {}) or {}
+        flow = pick.get("flow", {}) or {}
+
+        catalyst_bits = []
+        arev = analyst_rev.get("direction")
+        if arev in ("upgrade", "downgrade"):
+            catalyst_bits.append(f"analyst {arev}s (Δ={analyst_rev.get('delta', 0):+d})")
+        if sec_8k.get("has_recent_8k"):
+            catalyst_bits.append(f"{sec_8k.get('filing_count', 1)} recent 8-K")
+        ins_signal = insider.get("insider_signal")
+        if ins_signal and ins_signal != "neutral":
+            catalyst_bits.append(f"insider {ins_signal}")
+        if flow.get("unusual_volume"):
+            catalyst_bits.append("unusual options flow")
+
+        social_bits = []
+        if social:
+            flow_consensus = social.get("flow_consensus", "neutral")
+            flow_conviction = social.get("flow_conviction", 0)
+            if flow_consensus != "neutral" and flow_conviction > 0.3:
+                social_bits.append(f"social flow {flow_consensus} ({flow_conviction:.0%} conviction)")
+            catalysts = social.get("catalysts", [])
+            if catalysts:
+                social_bits.append(f"catalysts: {', '.join(catalysts[:2])}")
+            risks = social.get("risks", [])
+            if risks:
+                social_bits.append(f"risks: {', '.join(risks[:2])}")
+
         lines = [
             f"**{ticker}** — {direction.upper()} ${strike:,.2f}" if strike else f"**{ticker}** — {direction.upper()}",
             f"Price: ${current:,.2f}" if current else "",
@@ -335,6 +369,8 @@ class BaseAgent:
             f"Score: {score:.1f} | Confidence: {confidence:.0%} | Consensus: {consensus}",
             f"Top signals: {', '.join(f'{k}={v:.0f}' for k,v in top_scores)}" if top_scores else "",
             f"Pattern win rate: {pattern_wr:.0%} ({pattern.get('pattern_observations', 0)} obs)" if pattern_wr else "",
+            f"Catalysts: {' | '.join(catalyst_bits)}" if catalyst_bits else "",
+            f"Social: {' | '.join(social_bits)}" if social_bits else "",
         ]
         return "\n".join(l for l in lines if l)
 

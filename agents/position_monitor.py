@@ -86,6 +86,23 @@ class PositionMonitor(BaseAgent):
         weekday = datetime.now().weekday()
         target_pct = self.DAILY_TARGETS.get(weekday, 25)
 
+        # Regime-adjust the theta model. A flat 4%/day overstates decay in
+        # high-VIX regimes (premium inflates, partially offsetting theta) and
+        # understates it in low-VIX regimes (calm markets bleed faster).
+        vix_current = 0
+        if market_summary:
+            vix_current = market_summary.get("vix", {}).get("current", 0) or 0
+        if vix_current >= 25:
+            theta_per_day = 3.0   # high VIX — vega cushion
+        elif vix_current >= 20:
+            theta_per_day = 3.5
+        elif vix_current >= 15:
+            theta_per_day = 4.0   # baseline
+        elif vix_current > 0:
+            theta_per_day = 4.8   # low VIX — faster bleed
+        else:
+            theta_per_day = 4.0   # no data: baseline
+
         positions = []
         alerts = []
 
@@ -139,8 +156,8 @@ class PositionMonitor(BaseAgent):
             # Gamma bonus for winners
             if option_return_pct > 0:
                 option_return_pct *= 1.10
-            # Theta cost: ~4% per day for weeklies
-            theta_cost = days_held * 4.0
+            # Theta cost: regime-adjusted per-day bleed for weeklies
+            theta_cost = days_held * theta_per_day
             option_return_pct -= theta_cost
 
             # Status determination
