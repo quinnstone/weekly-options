@@ -1,132 +1,99 @@
-# Weekly Options Playbook
+# Zero DTE Playbook
 
-This document is the agent's evolving knowledge base for weekly-expiry directional options (Monday entry, Friday expiry). It is read before every pick session (Wednesday scan, Monday confirm) and updated after every weekly reflection. Over time it becomes the primary source of strategic intelligence for weekly selection.
-
-Authoritative methodology lives in `agents/METHODOLOGY.md`. This playbook captures what has been LEARNED from live outcomes — patterns, regime observations, mistakes to avoid, things that worked.
-
----
-
-## Scoring Architecture (current)
-
-See METHODOLOGY.md for full details. Summary:
-
-- **Tier 1 (Direction, 60% weight):** momentum (0.20), mean_reversion (0.15), regime_bias (0.10), trend_persistence (0.15)
-- **Tier 2 (Edge Quality, 25%):** iv_mispricing (0.10), flow_conviction (0.08), event_risk (0.07)
-- **Tier 3 (Execution, 15%):** liquidity (0.05), strike_efficiency (0.05), theta_cost (0.05)
-
-Ensemble of three models (linear factor 50%, momentum-only 25%, mean-reversion+value 25%) votes on composite. Consensus bonus/penalty based on model std dev.
-
-Regime-adaptive multipliers modify weights based on VIX regime (see METHODOLOGY §Regime-Adaptive Multipliers).
+This document is the agent's evolving knowledge base. It is read before every
+Friday pick session and updated after every weekly reflection. Over time it
+becomes the primary source of strategic intelligence for 0DTE selection.
 
 ---
 
-## Regime Playbook (to be populated from live data)
+## Scoring Weights (current)
 
-### Low VIX (0-15)
-- Bias: momentum plays, trend persistence
-- Multiplier profile: momentum 1.3x, mean_reversion 0.8x, theta_cost 1.2x (premium decays faster in calm markets)
-- Observations: *(populate after week 1+)*
+| Signal | Weight | Notes |
+|--------|--------|-------|
+| Technical | 0.25 | RSI extremes, ATR%, volume ratio, Bollinger, MACD |
+| Options | 0.25 | IV rank, P/C ratio, max pain divergence, volume |
+| Sentiment | 0.20 | Finnhub news + VADER, StockTwits when available |
+| Flow | 0.15 | Unusual options volume, vol/OI ratio |
+| Market Regime | 0.15 | VIX-based directional bias |
 
-### Normal VIX (15-20)
-- Bias: baseline scoring — signals carry their default weight
-- Observations: *(populate)*
+## Regime Playbook
 
-### Elevated VIX (20-25)
-- Bias: mean_reversion plays gain edge; IV mispricing opportunities appear
-- Multiplier profile: mean_reversion 1.2x, iv_mispricing 1.3x
-- Observations: *(populate)*
+### High VIX (>25)
+- Bias: puts
+- Observations: (none yet — will populate after week 1 results)
 
-### High VIX (25-30)
-- Bias: mean_reversion dominant; momentum deweighted
-- Multiplier profile: mean_reversion 1.4x, momentum 0.7x
-- Observations: *(populate)*
+### Normal VIX (15-25)
+- Bias: neutral, follow technicals
+- Observations: (none yet)
 
-### Extreme VIX (30+)
-- Bias: strong contrarian setups; small size
-- Multiplier profile: mean_reversion 1.5x, momentum 0.5x
-- Observations: *(populate)*
+### Low VIX (<15)
+- Bias: calls, mean-reversion plays
+- Observations: (none yet)
 
----
+## Economic Calendar Awareness
 
-## Economic Calendar Awareness (Weekly Holds)
+High-impact economic events are the single biggest driver of 0DTE outcomes on
+release days. The system now checks the Finnhub economic calendar each week and
+flags events that demand special attention.
 
-High-impact events DURING the Mon-Fri holding window demand special attention. For weekly options, mid-week events matter differently than they do for 0DTE — IV shifts through the full holding period, not just a single release.
+### Key events and their 0DTE implications
 
-### Key events and weekly-hold implications
+| Event | Typical Impact | 0DTE Notes |
+|-------|---------------|------------|
+| FOMC Rate Decision | Extreme | 2:00 PM release creates massive directional move. Avoid entering before release unless hedged. Best 0DTE day of the month when timed correctly. |
+| CPI / PPI | Very High | 8:30 AM pre-market release. Gap open is common. Favor straddles or wait for the first 30-min candle to settle before picking direction. |
+| NFP (first Friday) | Very High | 8:30 AM release. Large gap + follow-through. If trading 0DTE on NFP Friday, expect 2-3x normal ATR. |
+| PCE | High | Fed's preferred inflation gauge. Similar dynamics to CPI but slightly less volatile. |
+| GDP | High | Quarterly release. Significant gap potential. |
+| JOLTS | Medium-High | Labor market data. Can move markets but less dramatic than NFP. |
+| Retail Sales | Medium | Consumer spending data. Moderate impact. |
+| Jobless Claims | Medium | Every Thursday. Routine but can amplify other signals. |
 
-| Event | Typical Day | Weekly-Hold Notes |
-|-------|-------------|-------------------|
-| FOMC Rate Decision | Wed 2 PM | Splits the holding window. Entered Monday at baseline IV; Fed day re-prices volatility regime. `event_risk` score penalizes by -20 if inside window. |
-| CPI / PPI | Tue/Wed 8:30 AM | Gap open reshapes Monday entry; PreTradeAnalyst reassesses delta drift vs gap threshold (2%). |
-| NFP | First Fri 8:30 AM | Lands on expiry day. Expected weekly move estimate should account for NFP gap; force-close policy (2 PM Fri) mitigates post-NFP whip. |
-| PCE | Last Fri | Same dynamics as NFP for expiry-day risk. |
-| GDP | Quarterly | Significant gap potential; treat as high-risk event within holding window. |
-| Earnings | Any day | Per-ticker, not calendar-wide. EarningsAnalyst handles with TRADE/CAUTION/AVOID verdict. |
+### How the system uses economic events
 
-### How the system handles events
+- **Score boost (+10):** When a high-impact event falls on trading day (Friday),
+  all candidate scores are boosted by 10 points. Big intraday moves create
+  better 0DTE profit opportunities regardless of direction.
+- **Confidence penalty (-0.05):** Direction confidence is reduced slightly
+  because the outcome of economic releases is inherently unpredictable. The
+  system acknowledges it cannot forecast the data.
+- **Fallback list:** If the Finnhub API is unavailable, the system uses a
+  hardcoded list of recurring high-impact events to maintain awareness.
 
-- **Event risk penalty:** -20 composite score if high-risk event in window; -5 for medium-risk. FOMC gets additional -10.
-- **Confidence multiplier:** -0.10 when holding window contains high-risk events; compounds with VIX regime.
-- **Kelly cap adjustment:** sizing cap drops from 3% to 1.5% for earnings-week positions specifically.
+### Strategy notes
 
----
+- On FOMC days, consider waiting until after the 2:00 PM release to enter.
+- On CPI/NFP days, the opening 30 minutes are extremely volatile. Let the
+  market digest the number before committing.
+- Straddles or strangles are safer than directional plays around data releases.
+- If VIX is already elevated AND a high-impact event is scheduled, expect
+  outsized moves. Reduce position size accordingly.
 
 ## Signal Reliability Log
 
-Populated by DeepReflection after each week. Format: `signal | weeks tracked | accuracy contribution | notes`.
-
 | Signal | Weeks Tracked | Accuracy | Notes |
-|--------|---------------|----------|-------|
-| *(populated after week 1)* | | | |
-
----
+|--------|--------------|----------|-------|
+| (populated after week 1) | | | |
 
 ## Patterns Discovered
 
-Populated as the pattern library accumulates 5+ observations per key.
-
-Pattern key format: `{regime}|{direction}|{dominant_signal}|{rsi_zone}|{trend_state}|{iv_state}`
-
-Example placeholder: `elevated|call|momentum|neutral|trending|cheap` — win rate TBD.
-
-*(populate from scorecard)*
-
----
+(populated as the agent identifies recurring patterns)
 
 ## Mistakes to Avoid
 
-Populated from weekly reflections after live losses. Each entry: the setup, why it seemed appealing, what actually happened, and the rule that would have prevented it.
-
-*(populate from DeepReflection)*
-
----
+(populated from weekly reflections)
 
 ## What Works
 
-Populated from weekly reflections after live wins. Each entry: the setup, the signal convergence, and why the thesis played out.
-
-*(populate from DeepReflection)*
-
----
+(populated from weekly reflections)
 
 ## Weekly Reflections
 
-### Pre-live (for reference)
-
-Prior to 2026-04-15, the system ran in test/paper mode. Test-run lessons are in archival files; not authoritative for live decisions.
-
-### Week 1 — 2026-04-15 (first live run)
-
-- **Market:** *(populate Wed AM from market_summary)*
-- **Picks:** *(populate Monday after narrowing)*
-- **Outcome:** *(populate Friday after close)*
-- **Notes:** First live run. Baseline for all future weeks.
-
----
-
-## How This Playbook Is Used
-
-1. **Every agent call** loads this file into context via `agents/base.py::_build_system_context()`.
-2. **DeepReflection (Saturday)** proposes updates to this file based on the week's outcomes.
-3. **Validation gate** prevents weight changes from being auto-applied — but playbook entries (patterns, mistakes, what works) update freely because they're qualitative observations, not numerical weights.
-4. **Agents should cite this playbook** when a current setup matches a logged pattern: "matches pattern from week 3 observation — elevated VIX + call + momentum-driven worked 2/2 times with avg +34% P&L."
+### Week 1 — 2026-03-20 (test run)
+- **Market:** VIX 27.8 (high), broad selloff, SPY RSI 25
+- **Picks:** ULTA $530P, GNRC $200P, URI $700P, STLD $165P, LUV $40P
+- **Outcome:** (pending — record after market close)
+- **Notes:** First run. All puts due to high VIX. Confidence flat at 0.50 across
+  all picks — direction signals splitting (oversold = bullish contrarian vs.
+  high VIX downtrend = bearish momentum). Sentiment data was thin due to
+  Finnhub rate limiting. Picks were near-ATM strikes.
