@@ -376,6 +376,82 @@ class SentimentScanner:
             return []
 
     # ------------------------------------------------------------------ #
+    #  Analyst Revision Trend
+    # ------------------------------------------------------------------ #
+
+    def get_analyst_revision_trend(self, ticker: str) -> dict:
+        """Fetch analyst recommendation revision velocity from Finnhub.
+
+        Pre-earnings upgrades/downgrades are one of the strongest public
+        predictors of earnings surprises. This compares the most recent
+        month's bullish/bearish counts vs the prior month to detect a
+        revision cycle.
+
+        Returns
+        -------
+        dict
+            Keys: direction ("upgrade" | "downgrade" | "flat" | "unavailable"),
+            delta (int — net change in buy+strongBuy count), latest (dict
+            with the current month's raw counts), period (str YYYY-MM-DD of
+            latest data point).
+        """
+        neutral = {"direction": "unavailable", "delta": 0, "latest": {}, "period": ""}
+
+        if not config.has_finnhub():
+            return neutral
+
+        try:
+            resp = requests.get(
+                "https://finnhub.io/api/v1/stock/recommendation",
+                params={"symbol": ticker, "token": config.finnhub_api_key},
+                timeout=10,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+            # Finnhub returns array sorted most-recent first
+            if not data or len(data) < 2:
+                return neutral
+
+            latest = data[0]
+            prior = data[1]
+
+            bullish_now = (latest.get("strongBuy", 0) or 0) + (latest.get("buy", 0) or 0)
+            bullish_prior = (prior.get("strongBuy", 0) or 0) + (prior.get("buy", 0) or 0)
+            bearish_now = (latest.get("strongSell", 0) or 0) + (latest.get("sell", 0) or 0)
+            bearish_prior = (prior.get("strongSell", 0) or 0) + (prior.get("sell", 0) or 0)
+
+            bullish_delta = bullish_now - bullish_prior
+            bearish_delta = bearish_now - bearish_prior
+            net_delta = bullish_delta - bearish_delta
+
+            if net_delta >= 2:
+                direction = "upgrade"
+            elif net_delta <= -2:
+                direction = "downgrade"
+            else:
+                direction = "flat"
+
+            return {
+                "direction": direction,
+                "delta": net_delta,
+                "bullish_delta": bullish_delta,
+                "bearish_delta": bearish_delta,
+                "latest": {
+                    "strongBuy": latest.get("strongBuy", 0),
+                    "buy": latest.get("buy", 0),
+                    "hold": latest.get("hold", 0),
+                    "sell": latest.get("sell", 0),
+                    "strongSell": latest.get("strongSell", 0),
+                },
+                "period": latest.get("period", ""),
+            }
+
+        except Exception as exc:
+            logger.debug("Analyst revision fetch failed for %s: %s", ticker, exc)
+            return neutral
+
+    # ------------------------------------------------------------------ #
     #  Composite Sentiment
     # ------------------------------------------------------------------ #
 
@@ -486,6 +562,25 @@ class SentimentScanner:
         # Attach social intelligence when available
         if social_intel:
             result["social"] = social_intel
+
+        # Attach analyst revision trend (free Finnhub endpoint)
+        try:
+            analyst = self.get_analyst_revision_trend(ticker)
+            if analyst.get("direction") != "unavailable":
+                result["analyst_revision"] = analyst
+        except Exception as exc:
+            logger.debug("Analyst revision attach failed for %s: %s", ticker, exc)
+
+        # Attach recent 8-K filings (SEC EDGAR, free)
+        try:
+            from scanners.edgar import EdgarScanner
+            if not hasattr(self, "_edgar_scanner"):
+                self._edgar_scanner = EdgarScanner()
+            filings = self._edgar_scanner.get_recent_8k_filings(ticker, days_back=3)
+            if filings.get("has_recent_8k"):
+                result["sec_8k"] = filings
+        except Exception as exc:
+            logger.debug("8-K attach failed for %s: %s", ticker, exc)
 
         return result
 

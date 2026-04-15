@@ -474,6 +474,24 @@ class CandidateScorer:
             if risks:
                 score -= min(len(risks) * 3, 10)
 
+        # Analyst revision velocity (Finnhub recommendation trends month-over-month)
+        analyst = sent.get("analyst_revision", {})
+        arev = analyst.get("direction")
+        if arev == "upgrade" and direction == "call":
+            score += 5
+        elif arev == "downgrade" and direction == "put":
+            score += 5
+        elif arev == "upgrade" and direction == "put":
+            score -= 3  # revision contradicts thesis
+        elif arev == "downgrade" and direction == "call":
+            score -= 3
+
+        # Recent 8-K material event (EDGAR) — catalyst of unknown direction,
+        # small positive because volatility/newsflow typically benefits long premium
+        sec_8k = sent.get("sec_8k", {})
+        if sec_8k.get("has_recent_8k"):
+            score += 3
+
         # Analyst consensus (Finviz)
         fv = data.get("finviz", {})
         rating = fv.get("analyst_rating")

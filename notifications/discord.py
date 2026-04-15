@@ -147,7 +147,18 @@ class DiscordNotifier:
                 if narrative and narrative != "Minimal social signal":
                     social_line = f"\n**Social Intel:** {narrative[:180]}"
 
-            earnings_line = "\n**[EARNINGS THIS WEEK]** — IV crush risk, size down" if earnings_warn else ""
+            earnings_line = ""
+            if earnings_warn:
+                earnings_brief = pick.get("earnings_agent", {}).get("brief", "")
+                if earnings_brief:
+                    earnings_line = f"\n**[EARNINGS THIS WEEK]** {earnings_brief[:250]}"
+                else:
+                    earnings_line = "\n**[EARNINGS THIS WEEK]** — IV crush risk, size down"
+
+            thesis_line = ""
+            thesis = pick.get("thesis", "")
+            if thesis:
+                thesis_line = f"\n**Thesis:** {thesis[:300]}"
 
             value = (
                 f"**ACTION: BUY {contracts} {ticker} {direction} {strike_str} exp {expiry}**\n"
@@ -171,6 +182,7 @@ class DiscordNotifier:
                 f"Stop loss: sell at **${stop_loss_val:,.0f}** (-50% = **-${loss_50:,.0f}**)\n"
                 f"\n"
                 f"_{reasoning}_"
+                f"{thesis_line}"
                 f"{social_line}"
                 f"{earnings_line}"
             )
@@ -729,6 +741,17 @@ class DiscordNotifier:
             risks = social.get("risks", [])
             if risks:
                 parts.append(f"risks: {', '.join(risks[:2])}")
+
+        analyst = sent.get("analyst_revision", {})
+        arev = analyst.get("direction")
+        if arev == "upgrade":
+            parts.append("analyst upgrades")
+        elif arev == "downgrade":
+            parts.append("analyst downgrades")
+
+        sec_8k = sent.get("sec_8k", {})
+        if sec_8k.get("has_recent_8k"):
+            parts.append(f"{sec_8k.get('filing_count', 1)} recent 8-K")
 
         if not parts:
             return "Multi-signal convergence"

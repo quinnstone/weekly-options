@@ -342,6 +342,78 @@ class EdgarScanner:
         return results
 
     # ------------------------------------------------------------------ #
+    #  8-K material event filings
+    # ------------------------------------------------------------------ #
+
+    def get_recent_8k_filings(self, ticker: str, days_back: int = 3) -> dict:
+        """Fetch recent 8-K material-event filings for *ticker*.
+
+        8-K filings disclose material corporate events that public companies
+        must report (earnings, M&A, leadership changes, material agreements,
+        etc.). A fresh 8-K is a hard signal something happened that may move
+        the stock.
+
+        Parameters
+        ----------
+        ticker : str
+            Stock symbol (e.g. ``"AAPL"``).
+        days_back : int
+            Calendar-day window. Default 3 covers Fri-Mon around weekly entries.
+
+        Returns
+        -------
+        dict
+            Keys: filing_count (int), filings (list of {date, accession, items}),
+            has_recent_8k (bool). items codes indicate what was disclosed
+            (see SEC 8-K item list — e.g. 2.02=earnings release, 5.02=officer
+            change, 1.01=material agreement).
+        """
+        result = {"filing_count": 0, "filings": [], "has_recent_8k": False}
+
+        try:
+            cik = _cik_for_ticker(ticker)
+            if not cik:
+                return result
+            padded_cik = _pad_cik(cik)
+
+            url = f"https://data.sec.gov/submissions/CIK{padded_cik}.json"
+            resp = requests.get(url, headers=_SEC_HEADERS, timeout=15)
+            resp.raise_for_status()
+            data = resp.json()
+
+            recent = data.get("filings", {}).get("recent", {})
+            forms = recent.get("form", [])
+            dates = recent.get("filingDate", [])
+            accessions = recent.get("accessionNumber", [])
+            items_list = recent.get("items", [])
+
+            cutoff = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+
+            filings = []
+            for i, form_type in enumerate(forms):
+                if form_type not in ("8-K", "8-K/A"):
+                    continue
+                if i >= len(dates) or dates[i] < cutoff:
+                    continue
+                filings.append({
+                    "date": dates[i],
+                    "accession": accessions[i] if i < len(accessions) else "",
+                    "items": items_list[i] if i < len(items_list) else "",
+                    "form": form_type,
+                })
+                if len(filings) >= 5:
+                    break
+
+            result["filing_count"] = len(filings)
+            result["filings"] = filings
+            result["has_recent_8k"] = len(filings) > 0
+
+        except Exception as exc:
+            logger.debug("EDGAR 8-K scan failed for %s: %s", ticker, exc)
+
+        return result
+
+    # ------------------------------------------------------------------ #
     #  Internal: filing discovery
     # ------------------------------------------------------------------ #
 
