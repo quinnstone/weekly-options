@@ -1315,6 +1315,11 @@ class DailyStages:
                 "entry": p.get("entry", {}),
                 "exit": p.get("exit", {}),
                 "earnings_warning": p.get("earnings_warning", False),
+                # Per-model scores for post-hoc model comparison
+                "ensemble": p.get("ensemble"),
+                "scores": p.get("scores"),
+                "pattern": p.get("pattern"),
+                "active_regime": p.get("active_regime"),
             })
 
         macro_edge = picks[0].get("macro_edge") if picks else {}

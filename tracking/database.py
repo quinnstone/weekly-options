@@ -52,6 +52,11 @@ class Database:
                 sector TEXT,
                 earnings_warning INTEGER DEFAULT 0,
                 pattern_key TEXT,
+                -- Per-model ensemble scores (for model comparison)
+                model_linear REAL,
+                model_momentum REAL,
+                model_reversion REAL,
+                model_std REAL,
                 -- Outcome fields (filled in after expiry)
                 closing_price REAL,
                 exit_value REAL,
@@ -100,6 +105,11 @@ class Database:
             conn.execute("ALTER TABLE picks ADD COLUMN earnings_warning INTEGER DEFAULT 0")
         if "pattern_key" not in cols:
             conn.execute("ALTER TABLE picks ADD COLUMN pattern_key TEXT")
+        if "model_linear" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN model_linear REAL")
+            conn.execute("ALTER TABLE picks ADD COLUMN model_momentum REAL")
+            conn.execute("ALTER TABLE picks ADD COLUMN model_reversion REAL")
+            conn.execute("ALTER TABLE picks ADD COLUMN model_std REAL")
 
         conn.commit()
         conn.close()
@@ -128,11 +138,13 @@ class Database:
         for p in picks:
             pattern_key = (p.get("pattern") or {}).get("pattern_key") or p.get("pattern_key")
             earnings_warning = 1 if p.get("earnings_warning") else 0
+            ensemble = p.get("ensemble") or {}
             conn.execute("""
                 INSERT INTO picks (pick_date, expiry, ticker, direction, strike,
                                    entry_premium, composite_score, confidence, sector,
-                                   earnings_warning, pattern_key)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   earnings_warning, pattern_key,
+                                   model_linear, model_momentum, model_reversion, model_std)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 pick_date,
                 p.get("expiry"),
@@ -145,6 +157,10 @@ class Database:
                 p.get("sector"),
                 earnings_warning,
                 pattern_key,
+                ensemble.get("linear"),
+                ensemble.get("momentum"),
+                ensemble.get("reversion"),
+                ensemble.get("model_std"),
             ))
 
         # Save market snapshot
