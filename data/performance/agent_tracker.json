@@ -12,6 +12,20 @@
       "context": {
         "length": 1042
       }
+    },
+    {
+      "timestamp": "2026-04-18T10:35:03.102631",
+      "week": "2026-W15",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "## CIO Weekly Review: Week of 2026-04-18\n\n### Performance Analysis\nNo trades were executed this week despite having 5 candidates in the pipeline. This represents a critical process failure that requires immediate diagnosis.\n\n### Root Cause Analysis\n\n**Primary Failure Mode: Pipeline Execution Gap**\n-"
+      }
     }
   ],
   "weekly_summaries": []
