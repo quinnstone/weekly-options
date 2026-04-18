@@ -65,6 +65,8 @@ env:
   REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
   REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
   REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+  REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+  REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
   TZ: America/New_York
 
 jobs:

@@ -302,18 +302,123 @@ class SocialCrawler:
             "timestamp": datetime.now().isoformat(),
         }
 
-    def _crawl_subreddit_json(self, subreddit: str, limit: int = 50) -> list:
-        """Fetch posts via Reddit's public JSON endpoint.
+    def _get_reddit_token(self) -> str:
+        """Get OAuth token for Reddit's authenticated API.
 
-        Public JSON works without OAuth provided we send a unique User-Agent
-        and stay under ~60 reqs / 10 min. Returns the same post dict shape
-        that _crawl_subreddit produces so downstream aggregation is unchanged.
+        Tries multiple grant types to handle different Reddit app configurations:
+        1. client_credentials (web/confidential apps)
+        2. installed_client (installed/public apps — no username needed)
+        3. password (script apps — needs REDDIT_USERNAME + REDDIT_PASSWORD)
+
+        Authenticated API uses oauth.reddit.com which works from datacenter IPs
+        (unlike www.reddit.com/r/X.json which returns 403 from GitHub Actions).
         """
+        if hasattr(self, "_reddit_token") and self._reddit_token:
+            return self._reddit_token
+
+        import os
+        client_id = os.getenv("REDDIT_CLIENT_ID", "")
+        client_secret = os.getenv("REDDIT_CLIENT_SECRET", "")
+        if not client_id:
+            return ""
+
+        ua = "weekly-options-scanner/1.0 (by /u/weekly-options-bot)"
+
+        # Try 1: installed_client grant (works for any app type, read-only)
+        try:
+            resp = requests.post(
+                "https://www.reddit.com/api/v1/access_token",
+                auth=(client_id, client_secret or ""),
+                data={
+                    "grant_type": "https://oauth.reddit.com/grants/installed_client",
+                    "device_id": "DO_NOT_TRACK_THIS_DEVICE",
+                },
+                headers={"User-Agent": ua},
+                timeout=10,
+            )
+            if resp.status_code == 200:
+                token = resp.json().get("access_token", "")
+                if token:
+                    self._reddit_token = token
+                    logger.info("Reddit OAuth: installed_client grant succeeded")
+                    return token
+        except Exception:
+            pass
+
+        # Try 2: client_credentials (confidential/web apps)
+        if client_secret:
+            try:
+                resp = requests.post(
+                    "https://www.reddit.com/api/v1/access_token",
+                    auth=(client_id, client_secret),
+                    data={"grant_type": "client_credentials"},
+                    headers={"User-Agent": ua},
+                    timeout=10,
+                )
+                if resp.status_code == 200:
+                    token = resp.json().get("access_token", "")
+                    if token:
+                        self._reddit_token = token
+                        logger.info("Reddit OAuth: client_credentials grant succeeded")
+                        return token
+            except Exception:
+                pass
+
+        # Try 3: password grant (script apps — requires username/password)
+        username = os.getenv("REDDIT_USERNAME", "")
+        password = os.getenv("REDDIT_PASSWORD", "")
+        if username and password and client_secret:
+            try:
+                resp = requests.post(
+                    "https://www.reddit.com/api/v1/access_token",
+                    auth=(client_id, client_secret),
+                    data={
+                        "grant_type": "password",
+                        "username": username,
+                        "password": password,
+                    },
+                    headers={"User-Agent": ua},
+                    timeout=10,
+                )
+                if resp.status_code == 200:
+                    token = resp.json().get("access_token", "")
+                    if token:
+                        self._reddit_token = token
+                        logger.info("Reddit OAuth: password grant succeeded")
+                        return token
+            except Exception:
+                pass
+
+        logger.warning("All Reddit OAuth grant types failed")
+        return ""
+
+    def _crawl_subreddit_json(self, subreddit: str, limit: int = 50) -> list:
+        """Fetch posts via Reddit API with OAuth fallback.
+
+        Tries authenticated OAuth endpoint first (works from datacenter IPs),
+        falls back to public JSON (works from residential IPs).
+        """
+        ua = "weekly-options-scanner/1.0 (signal aggregation; contact via repo)"
+
+        # Try OAuth endpoint first (works from GitHub Actions / datacenter IPs)
+        token = self._get_reddit_token()
+        if token:
+            url = f"https://oauth.reddit.com/r/{subreddit}/hot?limit={limit}"
+            headers = {"Authorization": f"Bearer {token}", "User-Agent": ua}
+            try:
+                resp = requests.get(url, headers=headers, timeout=12)
+                if resp.status_code == 200:
+                    children = resp.json().get("data", {}).get("children", [])
+                    return self._parse_reddit_children(children, subreddit)
+                logger.warning("Reddit OAuth r/%s returned %d, trying public JSON",
+                               subreddit, resp.status_code)
+            except Exception as exc:
+                logger.warning("Reddit OAuth failed for r/%s: %s, trying public JSON",
+                               subreddit, exc)
+
+        # Fallback: public JSON (works from residential IPs, blocked from datacenters)
         url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit={limit}"
-        headers = {
-            "User-Agent": "weekly-options-scanner/1.0 (signal aggregation; contact via repo)",
-            "Accept": "application/json",
-        }
+        headers = {"User-Agent": ua, "Accept": "application/json"}
         try:
             resp = requests.get(url, headers=headers, timeout=12)
             if resp.status_code != 200:
@@ -324,6 +429,10 @@ class SocialCrawler:
             logger.warning("Reddit JSON fetch failed for r/%s: %s", subreddit, exc)
             return []
 
+        return self._parse_reddit_children(children, subreddit)
+
+    def _parse_reddit_children(self, children: list, subreddit: str) -> list:
+        """Parse Reddit API children into post dicts for aggregation."""
         posts = []
         for child in children:
             d = child.get("data", {})
