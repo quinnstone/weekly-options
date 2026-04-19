@@ -275,7 +275,10 @@ class SocialCrawler:
             try:
                 posts = self._crawl_subreddit_json(sub)
                 if not posts:
-                    # JSON returned empty — try Playwright fallback
+                    # OAuth/JSON failed — try RSS (works from datacenter IPs)
+                    posts = self._crawl_subreddit_rss(sub)
+                if not posts:
+                    # RSS failed — try Playwright as last resort
                     self._ensure_browser()
                     posts = self._crawl_subreddit(sub)
                 all_posts.extend(posts)
@@ -472,6 +475,70 @@ class SocialCrawler:
                 "subreddit": subreddit,
                 "url": d.get("permalink", ""),
             })
+        return posts
+
+    def _crawl_subreddit_rss(self, subreddit: str, limit: int = 50) -> list:
+        """Fetch posts via Reddit's Atom RSS feed.
+
+        RSS uses a different endpoint (/hot/.rss) that may not be blocked
+        from datacenter IPs. Returns title + content snippet (HTML) but
+        NO scores, comment counts, or flair. Quality weighting falls back
+        to pattern-based classification only.
+        """
+        import xml.etree.ElementTree as ET
+
+        url = f"https://www.reddit.com/r/{subreddit}/hot/.rss"
+        try:
+            resp = requests.get(
+                url,
+                headers={"User-Agent": "weekly-options-scanner/1.0"},
+                timeout=12,
+            )
+            if resp.status_code != 200:
+                logger.warning("Reddit RSS r/%s returned %d", subreddit, resp.status_code)
+                return []
+            root = ET.fromstring(resp.text)
+        except Exception as exc:
+            logger.warning("Reddit RSS failed for r/%s: %s", subreddit, exc)
+            return []
+
+        ns = {"atom": "http://www.w3.org/2005/Atom"}
+        entries = root.findall("atom:entry", ns)
+
+        posts = []
+        for entry in entries[:limit]:
+            title_el = entry.find("atom:title", ns)
+            content_el = entry.find("atom:content", ns)
+            title = title_el.text.strip() if title_el is not None and title_el.text else ""
+            if not title:
+                continue
+
+            # Strip HTML from content for clean text
+            raw_content = content_el.text if content_el is not None and content_el.text else ""
+            clean_content = re.sub(r"<[^>]+>", " ", raw_content).strip()
+            full_text = f"{title} {clean_content}"
+
+            tickers = self._extract_tickers(full_text)
+            sentiment = self._score_text(full_text)
+            classification = _classify_post(full_text)
+
+            # No flair from RSS — rely entirely on text pattern classification
+            posts.append({
+                "title": title,
+                "flair": "",
+                "score": 0,      # Unknown from RSS
+                "comments": 0,   # Unknown from RSS
+                "tickers": tickers,
+                "sentiment": sentiment,
+                "classification": classification,
+                "subreddit": subreddit,
+                "url": "",
+                "source_method": "rss",
+            })
+
+        if posts:
+            logger.info("Reddit RSS r/%s: %d posts (no scores/flair — text-only signal)",
+                        subreddit, len(posts))
         return posts
 
     def _crawl_subreddit(self, subreddit: str, limit: int = 50) -> list:
