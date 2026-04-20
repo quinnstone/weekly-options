@@ -47,6 +47,51 @@
         ],
         "reasoning": "SELECTED:\n\n1. **MSFT** \u2014 Safe mega-cap with strong flow conviction (95) and no earnings risk this week\n   THESIS: Unusual options flow (95 score) combined with perfect momentum (100) suggests institutional positioning ahead of potential AI/cloud announcements. The narrow market leadership favors meg"
       }
+    },
+    {
+      "timestamp": "2026-04-20T13:58:19.381102",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MSFT",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 0.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-20T13:58:19.381577",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MAR",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 0.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-20T13:58:19.382004",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "SOFI",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 0.0,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
