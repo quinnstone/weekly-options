@@ -649,7 +649,11 @@ class NarrowingPipeline:
         engine. This filter enforces:
 
         1. Minimum confidence threshold: drop picks below 0.25 confidence
-        2. Sector diversity: max 1 from same sector (3 picks across 3 sectors)
+        2. Sector diversity: max 2 from same sector, but only if both rank
+           in the top 5 by composite score AND their 20-day return
+           correlation is < 0.60 (stricter than the general 0.75 dedup).
+           This lets genuinely independent same-sector plays through while
+           still protecting against single-headline blowups.
         3. Direction balance: if all 3 same direction AND average confidence
            < 0.75, swap lowest-scored pick for best contrarian
         4. Earnings-week guard: flag (but don't remove) picks with earnings
@@ -687,8 +691,10 @@ class NarrowingPipeline:
             sector = c.get("sector", "unknown")
             sector_map[ticker] = sector
 
-        # Sector diversity: max 1 per sector for 3 picks (force diversification)
-        diverse = enforce_diversity(confident, sector_map, max_per_sector=1)
+        # Sector diversity: allow up to 2 from same sector (was 1).
+        # Same-sector pairs face tighter correlation dedup (0.60 vs 0.75)
+        # and a top-5 rank gate below.
+        diverse = enforce_diversity(confident, sector_map, max_per_sector=2)
 
         # Correlation-based dedup: avoid highly correlated pairs
         diverse = self._correlation_dedup(diverse)
@@ -696,6 +702,38 @@ class NarrowingPipeline:
         # Take top 3 — prefer fewer high-conviction picks over more mediocre ones
         from config import PORTFOLIO_SIZE
         top5 = diverse[:PORTFOLIO_SIZE]
+
+        # Same-sector top-5 gate: if 2 of the 3 picks share a sector,
+        # both must have ranked in the top 5 of the original composite-scored
+        # list. This prevents a mediocre same-sector pick from riding the
+        # coattails of a strong one. If the gate fails, swap the lower one
+        # for the next best cross-sector candidate.
+        if len(top5) >= 2:
+            top5_tickers = {c.get("ticker") for c in sorted_candidates[:5]}
+            sectors_in_picks = {}
+            for pick in top5:
+                s = pick.get("sector", "unknown")
+                sectors_in_picks.setdefault(s, []).append(pick)
+            for sector, picks_in_sector in sectors_in_picks.items():
+                if len(picks_in_sector) >= 2:
+                    # Check both were top-5 in the pre-diversity ranking
+                    for pick in picks_in_sector:
+                        if pick.get("ticker") not in top5_tickers:
+                            # This pick wasn't top-5 — demote it
+                            logger.info(
+                                "Same-sector gate: %s (%s) not in top-5 composite; "
+                                "replacing with next cross-sector candidate",
+                                pick.get("ticker"), sector,
+                            )
+                            top5.remove(pick)
+                            # Find replacement from diverse pool
+                            existing_tickers = {c.get("ticker") for c in top5}
+                            for replacement in diverse:
+                                if (replacement.get("ticker") not in existing_tickers
+                                        and replacement.get("sector") != sector):
+                                    top5.append(replacement)
+                                    break
+                            break  # Only fix one per sector per pass
 
         # Flag earnings-week picks
         for pick in top5:
@@ -781,11 +819,14 @@ class NarrowingPipeline:
 
         return picks
 
-    def _correlation_dedup(self, candidates: list, corr_threshold: float = 0.75) -> list:
+    def _correlation_dedup(self, candidates: list, corr_threshold: float = 0.75,
+                           same_sector_threshold: float = 0.60) -> list:
         """Remove highly correlated tickers using rolling 20-day return correlations.
 
         Fetches 1-month price history for each candidate, computes pairwise
         correlation, and drops lower-scored duplicates above *corr_threshold*.
+        Same-sector pairs use a tighter *same_sector_threshold* (0.60) to
+        ensure genuine independence when allowing 2 picks from one sector.
         Falls back to sector/sub-industry grouping if price data is unavailable.
         """
         if len(candidates) <= 1:
@@ -828,15 +869,21 @@ class NarrowingPipeline:
                     if min_len < 5:
                         continue
                     corr = float(np.corrcoef(r1[:min_len], r2[:min_len])[0, 1])
-                    if abs(corr) >= corr_threshold:
+                    # Same-sector pairs use tighter threshold (0.60) to ensure
+                    # genuine independence when 2 picks from one sector are allowed
+                    s1_sector = c1.get("sector", "unknown")
+                    s2_sector = c2.get("sector", "unknown")
+                    threshold = same_sector_threshold if s1_sector == s2_sector else corr_threshold
+                    if abs(corr) >= threshold:
                         # Drop the lower-scored one
                         s1 = c1.get("composite_score", 0)
                         s2 = c2.get("composite_score", 0)
                         drop = t2 if s1 >= s2 else t1
                         excluded.add(drop)
                         logger.info(
-                            "Correlation dedup: dropping %s (corr %.2f with %s)",
-                            drop, corr, t1 if drop == t2 else t2,
+                            "Correlation dedup: dropping %s (corr %.2f with %s, threshold %.2f%s)",
+                            drop, corr, t1 if drop == t2 else t2, threshold,
+                            " [same-sector]" if s1_sector == s2_sector else "",
                         )
         else:
             # Fallback: sector + sub-industry grouping

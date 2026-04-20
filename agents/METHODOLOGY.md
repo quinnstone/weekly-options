@@ -215,8 +215,8 @@ data we don't have).
 - Regime gate: multiply by 0.5 if macro_edge multiplier < 0.50
 
 ### Portfolio Construction (3-pick portfolio)
-- Max 1 pick per sector (enforced diversification at small portfolio size)
-- Correlation dedup: 20-day rolling return correlation > 0.75 = drop lower score
+- Max 2 picks per sector, gated by: both must rank in top 5 by composite score AND their 20-day return correlation must be < 0.60 (stricter than the general 0.75 cross-sector dedup). This lets genuinely independent same-sector plays through while preventing single-headline blowups.
+- Correlation dedup: 20-day rolling return correlation > 0.75 = drop lower score (0.60 for same-sector pairs)
 - Direction balance: if all 3 same direction AND avg confidence < 0.75, swap one for best contrarian from bench
 
 ---
@@ -241,7 +241,7 @@ overfitting to recent results.
 |--------|-----------|---------|
 | Delta target | 0.35 | Strike selection for calls and puts |
 | Confidence minimum | 0.25 | Hard gate at Monday picks |
-| Correlation dedup | 0.75 | 20-day return correlation |
+| Correlation dedup | 0.75 / 0.60 | 20-day return correlation (0.60 for same-sector pairs) |
 | RSI oversold/overbought | 30/70 | Mean reversion triggers (weekly, wider than daily) |
 | ADX trending | > 25 | vs choppy classification |
 | VIX regime boundaries | 15/20/25/30 | Five-tier system |
@@ -251,7 +251,7 @@ overfitting to recent results.
 | Calibration reliable | 10+ obs | Before live calibration overrides static |
 | Weekly ATR% minimum | 1.5% | Wednesday scan hard filter |
 | Options volume minimum | 500 | Wednesday scan (300 for Friday) |
-| Max sector concentration | 2 of 5 | Diversity rule |
+| Max sector concentration | 2 of 3 | Gated: both top-5 + corr < 0.60 |
 | Kelly cap | 3% | Maximum position size |
 | Hard stop | -50% | Option value loss trigger |
 | Gap skip threshold | 2% | Monday entry confirmation |
