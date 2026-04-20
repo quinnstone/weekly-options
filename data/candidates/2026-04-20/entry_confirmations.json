@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "MSFT",
+    "direction": "call",
+    "strike": null,
+    "original_premium": null,
+    "original_price": null,
+    "signal": "GO",
+    "detail": "Flat since open (-0.9%) \u2014 no strong confirmation yet.",
+    "current_price": 417.37,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-20T11:16:13.848129"
+  },
+  {
+    "ticker": "MAR",
+    "direction": "call",
+    "strike": null,
+    "original_premium": null,
+    "original_price": null,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.3% since open).",
+    "current_price": 376.24,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-20T11:16:14.100696"
+  },
+  {
+    "ticker": "SOFI",
+    "direction": "call",
+    "strike": null,
+    "original_premium": null,
+    "original_price": null,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.4% since open).",
+    "current_price": 19.29,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-20T11:16:14.254652"
+  }
+]
