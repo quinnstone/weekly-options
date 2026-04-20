@@ -1,0 +1,69 @@
+{
+  "date": "2026-04-20",
+  "picks": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.2,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 85.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 75.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 95.0,
+        "event_risk": 50.0,
+        "liquidity": 53.12046,
+        "strike_efficiency": 65.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.89,
+      "direction_confidence": 0.358,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 50.0,
+        "liquidity": 50.01654,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.8,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 84.128,
+        "regime_bias": 55.0,
+        "trend_persistence": 75.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 50.0,
+        "event_risk": 40.0,
+        "liquidity": 52.37254,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    }
+  ],
+  "recorded_at": "2026-04-20T09:08:31.225337"
+}
