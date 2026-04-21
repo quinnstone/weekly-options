@@ -563,13 +563,32 @@ class OptionsScanner:
             options = options.copy()
             options["mid"] = (options["bid"] + options["ask"]) / 2
 
-            # Filter: bid > 0, within budget, some volume or OI
-            mask = (
-                (options["bid"] > 0.05)
-                & (options["mid"] >= min_prem)
-                & (options["mid"] <= max_prem)
-                & ((options["volume"] > 0) | (options["openInterest"] > 10))
-            )
+            # Pre-market fallback: when bid/ask are zero (market closed),
+            # use lastPrice as the premium estimate instead
+            pre_market_mode = False
+            if "lastPrice" in options.columns and (options["bid"] <= 0.05).all():
+                logger.info(
+                    "Pre-market detected for %s — bid/ask stale, using lastPrice",
+                    ticker,
+                )
+                pre_market_mode = True
+                options["mid"] = options["lastPrice"].fillna(0)
+
+            # Filter: bid > 0 (or lastPrice > 0 pre-market), within budget
+            if pre_market_mode:
+                mask = (
+                    (options["mid"] > 0.05)
+                    & (options["mid"] >= min_prem)
+                    & (options["mid"] <= max_prem)
+                    & (options["openInterest"] > 10)
+                )
+            else:
+                mask = (
+                    (options["bid"] > 0.05)
+                    & (options["mid"] >= min_prem)
+                    & (options["mid"] <= max_prem)
+                    & ((options["volume"] > 0) | (options["openInterest"] > 10))
+                )
             filtered = options.loc[mask].copy()
 
             if filtered.empty:

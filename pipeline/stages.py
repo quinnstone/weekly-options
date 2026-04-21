@@ -833,6 +833,40 @@ class DailyStages:
 
             logger.info("Confirming entry for %s (%s)...", ticker, direction)
 
+            # If pre-market run failed to get strike data, re-fetch now (market open)
+            if not original_strike or not original_premium:
+                logger.info(
+                    "Strike/premium missing for %s — re-fetching with live market data",
+                    ticker,
+                )
+                if opts_scanner:
+                    try:
+                        scanner_direction = "bullish" if direction == "call" else "bearish"
+                        strike_data = opts_scanner.find_optimal_strikes(ticker, scanner_direction)
+                        if strike_data and strike_data.get("strike"):
+                            pick["strike"] = strike_data.get("strike")
+                            pick["premium"] = strike_data.get("premium")
+                            pick["current_price"] = strike_data.get("current_price")
+                            pick["breakeven"] = strike_data.get("breakeven")
+                            pick["breakeven_move_pct"] = strike_data.get("breakeven_move_pct")
+                            pick["expected_daily_move_pct"] = strike_data.get("expected_daily_move_pct")
+                            pick["estimated_delta"] = strike_data.get("estimated_delta")
+                            pick["iv"] = strike_data.get("iv")
+                            pick["expiry"] = strike_data.get("expiry") or pick.get("expiry")
+                            pick["entry"] = strike_data.get("entry", {})
+                            pick["exit"] = strike_data.get("exit", {})
+                            # Update locals for downstream checks
+                            original_strike = pick["strike"]
+                            original_premium = pick["premium"]
+                            original_price = pick.get("current_price")
+                            original_delta = pick.get("estimated_delta", 0.35)
+                            logger.info(
+                                "Re-fetched %s: strike=%.2f premium=%.2f delta=%.3f",
+                                ticker, original_strike, original_premium, original_delta,
+                            )
+                    except Exception as exc:
+                        logger.error("Strike re-fetch failed for %s: %s", ticker, exc)
+
             # Fetch fresh quote
             try:
                 import yfinance as yf
@@ -1016,6 +1050,23 @@ class DailyStages:
                             )
         except Exception as exc:
             logger.error("Pre-trade analyst failed: %s", exc)
+
+        # Re-save monday_picks if any were updated with live strike data
+        # (pre-market run may have had missing pricing that was filled in above)
+        picks_updated = any(
+            p.get("strike") and p.get("premium")
+            for p in picks
+        )
+        if picks_updated:
+            self.narrower.save_stage_results("monday_picks", picks, date_str)
+            logger.info("Re-saved monday_picks with live strike data")
+            # Also update database with pricing
+            try:
+                from tracking.database import Database
+                db = Database()
+                db.record_picks(date_str, picks)
+            except Exception as exc:
+                logger.error("Failed to update picks in database: %s", exc)
 
         # Send Discord confirmation message
         self._send_entry_confirmations(confirmations)
