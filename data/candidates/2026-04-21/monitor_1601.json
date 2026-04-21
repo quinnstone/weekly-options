@@ -1,0 +1,63 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 424.25,
+      "entry_premium": null,
+      "current_option_price": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -4.0,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "theta_cost_pct": 4.0,
+      "status": "HOLD",
+      "detail": "P&L: -4% (target: 35% today). Stock moved +0.0%."
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 375.59,
+      "entry_premium": null,
+      "current_option_price": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -4.0,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "theta_cost_pct": 4.0,
+      "status": "HOLD",
+      "detail": "P&L: -4% (target: 35% today). Stock moved +0.0%."
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 18.83,
+      "entry_premium": null,
+      "current_option_price": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -4.0,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "theta_cost_pct": 4.0,
+      "status": "HOLD",
+      "detail": "P&L: -4% (target: 35% today). Stock moved +0.0%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -4.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}
