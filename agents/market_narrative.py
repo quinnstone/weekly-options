@@ -2,22 +2,24 @@
 Market Narrative Agent — runs during Wednesday scan.
 
 Synthesizes structured market data (VIX regime, breadth, credit, COT,
-macro surprise, holding window events, sector performance) into a coherent
-1-2 paragraph market narrative. This narrative is:
+macro surprise, holding window events, sector performance) AND recent
+market-moving news into a coherent 2-3 paragraph market narrative.
 
+This narrative is:
 1. Saved to disk for downstream agents to reference
 2. Embedded in Discord messages for trader context
 3. Fed to determine_direction() and assess_macro_edge() as qualitative input
 
 This replaces the "analyst morning meeting" where a senior trader explains
-what the numbers mean in plain English.
+what the numbers mean in plain English — including overnight developments,
+geopolitical events, and policy changes that structured data alone misses.
 """
 
 import json
 import logging
 from datetime import datetime
 
-from agents.base import BaseAgent
+from agents.base import BaseAgent, WEB_SEARCH_TOOL
 from config import Config
 
 logger = logging.getLogger(__name__)
@@ -27,38 +29,55 @@ SYSTEM_PROMPT = """You are the senior market strategist synthesizing this week's
 data into a coherent narrative. You have full access to the methodology
 reference above.
 
-Your job: read the structured market signals and write a 2-3 paragraph
-market narrative that answers these questions:
+You have a web_search tool. Use it for exactly TWO searches:
+1. Search "broad market news this week" to get macro/geopolitical headlines
+2. Search for a specific developing story IF the structured data suggests
+   something unusual (e.g., VIX spiking, credit widening, cross-asset
+   divergence) — search for the *why*
 
-1. **What regime are we in?** Reference the VIX tier (low/normal/elevated/
-   high/extreme) and what that means for our weight multipliers. Is the
-   regime stable (5+ days) or transitioning?
+**CRITICAL GUARDRAIL:** Your narrative must be ANCHORED on the structured
+data (VIX, breadth, credit, COT, cross-asset signals). News explains
+*why* the numbers moved — it does not override them. If news says "markets
+panicking" but VIX is 14 and credit is tight, trust the numbers. If VIX
+is 28 and news says "tariff escalation," the news explains the regime.
 
-2. **Where is the edge?** Our backtest shows accuracy varies dramatically
-   by regime: 72.3% in high VIX vs 50.5% in normal. Credit at 3-4.5% OAS
-   = 57.1% vs tight <3% = 50.4%. Tell the trader where we are on that map.
+Your job: read the structured signals, check the news, and write a 2-3
+paragraph narrative that answers:
 
-3. **What's the dominant theme?** Breadth widening or narrowing? Rate
-   expectations shifting? Sector rotation in progress? COT extreme
-   positioning signaling a contrarian opportunity?
+1. **What regime are we in?** VIX tier and weight multiplier implications.
+   Stable (5+ days) or transitioning? If transitioning, does the news
+   explain why?
 
-4. **What to watch this week?** Holding window events (FOMC, CPI, earnings
-   clusters). How do these events interact with the regime?
+2. **Where is the edge?** Our backtest: 72.3% accuracy in high VIX vs
+   50.5% in normal. Credit 3-4.5% OAS = 57.1% vs tight <3% = 50.4%.
+
+3. **What's the dominant theme?** Lead with what the NUMBERS show (breadth,
+   sectors, cross-asset), then cite any news that confirms or complicates
+   the picture. Geopolitical events, trade policy, Fed signals, and fiscal
+   developments belong here — but only if they're market-moving, not
+   speculative commentary.
+
+4. **What to watch this week?** Scheduled events (FOMC, CPI, earnings)
+   PLUS any developing stories that could shift the regime mid-week
+   (ongoing negotiations, policy announcements, etc.).
 
 End with a ONE-SENTENCE directional lean: "Lean bullish/bearish/neutral
-because [specific reason]."
+because [specific reason tied to both data and context]."
 
-Be terse. No filler. Every sentence should change a trading decision."""
+Be terse. No filler. Every sentence should change a trading decision.
+Do NOT let news headlines dominate — the numbers are the primary signal,
+news is the explanatory layer."""
 
 
 class MarketNarrative(BaseAgent):
-    """Generate coherent market narrative from structured data."""
+    """Generate coherent market narrative from structured data + news."""
 
     AGENT_NAME = "market_narrative"
-    MAX_TOKENS = 1000
+    MAX_TOKENS = 1500
+    TOOLS = [WEB_SEARCH_TOOL]
 
     def narrate(self, market_summary: dict) -> str:
-        """Generate market narrative from structured market data.
+        """Generate market narrative from structured market data + news.
 
         Parameters
         ----------
@@ -115,12 +134,27 @@ class MarketNarrative(BaseAgent):
                 f"(2s10s spread: {yc.get('spread_2s10s', '?')}bps)"
             )
 
+        # Cross-asset detail (helps agent understand *what* moved)
+        cross_asset = market_summary.get("cross_asset", {})
+        cross_text = ""
+        if cross_asset:
+            parts = []
+            for asset_key in ("bonds_20y", "us_dollar", "crude_oil"):
+                asset = cross_asset.get(asset_key, {})
+                ret = asset.get("return_5d")
+                if ret is not None:
+                    parts.append(f"{asset_key}: {ret:+.1f}% 5d ({asset.get('signal', '?')})")
+            if parts:
+                cross_text = f"\nCross-asset: {', '.join(parts)} → composite: {cross_asset.get('composite', '?')}"
+
         user_msg = (
             f"MARKET DATA:\n{market_ctx}"
             f"{sector_text}"
             f"{persistence_text}"
-            f"{yc_text}\n\n"
-            f"Write your market narrative."
+            f"{yc_text}"
+            f"{cross_text}\n\n"
+            f"Use web_search to check current market-moving news (max 2 searches). "
+            f"Then write your market narrative anchored on the data above."
         )
 
         narrative = self._call(SYSTEM_PROMPT, user_msg)

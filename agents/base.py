@@ -114,72 +114,131 @@ WEB_SEARCH_TOOL = {
 }
 
 
+def _extract_ticker(query: str) -> "str | None":
+    """Try to extract a stock ticker from a search query.
+
+    Returns the first plausible ticker found, or None for broad/macro queries.
+    """
+    # Known non-ticker words that look like tickers
+    STOP_WORDS = {
+        "THE", "FOR", "AND", "NOT", "ARE", "WAS", "HAS", "HAD", "CAN", "MAY",
+        "NOW", "NEW", "ALL", "OUR", "HOW", "ANY", "FED", "GDP", "CPI", "PPI",
+        "NFP", "PCE", "OIL", "WAR", "BIG", "LOW", "KEY", "TOP", "USE", "SET",
+        "RUN", "CUT", "PUT", "GET", "LET", "SAY", "SEE", "TRY", "BUY", "OAS",
+        "NEWS", "RATE", "FOMC", "BOND", "EURO", "JOBS", "DATA", "MOVE",
+        "RISK", "WEEK", "LAST", "NEXT", "FROM", "WILL", "WHAT", "THIS",
+        "THAT", "WITH", "THAN", "INTO", "OVER", "ALSO", "BEEN", "JUST",
+        "IMPACT", "MARKET", "MACRO", "TRADE", "TODAY", "WORLD",
+        "TARIFF", "GLOBAL", "BROAD", "GEOPOLITICAL",
+    }
+    words = query.upper().split()
+    for word in words:
+        if word.isalpha() and 1 <= len(word) <= 5 and word not in STOP_WORDS:
+            return word
+    return None
+
+
 def _execute_web_search(query: str) -> str:
     """Execute a web search using available providers.
 
-    Tries Finnhub news first (free, no extra API key), then falls back
-    to a simple ticker news fetch via yfinance.
+    For ticker-specific queries: yfinance news + Finnhub company news.
+    For broad/macro queries: Finnhub general market news.
     """
     results = []
+    ticker = _extract_ticker(query)
 
-    # Strategy 1: yfinance news (always available, no extra API)
-    try:
-        import yfinance as yf
-        # Extract ticker from query if present
-        words = query.upper().split()
-        for word in words:
-            if word.isalpha() and 1 <= len(word) <= 5:
-                try:
-                    tk = yf.Ticker(word)
-                    news = tk.news
-                    if news:
-                        for article in news[:5]:
-                            title = article.get("title", "")
-                            publisher = article.get("publisher", "")
-                            link = article.get("link", "")
-                            results.append(f"- [{publisher}] {title}")
-                        break
-                except Exception:
-                    continue
-    except ImportError:
-        pass
+    if ticker:
+        # --- Ticker-specific search ---
 
-    # Strategy 2: Finnhub company news (if API key available)
-    try:
-        finnhub_key = config.finnhub_api_key
-        if finnhub_key:
-            import urllib.request
-            import urllib.parse
-            from datetime import datetime, timedelta
-            today = datetime.now().strftime("%Y-%m-%d")
-            yesterday = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
-            # Extract ticker
-            words = query.upper().split()
-            for word in words:
-                if word.isalpha() and 1 <= len(word) <= 5:
-                    url = (
-                        f"https://finnhub.io/api/v1/company-news?"
-                        f"symbol={word}&from={yesterday}&to={today}&"
-                        f"token={finnhub_key}"
-                    )
-                    try:
-                        req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
-                        with urllib.request.urlopen(req, timeout=10) as resp:
-                            data = json.loads(resp.read())
-                            for article in data[:5]:
-                                headline = article.get("headline", "")
-                                source = article.get("source", "")
-                                summary = article.get("summary", "")[:150]
-                                results.append(f"- [{source}] {headline}: {summary}")
-                            break
-                    except Exception:
-                        continue
-    except Exception:
-        pass
+        # Strategy 1: yfinance news (always available)
+        try:
+            import yfinance as yf
+            tk = yf.Ticker(ticker)
+            news = tk.news
+            if news:
+                for article in news[:5]:
+                    title = article.get("title", "")
+                    publisher = article.get("publisher", "")
+                    results.append(f"- [{publisher}] {title}")
+        except Exception:
+            pass
+
+        # Strategy 2: Finnhub company news
+        try:
+            finnhub_key = config.finnhub_api_key
+            if finnhub_key:
+                import urllib.request
+                from datetime import datetime, timedelta
+                today = datetime.now().strftime("%Y-%m-%d")
+                yesterday = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
+                url = (
+                    f"https://finnhub.io/api/v1/company-news?"
+                    f"symbol={ticker}&from={yesterday}&to={today}&"
+                    f"token={finnhub_key}"
+                )
+                req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    data = json.loads(resp.read())
+                    for article in data[:5]:
+                        headline = article.get("headline", "")
+                        source = article.get("source", "")
+                        summary = article.get("summary", "")[:150]
+                        entry = f"- [{source}] {headline}"
+                        if summary:
+                            entry += f": {summary}"
+                        if entry not in results:
+                            results.append(entry)
+        except Exception:
+            pass
+    else:
+        # --- Broad market / macro / geopolitical search ---
+        results = _fetch_general_news()
 
     if results:
-        return f"Web search results for '{query}':\n" + "\n".join(results[:8])
+        return f"Web search results for '{query}':\n" + "\n".join(results[:10])
     return f"No recent news found for '{query}'. The search may have failed or there may be no recent coverage."
+
+
+def _fetch_general_news(max_articles: int = 10) -> list:
+    """Fetch broad market news from Finnhub general news endpoint.
+
+    Returns market-moving headlines — geopolitics, Fed, trade policy,
+    macro events. Filters out crypto, lifestyle, and low-relevance noise.
+    """
+    try:
+        finnhub_key = config.finnhub_api_key
+        if not finnhub_key:
+            return []
+
+        import urllib.request
+        url = f"https://finnhub.io/api/v1/news?category=general&token={finnhub_key}"
+        req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+
+        # Filter for market-relevant news (skip crypto, lifestyle, fluff)
+        SKIP_KEYWORDS = {"crypto", "bitcoin", "ethereum", "nft", "meme coin",
+                         "celebrity", "kardashian", "reality tv"}
+        results = []
+        for article in data:
+            headline = (article.get("headline") or "").strip()
+            source = article.get("source", "")
+            summary = (article.get("summary") or "")[:150]
+            if not headline:
+                continue
+            headline_lower = headline.lower()
+            if any(kw in headline_lower for kw in SKIP_KEYWORDS):
+                continue
+            entry = f"- [{source}] {headline}"
+            if summary:
+                entry += f": {summary}"
+            results.append(entry)
+            if len(results) >= max_articles:
+                break
+
+        return results
+    except Exception:
+        return []
 
 
 class BaseAgent:
@@ -383,6 +442,7 @@ class BaseAgent:
         cot = market_summary.get("cot_positioning", {})
         macro = market_summary.get("macro_surprise", {})
         holding = market_summary.get("holding_window", {})
+        cross = market_summary.get("cross_asset", {})
 
         lines = [
             f"VIX: {vix.get('current', '?')} ({regime.get('regime', '?')})",
@@ -391,5 +451,25 @@ class BaseAgent:
             f"COT: {cot.get('signal', '?')} (percentile {cot.get('percentile', '?')})",
             f"Macro surprise: {macro.get('signal', '?')} (score {macro.get('surprise_score', '?')})",
             f"Holding window risk: {holding.get('risk_level', '?')}",
+            f"Cross-asset: {cross.get('composite', '?')} (headwinds={cross.get('headwinds', '?')}, tailwinds={cross.get('tailwinds', '?')})",
         ]
+
+        # Include saved market narrative if available (from Wednesday scan)
+        narrative_path = config.candidates_dir
+        for days_back in range(7):
+            from datetime import datetime as _dt, timedelta
+            date_str = (_dt.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+            np = narrative_path / date_str / "market_narrative.md"
+            if np.exists():
+                try:
+                    text = np.read_text().strip()
+                    # Strip the markdown header
+                    if text.startswith("#"):
+                        text = "\n".join(text.split("\n")[2:]).strip()
+                    if text:
+                        lines.append(f"Market narrative ({date_str}): {text[:500]}")
+                except Exception:
+                    pass
+                break
+
         return "\n".join(lines)
