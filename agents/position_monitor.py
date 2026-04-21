@@ -112,9 +112,10 @@ class PositionMonitor(BaseAgent):
             entry_premium = pick.get("premium")
             entry_price = pick.get("current_price")
             strike = pick.get("strike")
+            expiry = pick.get("expiry")
             entry_delta = pick.get("estimated_delta", 0.35)
 
-            # Fetch current price
+            # Fetch current stock price
             try:
                 tk = yf.Ticker(ticker)
                 hist = tk.history(period="1d", interval="5m")
@@ -135,30 +136,78 @@ class PositionMonitor(BaseAgent):
                 })
                 continue
 
-            # Calculate P&L
+            # Stock move since entry
             if entry_price and entry_price > 0:
                 stock_move_pct = ((current_price - entry_price) / entry_price) * 100
-                # Signed move relative to direction
                 if direction == "put":
                     stock_move_pct = -stock_move_pct
             else:
                 stock_move_pct = 0
 
-            # Estimate option P&L (delta approximation + gamma adjustment)
-            delta = entry_delta or 0.35
-            premium_pct = (entry_premium / entry_price * 100) if entry_premium and entry_price else 3.0
-
-            # Days held
             days_held = weekday  # Monday=0, so Tuesday=1 day held, etc.
 
-            # Rough option return estimate
-            option_return_pct = (delta * stock_move_pct / premium_pct * 100) if premium_pct > 0 else 0
-            # Gamma bonus for winners
-            if option_return_pct > 0:
-                option_return_pct *= 1.10
-            # Theta cost: regime-adjusted per-day bleed for weeklies
-            theta_cost = days_held * theta_per_day
-            option_return_pct -= theta_cost
+            # --- Live option price lookup ---
+            current_option_price = None
+            current_delta = None
+            live_price_source = "none"
+
+            if strike and expiry:
+                try:
+                    option_type = "calls" if direction == "call" else "puts"
+                    chain = tk.option_chain(expiry)
+                    opts_df = getattr(chain, option_type, None)
+                    if opts_df is not None and not opts_df.empty:
+                        # Find matching strike
+                        match = opts_df[opts_df["strike"] == strike]
+                        if match.empty:
+                            # Nearest strike within $0.50
+                            opts_df = opts_df.copy()
+                            opts_df["_dist"] = (opts_df["strike"] - strike).abs()
+                            nearest = opts_df.loc[opts_df["_dist"].idxmin()]
+                            if nearest["_dist"] <= 0.50:
+                                match = opts_df[opts_df["strike"] == nearest["strike"]]
+
+                        if not match.empty:
+                            row = match.iloc[0]
+                            bid = float(row.get("bid", 0))
+                            ask = float(row.get("ask", 0))
+                            if bid > 0 and ask > 0:
+                                current_option_price = round((bid + ask) / 2, 2)
+                                live_price_source = "bid_ask_mid"
+                            elif float(row.get("lastPrice", 0)) > 0:
+                                current_option_price = round(float(row["lastPrice"]), 2)
+                                live_price_source = "last_price"
+                            # Grab live IV for delta re-estimate
+                            live_iv = float(row.get("impliedVolatility", 0))
+                            if live_iv > 0.05:
+                                current_delta = self._estimate_delta(
+                                    current_price, strike, expiry, live_iv, direction,
+                                )
+                except Exception as exc:
+                    logger.debug("Option chain lookup failed for %s: %s", ticker, exc)
+
+            # Compute option P&L from real prices when available
+            if current_option_price and entry_premium and entry_premium > 0:
+                option_return_pct = ((current_option_price - entry_premium) / entry_premium) * 100
+            elif current_option_price and entry_premium:
+                # entry_premium is 0 — can't compute %, use absolute
+                option_return_pct = 0
+            else:
+                # Fallback: delta approximation (pre-market or chain lookup failed)
+                delta = entry_delta or 0.35
+                premium_pct = (entry_premium / entry_price * 100) if entry_premium and entry_price else 3.0
+                option_return_pct = (delta * stock_move_pct / premium_pct * 100) if premium_pct > 0 else 0
+                if option_return_pct > 0:
+                    option_return_pct *= 1.10
+                theta_cost = days_held * theta_per_day
+                option_return_pct -= theta_cost
+                live_price_source = "delta_estimate"
+
+            # If we got live option price but no entry premium, derive it
+            if not entry_premium and current_option_price:
+                current_option_price_display = current_option_price
+            else:
+                current_option_price_display = current_option_price
 
             # Status determination
             status = "HOLD"
@@ -185,12 +234,6 @@ class PositionMonitor(BaseAgent):
             else:
                 detail = f"P&L: {option_return_pct:.0f}% (target: {target_pct}% today). Stock moved {stock_move_pct:+.1f}%."
 
-            # Estimate current option price from entry premium + return
-            current_option_price = (
-                entry_premium * (1 + option_return_pct / 100)
-                if entry_premium else None
-            )
-
             positions.append({
                 "ticker": ticker,
                 "direction": direction,
@@ -198,12 +241,13 @@ class PositionMonitor(BaseAgent):
                 "entry_price": entry_price,
                 "current_price": round(current_price, 2),
                 "entry_premium": entry_premium,
-                "current_option_price": round(current_option_price, 2) if current_option_price else None,
+                "current_option_price": current_option_price_display,
+                "current_delta": round(current_delta, 3) if current_delta else None,
                 "stock_move_pct": round(stock_move_pct, 2),
                 "option_return_pct": round(option_return_pct, 1),
                 "days_held": days_held,
                 "today_target_pct": target_pct,
-                "theta_cost_pct": round(theta_cost, 1),
+                "price_source": live_price_source,
                 "status": status,
                 "detail": detail,
             })
@@ -255,3 +299,16 @@ class PositionMonitor(BaseAgent):
             "agent_analysis": agent_analysis,
             "summary": summary,
         }
+
+    @staticmethod
+    def _estimate_delta(stock_price, strike, expiry_str, iv, direction):
+        """Compute BSM delta for current position state."""
+        try:
+            from scanners.options import _bsm_greeks, _RISK_FREE_RATE
+            expiry_dt = datetime.strptime(expiry_str, "%Y-%m-%d").date()
+            T = max((expiry_dt - datetime.now().date()).days, 1) / 365.0
+            option_type = "call" if direction == "call" else "put"
+            greeks = _bsm_greeks(stock_price, strike, T, _RISK_FREE_RATE, iv, option_type)
+            return abs(greeks["delta"])
+        except Exception:
+            return None

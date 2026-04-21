@@ -414,14 +414,20 @@ class DiscordNotifier:
                           if has_dollars else f"**HOLD.** Target +{target_pct}% | Stop -50%")
 
             pnl_sign = "+" if dollar_pnl >= 0 else ""
+            price_source = p.get("price_source", "")
+            source_tag = "" if price_source in ("bid_ask_mid", "last_price") else " _(est)_"
+            current_delta = p.get("current_delta")
+            delta_str = f" | Delta: {current_delta:.2f}" if current_delta else ""
 
             if has_dollars:
-                # Dollar line already includes %, so middle line only shows stock
-                middle_line = f"{direction} | Stock: {stock_move:+.1f}%"
-                pnl_line = f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}** ({ret:+.0f}%)"
+                middle_line = f"{direction} | Stock: {stock_move:+.1f}%{delta_str}"
+                pnl_line = f"Entry: ${entry_cost:,.0f} | Now: ${current_val:,.0f} | **P&L: {pnl_sign}${dollar_pnl:,.0f}** ({ret:+.0f}%){source_tag}"
+            elif current_option:
+                # Have live option price but no entry premium
+                middle_line = f"{direction} | Stock: {stock_move:+.1f}%{delta_str}"
+                pnl_line = f"Option mid: ${current_option:.2f} (${current_val:,.0f} for {contracts}ct) | **P&L: {ret:+.0f}%**{source_tag}"
             else:
-                # No dollars → middle line carries the option %
-                middle_line = f"{direction} | Stock: {stock_move:+.1f}% | **Option P&L: {ret:+.0f}%**"
+                middle_line = f"{direction} | Stock: {stock_move:+.1f}% | **Option P&L: {ret:+.0f}%**{source_tag}"
                 pnl_line = "_Entry premium unavailable — dollar P&L skipped_"
 
             value = f"{action}\n{middle_line}\n{pnl_line}"
