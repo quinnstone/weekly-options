@@ -150,6 +150,51 @@
       "context": {
         "length": 1710
       }
+    },
+    {
+      "timestamp": "2026-04-22T16:10:45.336289",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MSFT",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -8.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-22T16:10:45.336860",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MAR",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -8.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-22T16:10:45.337412",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "SOFI",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -8.0,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

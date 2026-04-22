@@ -1,0 +1,66 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 432.68,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -8.0,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "P&L: -8% (target: 25% today). Stock moved +0.0%."
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 367.18,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -8.0,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "P&L: -8% (target: 25% today). Stock moved +0.0%."
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 19.05,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -8.0,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "P&L: -8% (target: 25% today). Stock moved +0.0%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -8.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Wednesday",
+    "days_to_expiry": 3
+  }
+}
