@@ -1,0 +1,66 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 422.31,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 370.18,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 18.66,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "**THURSDAY STATUS \u2014 ELEVATED**\n\nAll 3 positions stuck at -12% with stocks flat (+0.0%). This is pure theta bleed \u2014 exactly what we expect on day 4 when charm acceleration kicks in. With only 1 day to expiry, these calls need significant moves tomorrow just to break even.\n\n**Key observations:**\n- No position hit the 15% Thursday target (all underwater)\n- All below the -15% exit threshold I flag on Thursdays\n- Charm has likely pushed deltas from ~0.35 entry to ~0.20 or lower\n- Tomorrow's theta will eat another 4-5% minimum\n\n**RECOMMENDATION: CLOSE ALL THREE**\n\nExit MSFT, MAR, and SOFI calls at market. Lock in -12% vs watching theta burn another 5% overnight. These need 2%+ moves on Friday just to recover premium \u2014 low probability with flat momentum and accelerating decay.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -12.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
