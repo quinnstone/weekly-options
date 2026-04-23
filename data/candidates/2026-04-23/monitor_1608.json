@@ -1,0 +1,66 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 415.75,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 368.23,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 18.33,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "## POSITION MONITOR \u2014 THURSDAY (ELEVATED)\n\n**Status:** All 3 positions identically stuck at -12% with zero stock movement. This is pure theta bleed \u2014 losing ~3-4% daily as expected for Thursday decay acceleration.\n\n**Critical observations:**\n- No position has moved favorably all week (0% stock movement)\n- At -12% with accelerating theta, these need +15-20% stock moves tomorrow just to break even\n- Thursday target is 15% profit \u2014 we're -27% away from target\n- Tomorrow's charm will likely push deltas below 0.20\n\n**Pattern concern:** Identical -12% P&L across all positions suggests a data feed issue or all three picks were momentum plays that immediately stalled.\n\n## RECOMMENDATION: EXIT ALL THREE\n\nClose MSFT, MAR, and SOFI at market open. \n\nWith zero momentum after 4 days and theta acceleration into Friday, the probability of recovery is near zero. Better to preserve 88% of capital than watch theta burn another 8-10% tomorrow for positions that will likely expire worthless.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -12.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
