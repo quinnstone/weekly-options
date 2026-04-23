@@ -307,8 +307,12 @@ class DailyStages:
             logger.warning("Skipping flow scan — scanner unavailable")
 
         # 7. Build complete candidate dicts
+        # Attach sector-level news to each candidate from market summary
+        sector_news_map = market_summary.get("sector_news", {})
+
         candidates = []
         for ticker in tickers:
+            sector = sector_by_ticker.get(ticker, "unknown")
             candidate = {
                 "ticker": ticker,
                 "technical": tech_results.get(ticker, {}),
@@ -317,7 +321,8 @@ class DailyStages:
                 "finviz": finviz_results.get(ticker, {}),
                 "insider": edgar_results.get(ticker, {}),
                 "flow": self._map_flow_data(flow_results.get(ticker, {})),
-                "sector": sector_by_ticker.get(ticker, "unknown"),
+                "sector": sector,
+                "sector_news": sector_news_map.get(sector, []),
             }
             candidates.append(candidate)
 
@@ -464,6 +469,7 @@ class DailyStages:
             logger.warning("Skipping flow scan — scanner unavailable")
 
         # 4. Merge fresh data (wednesday_snapshot is already preserved)
+        sector_news_map = market_summary.get("sector_news", {})
         for c in pool:
             ticker = c["ticker"]
             if ticker in tech_results:
@@ -476,6 +482,10 @@ class DailyStages:
                 c["finviz"] = finviz_results[ticker]
             if ticker in flow_results:
                 c["flow"] = self._map_flow_data(flow_results[ticker])
+            # Refresh sector news with Friday's headlines
+            sector = c.get("sector", "unknown")
+            if sector in sector_news_map:
+                c["sector_news"] = sector_news_map[sector]
 
         # 5. Re-rank using delta-aware Friday scoring
         top20, new_bench = self.narrower.narrow_with_bench(pool, "friday_refresh")
@@ -647,6 +657,11 @@ class DailyStages:
             c["holding_window"] = market_summary.get("holding_window", {})
             c["regime_persistence"] = market_summary.get("regime_persistence", {})
             c["cross_asset"] = market_summary.get("cross_asset", {})
+            # Refresh sector news with Monday's headlines
+            sector = c.get("sector", "unknown")
+            sector_news_map = market_summary.get("sector_news", {})
+            if sector in sector_news_map:
+                c["sector_news"] = sector_news_map[sector]
 
         # 7. Regime gate — assess whether macro environment gives us an edge
         self.scorer.set_market_summary(market_summary)

@@ -1098,6 +1098,116 @@ class MarketScanner:
         return signals
 
     # ------------------------------------------------------------------ #
+    #  Sector News
+    # ------------------------------------------------------------------ #
+
+    # Keyword map: sector name → terms to match in headlines
+    SECTOR_NEWS_KEYWORDS = {
+        "Technology": ["tech", "software", "semiconductor", "chip", "ai ", "artificial intelligence",
+                       "cloud", "cyber", "saas", "apple", "microsoft", "google", "nvidia", "meta"],
+        "Financials": ["bank", "banking", "financial", "lending", "credit card", "mortgage",
+                       "interest rate", "fed ", "federal reserve", "insurance", "fintech"],
+        "Energy": ["oil", "crude", "natural gas", "energy", "opec", "drilling", "renewable",
+                   "solar", "wind power", "pipeline", "refin"],
+        "Health Care": ["pharma", "biotech", "fda", "drug", "clinical trial", "health",
+                        "hospital", "medical", "vaccine", "therapeut"],
+        "Industrials": ["industrial", "manufacturing", "defense", "aerospace", "transport",
+                        "infrastructure", "construction", "supply chain", "logistics"],
+        "Consumer Discretionary": ["retail", "consumer", "auto", "ev ", "electric vehicle",
+                                   "housing", "travel", "leisure", "restaurant", "apparel"],
+        "Consumer Staples": ["grocery", "food", "beverage", "tobacco", "household",
+                             "personal care", "staple"],
+        "Communication Services": ["media", "streaming", "social media", "telecom",
+                                   "advertising", "content", "broadcast"],
+        "Materials": ["mining", "steel", "chemical", "fertilizer", "commodity", "gold",
+                      "copper", "lithium", "rare earth"],
+        "Utilities": ["utility", "power grid", "electric utility", "water utility", "nuclear"],
+        "Real Estate": ["real estate", "reit", "property", "housing market", "commercial real estate"],
+    }
+
+    def get_sector_news(self) -> dict:
+        """Fetch broad market news and categorize by sector.
+
+        Uses Finnhub general news endpoint (single API call) and classifies
+        each headline into relevant sectors using keyword matching.
+
+        Returns
+        -------
+        dict
+            Keyed by sector name. Each value is a list of dicts with
+            headline, source, and VADER sentiment. Also includes a 'macro'
+            key for non-sector-specific market-moving headlines.
+        """
+        try:
+            finnhub_key = config.finnhub_api_key
+            if not finnhub_key:
+                return {}
+
+            resp = requests.get(
+                "https://finnhub.io/api/v1/news",
+                params={"category": "general", "token": finnhub_key},
+                timeout=10,
+            )
+            resp.raise_for_status()
+            articles = resp.json()
+
+            from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+            vader = SentimentIntensityAnalyzer()
+
+            # Noise filter
+            skip_keywords = {"crypto", "bitcoin", "ethereum", "nft", "meme coin",
+                             "celebrity", "kardashian"}
+
+            sector_news = {sector: [] for sector in self.SECTOR_NEWS_KEYWORDS}
+            sector_news["macro"] = []  # Non-sector-specific macro headlines
+
+            for article in articles[:80]:  # Cap to avoid excessive processing
+                headline = (article.get("headline") or "").strip()
+                if not headline:
+                    continue
+                hl_lower = headline.lower()
+                if any(kw in hl_lower for kw in skip_keywords):
+                    continue
+
+                source = article.get("source", "")
+                sentiment = vader.polarity_scores(headline)["compound"]
+
+                entry = {
+                    "headline": headline,
+                    "source": source,
+                    "sentiment": round(sentiment, 3),
+                }
+
+                # Classify into sectors (a headline can match multiple sectors)
+                matched_sectors = []
+                for sector, keywords in self.SECTOR_NEWS_KEYWORDS.items():
+                    if any(kw in hl_lower for kw in keywords):
+                        matched_sectors.append(sector)
+                        if len(sector_news[sector]) < 5:  # Cap per sector
+                            sector_news[sector].append(entry)
+
+                # If no sector matched, check for macro relevance
+                macro_keywords = ["tariff", "trade war", "sanctions", "geopolitical",
+                                  "fed ", "fomc", "rate cut", "rate hike", "inflation",
+                                  "recession", "gdp", "jobs", "unemployment", "treasury",
+                                  "fiscal", "stimulus", "shutdown", "debt ceiling",
+                                  "war", "conflict", "ceasefire", "election"]
+                if not matched_sectors and any(kw in hl_lower for kw in macro_keywords):
+                    if len(sector_news["macro"]) < 8:
+                        sector_news["macro"].append(entry)
+
+            # Remove empty sectors
+            sector_news = {k: v for k, v in sector_news.items() if v}
+
+            total = sum(len(v) for v in sector_news.values())
+            logger.info("Sector news: %d headlines across %d sectors", total, len(sector_news))
+            return sector_news
+
+        except Exception as exc:
+            logger.warning("Sector news fetch failed: %s", exc)
+            return {}
+
+    # ------------------------------------------------------------------ #
     #  Combined Summary
     # ------------------------------------------------------------------ #
 
@@ -1128,6 +1238,7 @@ class MarketScanner:
         cot = self.get_cot_positioning()
         macro_surprise = self.get_macro_surprise()
         cross_asset = self.get_cross_asset_signals()
+        sector_news = self.get_sector_news()
 
         summary = {
             "vix": vix_data,
@@ -1149,6 +1260,7 @@ class MarketScanner:
             "cot_positioning": cot,
             "macro_surprise": macro_surprise,
             "cross_asset": cross_asset,
+            "sector_news": sector_news,
             "timestamp": datetime.now().isoformat(),
         }
 

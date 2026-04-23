@@ -412,12 +412,35 @@ class BaseAgent:
             flow_conviction = social.get("flow_conviction", 0)
             if flow_consensus != "neutral" and flow_conviction > 0.3:
                 social_bits.append(f"social flow {flow_consensus} ({flow_conviction:.0%} conviction)")
+            narrative = social.get("narrative", "")
+            if narrative and narrative != "Minimal social signal":
+                social_bits.append(f"narrative: {narrative[:120]}")
             catalysts = social.get("catalysts", [])
             if catalysts:
                 social_bits.append(f"catalysts: {', '.join(catalysts[:2])}")
             risks = social.get("risks", [])
             if risks:
                 social_bits.append(f"risks: {', '.join(risks[:2])}")
+
+        # Ticker-specific news headlines (classified as catalyst/risk/neutral)
+        news_bits = []
+        classified = sentiment.get("classified_headlines", [])
+        if classified:
+            for ch in classified[:4]:
+                tag = "+" if ch["type"] == "catalyst" else "-" if ch["type"] == "risk" else "."
+                news_bits.append(f"[{tag}] {ch['headline'][:100]}")
+        elif sentiment.get("headlines"):
+            # Fallback to raw headlines if not classified
+            for hl in sentiment["headlines"][:3]:
+                news_bits.append(f"[.] {hl[:100]}")
+
+        # Sector news context (from market_summary.sector_news)
+        sector = pick.get("sector", "unknown")
+        sector_news_bits = []
+        sector_news = pick.get("sector_news", [])
+        if sector_news:
+            for sn in sector_news[:3]:
+                sector_news_bits.append(f"{sn['headline'][:100]}")
 
         lines = [
             f"**{ticker}** — {direction.upper()} ${strike:,.2f}" if strike else f"**{ticker}** — {direction.upper()}",
@@ -430,6 +453,8 @@ class BaseAgent:
             f"Pattern win rate: {pattern_wr:.0%} ({pattern.get('pattern_observations', 0)} obs)" if pattern_wr else "",
             f"Catalysts: {' | '.join(catalyst_bits)}" if catalyst_bits else "",
             f"Social: {' | '.join(social_bits)}" if social_bits else "",
+            f"News:\n  " + "\n  ".join(news_bits) if news_bits else "",
+            f"Sector news ({sector}):\n  " + "\n  ".join(sector_news_bits) if sector_news_bits else "",
         ]
         return "\n".join(l for l in lines if l)
 

@@ -119,16 +119,48 @@ class SentimentScanner:
             logger.error("Finnhub news fetch failed for %s: %s", ticker, exc)
             return []
 
+    # Keyword patterns for headline classification
+    _CATALYST_KEYWORDS = {
+        "upgrade", "buy rating", "outperform", "overweight", "price target raised",
+        "beat", "beats", "exceeded", "surpass", "record revenue", "record earnings",
+        "fda approval", "fda approves", "cleared", "partnership", "deal",
+        "acquisition", "merger", "buyback", "dividend increase", "split",
+        "contract win", "awarded", "product launch", "launches new", "breakthrough",
+    }
+    _RISK_KEYWORDS = {
+        "downgrade", "sell rating", "underperform", "underweight", "price target cut",
+        "miss", "misses", "missed", "warns", "warning", "recall", "lawsuit",
+        "investigation", "probe", "subpoena", "sec inquiry", "fraud",
+        "layoffs", "restructuring", "guidance cut", "guidance lower",
+        "tariff", "sanctions", "ban", "restrict", "block",
+        "ceo resign", "cfo resign", "departure", "fired",
+        "default", "bankruptcy", "delisted",
+    }
+
+    @classmethod
+    def _classify_headline(cls, headline: str) -> str:
+        """Classify a headline as catalyst, risk, or neutral."""
+        hl = headline.lower()
+        if any(kw in hl for kw in cls._CATALYST_KEYWORDS):
+            return "catalyst"
+        if any(kw in hl for kw in cls._RISK_KEYWORDS):
+            return "risk"
+        return "neutral"
+
     def get_finnhub_sentiment(self, ticker: str) -> dict:
         """Derive sentiment for a ticker using free company-news endpoint + VADER.
 
         Fetches recent headlines via ``get_finnhub_news()`` and runs VADER
-        sentiment analysis on each headline to produce an average score.
+        sentiment analysis on each headline. Headlines are also classified
+        as catalyst/risk/neutral so agents can see *what* the news says,
+        not just a sentiment float.
 
         Returns
         -------
         dict
-            Keys: score (-1 to 1), article_count, headlines (top 3).
+            Keys: score (-1 to 1), article_count, headlines (top 3),
+            classified_headlines (list of {headline, sentiment, type, source}),
+            catalyst_count, risk_count.
         """
         try:
             articles = self.get_finnhub_news(ticker, days_back=3)
@@ -137,6 +169,10 @@ class SentimentScanner:
 
             vader_scores = []
             headlines = []
+            classified = []
+            catalyst_count = 0
+            risk_count = 0
+
             for article in articles:
                 headline = article.get("headline", "")
                 if not headline:
@@ -145,15 +181,37 @@ class SentimentScanner:
                 vader_scores.append(compound)
                 headlines.append(headline)
 
+                htype = self._classify_headline(headline)
+                if htype == "catalyst":
+                    catalyst_count += 1
+                elif htype == "risk":
+                    risk_count += 1
+
+                classified.append({
+                    "headline": headline,
+                    "sentiment": round(compound, 3),
+                    "type": htype,
+                    "source": article.get("source", ""),
+                })
+
             if not vader_scores:
                 return {}
 
             avg_score = sum(vader_scores) / len(vader_scores)
 
+            # Sort: catalysts and risks first (most actionable), then by sentiment magnitude
+            classified.sort(key=lambda x: (
+                0 if x["type"] == "catalyst" else 1 if x["type"] == "risk" else 2,
+                -abs(x["sentiment"]),
+            ))
+
             return {
                 "score": round(avg_score, 4),
                 "article_count": len(vader_scores),
                 "headlines": headlines[:3],
+                "classified_headlines": classified[:6],
+                "catalyst_count": catalyst_count,
+                "risk_count": risk_count,
             }
 
         except Exception as exc:
