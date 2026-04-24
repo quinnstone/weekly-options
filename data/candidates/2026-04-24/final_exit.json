@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 421.06,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -16%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 366.01,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -16%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 18.34,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -16%. Use market order if needed \u2014 do not let expire unmanaged."
+    }
+  ],
+  "alerts": [
+    "MSFT: CLOSE BY 2PM (P&L -16%)",
+    "MAR: CLOSE BY 2PM (P&L -16%)",
+    "SOFI: CLOSE BY 2PM (P&L -16%)"
+  ],
+  "agent_analysis": "## CRITICAL - FRIDAY CLOSE\n\n**STATUS:** All 3 positions showing -16% with zero stock movement. Data feed issue likely (0% moves across all names suspicious).\n\n**POSITIONS:**\n- MSFT CALL: -16%\n- MAR CALL: -16% \n- SOFI CALL: -16%\n\nAll below Friday 10% target. With expiry hours away and theta burn accelerating, recovery unlikely even if data corrects.\n\n**RECOMMENDATION:** CLOSE ALL THREE IMMEDIATELY. Market orders. Do not wait for data fix or better fills. Friday 2 PM rule is absolute - salvage remaining premium now.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -16.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
