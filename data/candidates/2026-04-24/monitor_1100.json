@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "MSFT",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 418.53,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "Friday expiry \u2014 close by 2 PM ET. Current P&L: -16%"
+    },
+    {
+      "ticker": "MAR",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 367.35,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "Friday expiry \u2014 close by 2 PM ET. Current P&L: -16%"
+    },
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 18.26,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "Friday expiry \u2014 close by 2 PM ET. Current P&L: -16%"
+    }
+  ],
+  "alerts": [
+    "MSFT: CLOSE BY 2PM (P&L -16%)",
+    "MAR: CLOSE BY 2PM (P&L -16%)",
+    "SOFI: CLOSE BY 2PM (P&L -16%)"
+  ],
+  "agent_analysis": "**POSITION MONITOR \u2014 CRITICAL FRIDAY**\n\nAll three positions showing identical -16% losses with 0% stock movement \u2014 data feed failure evident.\n\n**MSFT CALL:** -16% | No market data\n**MAR CALL:** -16% | No market data  \n**SOFI CALL:** -16% | No market data\n\nSystem showing placeholder values. Cannot assess vs Friday 10% target or delta decay without real prices.\n\n**RECOMMENDATION: CLOSE ALL THREE IMMEDIATELY**\n\nFriday 2 PM deadline overrides everything. With no reliable data and hours to expiry, exit all positions NOW. Market orders acceptable. Theta burn accelerating every minute \u2014 waiting for data fix risks total loss.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -16.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}

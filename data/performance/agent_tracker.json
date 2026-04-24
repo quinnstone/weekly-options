@@ -285,6 +285,51 @@
         "option_return_pct": -12.0,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-04-24T11:00:31.070693",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MSFT",
+      "mechanical_signal": "CLOSE",
+      "agent_signal": "CLOSE+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -16.0,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-04-24T11:00:31.071332",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "MAR",
+      "mechanical_signal": "CLOSE",
+      "agent_signal": "CLOSE+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -16.0,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-04-24T11:00:31.071902",
+      "week": "2026-W16",
+      "agent": "position_monitor",
+      "ticker": "SOFI",
+      "mechanical_signal": "CLOSE",
+      "agent_signal": "CLOSE+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -16.0,
+        "has_agent_analysis": true
+      }
     }
   ],
   "weekly_summaries": []
