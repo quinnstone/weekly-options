@@ -330,6 +330,20 @@
         "option_return_pct": -16.0,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-04-25T10:36:31.622317",
+      "week": "2026-W16",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "## CIO Weekly Review: Week of 2026-04-25\n\n**Executive Summary:** Zero trades executed in our first live week \u2014 a critical process failure that demands immediate investigation.\n\n### Root Cause Analysis\n\nThe 0% win rate with 0W/0L but 3 total trades indicates either:\n1. **Entry gates too restrictive:*"
+      }
     }
   ],
   "weekly_summaries": []

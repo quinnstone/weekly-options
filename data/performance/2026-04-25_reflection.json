@@ -1,0 +1,28 @@
+{
+  "week": "2026-04-25",
+  "total_picks": 3,
+  "wins": 0,
+  "losses": 0,
+  "win_rate": 0.0,
+  "avg_return": 0.0,
+  "signal_correlations": {},
+  "what_worked": [],
+  "what_failed": [],
+  "lessons": [
+    "Low win rate \u2014 review whether market regime has shifted or if signal quality has degraded."
+  ],
+  "weight_adjustments": {},
+  "current_weights": {
+    "momentum": 0.2,
+    "mean_reversion": 0.15,
+    "regime_bias": 0.1,
+    "trend_persistence": 0.15,
+    "iv_mispricing": 0.1,
+    "flow_conviction": 0.08,
+    "event_risk": 0.07,
+    "liquidity": 0.05,
+    "strike_efficiency": 0.05,
+    "theta_cost": 0.05
+  },
+  "generated_at": "2026-04-25T10:35:59.778418"
+}
