@@ -1,0 +1,69 @@
+{
+  "date": "2026-04-27",
+  "picks": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.22,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 65.0,
+        "event_risk": 49.0,
+        "liquidity": 56.54848,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 67.28,
+      "direction_confidence": 0.358,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 55.0,
+        "liquidity": 51.00596,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.41,
+      "direction_confidence": 0.358,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 43.0,
+        "liquidity": 50.10576,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    }
+  ],
+  "recorded_at": "2026-04-27T09:20:20.520373"
+}

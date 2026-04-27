@@ -344,6 +344,25 @@
         "proposals": [],
         "analysis_snippet": "## CIO Weekly Review: Week of 2026-04-25\n\n**Executive Summary:** Zero trades executed in our first live week \u2014 a critical process failure that demands immediate investigation.\n\n### Root Cause Analysis\n\nThe 0% win rate with 0W/0L but 3 total trades indicates either:\n1. **Entry gates too restrictive:*"
       }
+    },
+    {
+      "timestamp": "2026-04-27T09:20:19.396611",
+      "week": "2026-W17",
+      "agent": "portfolio_reasoner",
+      "ticker": "PORTFOLIO",
+      "mechanical_signal": "AMD,UNH,RTX",
+      "agent_signal": "AMD,MRVL,RTX",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "dropped": [
+          "AMD",
+          "ON",
+          "UNH",
+          "RTX"
+        ],
+        "reasoning": "SELECTED:\n\n1. **INTC** \u2014 CALL \u2014 [Non-earnings semiconductor play avoiding AMD/UNH event risk]\n   THESIS: Intel shows perfect momentum (100) and trend persistence (95) scores in a semiconductor sector that's capturing AI/chip narrative flows. With unusual options activity flagging institutional posit"
+      }
     }
   ],
   "weekly_summaries": []
