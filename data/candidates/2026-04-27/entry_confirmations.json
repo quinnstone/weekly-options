@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "AMD",
+    "direction": "call",
+    "strike": 355.0,
+    "original_premium": 9.7,
+    "original_price": 347.81,
+    "signal": "SKIP",
+    "detail": "Delta collapsed to 0.02 \u2014 option nearly worthless",
+    "current_price": 333.09,
+    "new_delta": 0.023,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-27T11:46:56.970756"
+  },
+  {
+    "ticker": "MRVL",
+    "direction": "call",
+    "strike": 160.0,
+    "original_premium": 9.0,
+    "original_price": 164.31,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.24 (price moved from $164.31 to $156.35). Consider re-selecting strike closer to current price.",
+    "current_price": 156.35,
+    "new_delta": 0.241,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-27T11:46:57.162636"
+  },
+  {
+    "ticker": "RTX",
+    "direction": "put",
+    "strike": 177.5,
+    "original_premium": 5.11,
+    "original_price": 174.26,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.71 (price moved from $174.26 to $174.19). Consider re-selecting strike closer to current price.",
+    "current_price": 174.19,
+    "new_delta": 0.715,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-04-27T11:46:57.360178"
+  }
+]
