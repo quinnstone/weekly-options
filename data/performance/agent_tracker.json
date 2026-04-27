@@ -363,6 +363,51 @@
         ],
         "reasoning": "SELECTED:\n\n1. **INTC** \u2014 CALL \u2014 [Non-earnings semiconductor play avoiding AMD/UNH event risk]\n   THESIS: Intel shows perfect momentum (100) and trend persistence (95) scores in a semiconductor sector that's capturing AI/chip narrative flows. With unusual options activity flagging institutional posit"
       }
+    },
+    {
+      "timestamp": "2026-04-27T14:04:42.346885",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "AMD",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -60.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-27T14:04:42.347665",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "MRVL",
+      "mechanical_signal": "WARNING",
+      "agent_signal": "WARNING",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -46.1,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-27T14:04:42.348451",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "RTX",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 5.7,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
