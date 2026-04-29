@@ -213,11 +213,16 @@ jobs:
         run: |
           git config user.name "weekly-options-bot"
           git config user.email "weekly-options-bot@users.noreply.github.com"
-          git add data/candidates/ data/reports/ data/performance/
+          DATE=$(date +%Y-%m-%d)
+          # Scope candidate-dir add to TODAY's date so cache-restored files
+          # from prior dates can't get silently re-committed (each pipeline
+          # stage writes only to data/candidates/{TODAY}/). reports/ and
+          # performance/ are still added wholesale — files there are either
+          # date-prefixed or running stats, no stale-restore problem.
+          git add "data/candidates/${DATE}/" data/reports/ data/performance/
           if git diff --staged --quiet; then
             echo "No new data to commit"
           else
-            DATE=$(date +%Y-%m-%d)
             STAGE="${{ steps.stage.outputs.stage }}"
             git commit -m "pipeline: ${STAGE} results for ${DATE}"
             git push
