@@ -466,6 +466,51 @@
       "context": {
         "length": 3182
       }
+    },
+    {
+      "timestamp": "2026-04-29T16:16:01.393749",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "AMD",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -72.9,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-29T16:16:01.394658",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "MRVL",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -70.2,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-04-29T16:16:01.395455",
+      "week": "2026-W17",
+      "agent": "position_monitor",
+      "ticker": "RTX",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 3.3,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

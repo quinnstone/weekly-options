@@ -1,0 +1,69 @@
+{
+  "positions": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": 355.0,
+      "entry_price": 347.81,
+      "current_price": 337.14,
+      "entry_premium": 9.7,
+      "current_option_price": 2.63,
+      "current_delta": 0.17,
+      "stock_move_pct": -3.07,
+      "option_return_pct": -72.9,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -73% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "strike": 160.0,
+      "entry_price": 164.31,
+      "current_price": 156.56,
+      "entry_premium": 9.0,
+      "current_option_price": 2.68,
+      "current_delta": 0.355,
+      "stock_move_pct": -4.72,
+      "option_return_pct": -70.2,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -70% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "strike": 177.5,
+      "entry_price": 174.26,
+      "current_price": 172.81,
+      "entry_premium": 5.11,
+      "current_option_price": 5.28,
+      "current_delta": 0.754,
+      "stock_move_pct": 0.83,
+      "option_return_pct": 3.3,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 3% (target: 25% today). Stock moved +0.8%."
+    }
+  ],
+  "alerts": [
+    "AMD: STOP LOSS HIT (-73%)",
+    "MRVL: STOP LOSS HIT (-70%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -46.6,
+    "targets_hit": 0,
+    "stops_hit": 2,
+    "urgency": "ROUTINE",
+    "day": "Wednesday",
+    "days_to_expiry": 3
+  }
+}
