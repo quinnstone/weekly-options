@@ -203,29 +203,29 @@ def _check_unusual_options_volume(ticker: str) -> bool:
 
 
 def _get_earnings_this_week() -> list:
-    """Get tickers with earnings this week from Finnhub."""
+    """Get tickers with earnings this week from Finnhub.
+
+    Uses the shared Finnhub cache so the same calendar data isn't
+    re-fetched by the sentiment scanner or market scanner.
+    """
     if not config.finnhub_api_key:
         return []
 
     today = datetime.now()
-    # Find this week's Monday and Friday
     monday = today - timedelta(days=today.weekday())
     friday = monday + timedelta(days=4)
 
     try:
-        resp = requests.get(
+        from scanners.sentiment import _cached_finnhub_get
+
+        data = _cached_finnhub_get(
             "https://finnhub.io/api/v1/calendar/earnings",
-            params={
+            {
                 "from": monday.strftime("%Y-%m-%d"),
                 "to": friday.strftime("%Y-%m-%d"),
                 "token": config.finnhub_api_key,
             },
-            timeout=10,
         )
-        if resp.status_code != 200:
-            return []
-
-        data = resp.json()
         earnings = data.get("earningsCalendar", [])
         return [e["symbol"] for e in earnings if "symbol" in e]
     except Exception as exc:
@@ -237,29 +237,27 @@ def _check_news_buzz(ticker: str) -> bool:
     """Check if a ticker has high news volume in the last 48 hours.
 
     Returns True if >= 5 articles found on Finnhub in 2 days.
+    Uses the shared Finnhub cache so the same data isn't re-fetched
+    when the sentiment scanner later processes this ticker.
     """
     if not config.finnhub_api_key:
         return False
 
-    today = datetime.now()
-    date_from = (today - timedelta(days=2)).strftime("%Y-%m-%d")
-    date_to = today.strftime("%Y-%m-%d")
-
     try:
-        resp = requests.get(
+        from scanners.sentiment import _cached_finnhub_get
+
+        today = datetime.now().strftime("%Y-%m-%d")
+        date_from = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
+
+        articles = _cached_finnhub_get(
             "https://finnhub.io/api/v1/company-news",
-            params={
+            {
                 "symbol": ticker,
                 "from": date_from,
-                "to": date_to,
+                "to": today,
                 "token": config.finnhub_api_key,
             },
-            timeout=10,
         )
-        if resp.status_code != 200:
-            return False
-
-        articles = resp.json()
         return len(articles) >= 5
     except Exception:
         return False

@@ -110,6 +110,11 @@ class Database:
             conn.execute("ALTER TABLE picks ADD COLUMN model_momentum REAL")
             conn.execute("ALTER TABLE picks ADD COLUMN model_reversion REAL")
             conn.execute("ALTER TABLE picks ADD COLUMN model_std REAL")
+        # Narrative lean tracking (added 2026-04-27) — informational signal,
+        # logged for empirical evaluation before deciding to integrate as a weight
+        if "narrative_lean" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN narrative_lean TEXT")
+            conn.execute("ALTER TABLE picks ADD COLUMN narrative_scoring_conflict INTEGER")
 
         conn.commit()
         conn.close()
@@ -139,12 +144,19 @@ class Database:
             pattern_key = (p.get("pattern") or {}).get("pattern_key") or p.get("pattern_key")
             earnings_warning = 1 if p.get("earnings_warning") else 0
             ensemble = p.get("ensemble") or {}
+            narrative_conflict = p.get("narrative_scoring_conflict")
+            narrative_conflict_int = (
+                1 if narrative_conflict
+                else 0 if narrative_conflict is False
+                else None
+            )
             conn.execute("""
                 INSERT INTO picks (pick_date, expiry, ticker, direction, strike,
                                    entry_premium, composite_score, confidence, sector,
                                    earnings_warning, pattern_key,
-                                   model_linear, model_momentum, model_reversion, model_std)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   model_linear, model_momentum, model_reversion, model_std,
+                                   narrative_lean, narrative_scoring_conflict)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 pick_date,
                 p.get("expiry"),
@@ -161,6 +173,8 @@ class Database:
                 ensemble.get("momentum"),
                 ensemble.get("reversion"),
                 ensemble.get("model_std"),
+                p.get("narrative_lean"),
+                narrative_conflict_int,
             ))
 
         # Save market snapshot

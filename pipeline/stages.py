@@ -307,9 +307,6 @@ class DailyStages:
             logger.warning("Skipping flow scan — scanner unavailable")
 
         # 7. Build complete candidate dicts
-        # Attach sector-level news to each candidate from market summary
-        sector_news_map = market_summary.get("sector_news", {})
-
         candidates = []
         for ticker in tickers:
             sector = sector_by_ticker.get(ticker, "unknown")
@@ -322,7 +319,6 @@ class DailyStages:
                 "insider": edgar_results.get(ticker, {}),
                 "flow": self._map_flow_data(flow_results.get(ticker, {})),
                 "sector": sector,
-                "sector_news": sector_news_map.get(sector, []),
             }
             candidates.append(candidate)
 
@@ -469,7 +465,6 @@ class DailyStages:
             logger.warning("Skipping flow scan — scanner unavailable")
 
         # 4. Merge fresh data (wednesday_snapshot is already preserved)
-        sector_news_map = market_summary.get("sector_news", {})
         for c in pool:
             ticker = c["ticker"]
             if ticker in tech_results:
@@ -482,10 +477,6 @@ class DailyStages:
                 c["finviz"] = finviz_results[ticker]
             if ticker in flow_results:
                 c["flow"] = self._map_flow_data(flow_results[ticker])
-            # Refresh sector news with Friday's headlines
-            sector = c.get("sector", "unknown")
-            if sector in sector_news_map:
-                c["sector_news"] = sector_news_map[sector]
 
         # 5. Re-rank using delta-aware Friday scoring
         top20, new_bench = self.narrower.narrow_with_bench(pool, "friday_refresh")
@@ -569,6 +560,18 @@ class DailyStages:
         # 2. Fresh market summary with holding window for the week ahead
         market_summary = self.market_scanner.get_market_summary()
         vix_regime = market_summary.get("vix_regime", {})
+
+        # 2b. Load most recent market narrative lean (from Wednesday scan).
+        # NOT weighted into scoring math — surfaced as a conflict flag to
+        # reviewing agents and logged for future empirical evaluation.
+        from agents.market_narrative import load_recent_narrative_lean
+        narrative_lean, narrative_date = load_recent_narrative_lean()
+        if narrative_lean:
+            logger.info("Market narrative lean: %s (from %s)", narrative_lean, narrative_date)
+            market_summary["narrative_lean"] = narrative_lean
+            market_summary["narrative_lean_date"] = narrative_date
+        else:
+            logger.info("No recent market narrative lean available")
 
         # Save Monday's market summary
         summary_path = config.candidates_dir / date_str
@@ -657,11 +660,6 @@ class DailyStages:
             c["holding_window"] = market_summary.get("holding_window", {})
             c["regime_persistence"] = market_summary.get("regime_persistence", {})
             c["cross_asset"] = market_summary.get("cross_asset", {})
-            # Refresh sector news with Monday's headlines
-            sector = c.get("sector", "unknown")
-            sector_news_map = market_summary.get("sector_news", {})
-            if sector in sector_news_map:
-                c["sector_news"] = sector_news_map[sector]
 
         # 7. Regime gate — assess whether macro environment gives us an edge
         self.scorer.set_market_summary(market_summary)
@@ -683,10 +681,42 @@ class DailyStages:
             c["raw_confidence"] = direction_info.get("raw_confidence", direction_info["confidence"])
             c["direction_hint"] = direction_info["direction"]
             c["macro_edge"] = macro_edge
+
+            # Tag narrative lean and compute conflict flag (information only —
+            # NOT weighted into scoring; reviewed by agents and logged for
+            # future empirical decision on whether to integrate as a signal).
+            if narrative_lean:
+                c["narrative_lean"] = narrative_lean
+                direction = c["direction"]
+                conflict = (
+                    (narrative_lean == "bearish" and direction == "call")
+                    or (narrative_lean == "bullish" and direction == "put")
+                )
+                c["narrative_scoring_conflict"] = conflict
+
             scored_c = self.scorer.score_candidate(c)
             scored.append(scored_c)
 
         scored.sort(key=lambda x: x.get("composite_score", 0), reverse=True)
+
+        # Log narrative-vs-scoring conflicts for top-ranked candidates only
+        if narrative_lean:
+            conflicts = [c for c in scored[:10] if c.get("narrative_scoring_conflict")]
+            for c in conflicts:
+                log_decision(
+                    agent_name="market_narrative",
+                    ticker=c.get("ticker", "?"),
+                    mechanical_signal=f"direction={c['direction']}",
+                    agent_signal=f"narrative_lean={narrative_lean}",
+                    override_occurred=False,
+                    context={"reason": "scoring direction conflicts with narrative lean"},
+                )
+            if conflicts:
+                logger.warning(
+                    "Narrative-vs-scoring conflicts in top 10: %s (narrative %s)",
+                    ", ".join(c.get("ticker", "?") for c in conflicts),
+                    narrative_lean,
+                )
 
         # 9. Apply monday_picks filter (diversity + direction balance + earnings guard)
         top5 = self.narrower.narrow(scored, "monday_picks")

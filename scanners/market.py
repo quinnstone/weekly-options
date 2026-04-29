@@ -362,16 +362,14 @@ class MarketScanner:
         # --- Try Finnhub API first ---
         if config.has_finnhub():
             try:
+                from scanners.sentiment import _cached_finnhub_get
                 url = "https://finnhub.io/api/v1/calendar/economic"
                 params = {
                     "from": from_date,
                     "to": to_date,
                     "token": config.finnhub_api_key,
                 }
-                resp = requests.get(url, params=params, timeout=10)
-                resp.raise_for_status()
-                data = resp.json()
-
+                data = _cached_finnhub_get(url, params)
                 raw_events = data.get("economicCalendar", [])
                 if raw_events:
                     for item in raw_events:
@@ -933,21 +931,18 @@ class MarketScanner:
 
         try:
             # Look back 30 days for recent releases
+            from scanners.sentiment import _cached_finnhub_get
             end_date = datetime.now().strftime("%Y-%m-%d")
             start_date = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
 
-            url = (
-                f"https://finnhub.io/api/v1/calendar/economic"
-                f"?from={start_date}&to={end_date}"
-                f"&token={config.finnhub_api_key}"
+            data = _cached_finnhub_get(
+                "https://finnhub.io/api/v1/calendar/economic",
+                {
+                    "from": start_date,
+                    "to": end_date,
+                    "token": config.finnhub_api_key,
+                },
             )
-            resp = requests.get(url, timeout=10)
-
-            if resp.status_code != 200:
-                logger.warning("Finnhub economic calendar failed: %d", resp.status_code)
-                return {"signal": "unavailable"}
-
-            data = resp.json()
             events = data.get("economicCalendar", [])
 
             if not events:
@@ -1143,13 +1138,11 @@ class MarketScanner:
             if not finnhub_key:
                 return {}
 
-            resp = requests.get(
+            from scanners.sentiment import _cached_finnhub_get
+            articles = _cached_finnhub_get(
                 "https://finnhub.io/api/v1/news",
-                params={"category": "general", "token": finnhub_key},
-                timeout=10,
+                {"category": "general", "token": finnhub_key},
             )
-            resp.raise_for_status()
-            articles = resp.json()
 
             from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
             vader = SentimentIntensityAnalyzer()

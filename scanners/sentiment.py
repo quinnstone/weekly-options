@@ -22,6 +22,28 @@ config = Config()
 VADER = SentimentIntensityAnalyzer()
 
 
+# Process-level cache for Finnhub responses within a single pipeline run.
+# Keyed by (endpoint, params_tuple) → response data.
+# Eliminates duplicate API calls when multiple modules need the same data.
+_finnhub_cache: dict[tuple, object] = {}
+
+
+def _cached_finnhub_get(url: str, params: dict, timeout: int = 10):
+    """Fetch from Finnhub with per-process caching.
+
+    Returns parsed JSON. Cache lives for the duration of the pipeline run.
+    """
+    cache_key = (url, tuple(sorted((k, v) for k, v in params.items() if k != "token")))
+    if cache_key in _finnhub_cache:
+        return _finnhub_cache[cache_key]
+
+    resp = requests.get(url, params=params, timeout=timeout)
+    resp.raise_for_status()
+    data = resp.json()
+    _finnhub_cache[cache_key] = data
+    return data
+
+
 class SentimentScanner:
     """Aggregate sentiment from multiple free data sources."""
 
@@ -99,9 +121,7 @@ class SentimentScanner:
                 "token": config.finnhub_api_key,
             }
 
-            resp = requests.get(url, params=params, timeout=10)
-            resp.raise_for_status()
-            articles = resp.json()
+            articles = _cached_finnhub_get(url, params)
 
             results = []
             for art in articles[:50]:  # Cap at 50 articles
@@ -421,10 +441,7 @@ class SentimentScanner:
                 "token": config.finnhub_api_key,
             }
 
-            resp = requests.get(url, params=params, timeout=10)
-            resp.raise_for_status()
-            data = resp.json()
-
+            data = _cached_finnhub_get(url, params)
             earnings = data.get("earningsCalendar", [])
             results = []
             for item in earnings:
@@ -469,13 +486,10 @@ class SentimentScanner:
             return neutral
 
         try:
-            resp = requests.get(
+            data = _cached_finnhub_get(
                 "https://finnhub.io/api/v1/stock/recommendation",
-                params={"symbol": ticker, "token": config.finnhub_api_key},
-                timeout=10,
+                {"symbol": ticker, "token": config.finnhub_api_key},
             )
-            resp.raise_for_status()
-            data = resp.json()
 
             # Finnhub returns array sorted most-recent first
             if not data or len(data) < 2:

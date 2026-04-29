@@ -17,13 +17,44 @@ geopolitical events, and policy changes that structured data alone misses.
 
 import json
 import logging
-from datetime import datetime
+import re
+from datetime import datetime, timedelta
 
 from agents.base import BaseAgent, WEB_SEARCH_TOOL
 from config import Config
 
 logger = logging.getLogger(__name__)
 config = Config()
+
+LEAN_PATTERN = re.compile(r"lean\s+(bullish|bearish|neutral)", re.IGNORECASE)
+
+
+def parse_narrative_lean(narrative_text: str):
+    """Extract the directional lean from a market narrative string.
+
+    Narratives end with "Lean bullish/bearish/neutral because [reason]."
+    Returns one of "bullish", "bearish", "neutral", or None if not found.
+    """
+    if not narrative_text:
+        return None
+    match = LEAN_PATTERN.search(narrative_text)
+    return match.group(1).lower() if match else None
+
+
+def load_recent_narrative_lean(max_days_back: int = 7):
+    """Find the most recent saved market narrative and parse its lean.
+
+    Returns (lean, date_str) — both None if no narrative found.
+    """
+    for days_back in range(max_days_back):
+        date_str = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+        path = config.candidates_dir / date_str / "market_narrative.md"
+        if path.exists():
+            try:
+                return parse_narrative_lean(path.read_text()), date_str
+            except Exception as exc:
+                logger.warning("Failed to read narrative %s: %s", path, exc)
+    return None, None
 
 SYSTEM_PROMPT = """You are the senior market strategist synthesizing this week's market
 data into a coherent narrative. You have full access to the methodology
@@ -147,12 +178,27 @@ class MarketNarrative(BaseAgent):
             if parts:
                 cross_text = f"\nCross-asset: {', '.join(parts)} → composite: {cross_asset.get('composite', '?')}"
 
+        # Sector news headlines (from Finnhub general news, classified by sector)
+        # Feed these to the narrative agent so it can synthesize sector themes
+        # instead of dumping raw headlines on every per-ticker agent call.
+        sector_news = market_summary.get("sector_news", {})
+        sector_news_text = ""
+        if sector_news:
+            parts = []
+            for sector_name, headlines in sector_news.items():
+                if headlines:
+                    hl_strs = [h["headline"][:100] for h in headlines[:3]]
+                    parts.append(f"  {sector_name}: {' | '.join(hl_strs)}")
+            if parts:
+                sector_news_text = "\nSector/macro headlines:\n" + "\n".join(parts)
+
         user_msg = (
             f"MARKET DATA:\n{market_ctx}"
             f"{sector_text}"
             f"{persistence_text}"
             f"{yc_text}"
-            f"{cross_text}\n\n"
+            f"{cross_text}"
+            f"{sector_news_text}\n\n"
             f"Use web_search to check current market-moving news (max 2 searches). "
             f"Then write your market narrative anchored on the data above."
         )

@@ -141,104 +141,53 @@ def _extract_ticker(query: str) -> "str | None":
 def _execute_web_search(query: str) -> str:
     """Execute a web search using available providers.
 
-    For ticker-specific queries: yfinance news + Finnhub company news.
-    For broad/macro queries: Finnhub general market news.
+    For ticker-specific queries: yfinance news (Finnhub company-news is
+    already fetched by the sentiment scanner and passed to agents as
+    classified headlines — no need to duplicate that call here).
+    For broad/macro queries: returns the saved Market Narrative.
     """
     results = []
     ticker = _extract_ticker(query)
 
     if ticker:
-        # --- Ticker-specific search ---
-
-        # Strategy 1: yfinance news (always available)
+        # yfinance news (always available, no API key needed)
         try:
             import yfinance as yf
             tk = yf.Ticker(ticker)
             news = tk.news
             if news:
-                for article in news[:5]:
+                for article in news[:8]:
                     title = article.get("title", "")
                     publisher = article.get("publisher", "")
                     results.append(f"- [{publisher}] {title}")
         except Exception:
             pass
-
-        # Strategy 2: Finnhub company news
+    else:
+        # --- Broad market / macro queries ---
+        # Market Narrative agent handles macro news synthesis via its own
+        # web search tool calls. For non-ticker queries from other agents,
+        # return a pointer to the saved narrative rather than duplicating
+        # the Finnhub general news call.
         try:
-            finnhub_key = config.finnhub_api_key
-            if finnhub_key:
-                import urllib.request
-                from datetime import datetime, timedelta
-                today = datetime.now().strftime("%Y-%m-%d")
-                yesterday = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
-                url = (
-                    f"https://finnhub.io/api/v1/company-news?"
-                    f"symbol={ticker}&from={yesterday}&to={today}&"
-                    f"token={finnhub_key}"
-                )
-                req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
-                with urllib.request.urlopen(req, timeout=10) as resp:
-                    data = json.loads(resp.read())
-                    for article in data[:5]:
-                        headline = article.get("headline", "")
-                        source = article.get("source", "")
-                        summary = article.get("summary", "")[:150]
-                        entry = f"- [{source}] {headline}"
-                        if summary:
-                            entry += f": {summary}"
-                        if entry not in results:
-                            results.append(entry)
+            from pathlib import Path
+            from datetime import datetime as _dt, timedelta
+            narrative_dir = config.candidates_dir
+            for days_back in range(7):
+                date_str = (_dt.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+                np = narrative_dir / date_str / "market_narrative.md"
+                if np.exists():
+                    text = np.read_text().strip()
+                    if text.startswith("#"):
+                        text = "\n".join(text.split("\n")[2:]).strip()
+                    if text:
+                        return f"Market narrative ({date_str}):\n{text[:800]}"
+                    break
         except Exception:
             pass
-    else:
-        # --- Broad market / macro / geopolitical search ---
-        results = _fetch_general_news()
 
     if results:
         return f"Web search results for '{query}':\n" + "\n".join(results[:10])
     return f"No recent news found for '{query}'. The search may have failed or there may be no recent coverage."
-
-
-def _fetch_general_news(max_articles: int = 10) -> list:
-    """Fetch broad market news from Finnhub general news endpoint.
-
-    Returns market-moving headlines — geopolitics, Fed, trade policy,
-    macro events. Filters out crypto, lifestyle, and low-relevance noise.
-    """
-    try:
-        finnhub_key = config.finnhub_api_key
-        if not finnhub_key:
-            return []
-
-        import urllib.request
-        url = f"https://finnhub.io/api/v1/news?category=general&token={finnhub_key}"
-        req = urllib.request.Request(url, headers={"User-Agent": "WeeklyOptions/1.0"})
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read())
-
-        # Filter for market-relevant news (skip crypto, lifestyle, fluff)
-        SKIP_KEYWORDS = {"crypto", "bitcoin", "ethereum", "nft", "meme coin",
-                         "celebrity", "kardashian", "reality tv"}
-        results = []
-        for article in data:
-            headline = (article.get("headline") or "").strip()
-            source = article.get("source", "")
-            summary = (article.get("summary") or "")[:150]
-            if not headline:
-                continue
-            headline_lower = headline.lower()
-            if any(kw in headline_lower for kw in SKIP_KEYWORDS):
-                continue
-            entry = f"- [{source}] {headline}"
-            if summary:
-                entry += f": {summary}"
-            results.append(entry)
-            if len(results) >= max_articles:
-                break
-
-        return results
-    except Exception:
-        return []
 
 
 class BaseAgent:
@@ -255,7 +204,7 @@ class BaseAgent:
 
     # Subclasses set these
     AGENT_NAME = "base"
-    MODEL = "claude-opus-4-20250514"
+    MODEL = "claude-opus-4-6"
     MAX_TOKENS = 1500
     TOOLS = []  # Subclasses can add tools (e.g., [WEB_SEARCH_TOOL])
 
@@ -422,25 +371,32 @@ class BaseAgent:
             if risks:
                 social_bits.append(f"risks: {', '.join(risks[:2])}")
 
-        # Ticker-specific news headlines (classified as catalyst/risk/neutral)
+        # Ticker-specific news — only catalyst/risk headlines (skip neutral noise)
         news_bits = []
         classified = sentiment.get("classified_headlines", [])
         if classified:
-            for ch in classified[:4]:
-                tag = "+" if ch["type"] == "catalyst" else "-" if ch["type"] == "risk" else "."
-                news_bits.append(f"[{tag}] {ch['headline'][:100]}")
-        elif sentiment.get("headlines"):
-            # Fallback to raw headlines if not classified
-            for hl in sentiment["headlines"][:3]:
-                news_bits.append(f"[.] {hl[:100]}")
+            for ch in classified:
+                if ch["type"] == "catalyst":
+                    news_bits.append(f"[+] {ch['headline'][:100]}")
+                elif ch["type"] == "risk":
+                    news_bits.append(f"[-] {ch['headline'][:100]}")
+                if len(news_bits) >= 4:
+                    break
 
-        # Sector news context (from market_summary.sector_news)
-        sector = pick.get("sector", "unknown")
-        sector_news_bits = []
-        sector_news = pick.get("sector_news", [])
-        if sector_news:
-            for sn in sector_news[:3]:
-                sector_news_bits.append(f"{sn['headline'][:100]}")
+        # Narrative lean / scoring conflict — surfaced as info, not a hard rule.
+        # Agents should weigh this when reviewing the thesis: the macro narrative
+        # represents Opus's market read; if it disagrees with the scorer's
+        # direction, that's worth investigating before approving the pick.
+        narrative_lean = pick.get("narrative_lean")
+        narrative_line = ""
+        if narrative_lean:
+            if pick.get("narrative_scoring_conflict"):
+                narrative_line = (
+                    f"[CONFLICT] Market narrative leans {narrative_lean} but scoring "
+                    f"picked {direction.upper()} — review thesis carefully"
+                )
+            else:
+                narrative_line = f"Market narrative leans {narrative_lean} (aligned with {direction.upper()})"
 
         lines = [
             f"**{ticker}** — {direction.upper()} ${strike:,.2f}" if strike else f"**{ticker}** — {direction.upper()}",
@@ -451,10 +407,10 @@ class BaseAgent:
             f"Score: {score:.1f} | Confidence: {confidence:.0%} | Consensus: {consensus}",
             f"Top signals: {', '.join(f'{k}={v:.0f}' for k,v in top_scores)}" if top_scores else "",
             f"Pattern win rate: {pattern_wr:.0%} ({pattern.get('pattern_observations', 0)} obs)" if pattern_wr else "",
+            narrative_line,
             f"Catalysts: {' | '.join(catalyst_bits)}" if catalyst_bits else "",
             f"Social: {' | '.join(social_bits)}" if social_bits else "",
             f"News:\n  " + "\n  ".join(news_bits) if news_bits else "",
-            f"Sector news ({sector}):\n  " + "\n  ".join(sector_news_bits) if sector_news_bits else "",
         ]
         return "\n".join(l for l in lines if l)
 

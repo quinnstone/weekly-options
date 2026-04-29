@@ -162,21 +162,26 @@ class CandidateScorer:
         is_bullish = direction == "call"
         is_bearish = direction == "put"
 
-        # Short-term momentum (5-day): most important for weekly trades
+        # Short-term momentum (5-day): most important for weekly trades.
+        # Logarithmic scaling so stocks above ~5% return still differentiate.
+        # The prior linear x5 multiplier saturated the +25 cap at any return
+        # >5%, treating +5% and +20% identically — picks lost ranking signal
+        # exactly where it matters most. log1p preserves ordering throughout
+        # while still saturating at genuinely extreme moves (~15%).
         if is_bullish:
-            score += min(25, max(-15, ret_5d * 5))
+            score += float(np.clip(np.sign(ret_5d) * 9 * np.log1p(abs(ret_5d)), -15, 25))
         elif is_bearish:
-            score += min(25, max(-15, -ret_5d * 5))
+            score += float(np.clip(np.sign(-ret_5d) * 9 * np.log1p(abs(ret_5d)), -15, 25))
         else:
-            score += min(15, abs(ret_5d) * 3)
+            score += float(min(15, 5.5 * np.log1p(abs(ret_5d))))
 
         # Medium-term momentum (10-day)
         if is_bullish:
-            score += min(15, max(-10, ret_10d * 2))
+            score += float(np.clip(np.sign(ret_10d) * 5.5 * np.log1p(abs(ret_10d)), -10, 15))
         elif is_bearish:
-            score += min(15, max(-10, -ret_10d * 2))
+            score += float(np.clip(np.sign(-ret_10d) * 5.5 * np.log1p(abs(ret_10d)), -10, 15))
         else:
-            score += min(10, abs(ret_10d) * 1.5)
+            score += float(min(10, 3.5 * np.log1p(abs(ret_10d))))
 
         # Longer-term context (21-day): momentum should be aligned
         alignment_bonus = 0

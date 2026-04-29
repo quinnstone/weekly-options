@@ -501,10 +501,14 @@ class Scorecard:
                   f"P&L: {ws}${week_pnl:,.2f} ({ws}{latest.get('total_return_pct', 0):.1f}%)")
             print()
             for i, p in enumerate(latest.get("picks", []), 1):
-                pnl_val = p.get("pnl", 0)
+                pnl_val = p.get("pnl") or 0
                 ps = "+" if pnl_val >= 0 else ""
-                print(f"    {i}. {p['ticker']:6s} {p['direction'].upper():4s}  "
-                      f"Strike: ${p.get('strike', 0):>8,.2f}  "
+                ticker = p.get("ticker") or "?"
+                direction = (p.get("direction") or "?").upper()
+                strike = p.get("strike")
+                strike_str = f"${strike:>8,.2f}" if strike is not None else "       —"
+                print(f"    {i}. {ticker:6s} {direction:4s}  "
+                      f"Strike: {strike_str}  "
                       f"{ps}${pnl_val:,.2f}  "
                       f"{p.get('result', '?')}")
             print()
