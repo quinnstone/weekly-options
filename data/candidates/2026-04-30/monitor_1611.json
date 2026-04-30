@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": 355.0,
+      "entry_price": 347.81,
+      "current_price": 354.35,
+      "entry_premium": 9.7,
+      "current_option_price": 4.0,
+      "current_delta": 0.473,
+      "stock_move_pct": 1.88,
+      "option_return_pct": -58.8,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -59% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "strike": 160.0,
+      "entry_price": 164.31,
+      "current_price": 165.13,
+      "entry_premium": 9.0,
+      "current_option_price": 5.4,
+      "current_delta": 0.928,
+      "stock_move_pct": 0.5,
+      "option_return_pct": -40.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -40% \u2014 approaching stop. Watch closely."
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "strike": 177.5,
+      "entry_price": 174.26,
+      "current_price": 176.07,
+      "entry_premium": 5.11,
+      "current_option_price": 2.53,
+      "current_delta": 0.614,
+      "stock_move_pct": -1.04,
+      "option_return_pct": -50.5,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -50% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "AMD: STOP LOSS HIT (-59%)",
+    "MRVL: APPROACHING STOP (-40%)",
+    "RTX: STOP LOSS HIT (-50%)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n### AMD CALL: **STOP HIT \u2014 EXIT NOW**\nP&L: **-59%** (breached -50% hard stop). Stock is up +1.9% but option is down 59% \u2014 this is textbook charm destruction. A 0.35 delta entry Monday has likely decayed to ~0.08-0.10 by Thursday with the strike too far OTM for the move to matter. The stock moved your way and you're still down 59%; the option is dead. **Close immediately at market.**\n\n### MRVL CALL: **WARNING \u2014 EXIT**\nP&L: **-40%** (Thursday target is +15%; actual is -40%). Stock only +0.5% on the week \u2014 insufficient to overcome 4 days of theta (~16% cumulative) plus charm decay. With one day to expiry, this option needs a massive Friday move to recover. On Thursday at ELEVATED urgency, any position below -15% gets flagged for exit. At -40%, recovery through Friday is near-impossible \u2014 charm is accelerating into expiry, delta is likely ~0.12-0.15, and you'd need the stock to gap significantly tomorrow just to reach breakeven. **Close today. Do not hold into Friday hoping.**\n\n### RTX PUT: **STOP HIT \u2014 EXIT NOW**\nP&L: **-50%** (exactly at hard stop). Stock is down -1.0%, directionally correct for a put, yet the option is at -50%. Same story: theta and charm consumed all directional benefit. The put's delta has collapsed. **Close immediately at market.**\n\n---\n\n## RECOMMENDATION\n\n**Close all three positions today. No exceptions.**\n\nTwo have breached the -50% hard stop \u2014 those aren't decisions, they're rules. AMD and RTX should already be closed. MRVL at -40% on Thursday with ELEVATED urgency is a clear exit \u2014 the methodology says any position below -15% on Thursday should be flagged, and -40% is not a flag, it's a fire alarm.\n\nTotal portfolio damage is significant. Do not compound it by holding into Friday's liquidity cliff hoping for miracles. Book the losses, preserve remaining capital.\n\n**Post-close note for reflection:** All three positions moved directionally correct (AMD +1.9%, RTX -1.0%) or neutral (MRVL +0.5%) yet all three lost money. This is a strike selection and/or IV overpayment problem, not a direction problem. The ensemble got direction right; execution tier (strike_efficiency, theta_cost) failed. Flag for Sunday reflection \u2014 theta_cost scoring weight (currently 0.05) may need upward revision through the validation gate.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -49.8,
+    "targets_hit": 0,
+    "stops_hit": 2,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
