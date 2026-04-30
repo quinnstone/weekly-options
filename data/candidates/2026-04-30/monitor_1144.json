@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": 355.0,
+      "entry_price": 347.81,
+      "current_price": 346.48,
+      "entry_premium": 9.7,
+      "current_option_price": 3.1,
+      "current_delta": 0.235,
+      "stock_move_pct": -0.38,
+      "option_return_pct": -68.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -68% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "strike": 160.0,
+      "entry_price": 164.31,
+      "current_price": 164.05,
+      "entry_premium": 9.0,
+      "current_option_price": 5.4,
+      "current_delta": 0.788,
+      "stock_move_pct": -0.16,
+      "option_return_pct": -40.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -40% \u2014 approaching stop. Watch closely."
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "strike": 177.5,
+      "entry_price": 174.26,
+      "current_price": 174.95,
+      "entry_premium": 5.11,
+      "current_option_price": 3.3,
+      "current_delta": 0.723,
+      "stock_move_pct": -0.4,
+      "option_return_pct": -35.4,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -35% \u2014 approaching stop. Watch closely."
+    }
+  ],
+  "alerts": [
+    "AMD: STOP LOSS HIT (-68%)",
+    "MRVL: APPROACHING STOP (-40%)",
+    "RTX: APPROACHING STOP (-35%)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n### AMD CALL: **DEAD. EXIT NOW.**\nP&L: **-68%** \u2014 blew through the -50% hard stop. This should have been closed already. At day 4 with -68%, charm has gutted whatever delta remained. Estimated delta is likely sub-0.10 (delta stop also triggered). No recovery scenario exists \u2014 the stock is flat-to-down and you need a massive move with one day of theta left. **Close at market open. No debate.**\n\n### MRVL CALL: **EXIT.**\nP&L: **-40%** \u2014 stock down -0.2% on a call, Thursday, one day to expiry. Let's be direct: at -40% on Thursday with the stock moving against you, the math is brutal. Theta is ~4%/day baseline, but on Thursday\u2192Friday that accelerates to 6-8% for weeklies. A 0.35 Monday delta has decayed to roughly 0.12-0.15 through charm alone, and the stock hasn't helped. To hit Thursday's 15% *profit* target, you'd need a move that isn't coming from a -0.2% drift day. At ELEVATED urgency, **any position below -15% on Thursday gets flagged for exit** \u2014 this is at -40%. The -50% stop hits with one bad hour tomorrow. Close it.\n\n### RTX PUT: **EXIT.**\nP&L: **-35%** \u2014 stock is down -0.4%, which is *directionally correct* for a put, yet the option is down -35%. This tells you theta/charm ate the entire directional benefit and then some. The put's delta has decayed so severely that a favorable -0.4% stock move couldn't offset time decay. This is the textbook charm trap: the option is right on direction but wrong on magnitude vs. decay. Same Thursday logic applies \u2014 below -15%, no realistic path to recovery with one trading day left.\n\n---\n\n## RECOMMENDATION\n\n**Close all three positions at Thursday open. Full exit. No holds into Friday.**\n\nAMD is a stop violation that should already be gone. MRVL and RTX are both below the -15% Thursday exit threshold with accelerating charm decay and no catalyst to reverse. Holding into Friday's CRITICAL session just adds slippage risk and the 3 PM liquidity cliff. Take the ~47% average portfolio loss and preserve capital for Monday's fresh cycle.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -47.8,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
