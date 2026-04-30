@@ -564,6 +564,10 @@ class DailyStages:
         # 2b. Load most recent market narrative lean (from Wednesday scan).
         # NOT weighted into scoring math — surfaced as a conflict flag to
         # reviewing agents and logged for future empirical evaluation.
+        # Eval methodology and revisit criteria documented in:
+        #   memory/project_narrative_lean_integration.md (scoring weight decision)
+        #   memory/project_agent_acknowledge_prompt.md (agent prompt decision)
+        # Both are 8-12 week windows pending data accumulation.
         from agents.market_narrative import load_recent_narrative_lean
         narrative_lean, narrative_date = load_recent_narrative_lean()
         if narrative_lean:
@@ -748,7 +752,13 @@ class DailyStages:
                         override_occurred=override,
                         context={
                             "dropped": portfolio_result.get("dropped", []),
-                            "reasoning": portfolio_result.get("reasoning", "")[:300],
+                            # Preserve full agent reasoning (selection + thesis +
+                            # dropped justifications + portfolio note) for retroactive
+                            # analysis. ~2500 chars covers a typical Opus response
+                            # without bloating agent_tracker.json. Needed to evaluate
+                            # whether agents are engaging with the narrative conflict
+                            # flag during the 8-12 week eval window.
+                            "reasoning": portfolio_result.get("reasoning", "")[:2500],
                         },
                     )
                     top5 = agent_top
