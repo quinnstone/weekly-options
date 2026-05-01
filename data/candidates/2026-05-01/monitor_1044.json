@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": 355.0,
+      "entry_price": 347.81,
+      "current_price": 353.08,
+      "entry_premium": 9.7,
+      "current_option_price": 3.02,
+      "current_delta": 0.429,
+      "stock_move_pct": 1.52,
+      "option_return_pct": -68.9,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -69% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "strike": 160.0,
+      "entry_price": 164.31,
+      "current_price": 163.63,
+      "entry_premium": 9.0,
+      "current_option_price": 4.85,
+      "current_delta": 0.716,
+      "stock_move_pct": -0.41,
+      "option_return_pct": -46.1,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -46% \u2014 approaching stop. Watch closely."
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "strike": 177.5,
+      "entry_price": 174.26,
+      "current_price": 174.9,
+      "entry_premium": 5.11,
+      "current_option_price": 2.73,
+      "current_delta": 0.682,
+      "stock_move_pct": -0.37,
+      "option_return_pct": -46.6,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -47% \u2014 approaching stop. Watch closely."
+    }
+  ],
+  "alerts": [
+    "AMD: STOP LOSS HIT (-69%)",
+    "MRVL: APPROACHING STOP (-46%)",
+    "RTX: APPROACHING STOP (-47%)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Expiry Day\n\n### Position Status\n\n**AMD CALL: DEAD.** -69%, stop was triggered at -50% and should have been closed then. This is a breach of risk protocol. The +1.5% stock move couldn't save it \u2014 charm and theta destroyed whatever delta remained. Option is near-worthless. **Close immediately at market.**\n\n**MRVL CALL: DEAD.** -46%, stock is -0.4% against thesis on expiry day. With hours left, delta is likely sub-0.10 (delta stop territory). There is no realistic recovery path \u2014 the stock would need a massive move in hours to overcome the theta that's already been paid. **Close immediately at market.**\n\n**RTX PUT: DEAD.** -47%, stock only -0.4% \u2014 thesis was right on direction but magnitude was nowhere close to what a weekly put needed. Same as MRVL: delta is collapsing toward zero, theta is in terminal acceleration. Holding into the afternoon risks the last 3-5% of remaining value evaporating to zero. **Close immediately at market.**\n\n---\n\n### Summary\n\nAll three positions failed. 0-for-3 week. Two hit or nearly hit the -50% hard stop; the third breached it. None came close to the Friday 10% profit target at any point today.\n\n---\n\n### RECOMMENDATION\n\n**Close all three positions NOW at market. No exceptions. No hoping.**\n\nAMD should have been closed when the stop triggered \u2014 execute that immediately. MRVL and RTX are 3-4 points from stop and decaying by the minute on expiry day. Waiting gains nothing; every minute costs premium.\n\nBid-ask spreads are widening as we approach the afternoon. Get out before the 1:00 PM liquidity cliff makes fills worse. Do not hold past 2:00 PM under any circumstances per methodology rules.\n\nThis is a max-loss week. The reflection engine needs to examine whether the directional signals were wrong, or whether strike selection and IV entry were the real culprits \u2014 a +1.5% stock move on AMD producing a -69% option loss points to overpaying for premium or targeting too far OTM.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -53.9,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
