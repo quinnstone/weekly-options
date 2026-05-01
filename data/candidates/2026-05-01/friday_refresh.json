@@ -40,10 +40,10 @@
       "weekly_atr_pct": 5.84,
       "gap_pct": 0.15,
       "prev_day_high": 385.83,
-      "prev_day_low": 365.82,
-      "prev_day_vwap": 376.44,
-      "price_vs_prev_vwap": 2.46,
-      "intraday_atr_pct": 3.06
+      "prev_day_low": 365.9,
+      "prev_day_vwap": 378.55,
+      "price_vs_prev_vwap": 1.89,
+      "intraday_atr_pct": 3.03
     },
     "options": {
       "ticker": "GOOGL",
@@ -373,8 +373,8 @@
         "Google parent Alphabet profit jumps 81% in Big Tech earnings roundup",
         "Alphabet shares rise after earnings beat fueled by Cloud and Search strength"
       ],
-      "volatility_week": 3.33,
-      "volatility_month": 2.46,
+      "volatility_week": 3.15,
+      "volatility_month": 2.39,
       "perf_week": 11.99,
       "perf_month": 29.69,
       "rel_volume": 0.9
@@ -696,9 +696,9 @@
       "bb_squeeze": false,
       "atr": 4.92,
       "atr_pct": 4.94,
-      "volume": 156429375,
-      "volume_sma20": 139311708,
-      "volume_ratio": 1.12,
+      "volume": 156874061,
+      "volume_sma20": 139333943,
+      "volume_ratio": 1.13,
       "sma_20": 71.13,
       "sma_50": 55.61,
       "price_vs_sma20_pct": 40.06,
@@ -717,11 +717,11 @@
       "pct_from_52w_low": 425.14,
       "weekly_atr_pct": 11.05,
       "gap_pct": 5.45,
-      "prev_day_high": 95.65,
+      "prev_day_high": 95.14,
       "prev_day_low": 91.5,
-      "prev_day_vwap": 93.46,
-      "price_vs_prev_vwap": 6.59,
-      "intraday_atr_pct": 6.27
+      "prev_day_vwap": 93.4,
+      "price_vs_prev_vwap": 6.66,
+      "intraday_atr_pct": 6.14
     },
     "options": {
       "ticker": "INTC",
@@ -1014,7 +1014,7 @@
         "Nvidia crashes Intels party: $5T giant surges as AI market pivots to CPUs",
         "Nasdaq Eyes Weekly Win Streak After Another Record High"
       ],
-      "volatility_week": 6.4,
+      "volatility_week": 6.69,
       "volatility_month": 5.92,
       "perf_week": 20.69,
       "perf_month": 107.41,
@@ -1273,13 +1273,13 @@
         "rel_volume": 1.4
       }
     },
-    "friday_score": 0.7608,
+    "friday_score": 0.761,
     "friday_components": {
       "setup_momentum": 0.88,
       "trend_evolution": 0.95,
       "iv_premium_trajectory": 0.615,
       "options_positioning": 0.34,
-      "base_quality": 0.912,
+      "base_quality": 0.913,
       "sentiment_evolution": 0.8
     }
   },
@@ -1327,7 +1327,7 @@
       "prev_day_low": 363.09,
       "prev_day_vwap": 373.32,
       "price_vs_prev_vwap": 2.65,
-      "intraday_atr_pct": 2.98
+      "intraday_atr_pct": 2.96
     },
     "options": {
       "ticker": "GOOG",
@@ -1603,8 +1603,8 @@
         "Enterprise AI just became Google Cloud's primary growth driver",
         "Google gains 25M subscriptions in Q1, driven by YouTube and Google One"
       ],
-      "volatility_week": 3.21,
-      "volatility_month": 2.37,
+      "volatility_week": 3.07,
+      "volatility_month": 2.34,
       "perf_week": 11.95,
       "perf_month": 29.95,
       "rel_volume": 1.32
@@ -2208,11 +2208,11 @@
         "Humanoid Robots Offer Europe Path to Stay in Tech Race",
         "Disney upgraded, Nike downgraded: Wall Street's top analyst calls"
       ],
-      "volatility_week": 7.73,
-      "volatility_month": 3.65,
+      "volatility_week": 7.66,
+      "volatility_month": 3.77,
       "perf_week": 18.92,
       "perf_month": 39.07,
-      "rel_volume": 1.51
+      "rel_volume": 1.53
     },
     "insider": {
       "total_buys": 0,
@@ -2599,16 +2599,91 @@
     },
     "sentiment": {
       "ticker": "ON",
-      "composite_score": 0.1572,
+      "composite_score": -0.0774,
       "article_count": 25,
       "sources": [
-        "finnhub"
+        "finnhub",
+        "social_crawler"
       ],
       "headlines": [
         "Here's How Much a $1000 Investment in ON Semiconductor Corp. Made 10 Years Ago Would Be Worth Today",
         "Semiconductor ETFs SOXX, SMH Just Logged Their Best Month Ever \u2014 What's Driving This Rally?",
         "NIO April Deliveries Jump 23% As ES8 Momentum Accelerates"
       ],
+      "social": {
+        "narrative": "Moderate buzz (6 mentions) | Catalysts: deal | Top signal (catalyst): \"TRUMP ON IRAN: WE WILL NOT LEAVE EARLY AND HAVE THE PROBLEM ARISE AGAIN\"",
+        "catalysts": [
+          "deal"
+        ],
+        "risks": [],
+        "flow_consensus": "neutral",
+        "flow_conviction": 0,
+        "flow_signals": [],
+        "signal_strength": 15.0,
+        "top_posts": [
+          {
+            "title": "TRUMP ON IRAN: WE WILL NOT LEAVE EARLY AND HAVE THE PROBLEM ARISE AGAIN",
+            "type": "catalyst",
+            "quality": 0.8,
+            "engagement": 0,
+            "signal": 0.8,
+            "source": "twitter",
+            "sentiment": -0.372,
+            "catalysts": [],
+            "risks": []
+          },
+          {
+            "title": "*TRUMP ON WEAPONS TO IRANIAN RIOTERS: I'M NOT HAPPY W/ DELIVERY",
+            "type": "catalyst",
+            "quality": 0.8,
+            "engagement": 0,
+            "signal": 0.8,
+            "source": "twitter",
+            "sentiment": -0.7094,
+            "catalysts": [],
+            "risks": []
+          },
+          {
+            "title": "TRUMP ON POTENTIAL IRAN STRIKES : WHY WOULD I TELL YOU",
+            "type": "catalyst",
+            "quality": 0.8,
+            "engagement": 0,
+            "signal": 0.8,
+            "source": "twitter",
+            "sentiment": -0.4995,
+            "catalysts": [],
+            "risks": []
+          },
+          {
+            "title": "TRUMP ON IRAN OPTIONS: EITHER BLAST THEM AWAY OR MAKE A DEAL",
+            "type": "catalyst",
+            "quality": 0.8,
+            "engagement": 0,
+            "signal": 0.8,
+            "source": "twitter",
+            "sentiment": 0.0,
+            "catalysts": [
+              "deal"
+            ],
+            "risks": []
+          },
+          {
+            "title": "TRUMP ON IRAN: RIGHT NOW WE HAVE TALKS GOING ON, THEY\u2019RE NOT GETTING THERE",
+            "type": "catalyst",
+            "quality": 0.8,
+            "engagement": 0,
+            "signal": 0.8,
+            "source": "twitter",
+            "sentiment": 0.0,
+            "catalysts": [],
+            "risks": []
+          }
+        ],
+        "price_targets": [],
+        "post_types": {
+          "catalyst": 6
+        }
+      },
       "analyst_revision": {
         "direction": "flat",
         "delta": -1,
@@ -2738,8 +2813,8 @@
         "MaxLinear (MXL) Tops Q4 Earnings and Revenue Estimates",
         "Intel, Micron, These Other Chip Stocks Are Rallying. Thank Texas Instruments and ASML."
       ],
-      "volatility_week": 3.96,
-      "volatility_month": 3.89,
+      "volatility_week": 3.78,
+      "volatility_month": 3.93,
       "perf_week": 4.71,
       "perf_month": 65.64,
       "rel_volume": 1.05
@@ -3024,14 +3099,14 @@
         "rel_volume": 1.25
       }
     },
-    "friday_score": 0.735,
+    "friday_score": 0.715,
     "friday_components": {
       "setup_momentum": 0.604,
       "trend_evolution": 0.95,
       "iv_premium_trajectory": 0.615,
       "options_positioning": 0.64,
       "base_quality": 0.8331,
-      "sentiment_evolution": 1.0
+      "sentiment_evolution": 0.6
     }
   },
   {
@@ -3053,8 +3128,8 @@
       "bb_squeeze": true,
       "atr": 6.3,
       "atr_pct": 3.18,
-      "volume": 127371188,
-      "volume_sma20": 147282234,
+      "volume": 127110269,
+      "volume_sma20": 147269188,
       "volume_ratio": 0.86,
       "sma_20": 197.22,
       "sma_50": 187.15,
@@ -3076,8 +3151,8 @@
       "gap_pct": -0.54,
       "prev_day_high": 210.3,
       "prev_day_low": 198.7,
-      "prev_day_vwap": 201.82,
-      "price_vs_prev_vwap": -1.67,
+      "prev_day_vwap": 201.44,
+      "price_vs_prev_vwap": -1.48,
       "intraday_atr_pct": 3.73
     },
     "options": {
@@ -3156,7 +3231,7 @@
     },
     "sentiment": {
       "ticker": "NVDA",
-      "composite_score": 0.4105,
+      "composite_score": 0.4077,
       "article_count": 50,
       "sources": [
         "finnhub",
@@ -3179,7 +3254,7 @@
             "source": "?"
           }
         ],
-        "signal_strength": 4.1,
+        "signal_strength": 3.6,
         "top_posts": [
           {
             "title": "March Short Put Verticals",
@@ -3189,17 +3264,6 @@
             "signal": 0.9,
             "source": "thetagang",
             "sentiment": 0.9733,
-            "catalysts": [],
-            "risks": []
-          },
-          {
-            "title": "$68 -> $5300",
-            "type": "position",
-            "quality": 0.5,
-            "engagement": 0,
-            "signal": 0.5,
-            "source": "wallstreetbets",
-            "sentiment": 0.7096,
             "catalysts": [],
             "risks": []
           },
@@ -3229,7 +3293,7 @@
         "price_targets": [],
         "post_types": {
           "noise": 1,
-          "position": 2,
+          "position": 1,
           "dd": 1
         }
       },
@@ -3362,8 +3426,8 @@
         "OpenAI's Reach Is Evident in Tech Selloff  - Heard on the Street",
         "Nvidia, AI Chip Stocks Fall On OpenAI Funding Concerns"
       ],
-      "volatility_week": 4.32,
-      "volatility_month": 2.77,
+      "volatility_week": 3.8,
+      "volatility_month": 2.84,
       "perf_week": -4.72,
       "perf_month": 12.92,
       "rel_volume": 0.72
@@ -3760,11 +3824,11 @@
       "pct_from_52w_low": 45.91,
       "weekly_atr_pct": 6.26,
       "gap_pct": 1.22,
-      "prev_day_high": 273.87,
+      "prev_day_high": 270.62,
       "prev_day_low": 256.16,
-      "prev_day_vwap": 261.95,
-      "price_vs_prev_vwap": 2.41,
-      "intraday_atr_pct": 3.37
+      "prev_day_vwap": 261.83,
+      "price_vs_prev_vwap": 2.46,
+      "intraday_atr_pct": 3.13
     },
     "options": {
       "ticker": "AMZN",
@@ -4052,8 +4116,8 @@
         "Amazon says it is the second-biggest grocer in the U.S., with 40-fold growth in perishables",
         "As AWS rapidly grows, so will Amazon's capex, Jassy says"
       ],
-      "volatility_week": 3.19,
-      "volatility_month": 2.71,
+      "volatility_week": 3.46,
+      "volatility_month": 2.78,
       "perf_week": 1.62,
       "perf_month": 27.4,
       "rel_volume": 0.95
@@ -4340,9 +4404,9 @@
       "bb_squeeze": false,
       "atr": 2.94,
       "atr_pct": 6.47,
-      "volume": 10199761,
-      "volume_sma20": 5715933,
-      "volume_ratio": 1.78,
+      "volume": 10213373,
+      "volume_sma20": 5716613,
+      "volume_ratio": 1.79,
       "sma_20": 51.01,
       "sma_50": 51.76,
       "price_vs_sma20_pct": -11.06,
@@ -4493,6 +4557,7 @@
       "short_float_pct": 16.37,
       "earnings_date": "May 01 BMO",
       "news_headlines": [
+        "Moderna, Inc. Q1 2026 Earnings Call Summary",
         "Moderna Sales Triple To $389 Million As Shares Rise 5.4%",
         "Moderna reports mixed Q1 results as revenue beats estimates but litigation charge weighs on earnings",
         "Moderna Beats Estimates on International Covid Shot Sales",
@@ -4591,11 +4656,10 @@
         "Markets Are in the AI Doldrums. Why Trump's Iran Posturing Could Change That.",
         "The Moderna Flu-Shot Drama",
         "Moderna Spikes After FDAs  About-Face on mRNA Flu Vaccine",
-        "Podcast: Stocks Rise on Chips Momentum",
-        "Moderna Loses 2 Defenses In Patent Fight"
+        "Podcast: Stocks Rise on Chips Momentum"
       ],
-      "volatility_week": 5.48,
-      "volatility_month": 5.17,
+      "volatility_week": 6.49,
+      "volatility_month": 5.37,
       "perf_week": -10.57,
       "perf_month": -9.31,
       "rel_volume": 1.26
@@ -4853,13 +4917,13 @@
         "rel_volume": 0.43
       }
     },
-    "friday_score": 0.6783,
+    "friday_score": 0.6784,
     "friday_components": {
       "setup_momentum": 0.8064,
       "trend_evolution": 0.65,
       "iv_premium_trajectory": 0.54,
       "options_positioning": 0.64,
-      "base_quality": 0.7179,
+      "base_quality": 0.7189,
       "sentiment_evolution": 0.7
     }
   },
@@ -5188,11 +5252,11 @@
         "Chip stocks just added $3 trillion in market value  but are the most overextended in decades: Chart of the Day",
         "BNP Paribas Hikes Intel Stock Price Target Ahead of Earnings"
       ],
-      "volatility_week": 6.15,
+      "volatility_week": 5.83,
       "volatility_month": 4.64,
       "perf_week": 3.66,
       "perf_month": 71.51,
-      "rel_volume": 0.87
+      "rel_volume": 0.88
     },
     "insider": {
       "total_buys": 0,
@@ -5551,9 +5615,9 @@
       "bb_squeeze": true,
       "atr": 9.87,
       "atr_pct": 1.46,
-      "volume": 36684710,
-      "volume_sma20": 41223540,
-      "volume_ratio": 0.89,
+      "volume": 38824943,
+      "volume_sma20": 41330552,
+      "volume_ratio": 0.94,
       "sma_20": 638.2,
       "sma_50": 612.34,
       "price_vs_sma20_pct": 5.63,
@@ -5574,8 +5638,8 @@
       "gap_pct": 0.99,
       "prev_day_high": 668.75,
       "prev_day_low": 657.56,
-      "prev_day_vwap": 663.71,
-      "price_vs_prev_vwap": 1.57,
+      "prev_day_vwap": 664.41,
+      "price_vs_prev_vwap": 1.47,
       "intraday_atr_pct": 0.99
     },
     "options": {
@@ -5583,87 +5647,87 @@
       "expiry": "2026-05-08",
       "days_to_expiry": 7,
       "current_price": 674.15,
-      "pc_ratio_volume": 2.904,
+      "pc_ratio_volume": 2.903,
       "pc_ratio_oi": 2.04,
-      "atm_iv": 0.175,
-      "iv_rank": 43.2,
+      "atm_iv": 0.1764,
+      "iv_rank": 42.8,
       "max_pain": 646.0,
       "highest_oi_call_strike": 675.0,
       "highest_oi_put_strike": 635.0,
       "highest_vol_call_strike": 675.0,
       "highest_vol_put_strike": 645.0,
-      "iv_skew": 0.3062,
-      "total_call_volume": 127665,
-      "total_put_volume": 370677,
+      "iv_skew": 0.2767,
+      "total_call_volume": 127714,
+      "total_put_volume": 370720,
       "total_call_oi": 167373,
       "total_put_oi": 341393,
-      "atm_call_mid": 6.61,
+      "atm_call_mid": 6.715,
       "atm_put_mid": 6.43,
-      "atm_call_spread_pct": 0.61,
+      "atm_call_spread_pct": 4.62,
       "atm_put_spread_pct": 8.09,
       "atm_call_strike": 674.0,
       "atm_put_strike": 674.0,
       "realized_vol_20d": 0.154,
-      "iv_rv_ratio": 1.136,
-      "implied_move_pct": 1.93,
-      "atm_straddle_mid": 13.04,
+      "iv_rv_ratio": 1.145,
+      "implied_move_pct": 1.95,
+      "atm_straddle_mid": 13.145,
       "realized_vol_5d": 0.1304,
       "weekly_expected_move_pct": 2.48,
       "theta_per_day_pct": 14.29,
       "theta_decay_curve": [
         {
           "day": 1,
-          "theta_per_day": -0.5073,
-          "charm_per_day": -0.001155,
+          "theta_per_day": -0.5111,
+          "charm_per_day": -0.001152,
           "theta_pct_of_premium": 3.89
         },
         {
           "day": 2,
-          "theta_per_day": -0.5446,
-          "charm_per_day": -0.001197,
-          "theta_pct_of_premium": 4.18
+          "theta_per_day": -0.5487,
+          "charm_per_day": -0.001193,
+          "theta_pct_of_premium": 4.17
         },
         {
           "day": 3,
-          "theta_per_day": -0.5926,
-          "charm_per_day": -0.001233,
+          "theta_per_day": -0.5971,
+          "charm_per_day": -0.00123,
           "theta_pct_of_premium": 4.54
         },
         {
           "day": 4,
-          "theta_per_day": -0.6576,
-          "charm_per_day": -0.001251,
+          "theta_per_day": -0.6626,
+          "charm_per_day": -0.001249,
           "theta_pct_of_premium": 5.04
         },
         {
           "day": 5,
-          "theta_per_day": -0.7528,
-          "charm_per_day": -0.001203,
+          "theta_per_day": -0.7586,
+          "charm_per_day": -0.001202,
           "theta_pct_of_premium": 5.77
         }
       ],
       "iv_term_structure": {
-        "weekly_iv": 0.175,
-        "monthly_iv": 0.1938,
+        "weekly_iv": 0.1764,
+        "monthly_iv": 0.1936,
         "weekly_expiry": "2026-05-08",
         "monthly_expiry": "2026-05-29",
-        "ratio": 0.903,
+        "ratio": 0.911,
         "structure": "flat",
         "mispricing_signal": "fair"
       }
     },
     "sentiment": {
       "ticker": "QQQ",
-      "composite_score": 0.3672,
+      "composite_score": 0.3739,
       "article_count": 50,
       "sources": [
         "finnhub",
         "social_crawler"
       ],
       "headlines": [
+        "April AAII Asset Allocation Survey: Cash Edges Higher",
         "What Surprises Investors Should Expect From April 2026's Jobs Report",
-        "Charts, Trends, And Top Trades With Parets And Strazza",
-        "Dow Jones Nears 50,000 - Will Stock Market Bulls Ever Be Defeated?"
+        "Charts, Trends, And Top Trades With Parets And Strazza"
       ],
       "social": {
         "narrative": "2 DD/analysis posts | Catalysts: earnings | Options flow: bearish | Top signal (dd): \"$QQQ / $SPY earnings + FOMC calendar spread\"",
@@ -5850,8 +5914,8 @@
         "Stock Market Today: Dow Dives 600 Points On U.S.-Iran News As Oil Surges (Live Coverage)",
         "Stock Market Today: Dow Jones, S&P 500 Futures Plunge As Oil Prices Jump, Trump Dismisses 'Short Term' Spike-Hims & Hers, Ovintiv, Uniqure In Focus"
       ],
-      "volatility_week": 1.04,
-      "volatility_month": 1.33,
+      "volatility_week": 1.01,
+      "volatility_month": 1.32,
       "perf_week": 1.55,
       "perf_month": 15.38,
       "rel_volume": 0.62
@@ -5870,7 +5934,7 @@
       "unusual_volume": true,
       "direction": "bearish",
       "volume_oi_ratio": 3.26,
-      "total_vol": 3668992
+      "total_vol": 3669095
     },
     "sector": "indices_etfs",
     "scan_rank": 0.71,
@@ -6156,13 +6220,13 @@
         "rel_volume": 0.53
       }
     },
-    "friday_score": 0.6589,
+    "friday_score": 0.6597,
     "friday_components": {
       "setup_momentum": 0.5983,
       "trend_evolution": 0.8544,
       "iv_premium_trajectory": 0.615,
       "options_positioning": 0.64,
-      "base_quality": 0.53,
+      "base_quality": 0.535,
       "sentiment_evolution": 0.8
     }
   },
@@ -6185,9 +6249,9 @@
       "bb_squeeze": true,
       "atr": 28.31,
       "atr_pct": 5.22,
-      "volume": 39804391,
-      "volume_sma20": 39265619,
-      "volume_ratio": 1.01,
+      "volume": 39938962,
+      "volume_sma20": 39272348,
+      "volume_ratio": 1.02,
       "sma_20": 461.77,
       "sma_50": 425.58,
       "price_vs_sma20_pct": 17.42,
@@ -6206,11 +6270,11 @@
       "pct_from_52w_low": 592.01,
       "weekly_atr_pct": 11.67,
       "gap_pct": 4.84,
-      "prev_day_high": 535.5,
+      "prev_day_high": 535.0,
       "prev_day_low": 502.58,
-      "prev_day_vwap": 515.46,
+      "prev_day_vwap": 515.45,
       "price_vs_prev_vwap": 5.19,
-      "intraday_atr_pct": 5.47
+      "intraday_atr_pct": 5.45
     },
     "options": {
       "ticker": "MU",
@@ -6497,8 +6561,8 @@
         "Nasdaq tech leads strong Wall Street rebound after Iran ceasefire deal",
         "SiMa.ai Secures Strategic Investment from Micron to Scale High-Performance, Power-Efficient Physical AI"
       ],
-      "volatility_week": 4.99,
-      "volatility_month": 5.49,
+      "volatility_week": 5.67,
+      "volatility_month": 5.34,
       "perf_week": 9.16,
       "perf_month": 47.4,
       "rel_volume": 0.96
@@ -6844,13 +6908,13 @@
         "rel_volume": 1.05
       }
     },
-    "friday_score": 0.6581,
+    "friday_score": 0.6582,
     "friday_components": {
       "setup_momentum": 0.7015,
       "trend_evolution": 0.8932,
       "iv_premium_trajectory": 0.615,
       "options_positioning": 0.34,
-      "base_quality": 0.7005,
+      "base_quality": 0.7015,
       "sentiment_evolution": 0.5
     }
   },
@@ -7115,8 +7179,8 @@
         "Dutch Bros Expands Food Program: Can it Lift Ticket and Traffic?",
         "The Zacks Analyst Blog Starbucks, McDonald's and Dutch Bros"
       ],
-      "volatility_week": 1.57,
-      "volatility_month": 1.54,
+      "volatility_week": 1.98,
+      "volatility_month": 1.58,
       "perf_week": -4.25,
       "perf_month": -6.72,
       "rel_volume": 1.12
@@ -7135,7 +7199,7 @@
       "unusual_volume": false,
       "direction": "neutral",
       "volume_oi_ratio": 0.323,
-      "total_vol": 19406
+      "total_vol": 19404
     },
     "sector": "retail_consumer",
     "scan_rank": 0.6823,
@@ -7645,8 +7709,8 @@
         "Halliburton Q4 Results Show Where Earnings Strength Is Holding",
         "From AI Darlings To Dow Dinosaurs: Investors Flee Software For Old-Economy Stocks"
       ],
-      "volatility_week": 2.5,
-      "volatility_month": 3.04,
+      "volatility_week": 2.37,
+      "volatility_month": 3.02,
       "perf_week": 3.22,
       "perf_month": 9.63,
       "rel_volume": 0.63
@@ -7983,8 +8047,8 @@
       "gap_pct": -0.46,
       "prev_day_high": 371.99,
       "prev_day_low": 363.0,
-      "prev_day_vwap": 368.71,
-      "price_vs_prev_vwap": 0.02,
+      "prev_day_vwap": 368.68,
+      "price_vs_prev_vwap": 0.03,
       "intraday_atr_pct": 2.3
     },
     "options": {
@@ -8063,15 +8127,15 @@
     },
     "sentiment": {
       "ticker": "UNH",
-      "composite_score": 0.1775,
-      "article_count": 32,
+      "composite_score": 0.1899,
+      "article_count": 33,
       "sources": [
         "finnhub"
       ],
       "headlines": [
         "Goldman Sachs Adds UnitedHealth to Its Conviction List: Is the Managed Care Comeback Real?",
         "UnitedHealth Stock Just Made Goldman\u2019s Conviction List. It\u2019s a \u2018Shrink to Grow\u2019 Story.",
-        "SCHD: Go Back To Bed, Why You'll Sleep Well At Night"
+        "S&P 500's Best\u2011Kept Secret: Why Healthcare Could Be 2026's Breakout Winner"
       ],
       "analyst_revision": {
         "direction": "flat",
@@ -8202,7 +8266,7 @@
         "UnitedHealth Stock Rises on Raymond James Upgrade",
         "Raymond James upgrades UnitedHealth to Outperform, sees AI-driven margin upside"
       ],
-      "volatility_week": 2.42,
+      "volatility_week": 2.35,
       "volatility_month": 2.4,
       "perf_week": 3.91,
       "perf_month": 34.6,
@@ -8517,8 +8581,8 @@
       "bb_squeeze": true,
       "atr": 6.5,
       "atr_pct": 3.76,
-      "volume": 7587577,
-      "volume_sma20": 7185063,
+      "volume": 7634259,
+      "volume_sma20": 7187397,
       "volume_ratio": 1.06,
       "sma_20": 160.15,
       "sma_50": 142.8,
@@ -8759,11 +8823,11 @@
         "Continuing Claims Climb for a Second Week",
         "Jobless Claims Nudge Higher, Q4 Earnings Surprises from CROX, TRIP"
       ],
-      "volatility_week": 3.73,
-      "volatility_month": 3.73,
+      "volatility_week": 3.61,
+      "volatility_month": 3.78,
       "perf_week": -2.38,
       "perf_month": 38.33,
-      "rel_volume": 1.0
+      "rel_volume": 1.01
     },
     "insider": {
       "total_buys": 0,
@@ -9047,9 +9111,9 @@
       "bb_squeeze": true,
       "atr": 7.8,
       "atr_pct": 4.73,
-      "volume": 12828959,
-      "volume_sma20": 28424137,
-      "volume_ratio": 0.45,
+      "volume": 13019464,
+      "volume_sma20": 28433663,
+      "volume_ratio": 0.46,
       "sma_20": 141.94,
       "sma_50": 109.81,
       "price_vs_sma20_pct": 16.21,
@@ -9321,8 +9385,8 @@
         "Nvidia Invests $2 Billion in Marvell as Part of Chip Partnership",
         "Marvell's stock soars. What's behind the new Nvidia investment and partnership."
       ],
-      "volatility_week": 6.4,
-      "volatility_month": 5.28,
+      "volatility_week": 5.74,
+      "volatility_month": 5.15,
       "perf_week": 0.39,
       "perf_month": 54.58,
       "rel_volume": 0.57
@@ -9580,13 +9644,13 @@
         "rel_volume": 1.21
       }
     },
-    "friday_score": 0.6223,
+    "friday_score": 0.6225,
     "friday_components": {
       "setup_momentum": 0.5064,
       "trend_evolution": 0.7846,
       "iv_premium_trajectory": 0.615,
       "options_positioning": 0.64,
-      "base_quality": 0.5319,
+      "base_quality": 0.5329,
       "sentiment_evolution": 0.8
     }
   },
@@ -9632,8 +9696,8 @@
       "gap_pct": -1.12,
       "prev_day_high": 448.59,
       "prev_day_low": 433.0,
-      "prev_day_vwap": 443.39,
-      "price_vs_prev_vwap": -0.42,
+      "prev_day_vwap": 444.35,
+      "price_vs_prev_vwap": -0.64,
       "intraday_atr_pct": 4.85
     },
     "options": {
@@ -9851,11 +9915,11 @@
         "Spotify Stock Soars After Earnings Blow Past Expectations",
         "Spotify Q4 2025 Earnings Call Transcript"
       ],
-      "volatility_week": 4.77,
-      "volatility_month": 4.06,
+      "volatility_week": 4.97,
+      "volatility_month": 4.03,
       "perf_week": -14.77,
       "perf_month": -6.06,
-      "rel_volume": 0.51
+      "rel_volume": 0.52
     },
     "insider": {
       "total_buys": 0,
@@ -10161,10 +10225,10 @@
       "weekly_atr_pct": 7.0,
       "gap_pct": 0.07,
       "prev_day_high": 57.04,
-      "prev_day_low": 55.1,
+      "prev_day_low": 55.28,
       "prev_day_vwap": 56.51,
-      "price_vs_prev_vwap": 0.73,
-      "intraday_atr_pct": 2.78
+      "price_vs_prev_vwap": 0.72,
+      "intraday_atr_pct": 2.71
     },
     "options": {
       "ticker": "SLB",
@@ -10381,8 +10445,8 @@
         "Analyst Report: SLB N.V.",
         "SLB Readies Rapid Expansion in Venezuela"
       ],
-      "volatility_week": 3.46,
-      "volatility_month": 3.27,
+      "volatility_week": 2.82,
+      "volatility_month": 3.19,
       "perf_week": 1.37,
       "perf_month": 13.77,
       "rel_volume": 0.53
@@ -10669,9 +10733,9 @@
       "bb_squeeze": true,
       "atr": 1.64,
       "atr_pct": 3.25,
-      "volume": 8252160,
-      "volume_sma20": 11932903,
-      "volume_ratio": 0.69,
+      "volume": 9460311,
+      "volume_sma20": 11993310,
+      "volume_ratio": 0.79,
       "sma_20": 47.77,
       "sma_50": 47.04,
       "price_vs_sma20_pct": 5.84,
@@ -10911,8 +10975,8 @@
         "Devon Energy And Coterra Create Shale Giant With $58 Billion Merger",
         "KIMMERIDGE COMMENTS ON PROPOSED MERGER OF COTERRA AND DEVON"
       ],
-      "volatility_week": 2.47,
-      "volatility_month": 3.13,
+      "volatility_week": 2.81,
+      "volatility_month": 3.06,
       "perf_week": 5.47,
       "perf_month": 4.05,
       "rel_volume": 0.64
@@ -11170,13 +11234,13 @@
         "rel_volume": 0.86
       }
     },
-    "friday_score": 0.6133,
+    "friday_score": 0.6148,
     "friday_components": {
       "setup_momentum": 0.6142,
       "trend_evolution": 0.605,
       "iv_premium_trajectory": 0.54,
       "options_positioning": 0.64,
-      "base_quality": 0.5646,
+      "base_quality": 0.5746,
       "sentiment_evolution": 1.0
     }
   },
@@ -11199,9 +11263,9 @@
       "bb_squeeze": true,
       "atr": 3.02,
       "atr_pct": 1.87,
-      "volume": 9876098,
-      "volume_sma20": 10298299,
-      "volume_ratio": 0.96,
+      "volume": 10156831,
+      "volume_sma20": 10312336,
+      "volume_ratio": 0.98,
       "sma_20": 151.66,
       "sma_50": 143.09,
       "price_vs_sma20_pct": 6.74,
@@ -11222,8 +11286,8 @@
       "gap_pct": 1.54,
       "prev_day_high": 159.8,
       "prev_day_low": 156.88,
-      "prev_day_vwap": 158.71,
-      "price_vs_prev_vwap": 1.99,
+      "prev_day_vwap": 158.7,
+      "price_vs_prev_vwap": 2.0,
       "intraday_atr_pct": 1.35
     },
     "options": {
@@ -11231,71 +11295,71 @@
       "expiry": "2026-05-08",
       "days_to_expiry": 7,
       "current_price": 161.87,
-      "pc_ratio_volume": 1.519,
+      "pc_ratio_volume": 1.52,
       "pc_ratio_oi": 1.417,
-      "atm_iv": 0.2421,
-      "iv_rank": 37.8,
+      "atm_iv": 0.2333,
+      "iv_rank": 40.1,
       "max_pain": 140.0,
       "highest_oi_call_strike": 161.0,
       "highest_oi_put_strike": 120.0,
       "highest_vol_call_strike": 162.0,
       "highest_vol_put_strike": 155.0,
-      "iv_skew": 0.5473,
+      "iv_skew": 0.5472,
       "total_call_volume": 942,
-      "total_put_volume": 1431,
+      "total_put_volume": 1432,
       "total_call_oi": 3352,
       "total_put_oi": 4749,
       "atm_call_mid": 2.025,
-      "atm_put_mid": 1.43,
+      "atm_put_mid": 1.285,
       "atm_call_spread_pct": 27.16,
-      "atm_put_spread_pct": 9.79,
+      "atm_put_spread_pct": 31.91,
       "atm_call_strike": 162.0,
       "atm_put_strike": 160.0,
       "realized_vol_20d": 0.1948,
-      "iv_rv_ratio": 1.243,
-      "implied_move_pct": 2.13,
-      "atm_straddle_mid": 3.455,
+      "iv_rv_ratio": 1.198,
+      "implied_move_pct": 2.04,
+      "atm_straddle_mid": 3.31,
       "realized_vol_5d": 0.1878,
       "weekly_expected_move_pct": 3.13,
       "theta_per_day_pct": 14.29,
       "theta_decay_curve": [
         {
           "day": 1,
-          "theta_per_day": -0.1645,
-          "charm_per_day": -0.001954,
-          "theta_pct_of_premium": 4.76
+          "theta_per_day": -0.1589,
+          "charm_per_day": -0.00199,
+          "theta_pct_of_premium": 4.8
         },
         {
           "day": 2,
-          "theta_per_day": -0.1769,
-          "charm_per_day": -0.002229,
-          "theta_pct_of_premium": 5.12
+          "theta_per_day": -0.1708,
+          "charm_per_day": -0.002272,
+          "theta_pct_of_premium": 5.16
         },
         {
           "day": 3,
-          "theta_per_day": -0.1928,
-          "charm_per_day": -0.002625,
-          "theta_pct_of_premium": 5.58
+          "theta_per_day": -0.1862,
+          "charm_per_day": -0.002679,
+          "theta_pct_of_premium": 5.63
         },
         {
           "day": 4,
-          "theta_per_day": -0.2143,
-          "charm_per_day": -0.003244,
-          "theta_pct_of_premium": 6.2
+          "theta_per_day": -0.2069,
+          "charm_per_day": -0.003317,
+          "theta_pct_of_premium": 6.25
         },
         {
           "day": 5,
-          "theta_per_day": -0.2459,
-          "charm_per_day": -0.004344,
-          "theta_pct_of_premium": 7.12
+          "theta_per_day": -0.2374,
+          "charm_per_day": -0.004451,
+          "theta_pct_of_premium": 7.17
         }
       ],
       "iv_term_structure": {
-        "weekly_iv": 0.2421,
+        "weekly_iv": 0.2333,
         "monthly_iv": 0.2434,
         "weekly_expiry": "2026-05-08",
         "monthly_expiry": "2026-05-29",
-        "ratio": 0.995,
+        "ratio": 0.959,
         "structure": "flat",
         "mispricing_signal": "fair"
       }
@@ -11427,8 +11491,8 @@
         "AI's impact on the labor market is still 'premature': Economist",
         "Do Wall Street Analysts Like Autodesk Stock?"
       ],
-      "volatility_week": 1.45,
-      "volatility_month": 1.67,
+      "volatility_week": 1.36,
+      "volatility_month": 1.65,
       "perf_week": 1.03,
       "perf_month": 19.98,
       "rel_volume": 0.57
@@ -11672,13 +11736,13 @@
         "rel_volume": 0.5
       }
     },
-    "friday_score": 0.6107,
+    "friday_score": 0.611,
     "friday_components": {
       "setup_momentum": 0.5906,
       "trend_evolution": 0.83,
       "iv_premium_trajectory": 0.465,
       "options_positioning": 0.64,
-      "base_quality": 0.4868,
+      "base_quality": 0.4888,
       "sentiment_evolution": 0.7
     }
   }
