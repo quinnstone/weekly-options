@@ -1,0 +1,82 @@
+{
+  "weeks": [
+    {
+      "pick_date": "2026-04-27",
+      "expiry": "2026-05-01",
+      "picks": [
+        {
+          "ticker": "AMD",
+          "direction": "call",
+          "strike": 355.0,
+          "entry_premium": 9.7,
+          "entry_cost": 969.9999999999999,
+          "closing_price": 360.54,
+          "exit_value_per_share": 5.54,
+          "exit_value_total": 554.0,
+          "pnl": -416.0,
+          "pnl_pct": -42.89,
+          "result": "PARTIAL"
+        },
+        {
+          "ticker": "MRVL",
+          "direction": "call",
+          "strike": 160.0,
+          "entry_premium": 9.0,
+          "entry_cost": 900.0,
+          "closing_price": 164.95,
+          "exit_value_per_share": 4.95,
+          "exit_value_total": 495.0,
+          "pnl": -405.0,
+          "pnl_pct": -45.0,
+          "result": "PARTIAL"
+        },
+        {
+          "ticker": "RTX",
+          "direction": "put",
+          "strike": 177.5,
+          "entry_premium": 5.11,
+          "entry_cost": 511.00000000000006,
+          "closing_price": 173.99,
+          "exit_value_per_share": 3.51,
+          "exit_value_total": 351.0,
+          "pnl": -160.0,
+          "pnl_pct": -31.31,
+          "result": "PARTIAL"
+        }
+      ],
+      "total_cost": 2381.0,
+      "total_exit": 1400.0,
+      "total_pnl": -981.0,
+      "total_return_pct": -41.2,
+      "wins": 0,
+      "losses": 0,
+      "partials": 3,
+      "win_rate": 0.0,
+      "graded_at": "2026-05-01T16:45:34.517789"
+    }
+  ],
+  "all_time": {
+    "total_weeks": 1,
+    "total_picks": 3,
+    "wins": 0,
+    "losses": 0,
+    "partials": 3,
+    "win_rate": 0.0,
+    "total_invested": 2381.0,
+    "total_returned": 1400.0,
+    "total_pnl": -981.0,
+    "total_return_pct": -41.2,
+    "best_pick": {
+      "ticker": "RTX",
+      "date": "2026-04-27",
+      "pnl": -160.0,
+      "pnl_pct": -31.31
+    },
+    "worst_pick": {
+      "ticker": "AMD",
+      "date": "2026-04-27",
+      "pnl": -416.0,
+      "pnl_pct": -42.89
+    }
+  }
+}
