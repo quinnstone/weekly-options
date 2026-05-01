@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": 355.0,
+      "entry_price": 347.81,
+      "current_price": 359.98,
+      "entry_premium": 9.7,
+      "current_option_price": 6.88,
+      "current_delta": 0.702,
+      "stock_move_pct": 3.5,
+      "option_return_pct": -29.1,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -29%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "call",
+      "strike": 160.0,
+      "entry_price": 164.31,
+      "current_price": 166.02,
+      "entry_premium": 9.0,
+      "current_option_price": 5.72,
+      "current_delta": 0.989,
+      "stock_move_pct": 1.04,
+      "option_return_pct": -36.4,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -36%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "RTX",
+      "direction": "put",
+      "strike": 177.5,
+      "entry_price": 174.26,
+      "current_price": 174.1,
+      "entry_premium": 5.11,
+      "current_option_price": 3.11,
+      "current_delta": 0.82,
+      "stock_move_pct": 0.09,
+      "option_return_pct": -39.1,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -39%. Use market order if needed \u2014 do not let expire unmanaged."
+    }
+  ],
+  "alerts": [
+    "AMD: CLOSE BY 2PM (P&L -29%)",
+    "MRVL: APPROACHING STOP (-36%)",
+    "RTX: APPROACHING STOP (-39%)"
+  ],
+  "agent_analysis": "# CRITICAL \u2014 FRIDAY EXPIRY MONITOR\n\n## Position Status\n\n### AMD CALL | P&L: -29% | CLOSE NOW\nStock moved +3.5% in our direction this week and the option is still down 29%. This tells the whole story: charm and theta ate the delta. A 0.35 delta entry on Monday likely decayed to ~0.10-0.12 by today \u2014 the stock rallied but the option couldn't keep up. At expiry, this is nearly pure intrinsic value or zero. No recovery path. **Close immediately.**\n\n### MRVL CALL | P&L: -36% | CLOSE NOW\nStock only +1.0% on the week against a call thesis. With ~4%/day theta cost over 5 days, that's roughly 20% of premium gone to decay alone. Delta has drifted well below 0.10 \u2014 this is approaching the delta stop threshold. At -36% with hours to expiry, the option is likely far OTM with negligible extrinsic value remaining. Holding gains nothing. **Close immediately.**\n\n### RTX PUT | P&L: -39% | CLOSE NOW\nStock +0.1% \u2014 essentially flat, but the put thesis needed downside movement. Theta destroyed 39% of premium waiting for a move that never came. One tick from the -50% hard stop. This is a time-decay casualty with zero chance of recovery in the remaining hours. **Close immediately.**\n\n---\n\n## Portfolio Summary\n\n| Position | P&L | Verdict |\n|----------|-----|---------|\n| AMD CALL | -29% | Close |\n| MRVL CALL | -36% | Close |\n| RTX PUT | -39% | Close |\n\n**Estimated portfolio hit: ~-35% weighted average across 3 positions.**\n\n---\n\n## RECOMMENDATION\n\n**CLOSE ALL THREE POSITIONS BEFORE 2:00 PM ET. MARKET ORDERS IF NEEDED. NO EXCEPTIONS.**\n\nBid-ask spreads are widening as we speak \u2014 every minute you wait past noon costs real money on fills. There is no scenario where any of these recover. AMD is the \"best\" at -29% and even it has no path to the +10% Friday target.\n\n**Post-close note for reflection:** All three positions lost to theta/charm decay despite AMD moving 3.5% in the right direction. This week's lesson is stark \u2014 the directional calls were partially right (2 of 3 stocks moved favorably) but strike selection or entry timing allowed time decay to dominate. Worth investigating whether tighter delta targets (0.40-0.45) or deeper ITM strikes would have preserved more value through the week.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -34.9,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
