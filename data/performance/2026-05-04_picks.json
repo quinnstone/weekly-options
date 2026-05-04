@@ -1,0 +1,69 @@
+{
+  "date": "2026-05-04",
+  "picks": [
+    {
+      "ticker": "GOOGL",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.37,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 97.54508772907519,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 90.0,
+        "event_risk": 61.0,
+        "liquidity": 52.06676,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 65.91,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 88.85113903323798,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 50.0,
+        "event_risk": 59.0,
+        "liquidity": 52.84446,
+        "strike_efficiency": 65.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 65.61,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 80.146593420809,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 90.0,
+        "event_risk": 62.0,
+        "liquidity": 52.6121,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    }
+  ],
+  "recorded_at": "2026-05-04T09:25:07.920726"
+}
