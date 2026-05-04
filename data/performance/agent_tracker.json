@@ -733,6 +733,51 @@
         ],
         "reasoning": "SELECTED:\n\n1. **GOOGL** \u2014 CALL\n Highest composite score (70.4) with exceptional momentum (98) and flow conviction (90); mega-cap liquidity ensures clean execution on weekly options.\n\n THESIS: GOOGL is driven by top-decile momentum (98/100) confirmed by strong flow conviction (90) and trend persistence (85), suggesting institutional positioning ahead of continued upside. This week is the right entry because the normal VIX regime applies baseline 1.0x multipliers \u2014 momentum isn't penalized as it would be in elevated/high regimes \u2014 and the three-model ensemble should show strong agreement given all top signals are directionally aligned. **Kill condition:** If GOOGL gaps down >2% on Monday open (gap-skip rule triggers) OR if post-earnings reaction from the 8-K filing reverses the momentum trend with a daily close below the 20-day SMA, the thesis is dead \u2014 exit immediately rather than hoping for recovery through Friday.\n\n2. **AMD** \u2014 CALL\n Strongest non-earnings semiconductor play; trend persistence (95) is the highest single factor score in the candidate pool, and no earnings-week flag avoids binary event risk that plagues INTC and QCOM.\n\n THESIS: AMD's dominant signal is trend persistence (95/100) \u2014 ADX is firmly in \"trending\" territory \u2014 supported by solid momentum (89) in a normal VIX regime where neither signal is penalized. Unlike INTC and QCOM which report earnings this week, AMD carries no binary event risk, making it the clean way to express semiconductor upside through Friday expiry. **Kill condition:** If AMD's delta drifts >0.15 from target by Monday open (delta-drift skip) or if the analyst downgrade trend (\u0394=-2) accelerates with another cut mid-week, collapsing the momentum signal, exit at the day-appropriate profit target or stop.\n\n3. **AMZN** \u2014 CALL\n Diversifies away from semiconductors into mega-cap consumer/cloud; flow conviction (90) provides a differentiated signal source versus the momentum-dominated AMD pick, reducing single-factor concentration.\n\n THESIS: AMZN is selected on flow conviction (90/100) and trend persistence (85) \u2014 unusual options activity suggests smart money is positioning for upside, which is the most valuable signal for weekly holds where institutional flow often leads price. This week's entry is justified by the absence of earnings-week risk and the fact that AMZN's catalyst mix (contract, regulation) provides potential upside triggers without the binary blow-up risk of an earnings print. **Kill condition:** If the unusu"
       }
+    },
+    {
+      "timestamp": "2026-05-04T14:15:11.232488",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "GOOGL",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -21.3,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-04T14:15:11.233673",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "AMD",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 0.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-04T14:15:11.234820",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "AMZN",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 36.1,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

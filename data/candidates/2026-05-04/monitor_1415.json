@@ -1,0 +1,66 @@
+{
+  "positions": [
+    {
+      "ticker": "GOOGL",
+      "direction": "call",
+      "strike": 382.5,
+      "entry_price": 385.69,
+      "current_price": 384.39,
+      "entry_premium": 7.75,
+      "current_option_price": 6.1,
+      "current_delta": 0.577,
+      "stock_move_pct": -0.34,
+      "option_return_pct": -21.3,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -21% (target: 40% today). Stock moved -0.3%."
+    },
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 344.05,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": 0.0,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "P&L: 0% (target: 40% today). Stock moved +0.0%."
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "strike": 265.0,
+      "entry_price": 268.26,
+      "current_price": 271.55,
+      "entry_premium": 6.1,
+      "current_option_price": 8.3,
+      "current_delta": 0.758,
+      "stock_move_pct": 1.22,
+      "option_return_pct": 36.1,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 36% (target: 40% today). Stock moved +1.2%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 4.9,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Monday",
+    "days_to_expiry": 5
+  }
+}
