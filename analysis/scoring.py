@@ -90,6 +90,10 @@ class CandidateScorer:
 
     # Confidence calibration — placeholder until we have weekly backtest data.
     # Conservative: assume ~52-55% directional accuracy.
+    # NOTE: these values are PROVISIONAL. They should be empirically recalibrated
+    # after 8-12 weeks of live outcomes. Do NOT tune them by intuition — the
+    # whole point is that they encode our uncertainty until we have data.
+    # See memory/project_confidence_calibration.md for the eval methodology.
     CONFIDENCE_CALIBRATION = {
         (0.0, 0.15): 0.30,
         (0.15, 0.30): 0.45,

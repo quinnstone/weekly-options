@@ -354,7 +354,7 @@ class DailyStages:
                             mechanical_signal="INCLUDED",
                             agent_signal=brief["signal"],
                             override_occurred=avoid,
-                            context={"brief": brief["brief"][:200]},
+                            context={"brief": brief["brief"][:600]},
                         )
                 logger.info("Earnings analyst assessed %d tickers", len(earnings_briefs))
         except Exception as exc:
@@ -683,6 +683,10 @@ class DailyStages:
             c["direction"] = direction_info["direction"]
             c["direction_confidence"] = round(direction_info["confidence"] * confidence_mult, 3)
             c["raw_confidence"] = direction_info.get("raw_confidence", direction_info["confidence"])
+            # Persist direction-vote aggregates so the DB can stratify outcomes
+            # by lopsided vs balanced direction decisions during the eval window.
+            c["bullish_score"] = direction_info.get("bullish_score")
+            c["bearish_score"] = direction_info.get("bearish_score")
             c["direction_hint"] = direction_info["direction"]
             c["macro_edge"] = macro_edge
 
@@ -1087,7 +1091,7 @@ class DailyStages:
                             mechanical_signal=mechanical,
                             agent_signal=brief["signal"],
                             override_occurred=override,
-                            context={"brief": brief["brief"][:200]},
+                            context={"brief": brief["brief"][:600]},
                         )
 
                         # Agent SKIP overrides mechanical GO — this is actionable,

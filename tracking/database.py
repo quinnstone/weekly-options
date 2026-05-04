@@ -115,6 +115,15 @@ class Database:
         if "narrative_lean" not in cols:
             conn.execute("ALTER TABLE picks ADD COLUMN narrative_lean TEXT")
             conn.execute("ALTER TABLE picks ADD COLUMN narrative_scoring_conflict INTEGER")
+        # Backtest enrichment (added 2026-05-03) — values already computed in
+        # the pipeline but previously dropped before DB write. Persisting them
+        # enables stratified analysis after 8-12 weeks (e.g., do low macro-edge
+        # weeks underperform, do lopsided direction votes outperform balanced).
+        if "macro_edge_multiplier" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN macro_edge_multiplier REAL")
+            conn.execute("ALTER TABLE picks ADD COLUMN macro_edge_has_edge INTEGER")
+            conn.execute("ALTER TABLE picks ADD COLUMN bullish_score REAL")
+            conn.execute("ALTER TABLE picks ADD COLUMN bearish_score REAL")
 
         conn.commit()
         conn.close()
@@ -150,13 +159,21 @@ class Database:
                 else 0 if narrative_conflict is False
                 else None
             )
+            macro_edge = p.get("macro_edge") or {}
+            macro_edge_has_edge_int = (
+                1 if macro_edge.get("has_edge") is True
+                else 0 if macro_edge.get("has_edge") is False
+                else None
+            )
             conn.execute("""
                 INSERT INTO picks (pick_date, expiry, ticker, direction, strike,
                                    entry_premium, composite_score, confidence, sector,
                                    earnings_warning, pattern_key,
                                    model_linear, model_momentum, model_reversion, model_std,
-                                   narrative_lean, narrative_scoring_conflict)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   narrative_lean, narrative_scoring_conflict,
+                                   macro_edge_multiplier, macro_edge_has_edge,
+                                   bullish_score, bearish_score)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 pick_date,
                 p.get("expiry"),
@@ -175,6 +192,10 @@ class Database:
                 ensemble.get("model_std"),
                 p.get("narrative_lean"),
                 narrative_conflict_int,
+                macro_edge.get("confidence_multiplier"),
+                macro_edge_has_edge_int,
+                p.get("bullish_score"),
+                p.get("bearish_score"),
             ))
 
         # Save market snapshot

@@ -705,6 +705,11 @@ class OptionsScanner:
                     ),
                 },
                 "exit": {
+                    # Static profit-target ladder, same for every pick regardless
+                    # of conviction. A conviction-adaptive version (lower targets
+                    # for high-confidence picks, tighter for low-confidence) is
+                    # queued — see memory/project_adaptive_exits.md for design
+                    # criteria. Revisit after 4-6 weeks of live scorecard data.
                     "profit_targets": {
                         "day_1": 40,  # Take 40% profit if hit by end of Monday
                         "day_2": 35,  # 35% by Tuesday
@@ -1155,7 +1160,9 @@ class OptionsScanner:
         percentile). This is a lightweight proxy derived from IV/RV ratio.
         For weekly options IV/RV is structurally elevated, so the distribution
         skews toward the "expensive" end vs. true IV rank. Do not treat this
-        as a broker-equivalent IV rank — see memory note iv_rank_caveats.
+        as a broker-equivalent IV rank.
+        See memory/project_iv_rank_caveats.md for the inverted semantics
+        and why no hard rules exist until real 52-week IV data is sourced.
 
         Semantics (inverted for legacy compatibility):
         - iv_rv < 0.8  -> high opportunity rank (70-100)
