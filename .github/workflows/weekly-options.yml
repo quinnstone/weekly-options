@@ -219,6 +219,10 @@ jobs:
           # stage writes only to data/candidates/{TODAY}/). reports/ and
           # performance/ are still added wholesale — files there are either
           # date-prefixed or running stats, no stale-restore problem.
+          # Pre-create today's candidates dir so git add doesn't fail under
+          # `bash -e` for stages (reflect, scorecard) that write only to
+          # data/performance/. git ignores empty dirs, so this is a safe no-op.
+          mkdir -p "data/candidates/${DATE}"
           git add "data/candidates/${DATE}/" data/reports/ data/performance/
           if git diff --staged --quiet; then
             echo "No new data to commit"
