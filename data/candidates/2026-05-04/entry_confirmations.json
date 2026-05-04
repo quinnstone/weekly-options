@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "GOOGL",
+    "direction": "call",
+    "strike": 382.5,
+    "original_premium": 7.75,
+    "original_price": 385.69,
+    "signal": "GO",
+    "detail": "Flat since open (-0.7%) \u2014 no strong confirmation yet. Premium moved -34% ($7.75 \u2192 $5.08). Adjust limit order accordingly.",
+    "current_price": 382.87,
+    "new_delta": 0.525,
+    "new_premium": 5.08,
+    "gap_pct": -0.02,
+    "timestamp": "2026-05-04T12:02:02.146197"
+  },
+  {
+    "ticker": "AMD",
+    "direction": "call",
+    "strike": null,
+    "original_premium": null,
+    "original_price": null,
+    "signal": "GO",
+    "detail": "Price moving against thesis (-5.2% since open). Proceed with caution or wait for reversal.",
+    "current_price": 341.53,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-05-04T12:02:02.815851"
+  },
+  {
+    "ticker": "AMZN",
+    "direction": "call",
+    "strike": 265.0,
+    "original_premium": 6.1,
+    "original_price": 268.26,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.77 (price moved from $268.26 to $270.94). Consider re-selecting strike closer to current price.",
+    "current_price": 270.94,
+    "new_delta": 0.769,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-05-04T12:02:03.028927"
+  }
+]
