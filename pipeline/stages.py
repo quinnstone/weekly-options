@@ -1076,6 +1076,17 @@ class DailyStages:
                         f"Adjust limit order accordingly."
                     )
 
+            # Update the pick's recorded entry_premium from the live re-evaluation.
+            # The 8 AM premium uses pre-market lastPrice (often stale Friday data);
+            # the 10 AM new_premium uses BSM with current price + decremented theta,
+            # which is much closer to the actual market mid the user trades against.
+            # Preserve the original 8 AM number for audit. scorecard.grade_week
+            # reads pick["premium"] for P&L computation, so this directly improves
+            # backtest accuracy. See memory/project_strike_budget_collapse.md.
+            if new_premium and new_premium > 0:
+                pick["original_premium_premarket"] = original_premium
+                pick["premium"] = new_premium
+
             # 4. Direction validation — early price action
             price_move_pct = ((current_price - open_price) / open_price * 100) if open_price else 0
             direction_confirmed = (
@@ -1157,8 +1168,11 @@ class DailyStages:
         except Exception as exc:
             logger.error("Pre-trade analyst failed: %s", exc)
 
-        # Re-save monday_picks if any were updated with live strike data
-        # (pre-market run may have had missing pricing that was filled in above)
+        # Re-save monday_picks if any were updated with live strike data or
+        # had their entry_premium auto-corrected from the 10 AM live BSM
+        # re-evaluation. The latter is critical for backtest accuracy:
+        # scorecard.grade_week reads pick["premium"] from data/reports/{date}_picks.json
+        # for P&L computation, so the report file must also be re-saved.
         picks_updated = any(
             p.get("strike") and p.get("premium")
             for p in picks
@@ -1166,7 +1180,24 @@ class DailyStages:
         if picks_updated:
             self.narrower.save_stage_results("monday_picks", picks, date_str)
             logger.info("Re-saved monday_picks with live strike data")
-            # Also update database with pricing
+            # Re-save the canonical report file that scorecard reads at expiry
+            try:
+                report_market_summary = market_summary if 'market_summary' in dir() and market_summary else {}
+                # Fall back to loading from disk if market_summary wasn't already loaded
+                if not report_market_summary:
+                    summary_path = config.candidates_dir / date_str / "market_summary.json"
+                    if summary_path.exists():
+                        with open(summary_path) as fh:
+                            report_market_summary = json.load(fh)
+                report = self._generate_report(picks, report_market_summary, date_str)
+                report_path = config.reports_dir / f"{date_str}_picks.json"
+                report_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(report_path, "w") as fh:
+                    json.dump(report, fh, indent=2, default=str)
+                logger.info("Re-saved %s with updated entry_premium values", report_path.name)
+            except Exception as exc:
+                logger.error("Failed to re-save report file: %s", exc)
+            # Also update database with corrected entry_premium
             try:
                 from tracking.database import Database
                 db = Database()
