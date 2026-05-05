@@ -577,6 +577,23 @@ class DailyStages:
         else:
             logger.info("No recent market narrative lean available")
 
+        # 2c. Capture git SHA for methodology versioning. Lets us join pick
+        # rows to git log retroactively to correlate outcomes with which code
+        # interventions were live. Documentation-only — never read by any
+        # operational logic (pick selection, scoring, agent prompts unchanged).
+        git_sha = None
+        try:
+            import subprocess as _sp
+            _result = _sp.run(
+                ["git", "rev-parse", "HEAD"],
+                capture_output=True, text=True, timeout=5,
+            )
+            if _result.returncode == 0:
+                git_sha = _result.stdout.strip()
+                logger.info("Pipeline git SHA: %s", git_sha[:8])
+        except Exception as _exc:
+            logger.debug("Could not capture git SHA (non-fatal): %s", _exc)
+
         # Save Monday's market summary
         summary_path = config.candidates_dir / date_str
         summary_path.mkdir(parents=True, exist_ok=True)
@@ -846,6 +863,9 @@ class DailyStages:
             pick["estimated_delta"] = strike_data.get("estimated_delta")
             pick["entry"] = strike_data.get("entry", {})
             pick["exit"] = strike_data.get("exit", {})
+            # Methodology version stamp (documentation only, see 2c above)
+            if git_sha:
+                pick["git_sha"] = git_sha
             # Flag earnings warning if present
             if c.get("earnings_warning"):
                 pick["earnings_warning"] = True

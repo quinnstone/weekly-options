@@ -124,6 +124,12 @@ class Database:
             conn.execute("ALTER TABLE picks ADD COLUMN macro_edge_has_edge INTEGER")
             conn.execute("ALTER TABLE picks ADD COLUMN bullish_score REAL")
             conn.execute("ALTER TABLE picks ADD COLUMN bearish_score REAL")
+        # Methodology versioning (added 2026-05-05) — git SHA at pick-generation
+        # time. Lets us correlate outcomes with code interventions retroactively
+        # by joining pick rows to git log. Documentation only — not used by any
+        # operational logic (pick selection, scoring, agent prompts unchanged).
+        if "git_sha" not in cols:
+            conn.execute("ALTER TABLE picks ADD COLUMN git_sha TEXT")
 
         conn.commit()
         conn.close()
@@ -172,8 +178,8 @@ class Database:
                                    model_linear, model_momentum, model_reversion, model_std,
                                    narrative_lean, narrative_scoring_conflict,
                                    macro_edge_multiplier, macro_edge_has_edge,
-                                   bullish_score, bearish_score)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                   bullish_score, bearish_score, git_sha)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 pick_date,
                 p.get("expiry"),
@@ -196,6 +202,7 @@ class Database:
                 macro_edge_has_edge_int,
                 p.get("bullish_score"),
                 p.get("bearish_score"),
+                p.get("git_sha"),
             ))
 
         # Save market snapshot
