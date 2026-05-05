@@ -773,9 +773,26 @@ class DailyStages:
         except Exception as exc:
             logger.error("Portfolio reasoner failed: %s", exc)
 
-        # 10. For top 3, call find_optimal_strikes with weekly expiry
+        # 10. Find optimal strikes for selected picks. If a candidate's options
+        # exceed budget (find_optimal_strikes returns empty), drop it and promote
+        # the next-ranked candidate from the bench. Preserves user's per-pick
+        # budget intent ($10 cap) while preventing None picks from reaching
+        # Discord. See memory/project_strike_budget_collapse.md for the full
+        # rationale on why drop+promote beats raising the cap.
+        from config import PORTFOLIO_SIZE
+        target_count = PORTFOLIO_SIZE
+
+        # Build the candidate queue: selected top picks first, bench fallbacks after
+        selected_tickers = {c.get("ticker") for c in top5}
+        bench_pool = [c for c in scored if c.get("ticker") not in selected_tickers][:5]
+        candidate_queue = list(top5) + bench_pool
+
         picks = []
-        for c in top5:
+        unaffordable = []
+        for c in candidate_queue:
+            if len(picks) >= target_count:
+                break
+
             ticker = c.get("ticker")
             direction = c.get("direction", "call")
             opts = c.get("options", {})
@@ -789,6 +806,30 @@ class DailyStages:
                 except Exception as exc:
                     logger.error("Failed to get strikes for %s: %s", ticker, exc)
                     strike_data = {}
+
+            # Drop picks where strike selection failed (budget collapse, no chain,
+            # etc.) and try the next candidate. Avoids shipping None values to
+            # Discord — a "Buy 1 TICKER CALL N/A at ? ($0)" message is worse than
+            # shipping fewer picks.
+            if strike_data.get("strike") is None:
+                logger.warning(
+                    "Dropping %s %s — find_optimal_strikes returned no usable strike "
+                    "(likely premium exceeded budget or chain unavailable)",
+                    ticker, direction,
+                )
+                log_decision(
+                    agent_name="strike_selection",
+                    ticker=ticker,
+                    mechanical_signal=f"{direction.upper()}_intended",
+                    agent_signal="DROPPED_no_strike",
+                    override_occurred=True,
+                    context={
+                        "reason": "find_optimal_strikes returned None — likely premium exceeded budget cap",
+                        "promoted_from_bench": ticker not in selected_tickers,
+                    },
+                )
+                unaffordable.append(ticker)
+                continue
 
             pick = dict(c)
             pick["ticker"] = ticker
@@ -809,6 +850,12 @@ class DailyStages:
             if c.get("earnings_warning"):
                 pick["earnings_warning"] = True
             picks.append(pick)
+
+        if unaffordable:
+            logger.warning(
+                "Dropped %d unaffordable picks (%s); ended with %d/%d picks",
+                len(unaffordable), ", ".join(unaffordable), len(picks), target_count,
+            )
 
         # 10b. Attach trading theses from Portfolio Reasoner (no extra API call)
         if portfolio_theses:
