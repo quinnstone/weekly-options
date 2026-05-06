@@ -16,6 +16,7 @@ import sys
 import os
 import json
 import logging
+import re
 from math import sqrt
 from pathlib import Path
 
@@ -530,6 +531,15 @@ class CandidateScorer:
             try:
                 from datetime import datetime as _dt, timedelta
                 if isinstance(earnings_date, str):
+                    # Belt-and-suspenders: strip Finviz time-of-day suffixes
+                    # (AMC/BMO/A/B). The FinvizScanner now normalizes to ISO
+                    # before reaching here, but in case raw data slips through
+                    # from another path (cached files, third-party feeds), this
+                    # ensures the parser still works.
+                    earnings_date = re.sub(
+                        r"\s+(AMC|BMO|A|B)\s*$", "", earnings_date,
+                        flags=re.IGNORECASE,
+                    ).strip()
                     # Try common formats
                     for fmt in ("%Y-%m-%d", "%b %d", "%m/%d/%Y"):
                         try:

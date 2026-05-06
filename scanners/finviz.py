@@ -58,6 +58,63 @@ def _parse_float(value: str) -> float | None:
         return None
 
 
+def _parse_finviz_earnings(value: str) -> tuple["str | None", "str | None"]:
+    """Normalize a Finviz earnings string into ISO date + time-of-day marker.
+
+    Finviz returns formats like ``'May 05 AMC'`` (After Market Close) or
+    ``'Apr 29 BMO'`` (Before Market Open). Downstream consumers expect ISO
+    dates (YYYY-MM-DD); the time-of-day suffix is preserved separately so
+    consumers that need it (e.g., agent prompts) can use it.
+
+    Returns
+    -------
+    (iso_date, when_marker) : tuple
+        ``iso_date`` is YYYY-MM-DD or None if unparseable.
+        ``when_marker`` is 'AMC', 'BMO', or None.
+
+    Year inference: Finviz omits year. Defaults to current year. If the
+    parsed date is more than 6 months in the past, we assume it's next
+    year (avoids January->December edge case).
+    """
+    if not value or not isinstance(value, str):
+        return None, None
+    raw = value.strip()
+    if raw in ("N/A", "-", ""):
+        return None, None
+
+    # Extract time-of-day marker
+    when = None
+    m = re.search(r"\b(AMC|BMO)\b", raw, flags=re.IGNORECASE)
+    if m:
+        when = m.group(1).upper()
+
+    # Strip the AMC/BMO suffix and any trailing whitespace
+    cleaned = re.sub(r"\s+(AMC|BMO|A|B)\s*$", "", raw, flags=re.IGNORECASE).strip()
+
+    # Try common formats
+    from datetime import datetime, timedelta
+    parsed = None
+    for fmt in ("%Y-%m-%d", "%b %d", "%m/%d/%Y", "%b %d %Y"):
+        try:
+            parsed = datetime.strptime(cleaned, fmt)
+            break
+        except ValueError:
+            continue
+
+    if parsed is None:
+        return None, when
+
+    # Year inference for formats without year
+    if parsed.year == 1900:  # strptime default for missing year
+        now = datetime.now()
+        parsed = parsed.replace(year=now.year)
+        # If the date is >6 months in the past, assume next year
+        if (now - parsed).days > 180:
+            parsed = parsed.replace(year=now.year + 1)
+
+    return parsed.strftime("%Y-%m-%d"), when
+
+
 class FinvizScanner:
     """Scrape the free Finviz quote page for fundamental / sentiment data."""
 
@@ -247,6 +304,10 @@ class FinvizScanner:
             # Current price — Finviz labels it "Price"
             current_price = _parse_float(snap.get("Price", ""))
 
+            # Normalize earnings date once for the response
+            _earnings_raw = snap.get("Earnings", None)
+            _earnings_iso, _earnings_when = _parse_finviz_earnings(_earnings_raw)
+
             return {
                 "ticker": ticker.upper(),
                 "current_price": current_price,
@@ -260,7 +321,12 @@ class FinvizScanner:
                 "insider_own_pct": _parse_pct(snap.get("Insider Own", "")),
                 "inst_own_pct": _parse_pct(snap.get("Inst Own", "")),
                 "short_float_pct": _parse_pct(snap.get("Short Float", "")),
-                "earnings_date": snap.get("Earnings", None),
+                # Earnings: normalize to ISO YYYY-MM-DD; preserve AMC/BMO marker
+                # separately. Downstream consumers should use these standardized
+                # fields. The raw Finviz string is also kept for audit/agent prompts.
+                "earnings_date": _earnings_iso,
+                "earnings_when": _earnings_when,
+                "earnings_date_raw": _earnings_raw,
                 "news_headlines": self._parse_news(soup),
                 "volatility_week": _parse_pct(
                     snap.get("Volatility", "").split(" ")[0]
