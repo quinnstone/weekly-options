@@ -4417,7 +4417,7 @@
       "direction": "call",
       "strike": 382.5,
       "expiry": "2026-05-08",
-      "premium": 5.08,
+      "premium": 7.75,
       "composite_score": 70.37,
       "confidence": 0.319,
       "current_price": 385.69,
@@ -4510,15 +4510,14 @@
         "pattern_observations": 0,
         "pattern_key": "normal|call|unknown|overbought|trending|unknown"
       },
-      "active_regime": "normal",
-      "skip_grading": true
+      "active_regime": "normal"
     },
     {
       "ticker": "AMZN",
       "direction": "call",
       "strike": 265.0,
       "expiry": "2026-05-08",
-      "premium": 7.54,
+      "premium": 6.1,
       "composite_score": 65.61,
       "confidence": 0.319,
       "current_price": 268.26,
