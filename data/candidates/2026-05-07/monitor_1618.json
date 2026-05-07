@@ -1,0 +1,69 @@
+{
+  "positions": [
+    {
+      "ticker": "GOOGL",
+      "direction": "call",
+      "strike": 382.5,
+      "entry_price": 385.69,
+      "current_price": 398.03,
+      "entry_premium": 7.75,
+      "current_option_price": 14.75,
+      "current_delta": null,
+      "stock_move_pct": 3.2,
+      "option_return_pct": 90.3,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 90% \u2014 at or above 15% day-4 target. Consider taking profit."
+    },
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 408.35,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "strike": 265.0,
+      "entry_price": 268.26,
+      "current_price": 271.25,
+      "entry_premium": 6.1,
+      "current_option_price": 7.12,
+      "current_delta": 0.853,
+      "stock_move_pct": 1.11,
+      "option_return_pct": 16.7,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 17% \u2014 at or above 15% day-4 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "GOOGL: TARGET HIT (90% vs 15% target)",
+    "AMZN: TARGET HIT (17% vs 15% target)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n### GOOGL CALL | +90% | \ud83d\udfe2 TAKE PROFIT\nUp 90% against a 15% Thursday target. This is 6x target. Charm is irrelevant \u2014 the move already happened. Holding into Friday for the last 10% is textbook greed with expiring options. **Close now.**\n\n### AMZN CALL | +17% | \ud83d\udfe2 TAKE PROFIT\nBarely clearing the 15% day-4 target. Stock only +1.1% \u2014 this option is surviving on residual extrinsic value that evaporates overnight. By tomorrow morning, theta alone eats ~4-5% of remaining premium. The risk/reward of holding for a 10% Friday target while theta accelerates is negative EV. **Close now.**\n\n### AMD CALL | -12% | \ud83d\udfe1 WARNING\nStock flat at +0.0% \u2014 the directional thesis (call) has not confirmed after 4 days. With 0.35 entry delta, charm decay over 4 days likely puts effective delta near ~0.15-0.18. Tomorrow this option needs AMD to gap up meaningfully just to break even, fighting both theta (~4-5%/day) and continued charm erosion. Not yet at -50% hard stop, but recovery probability is low.\n\nAt -12% and accelerating decay, holding into Friday risks sliding toward -40% to -50% by close for a slim chance at breakeven. **Close now to preserve capital.**\n\n---\n\n## RECOMMENDATION\n\n**Close all three positions today.**\n\nGOOGL and AMZN are wins \u2014 book them. AMD is a slow bleed with no catalyst and a dead thesis \u2014 cut it before theta acceleration tomorrow turns -12% into -40%. Net portfolio result: solidly profitable week. Don't let Thursday's gains become Friday's regrets.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 31.7,
+    "targets_hit": 2,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
