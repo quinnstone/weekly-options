@@ -1,0 +1,69 @@
+{
+  "positions": [
+    {
+      "ticker": "GOOGL",
+      "direction": "call",
+      "strike": 382.5,
+      "entry_price": 385.69,
+      "current_price": 395.52,
+      "entry_premium": 7.75,
+      "current_option_price": 14.43,
+      "current_delta": 0.879,
+      "stock_move_pct": 2.55,
+      "option_return_pct": 86.2,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 86% \u2014 at or above 15% day-4 target. Consider taking profit."
+    },
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 407.23,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -12.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "delta_estimate",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -12%. Consider closing to limit further decay."
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "strike": 265.0,
+      "entry_price": 268.26,
+      "current_price": 273.43,
+      "entry_premium": 6.1,
+      "current_option_price": 8.65,
+      "current_delta": 0.943,
+      "stock_move_pct": 1.93,
+      "option_return_pct": 41.8,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 42% \u2014 at or above 15% day-4 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "GOOGL: TARGET HIT (86% vs 15% target)",
+    "AMZN: TARGET HIT (42% vs 15% target)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n### GOOGL CALL | +86% | \ud83d\udfe2 TARGET HIT (5.7x day-4 target)\nOutstanding winner. At +86% on day 4, this is deep ITM territory. Charm decay and theta are nearly irrelevant \u2014 delta is likely >0.70, making this behave like stock. But tomorrow's Friday theta cliff can still shave 10-20% off extrinsic value overnight. **No reason to hold for incremental upside. Lock this in.**\n\n### AMZN CALL | +42% | \ud83d\udfe2 TARGET HIT (2.8x day-4 target)\nStrong position, well above the 15% Thursday target. +1.9% stock move is doing the work, but with 1 day left, theta acceleration (~4%/day baseline, likely higher for weeklies this close to expiry) will erode premium aggressively overnight. Holding into Friday risks giving back 10-15 points for a chance at maybe 5-10 more. Risk/reward has flipped negative. **Take profit.**\n\n### AMD CALL | -12% | \ud83d\udfe1 WARNING \u2014 APPROACHING DECAY TRAP\nStock flat at +0.0%. Original call thesis got zero directional confirmation over 4 days. With charm eating delta since Monday (estimated delta drift from ~0.35 to ~0.15-0.18 by now), this option is increasingly a pure theta burn. At -12% today, tomorrow's accelerated decay likely pushes this to -25% to -40% by Friday close even if AMD stays flat. Recovery requires a meaningful move that hasn't materialized all week. **Close to stop the bleed.**\n\n---\n\n### RECOMMENDATION\n\n**Close all three positions now.**\n\nGOOGL and AMZN are wins \u2014 take the money. Holding into Friday's theta cliff and liquidity deterioration (spreads widen after 3 PM) risks giving back gains for minimal upside. AMD is a slow-motion loss that only gets worse tomorrow; no signal confirmation after 4 days means the thesis failed.\n\nEstimated portfolio day: **+86%, +42%, -12% \u2192 strong net positive.** Don't let Thursday's winners become Friday's regrets.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 38.7,
+    "targets_hit": 2,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
