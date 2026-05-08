@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "GOOGL",
+      "direction": "call",
+      "strike": 382.5,
+      "entry_price": 385.69,
+      "current_price": 398.7,
+      "entry_premium": 7.75,
+      "current_option_price": 16.43,
+      "current_delta": 0.898,
+      "stock_move_pct": 3.37,
+      "option_return_pct": 112.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: +112%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "AMD",
+      "direction": "call",
+      "strike": null,
+      "entry_price": null,
+      "current_price": 447.93,
+      "entry_premium": null,
+      "current_option_price": null,
+      "current_delta": null,
+      "stock_move_pct": 0,
+      "option_return_pct": -16.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "delta_estimate",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -16%. Use market order if needed \u2014 do not let expire unmanaged."
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "strike": 265.0,
+      "entry_price": 268.26,
+      "current_price": 272.09,
+      "entry_premium": 6.1,
+      "current_option_price": 7.45,
+      "current_delta": 0.857,
+      "stock_move_pct": 1.43,
+      "option_return_pct": 22.1,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: +22%. Use market order if needed \u2014 do not let expire unmanaged."
+    }
+  ],
+  "alerts": [
+    "GOOGL: TARGET HIT (112% vs 10% target)",
+    "AMD: CLOSE BY 2PM (P&L -16%)",
+    "AMZN: TARGET HIT (22% vs 10% target)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Close (Day 5/5)\n\n### Position Status\n\n| Pos | Dir | Stock Move | Option P&L | Status | Action |\n|-----|-----|-----------|------------|--------|--------|\n| GOOGL | CALL | +3.4% | **+112%** | TARGET HIT | **CLOSE NOW** |\n| AMZN | CALL | +1.4% | **+22%** | TARGET HIT | **CLOSE NOW** |\n| AMD | CALL | +0.0% | **-16%** | EXPIRY CLOSE | **CLOSE NOW** |\n\n### Assessment\n\n**GOOGL (+112%):** Outstanding winner. +112% on a weekly call is a home run \u2014 well beyond the 10% Friday target. Every minute you hold past this point is pure gamma roulette. With hours to expiry, this option has near-zero time value left; a single adverse candle can erase $50+ of gains in minutes. Lock it in.\n\n**AMZN (+22%):** Solid win. Exceeds Friday's 10% target by 2x. Same logic \u2014 extrinsic value is evaporating by the minute. No reason to hold through the final hour's liquidity cliff and widening spreads.\n\n**AMD (-16%):** Flat stock, -16% loss. With zero time value remaining and no stock movement to rescue it, this is dead money. Close to avoid any further decay or a late-day adverse move pushing it deeper. The -16% loss is manageable and well above the -50% hard stop.\n\n### Week Summary\n\n**2 winners, 1 loser.** GOOGL and AMZN hit targets; AMD was a miss with no directional follow-through. Net portfolio P&L is strongly positive, driven by the GOOGL outlier.\n\n---\n\n## RECOMMENDATION\n\n**CLOSE ALL THREE POSITIONS IMMEDIATELY. MARKET ORDERS IF SPREADS ARE REASONABLE, LIMIT AT MID OTHERWISE. NO EXCEPTIONS \u2014 NOTHING SURVIVES PAST 2:00 PM ET.**\n\nBook the +112% on GOOGL, the +22% on AMZN, accept the -16% on AMD. This is a winning week. Walk away clean.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 39.4,
+    "targets_hit": 2,
+    "stops_hit": 0,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
