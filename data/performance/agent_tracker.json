@@ -971,6 +971,51 @@
         "option_return_pct": 16.7,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-05-08T11:12:46.426756",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "GOOGL",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": 121.5,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-05-08T11:12:46.428217",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "AMD",
+      "mechanical_signal": "CLOSE",
+      "agent_signal": "CLOSE+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -16.0,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-05-08T11:12:46.429507",
+      "week": "2026-W18",
+      "agent": "position_monitor",
+      "ticker": "AMZN",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": 17.2,
+        "has_agent_analysis": true
+      }
     }
   ],
   "weekly_summaries": []
