@@ -1070,6 +1070,20 @@
         "option_return_pct": 17.2,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-05-09T10:44:08.818008",
+      "week": "2026-W18",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "\n\n# CIO Weekly Reflection \u2014 Week of 2026-05-09\n\n---\n\n## I. Situation Assessment\n\nThis is a ghost week \u2014 0W / 0L / 3 total with 0.0% average return. No scorecard data means either all three positions expired worthless at exactly breakeven (essentially impossible), positions were not entered, or the s"
+      }
     }
   ],
   "weekly_summaries": []
