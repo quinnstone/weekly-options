@@ -5101,7 +5101,7 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.2% move to $390.25 (weekly expected move: 4.8%)."
     },
     "thesis": "GOOGL is driven by top-decile momentum (98/100) confirmed by strong flow conviction (90) and trend persistence (85), suggesting institutional positioning ahead of continued upside. This week is the right entry because the normal VIX regime applies baseline 1.0x multipliers \u2014 momentum isn't penalized as it would be in elevated/high regimes \u2014 and the three-model ensemble should show strong agreement given all top signals are directionally aligned. **Kill condition:** If GOOGL gaps down >2% on Monday open (gap-skip rule triggers) OR if post-earnings reaction from the 8-K filing reverses the momentum trend with a daily close below the 20-day SMA, the thesis is dead \u2014 exit immediately rather than hoping for recovery through Friday.",
-    "original_premium_premarket": 7.75
+    "original_premium_premarket": 5.08
   },
   {
     "ticker": "AMD",
@@ -15328,7 +15328,7 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.1% move to $271.10 (weekly expected move: 5.9%)."
     },
     "thesis": "AMZN is selected on flow conviction (90/100) and trend persistence (85) \u2014 unusual options activity suggests smart money is positioning for upside, which is the most valuable signal for weekly holds where institutional flow often leads price. This week's entry is justified by the absence of earnings-week risk and the fact that AMZN's catalyst mix (contract, regulation) provides potential upside triggers without the binary blow-up risk of an earnings print. **Kill condition:** If the unusual options flow reverses (put volume surges above the 1.3 P/C ratio threshold) or if the holding-window \"high risk\" events on Monday produce a broad market selloff that drags AMZN below its Monday open by >2%, exit rather than ride through compressed time value.",
-    "original_premium_premarket": 6.1,
+    "original_premium_premarket": 7.54,
     "backfill_method": "BSM-recomputed from solved 33.48% IV at 10AM stock=$270.94, T=4d"
   }
 ]
