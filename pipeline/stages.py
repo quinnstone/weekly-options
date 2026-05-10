@@ -1330,9 +1330,11 @@ class DailyStages:
             logger.error("Position monitor failed: %s", exc)
             return {"positions": [], "alerts": [], "agent_analysis": "", "summary": {}}
 
-        # Track position monitor decisions for audit
+        # Track position monitor decisions for audit. Skip non-positions —
+        # logging a "NO_POSITION" decision creates noise in the agent_tracker
+        # without representing a real decision the system made on a position.
         for pos in result.get("positions", []):
-            if pos.get("status") in ("NO_DATA", "ERROR"):
+            if pos.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
                 continue
             # Mechanical signal is based on thresholds alone
             mech = pos["status"]
