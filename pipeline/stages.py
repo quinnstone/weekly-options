@@ -1408,9 +1408,13 @@ class DailyStages:
             logger.error("Final exit monitor failed: %s", exc)
             return {"positions": [], "alerts": [], "agent_analysis": "", "summary": {}}
 
-        # Override: ALL positions get CLOSE status
+        # Override: ALL real positions get CLOSE status. Picks that were
+        # never entered (NO_POSITION from position_monitor's strike-selection
+        # failure handling) must be preserved as-is — overriding to CLOSE
+        # would resurrect the "Sell 1 CALL $None at market" bug we just fixed
+        # in the position monitor.
         for p in result.get("positions", []):
-            if p.get("status") not in ("NO_DATA", "ERROR"):
+            if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION"):
                 ret = p.get("option_return_pct", 0)
                 p["status"] = "CLOSE"
                 p["detail"] = (
