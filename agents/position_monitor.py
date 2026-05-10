@@ -115,6 +115,23 @@ class PositionMonitor(BaseAgent):
             expiry = pick.get("expiry")
             entry_delta = pick.get("estimated_delta", 0.35)
 
+            # Skip picks that were never actually entered. Either marked
+            # explicitly via skip_grading (set during backfill or by future
+            # drop-and-promote logic), or detected implicitly when both
+            # strike and entry_premium are missing. Without this guard, the
+            # monitor's fallback theta-decay estimate produces fake P&L
+            # numbers (e.g. -16% on day 4) for positions that don't exist —
+            # then triggers CLOSE NOW alerts on those non-positions, which
+            # could prompt accidental market sells.
+            if pick.get("skip_grading") or (not strike and not entry_premium):
+                positions.append({
+                    "ticker": ticker,
+                    "direction": direction,
+                    "status": "NO_POSITION",
+                    "detail": "No position taken — strike selection failed at entry",
+                })
+                continue
+
             # Fetch current stock price
             try:
                 tk = yf.Ticker(ticker)
@@ -253,7 +270,7 @@ class PositionMonitor(BaseAgent):
             })
 
         # Summary stats
-        active = [p for p in positions if p.get("status") not in ("NO_DATA", "ERROR")]
+        active = [p for p in positions if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION")]
         avg_return = sum(p.get("option_return_pct", 0) for p in active) / max(len(active), 1)
         targets_hit = sum(1 for p in active if p["status"] == "TARGET_HIT")
         stops_hit = sum(1 for p in active if p["status"] == "STOP_HIT")
@@ -278,7 +295,7 @@ class PositionMonitor(BaseAgent):
                 f"stock {p.get('stock_move_pct',0):+.1f}%, "
                 f"option P&L {p.get('option_return_pct',0):+.0f}%, "
                 f"status: {p['status']} — {p.get('detail','')}"
-                for p in positions if p.get("status") not in ("NO_DATA", "ERROR")
+                for p in positions if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION")
             )
 
             market_ctx = self._format_market_context(market_summary) if market_summary else "No market data available."

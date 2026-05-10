@@ -369,7 +369,7 @@ class DiscordNotifier:
         for p in positions:
             ticker = p.get("ticker", "?")
 
-            if p.get("status") in ("NO_DATA", "ERROR"):
+            if p.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
                 fields.append({
                     "name": ticker,
                     "value": f"_{p.get('detail', 'No data available')}_",
@@ -442,7 +442,7 @@ class DiscordNotifier:
         pnl_sign = "+" if total_pnl >= 0 else ""
         fields.append({
             "name": "Portfolio Total",
-            "value": f"**{pnl_sign}${total_pnl:,.0f}** across {len([p for p in positions if p.get('status') not in ('NO_DATA', 'ERROR')])} positions | DTE: {dte}",
+            "value": f"**{pnl_sign}${total_pnl:,.0f}** across {len([p for p in positions if p.get('status') not in ('NO_DATA', 'ERROR', 'NO_POSITION')])} positions | DTE: {dte}",
             "inline": False,
         })
 
@@ -503,7 +503,7 @@ class DiscordNotifier:
         total_pnl = 0
 
         for p in positions:
-            if p.get("status") in ("NO_DATA", "ERROR"):
+            if p.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
                 continue
 
             ticker = p.get("ticker", "?")
