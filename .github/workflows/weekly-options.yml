@@ -214,16 +214,22 @@ jobs:
           git config user.name "weekly-options-bot"
           git config user.email "weekly-options-bot@users.noreply.github.com"
           DATE=$(date +%Y-%m-%d)
-          # Scope candidate-dir add to TODAY's date so cache-restored files
-          # from prior dates can't get silently re-committed (each pipeline
-          # stage writes only to data/candidates/{TODAY}/). reports/ and
-          # performance/ are still added wholesale — files there are either
-          # date-prefixed or running stats, no stale-restore problem.
+          # Scope BOTH candidate-dir and reports add to TODAY's date so
+          # cache-restored files from prior dates can't silently re-commit
+          # stale data and revert manual backfills. Each pipeline stage
+          # writes only to data/candidates/{TODAY}/ and (for monday_picks
+          # / monday_entry_confirmation) data/reports/{TODAY}_picks.json.
+          # data/performance/ stays wholesale — files there are running
+          # stats / scorecard outputs that legitimately span dates.
           # Pre-create today's candidates dir so git add doesn't fail under
           # `bash -e` for stages (reflect, scorecard) that write only to
           # data/performance/. git ignores empty dirs, so this is a safe no-op.
           mkdir -p "data/candidates/${DATE}"
-          git add "data/candidates/${DATE}/" data/reports/ data/performance/
+          git add "data/candidates/${DATE}/" data/performance/
+          # reports file may not exist for stages that only write performance/
+          if [ -f "data/reports/${DATE}_picks.json" ]; then
+            git add "data/reports/${DATE}_picks.json"
+          fi
           if git diff --staged --quiet; then
             echo "No new data to commit"
           else
