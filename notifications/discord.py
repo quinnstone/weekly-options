@@ -592,8 +592,11 @@ class DiscordNotifier:
             direction = p.get("direction", "?").upper()
             strike = p.get("strike")
             entry = p.get("entry_premium")
-            close = p.get("closing_price")
-            pnl = p.get("pnl", 0)
+            # exit_value_per_share is the OPTION's exit value (intrinsic at
+            # expiry, e.g. max(0, S-K) for a call). Previously this code used
+            # closing_price (the STOCK price) which over-stated P&L by ~30x.
+            exit_per_share = p.get("exit_value_per_share")
+            pnl = p.get("pnl", 0)  # already correctly computed by the grader
             result = p.get("result", "?")
 
             if result == "WIN":
@@ -605,18 +608,21 @@ class DiscordNotifier:
 
             strike_str = f"${strike:,.0f}" if strike else "N/A"
             entry_str = f"${entry:.2f}" if entry else "N/A"
-            close_str = f"${close:.2f}" if close else "N/A"
+            exit_str = f"${exit_per_share:.2f}" if exit_per_share is not None else "N/A"
 
-            # Dollar amounts
+            # Dollar amounts (1 contract = 100 shares)
             entry_cost = (entry * 100 * contracts) if entry else 0
-            close_val = (close * 100 * contracts) if close else 0
-            dollar_pnl = close_val - entry_cost
+            exit_total = (exit_per_share * 100 * contracts) if exit_per_share is not None else 0
+            # Trust the grader's pnl rather than recomputing from rounded display
+            # values. This avoids drift between the per-pick line and the week total.
+            dollar_pnl = pnl if pnl is not None else (exit_total - entry_cost)
             pnl_sign = "+" if dollar_pnl >= 0 else ""
+            pnl_pct = (dollar_pnl / entry_cost * 100) if entry_cost else 0
 
             pick_lines.append(
                 f"`{marker}` **{ticker}** {direction} @ {strike_str}\n"
-                f"Bought: {entry_str} (${entry_cost:,.0f}) | Sold: {close_str} (${close_val:,.0f})\n"
-                f"**P&L: {pnl_sign}${dollar_pnl:,.0f}** ({pnl_sign}{((dollar_pnl / entry_cost * 100) if entry_cost else 0):,.0f}%)"
+                f"Bought: {entry_str} (${entry_cost:,.0f}) | Sold: {exit_str} (${exit_total:,.0f})\n"
+                f"**P&L: {pnl_sign}${dollar_pnl:,.0f}** ({pnl_sign}{pnl_pct:,.0f}%)"
             )
 
         picks_text = "\n\n".join(pick_lines) if pick_lines else "No picks graded."
