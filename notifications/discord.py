@@ -15,6 +15,7 @@ import requests
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import Config, CONTRACTS_PER_TRADE
+from agents.position_monitor import is_actionable_position
 
 logger = logging.getLogger(__name__)
 config = Config()
@@ -369,7 +370,7 @@ class DiscordNotifier:
         for p in positions:
             ticker = p.get("ticker", "?")
 
-            if p.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
+            if not is_actionable_position(p):
                 fields.append({
                     "name": ticker,
                     "value": f"_{p.get('detail', 'No data available')}_",
@@ -442,7 +443,7 @@ class DiscordNotifier:
         pnl_sign = "+" if total_pnl >= 0 else ""
         fields.append({
             "name": "Portfolio Total",
-            "value": f"**{pnl_sign}${total_pnl:,.0f}** across {len([p for p in positions if p.get('status') not in ('NO_DATA', 'ERROR', 'NO_POSITION')])} positions | DTE: {dte}",
+            "value": f"**{pnl_sign}${total_pnl:,.0f}** across {len([p for p in positions if is_actionable_position(p)])} positions | DTE: {dte}",
             "inline": False,
         })
 
@@ -503,7 +504,7 @@ class DiscordNotifier:
         total_pnl = 0
 
         for p in positions:
-            if p.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
+            if not is_actionable_position(p):
                 continue
 
             ticker = p.get("ticker", "?")

@@ -25,6 +25,7 @@ from analysis.narrowing import NarrowingPipeline, enforce_diversity
 from notifications.discord import DiscordNotifier
 from tracking.agent_tracker import log_decision
 from tracking.tracker import PerformanceTracker
+from agents.position_monitor import is_actionable_position
 
 logger = logging.getLogger(__name__)
 config = Config()
@@ -1334,7 +1335,7 @@ class DailyStages:
         # logging a "NO_POSITION" decision creates noise in the agent_tracker
         # without representing a real decision the system made on a position.
         for pos in result.get("positions", []):
-            if pos.get("status") in ("NO_DATA", "ERROR", "NO_POSITION"):
+            if not is_actionable_position(pos):
                 continue
             # Mechanical signal is based on thresholds alone
             mech = pos["status"]
@@ -1416,7 +1417,7 @@ class DailyStages:
         # would resurrect the "Sell 1 CALL $None at market" bug we just fixed
         # in the position monitor.
         for p in result.get("positions", []):
-            if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION"):
+            if is_actionable_position(p):
                 ret = p.get("option_return_pct", 0)
                 p["status"] = "CLOSE"
                 p["detail"] = (

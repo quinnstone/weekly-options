@@ -20,6 +20,27 @@ from agents.base import BaseAgent
 
 logger = logging.getLogger(__name__)
 
+
+# Sentinel statuses that mean "this position dict does not represent an
+# actionable real position." Used to filter rendering, totals, alerts, and
+# audit logging across the codebase. New non-actionable categories (e.g.
+# expired, called-away) should be added here in one place so all consumers
+# stay consistent.
+NON_ACTIONABLE_STATUSES = ("NO_DATA", "ERROR", "NO_POSITION")
+
+
+def is_actionable_position(pos: dict) -> bool:
+    """Return True if a position dict represents a real entered position
+    that should be displayed, summed into portfolio totals, included in
+    alerts, and routed to agent prompts. False for sentinel statuses
+    (NO_DATA, ERROR, NO_POSITION).
+
+    Centralizing this check means new sentinel categories (e.g. EXPIRED)
+    can be added to NON_ACTIONABLE_STATUSES once instead of hunting
+    through every consumer.
+    """
+    return pos.get("status") not in NON_ACTIONABLE_STATUSES
+
 SYSTEM_PROMPT = """You are the position monitor for 3 weekly options positions (Mon entry
 → Fri expiry). You have full access to the methodology reference above.
 
@@ -270,7 +291,7 @@ class PositionMonitor(BaseAgent):
             })
 
         # Summary stats
-        active = [p for p in positions if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION")]
+        active = [p for p in positions if is_actionable_position(p)]
         avg_return = sum(p.get("option_return_pct", 0) for p in active) / max(len(active), 1)
         targets_hit = sum(1 for p in active if p["status"] == "TARGET_HIT")
         stops_hit = sum(1 for p in active if p["status"] == "STOP_HIT")
@@ -295,7 +316,7 @@ class PositionMonitor(BaseAgent):
                 f"stock {p.get('stock_move_pct',0):+.1f}%, "
                 f"option P&L {p.get('option_return_pct',0):+.0f}%, "
                 f"status: {p['status']} — {p.get('detail','')}"
-                for p in positions if p.get("status") not in ("NO_DATA", "ERROR", "NO_POSITION")
+                for p in positions if is_actionable_position(p)
             )
 
             market_ctx = self._format_market_context(market_summary) if market_summary else "No market data available."
