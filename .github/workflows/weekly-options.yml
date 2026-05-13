@@ -112,43 +112,78 @@ jobs:
       - name: Determine stage to run
         id: stage
         run: |
+          # PRIORITY 1: explicit manual dispatch wins
           if [ -n "${{ github.event.inputs.stage }}" ]; then
             echo "stage=${{ github.event.inputs.stage }}" >> "$GITHUB_OUTPUT"
             echo "Manual dispatch: ${{ github.event.inputs.stage }}"
-          else
-            DOW=$(date +%u)
-            HOUR=$(date +%H)
-            echo "Day=$DOW Hour=$HOUR (ET)"
+            exit 0
+          fi
 
-            if [ "$DOW" = "1" ]; then
-              if [ "$HOUR" -ge 13 ]; then
-                echo "stage=monitor" >> "$GITHUB_OUTPUT"
-              elif [ "$HOUR" -ge 10 ]; then
-                echo "stage=confirm" >> "$GITHUB_OUTPUT"
-              else
-                echo "stage=monday" >> "$GITHUB_OUTPUT"
-              fi
-            elif [ "$DOW" = "2" ] || [ "$DOW" = "4" ]; then
+          # PRIORITY 2: route directly from the cron expression that triggered
+          # this run (via github.event.schedule). This is the canonical mapping —
+          # each cron string maps to exactly one stage, regardless of when the
+          # event actually fires. This prevents the 2026-05-11 failure where a
+          # late-firing 12:00 UTC Monday cron got auto-detected as `confirm`
+          # because HOUR was past 10 by the time it ran. See
+          # memory/project_cron_routing_failure.md.
+          SCHED="${{ github.event.schedule }}"
+          if [ -n "$SCHED" ]; then
+            case "$SCHED" in
+              "0 11 * * 3")   STAGE=wednesday ;;
+              "0 20 * * 5")   STAGE=friday_close ;;
+              "30 20 * * 5")  STAGE=scorecard ;;
+              "0 12 * * 1")   STAGE=monday ;;
+              "0 14 * * 1")   STAGE=confirm ;;
+              "0 17 * * 1")   STAGE=monitor ;;
+              "0 19 * * 2")   STAGE=monitor ;;
+              "0 19 * * 3")   STAGE=monitor ;;
+              "0 14 * * 4")   STAGE=monitor ;;
+              "0 19 * * 4")   STAGE=monitor ;;
+              "0 14 * * 5")   STAGE=monitor ;;
+              "30 17 * * 5")  STAGE=final_exit ;;
+              "0 14 * * 6")   STAGE=reflect ;;
+              *)              STAGE=none ;;
+            esac
+            echo "Cron-routed: schedule='$SCHED' → stage='$STAGE'"
+            echo "stage=$STAGE" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # PRIORITY 3: legacy wall-clock auto-detect (defensive fallback if
+          # github.event.schedule is somehow unavailable). Kept for safety;
+          # in normal operation neither prior path falls through here.
+          DOW=$(date +%u)
+          HOUR=$(date +%H)
+          echo "Wall-clock fallback: Day=$DOW Hour=$HOUR (ET)"
+
+          if [ "$DOW" = "1" ]; then
+            if [ "$HOUR" -ge 13 ]; then
               echo "stage=monitor" >> "$GITHUB_OUTPUT"
-            elif [ "$DOW" = "3" ]; then
-              if [ "$HOUR" -ge 15 ]; then
-                echo "stage=monitor" >> "$GITHUB_OUTPUT"
-              else
-                echo "stage=wednesday" >> "$GITHUB_OUTPUT"
-              fi
-            elif [ "$DOW" = "5" ]; then
-              if [ "$HOUR" -ge 16 ]; then
-                echo "stage=friday_close" >> "$GITHUB_OUTPUT"
-              elif [ "$HOUR" -ge 13 ]; then
-                echo "stage=final_exit" >> "$GITHUB_OUTPUT"
-              else
-                echo "stage=monitor" >> "$GITHUB_OUTPUT"
-              fi
-            elif [ "$DOW" = "6" ]; then
-              echo "stage=reflect" >> "$GITHUB_OUTPUT"
+            elif [ "$HOUR" -ge 10 ]; then
+              echo "stage=confirm" >> "$GITHUB_OUTPUT"
             else
-              echo "stage=none" >> "$GITHUB_OUTPUT"
+              echo "stage=monday" >> "$GITHUB_OUTPUT"
             fi
+          elif [ "$DOW" = "2" ] || [ "$DOW" = "4" ]; then
+            echo "stage=monitor" >> "$GITHUB_OUTPUT"
+          elif [ "$DOW" = "3" ]; then
+            if [ "$HOUR" -ge 15 ]; then
+              echo "stage=monitor" >> "$GITHUB_OUTPUT"
+            else
+              echo "stage=wednesday" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "$DOW" = "5" ]; then
+            if [ "$HOUR" -ge 16 ]; then
+              echo "stage=friday_close" >> "$GITHUB_OUTPUT"
+            elif [ "$HOUR" -ge 13 ]; then
+              echo "stage=final_exit" >> "$GITHUB_OUTPUT"
+            else
+              echo "stage=monitor" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "$DOW" = "6" ]; then
+            echo "stage=reflect" >> "$GITHUB_OUTPUT"
+          else
+            echo "stage=none" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run pipeline
