@@ -45,7 +45,21 @@ class DiscordNotifier:
     #  Monday Picks — explicit entry instructions
     # ------------------------------------------------------------------
 
-    def send_picks(self, picks: list, market_summary: dict) -> bool:
+    def send_picks(self, picks: list, market_summary: dict, dropped: "list | None" = None) -> bool:
+        """Send the Monday picks message to Discord.
+
+        Parameters
+        ----------
+        picks : list
+            Final picks selected for the week.
+        market_summary : dict
+            Market context for the week.
+        dropped : list of dict, optional
+            Candidates that were rejected during strike selection (drop-and-promote).
+            Each dict has 'ticker', 'direction', 'reason', and optional budget bounds.
+            Surfacing these gives Quinn visibility into why a candidate didn't make
+            it — e.g. budget collapse, missing chain, Tradier/yfinance error.
+        """
         if not self.enabled:
             logger.info("Discord disabled — %d picks not sent", len(picks))
             return False
@@ -200,6 +214,37 @@ class DiscordNotifier:
             "value": f"**${total_cost:,.0f}** for {len(picks)} positions ({contracts} contract each)",
             "inline": False,
         })
+
+        # Dropped picks — surface drop-and-promote decisions for transparency.
+        # Without this you can't tell whether "only got 2 picks this week"
+        # means thin universe vs budget rejection vs API failure.
+        if dropped:
+            REASON_LABELS = {
+                "no_strike_in_budget": "options exceeded per-pick budget cap",
+                "empty_chain": "options chain unavailable (Tradier/yfinance issue)",
+                "no_weekly_expiry": "no weekly expiry within lookahead",
+                "no_price_history": "underlying price fetch failed",
+                "empty_options_side": "no calls (bullish) or puts (bearish) in chain",
+                "invalid_direction": "invalid scanner direction",
+                "exception": "unexpected error during strike selection",
+                "unknown": "no actionable strike (reason unclear)",
+            }
+            dropped_lines = []
+            for d in dropped:
+                t = d.get("ticker", "?")
+                dr = d.get("direction", "?").upper()
+                reason_code = d.get("reason", "unknown")
+                reason_text = REASON_LABELS.get(reason_code, reason_code)
+                bmin = d.get("budget_min")
+                bmax = d.get("budget_max")
+                if reason_code == "no_strike_in_budget" and bmin is not None:
+                    reason_text += f" (window ${bmin:.2f}-${bmax:.2f})"
+                dropped_lines.append(f"• **{t}** ({dr}): {reason_text}")
+            fields.append({
+                "name": f"Dropped this week ({len(dropped)})",
+                "value": "\n".join(dropped_lines),
+                "inline": False,
+            })
 
         picks_embed = {
             "title": f"WEEKLY PICKS — {date_str}",
