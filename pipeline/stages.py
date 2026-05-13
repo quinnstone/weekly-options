@@ -830,10 +830,19 @@ class DailyStages:
             # Discord — a "Buy 1 TICKER CALL N/A at ? ($0)" message is worse than
             # shipping fewer picks.
             if strike_data.get("strike") is None:
+                # Capture the specific failure reason from find_optimal_strikes
+                # so we can distinguish budget-driven drops (expected) from
+                # infrastructure failures (yfinance/Tradier issues — investigate).
+                # Reasons emitted by scanners/options.py: no_weekly_expiry,
+                # empty_chain, no_price_history, empty_options_side,
+                # invalid_direction, no_strike_in_budget, exception.
+                failure_reason = strike_data.get("_failure_reason", "unknown")
+                _budget_min = strike_data.get("budget_min")
+                _budget_max = strike_data.get("budget_max")
                 logger.warning(
-                    "Dropping %s %s — find_optimal_strikes returned no usable strike "
-                    "(likely premium exceeded budget or chain unavailable)",
-                    ticker, direction,
+                    "Dropping %s %s — find_optimal_strikes failed (reason=%s%s)",
+                    ticker, direction, failure_reason,
+                    f", budget ${_budget_min}-${_budget_max}" if _budget_min is not None else "",
                 )
                 log_decision(
                     agent_name="strike_selection",
@@ -842,11 +851,18 @@ class DailyStages:
                     agent_signal="DROPPED_no_strike",
                     override_occurred=True,
                     context={
-                        "reason": "find_optimal_strikes returned None — likely premium exceeded budget cap",
+                        "reason": failure_reason,
+                        "details": {k: v for k, v in strike_data.items() if k != "_failure_reason"},
                         "promoted_from_bench": ticker not in selected_tickers,
                     },
                 )
-                unaffordable.append(ticker)
+                unaffordable.append({
+                    "ticker": ticker,
+                    "direction": direction,
+                    "reason": failure_reason,
+                    "budget_min": _budget_min,
+                    "budget_max": _budget_max,
+                })
                 continue
 
             pick = dict(c)
@@ -873,9 +889,12 @@ class DailyStages:
             picks.append(pick)
 
         if unaffordable:
+            dropped_summary = ", ".join(
+                f"{d['ticker']}({d['reason']})" for d in unaffordable
+            )
             logger.warning(
-                "Dropped %d unaffordable picks (%s); ended with %d/%d picks",
-                len(unaffordable), ", ".join(unaffordable), len(picks), target_count,
+                "Dropped %d picks (%s); ended with %d/%d picks",
+                len(unaffordable), dropped_summary, len(picks), target_count,
             )
 
         # 10b. Attach trading theses from Portfolio Reasoner (no extra API call)
@@ -895,7 +914,7 @@ class DailyStages:
         logger.info("Report saved to %s", report_path)
 
         try:
-            self.notifier.send_picks(picks, market_summary)
+            self.notifier.send_picks(picks, market_summary, dropped=unaffordable)
         except Exception as exc:
             logger.error("Failed to send Discord notification: %s", exc)
 

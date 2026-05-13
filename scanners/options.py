@@ -514,16 +514,19 @@ class OptionsScanner:
         try:
             expiry = self.get_weekly_expiry(ticker)
             if not expiry:
-                return {}
+                # No weekly expiry available within the lookahead window
+                return {"_failure_reason": "no_weekly_expiry"}
 
             chain = self.get_options_chain(ticker, expiry)
             if not chain:
-                return {}
+                # Tradier/yfinance returned no chain data for this expiry
+                return {"_failure_reason": "empty_chain", "expiry": expiry}
 
             tk = yf.Ticker(ticker)
             hist = tk.history(period="1mo")
             if hist.empty:
-                return {}
+                # yfinance failed to return underlying price history
+                return {"_failure_reason": "no_price_history"}
             current_price = float(hist["Close"].iloc[-1])
 
             # Days to expiry
@@ -554,10 +557,10 @@ class OptionsScanner:
                 option_type = "put"
             else:
                 logger.error("Invalid direction '%s'; use 'bullish' or 'bearish'", direction)
-                return {}
+                return {"_failure_reason": "invalid_direction", "direction": direction}
 
             if options.empty:
-                return {}
+                return {"_failure_reason": "empty_options_side", "direction": direction}
 
             # Midpoint price as premium estimate
             options = options.copy()
@@ -596,7 +599,15 @@ class OptionsScanner:
                     "No strikes pass filters for %s %s (budget %.2f-%.2f)",
                     ticker, direction, min_prem, max_prem,
                 )
-                return {}
+                # The canonical AMD-style case: dynamic min_prem exceeded the
+                # caller's budget cap (or no strikes had viable liquidity).
+                # See memory/project_strike_budget_collapse.md.
+                return {
+                    "_failure_reason": "no_strike_in_budget",
+                    "budget_min": round(min_prem, 2),
+                    "budget_max": round(max_prem, 2),
+                    "pre_market_mode": pre_market_mode,
+                }
 
             # Strike distance from current price as % of weekly ATR
             # Target delta: 0.30-0.40 (slightly more OTM than 0DTE to reduce theta cost)
@@ -729,7 +740,10 @@ class OptionsScanner:
 
         except Exception as exc:
             logger.error("Optimal strike search failed for %s: %s", ticker, exc)
-            return {}
+            return {
+                "_failure_reason": "exception",
+                "error": str(exc)[:200],
+            }
 
     # ------------------------------------------------------------------ #
     #  Tradier-powered strike selection
