@@ -1,0 +1,4213 @@
+{
+  "vix": {
+    "current": 18.149999618530273,
+    "previous_close": 17.989999771118164,
+    "change": 0.16,
+    "change_pct": 0.89,
+    "trend_20d": "Date\n2026-04-16 00:00:00-05:00    17.940001\n2026-04-17 00:00:00-05:00    17.480000\n2026-04-20 00:00:00-05:00    18.870001\n2026-04-21 00:00:00-05:00    19.500000\n2026-04-22 00:00:00-05:00    18.920000\n2026-04-23 00:00:00-05:00    19.309999\n2026-04-24 00:00:00-05:00    18.709999\n2026-04-27 00:00:00-05:00    18.020000\n2026-04-28 00:00:00-05:00    17.830000\n2026-04-29 00:00:00-05:00    18.809999\n2026-04-30 00:00:00-05:00    16.889999\n2026-05-01 00:00:00-05:00    16.990000\n2026-05-04 00:00:00-05:00    18.290001\n2026-05-05 00:00:00-05:00    17.379999\n2026-05-06 00:00:00-05:00    17.389999\n2026-05-07 00:00:00-05:00    17.080000\n2026-05-08 00:00:00-05:00    17.190001\n2026-05-11 00:00:00-05:00    18.379999\n2026-05-12 00:00:00-05:00    17.990000\n2026-05-13 00:00:00-05:00    18.150000\nName: Close, dtype: float64",
+    "sma_20": 18.06,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 18.149999618530273,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.15,
+    "rsp_return_1d": -0.09,
+    "breadth_spread_1d": 0.06,
+    "spy_return_5d": 1.99,
+    "rsp_return_5d": 0.28,
+    "breadth_spread_5d": -1.71,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 3.8,
+    "yield_10y": 4.32,
+    "spread_2s10s": 0.52,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.79,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.524,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "Westpac Consumer Confidence Change",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Westpac Consumer Confidence Change"
+    },
+    {
+      "event": "Westpac Consumer Confidence Index",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Westpac Consumer Confidence Index"
+    },
+    {
+      "event": "Home Loans QoQ",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Home Loans QoQ"
+    },
+    {
+      "event": "Investment Lending for Homes",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Investment Lending for Homes"
+    },
+    {
+      "event": "NAB Business Confidence",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "NAB Business Confidence"
+    },
+    {
+      "event": "Wage Price Index QoQ",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Wage Price Index QoQ"
+    },
+    {
+      "event": "Wage Price Index YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Wage Price Index YoY"
+    },
+    {
+      "event": "Westpac Consumer Confidence Change",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Westpac Consumer Confidence Change"
+    },
+    {
+      "event": "Westpac Consumer Confidence Index",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Westpac Consumer Confidence Index"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Business Inflation Expectations",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Business Inflation Expectations"
+    },
+    {
+      "event": "Construction Output YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Construction Output YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Eco Watchers Survey Current",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Eco Watchers Survey Current"
+    },
+    {
+      "event": "Eco Watchers Survey Outlook",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Eco Watchers Survey Outlook"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Average Earnings excl. Bonus (3Mo/Yr)",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Average Earnings excl. Bonus (3Mo/Yr)"
+    },
+    {
+      "event": "Average Earnings incl. Bonus (3Mo/Yr)",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Average Earnings incl. Bonus (3Mo/Yr)"
+    },
+    {
+      "event": "Claimant Count Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Claimant Count Change"
+    },
+    {
+      "event": "CPIF MoM Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "CPIF YoY Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "Employment Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Employment Change"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "HMRC Payrolls Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "HMRC Payrolls Change"
+    },
+    {
+      "event": "Industrial Production MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production MoM"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Wholesale Prices MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Wholesale Prices MoM"
+    },
+    {
+      "event": "Wholesale Prices YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Wholesale Prices YoY"
+    },
+    {
+      "event": "Construction Output YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Construction Output YoY"
+    },
+    {
+      "event": "Industrial Production YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Monetary Policy Meeting Minutes",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Monetary Policy Meeting Minutes"
+    },
+    {
+      "event": "Monetary Policy Meeting Minutes",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Monetary Policy Meeting Minutes"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "GDP YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "2037 Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "2037 Bond Auction"
+    },
+    {
+      "event": "2055 Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "2055 Bond Auction"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Bond Auction"
+    },
+    {
+      "event": "Employment Change QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Employment Change QoQ Prel"
+    },
+    {
+      "event": "Employment Change YoY Prel",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Employment Change YoY Prel"
+    },
+    {
+      "event": "GDP Growth Rate QoQ 2nd Est",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Flash",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY 2nd Est",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Flash",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "IEA Oil Market Report",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "IEA Oil Market Report"
+    },
+    {
+      "event": "Industrial Production MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Industrial Production MoM"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "NGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "NGB Auction"
+    },
+    {
+      "event": "20-Year BTP Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "20-Year BTP Auction"
+    },
+    {
+      "event": "3-Year BTP Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Year BTP Auction"
+    },
+    {
+      "event": "7-Year BTP Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "7-Year BTP Auction"
+    },
+    {
+      "event": "BTP Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "BTP Auction"
+    },
+    {
+      "event": "30-Year Bund Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "30-Year Bund Auction"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Unemployed Persons",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployed Persons"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Exports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports"
+    },
+    {
+      "event": "Imports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Exports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports"
+    },
+    {
+      "event": "Imports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Residential Property Prices MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Residential Property Prices MoM"
+    },
+    {
+      "event": "Residential Property Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Residential Property Prices YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Exports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports"
+    },
+    {
+      "event": "Imports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports"
+    },
+    {
+      "event": "MBA 30-Year Mortgage Rate",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "MBA 30-Year Mortgage Rate"
+    },
+    {
+      "event": "MBA Mortgage Applications",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Applications"
+    },
+    {
+      "event": "MBA Mortgage Market Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Market Index"
+    },
+    {
+      "event": "MBA Mortgage Refinance Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Refinance Index"
+    },
+    {
+      "event": "MBA Purchase Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Purchase Index"
+    },
+    {
+      "event": "M3 Money Supply YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "M3 Money Supply YoY"
+    },
+    {
+      "event": "Monetary Policy Meeting Minutes",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Monetary Policy Meeting Minutes"
+    },
+    {
+      "event": "Retail Sales MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "ECB Buch Speech",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "ECB Buch Speech"
+    },
+    {
+      "event": "Core PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Core PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "PPI",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Ex Food, Energy and Trade MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Ex Food, Energy and Trade YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "BoE L Mann Speech",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "BoE L Mann Speech"
+    },
+    {
+      "event": "EIA Crude Oil Imports Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Crude Oil Imports Change"
+    },
+    {
+      "event": "EIA Crude Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "EIA Crude Oil Stocks Change"
+    },
+    {
+      "event": "EIA Cushing Crude Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Cushing Crude Oil Stocks Change"
+    },
+    {
+      "event": "EIA Distillate Fuel Production Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Distillate Fuel Production Change"
+    },
+    {
+      "event": "EIA Distillate Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Distillate Stocks Change"
+    },
+    {
+      "event": "EIA Gasoline Production Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Gasoline Production Change"
+    },
+    {
+      "event": "EIA Gasoline Stocks Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "EIA Gasoline Stocks Change"
+    },
+    {
+      "event": "EIA Heating Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Heating Oil Stocks Change"
+    },
+    {
+      "event": "EIA Refinery Crude Runs Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Refinery Crude Runs Change"
+    },
+    {
+      "event": "17-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "17-Week Bill Auction"
+    },
+    {
+      "event": "Fed Collins Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Collins Speech"
+    },
+    {
+      "event": "5-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "5-Year Bond Auction"
+    },
+    {
+      "event": "30-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "30-Year Bond Auction"
+    },
+    {
+      "event": "Fed Kashkari Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Kashkari Speech"
+    },
+    {
+      "event": "BoC Summary of Deliberations",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "BoC Summary of Deliberations"
+    },
+    {
+      "event": "ECB Lane Speech",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "ECB Lane Speech"
+    },
+    {
+      "event": "ECB President Lagarde Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "ECB President Lagarde Speech"
+    },
+    {
+      "event": "Visitor Arrivals YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Visitor Arrivals YoY"
+    },
+    {
+      "event": "Fed Logan Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Logan Speech"
+    },
+    {
+      "event": "RICS House Price Balance",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "RICS House Price Balance"
+    },
+    {
+      "event": "Foreign Bond Investment",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Bond Investment"
+    },
+    {
+      "event": "Stock Investment by Foreigners",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Stock Investment by Foreigners"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Independence Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Independence Day"
+    },
+    {
+      "event": "King Norodom Sihamoni\u2019s Birthday",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "King Norodom Sihamoni\u2019s Birthday"
+    },
+    {
+      "event": "National Unification Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "National Unification Day"
+    },
+    {
+      "event": "President Kamuzu Banda\u2019s Birthday",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "President Kamuzu Banda\u2019s Birthday"
+    },
+    {
+      "event": "President Trump and President Xi Summit",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "President Trump and President Xi Summit"
+    },
+    {
+      "event": "Consumer Inflation Expectations",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Inflation Expectations"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "30-Year JGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "30-Year JGB Auction"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Business Investment QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Business Investment QoQ Prel"
+    },
+    {
+      "event": "Business Investment YoY Prel",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Business Investment YoY Prel"
+    },
+    {
+      "event": "Construction Orders YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Construction Orders YoY"
+    },
+    {
+      "event": "Construction Output YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Construction Output YoY"
+    },
+    {
+      "event": "GDP 3-Month Avg",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Goods Trade Balance",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Goods Trade Balance"
+    },
+    {
+      "event": "Goods Trade Balance Non-EU",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Goods Trade Balance Non-EU"
+    },
+    {
+      "event": "Industrial Production MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Industrial Production MoM"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Manufacturing Production MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Manufacturing Production MoM"
+    },
+    {
+      "event": "Manufacturing Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Manufacturing Production YoY"
+    },
+    {
+      "event": "Wholesale Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Wholesale Prices YoY"
+    },
+    {
+      "event": "WPI Food Index YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "WPI Food Index YoY"
+    },
+    {
+      "event": "WPI Fuel YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "WPI Fuel YoY"
+    },
+    {
+      "event": "WPI Inflation YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "WPI Inflation YoY"
+    },
+    {
+      "event": "WPI Manufacturing YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "WPI Manufacturing YoY"
+    },
+    {
+      "event": "Core Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate MoM"
+    },
+    {
+      "event": "Core Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate YoY"
+    },
+    {
+      "event": "Core Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate YoY Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Report",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Report"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "M2 Money Supply YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "M2 Money Supply YoY"
+    },
+    {
+      "event": "New Yuan Loans",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "New Yuan Loans"
+    },
+    {
+      "event": "Outstanding Loan Growth YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Outstanding Loan Growth YoY"
+    },
+    {
+      "event": "Total Social Financing",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Total Social Financing"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "ECB President Lagarde Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "ECB President Lagarde Speech"
+    },
+    {
+      "event": "3-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Year Bond Auction"
+    },
+    {
+      "event": "5-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "5-Year Bond Auction"
+    },
+    {
+      "event": "Gold Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Gold Production YoY"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Mining Production MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Mining Production MoM"
+    },
+    {
+      "event": "Mining Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Mining Production YoY"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "10-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "10-Year Bond Auction"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "NIESR Monthly GDP Tracker",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Foreign Exchange Reserves",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Exchange Reserves"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "ECB Machado Speech",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "ECB Machado Speech"
+    },
+    {
+      "event": "Continuing Jobless Claims",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    },
+    {
+      "event": "Export Prices MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Export Prices MoM"
+    },
+    {
+      "event": "Export Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Export Prices YoY"
+    },
+    {
+      "event": "Import Prices MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Import Prices MoM"
+    },
+    {
+      "event": "Import Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Import Prices YoY"
+    },
+    {
+      "event": "Initial Jobless Claims",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    },
+    {
+      "event": "Jobless Claims 4-week Average",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    },
+    {
+      "event": "New Motor Vehicle Sales",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "New Motor Vehicle Sales"
+    },
+    {
+      "event": "Retail Sales Control Group MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales Ex Autos MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales Ex Gas/Autos MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Wholesale Sales MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Wholesale Sales MoM Final"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Business Inventories MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Business Inventories MoM"
+    },
+    {
+      "event": "Retail Inventories Ex Autos MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Retail Inventories Ex Autos MoM"
+    },
+    {
+      "event": "EIA Natural Gas Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Natural Gas Stocks Change"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "4-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "4-Week Bill Auction"
+    },
+    {
+      "event": "8-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "8-Week Bill Auction"
+    },
+    {
+      "event": "15-Year Mortgage Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "15-Year Mortgage Rate"
+    },
+    {
+      "event": "30-Year Mortgage Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "30-Year Mortgage Rate"
+    },
+    {
+      "event": "Fed Hammack Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Hammack Speech"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Fed Balance Sheet",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Fed Balance Sheet"
+    },
+    {
+      "event": "Export Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Export Prices YoY"
+    },
+    {
+      "event": "Import Prices YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Import Prices YoY"
+    },
+    {
+      "event": "Fed Williams Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Williams Speech"
+    },
+    {
+      "event": "Business NZ PMI",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Business NZ PMI"
+    },
+    {
+      "event": "Food Inflation YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Food Inflation YoY"
+    },
+    {
+      "event": "Fed Barr Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Barr Speech"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "GDP Capital Expenditure QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP External Demand QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Annualized Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Price Index YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Private Consumption QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Bank Holiday",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Bank Holiday"
+    },
+    {
+      "event": "Friday after Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Friday after Ascension Day"
+    },
+    {
+      "event": "Liberation Day Holiday",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Liberation Day Holiday"
+    },
+    {
+      "event": "Passenger Vehicles Sales YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Passenger Vehicles Sales YoY"
+    },
+    {
+      "event": "President Trump and President Xi Summit",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "President Trump and President Xi Summit"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "50-Year KTB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "50-Year KTB Auction"
+    },
+    {
+      "event": "3-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month Bill Auction"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Cash Remittances",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Cash Remittances"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "GDP Growth Mainland QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Machine Tool Orders YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Machine Tool Orders YoY"
+    },
+    {
+      "event": "Wholesale Prices MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Wholesale Prices MoM"
+    },
+    {
+      "event": "Wholesale Prices YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Wholesale Prices YoY"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Budget Balance",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Budget Balance"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Foreign Exchange Reserves",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Exchange Reserves"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Labour Productivity QoQ",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Labour Productivity QoQ"
+    },
+    {
+      "event": "M3 Money Supply YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "M3 Money Supply YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account Prel",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Current Account Prel"
+    },
+    {
+      "event": "Exports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports"
+    },
+    {
+      "event": "GDP Growth Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Imports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "GDP YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Building Permits",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Building Permits"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "GDP YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Bank Loan Growth YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Bank Loan Growth YoY"
+    },
+    {
+      "event": "Deposit Growth YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Deposit Growth YoY"
+    },
+    {
+      "event": "Foreign Exchange Reserves",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Exchange Reserves"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Food Inflation YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Food Inflation YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Retail Sales MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Housing Starts",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Housing Starts"
+    },
+    {
+      "event": "Foreign Securities Purchases",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Securities Purchases"
+    },
+    {
+      "event": "Foreign Securities Purchases by Canadians",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Securities Purchases by Canadians"
+    },
+    {
+      "event": "Manufacturing Sales MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Manufacturing Sales MoM Final"
+    },
+    {
+      "event": "Monetary Policy Meeting Minutes",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Monetary Policy Meeting Minutes"
+    },
+    {
+      "event": "NY Empire State Manufacturing Index",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "NY Empire State Manufacturing Index"
+    },
+    {
+      "event": "Wholesale Sales MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Wholesale Sales MoM Final"
+    },
+    {
+      "event": "Food Inflation YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Food Inflation YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Capacity Utilization",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Capacity Utilization"
+    },
+    {
+      "event": "Industrial Production MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Industrial Production MoM"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Manufacturing Production MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Manufacturing Production MoM"
+    },
+    {
+      "event": "Manufacturing Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Manufacturing Production YoY"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Business Confidence",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Business Confidence"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Manufacturing PMI",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Manufacturing PMI"
+    },
+    {
+      "event": "Services PMI",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Services PMI"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "ISE Economic Activity YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "ISE Economic Activity YoY"
+    },
+    {
+      "event": "NOPA Crush Report",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "NOPA Crush Report"
+    },
+    {
+      "event": "Baker Hughes Oil Rig Count",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Baker Hughes Oil Rig Count"
+    },
+    {
+      "event": "Baker Hughes Total Rigs Count",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Baker Hughes Total Rigs Count"
+    },
+    {
+      "event": "Liberation Day Holiday",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Liberation Day Holiday"
+    },
+    {
+      "event": "17 May Constitution Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "17 May Constitution Day"
+    },
+    {
+      "event": "Legislative Election",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Legislative Election"
+    },
+    {
+      "event": "Liberation Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Liberation Day"
+    },
+    {
+      "event": "GDP Growth Annualized 1st Est",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Composite NZ PCI",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Composite NZ PCI"
+    },
+    {
+      "event": "Services NZ PSI",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Services NZ PSI"
+    },
+    {
+      "event": "Ascension Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Ascension Day"
+    },
+    {
+      "event": "Battle of Las Piedras",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Battle of Las Piedras"
+    },
+    {
+      "event": "Constitution Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Constitution Day"
+    },
+    {
+      "event": "Victoria Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Victoria Day"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Non-Oil Exports MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Non-Oil Exports MoM"
+    },
+    {
+      "event": "Non-Oil Exports YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Non-Oil Exports YoY"
+    },
+    {
+      "event": "House Price Index YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "House Price Index YoY"
+    },
+    {
+      "event": "Fixed Asset Investment (YTD) YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fixed Asset Investment (YTD) YoY"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "10-Year KTB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "10-Year KTB Auction"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "5-Year JGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "5-Year JGB Auction"
+    },
+    {
+      "event": "Auto Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Auto Production YoY"
+    },
+    {
+      "event": "Auto Sales YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Auto Sales YoY"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Flash",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "FDI (YTD) YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "FDI (YTD) YoY"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "11-Month Bubill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "11-Month Bubill Auction"
+    },
+    {
+      "event": "182-Day T-Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "182-Day T-Bill Auction"
+    },
+    {
+      "event": "273-Day T-Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "273-Day T-Bill Auction"
+    },
+    {
+      "event": "3-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month Bill Auction"
+    },
+    {
+      "event": "364-Day T-Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "364-Day T-Bill Auction"
+    },
+    {
+      "event": "5-Month Bubill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "5-Month Bubill Auction"
+    },
+    {
+      "event": "6-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month Bill Auction"
+    },
+    {
+      "event": "91-Day T-Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "91-Day T-Bill Auction"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "GDP Growth Annualized 1st Est",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "EU-Bonds Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EU-Bonds Auction"
+    },
+    {
+      "event": "IGP-10 Inflation MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "IGP-10 Inflation MoM"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "BCB Focus Market Readout",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "BCB Focus Market Readout"
+    },
+    {
+      "event": "Core Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate YoY"
+    },
+    {
+      "event": "GDP YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "IBC-BR Economic Activity",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "IBC-BR Economic Activity"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Fed Venable Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Venable Speech"
+    },
+    {
+      "event": "GDP Growth Rate QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "NY Fed Services Activity Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "NY Fed Services Activity Index"
+    },
+    {
+      "event": "12-Month BTF Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "12-Month BTF Auction"
+    },
+    {
+      "event": "3-Month BTF Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month BTF Auction"
+    },
+    {
+      "event": "6-Month BTF Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month BTF Auction"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "NAHB Housing Market Index",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "NAHB Housing Market Index"
+    },
+    {
+      "event": "3-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month Bill Auction"
+    },
+    {
+      "event": "6-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month Bill Auction"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Foreign Bond Investment",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Bond Investment"
+    },
+    {
+      "event": "Net Long-term TIC Flows",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Net Long-term TIC Flows"
+    },
+    {
+      "event": "Overall Net Capital Flows",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Overall Net Capital Flows"
+    },
+    {
+      "event": "Electronic Retail Card Spending MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Electronic Retail Card Spending MoM"
+    },
+    {
+      "event": "Electronic Retail Card Spending YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Electronic Retail Card Spending YoY"
+    },
+    {
+      "event": "PPI Input QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Output QoQ",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "GDP Capital Expenditure QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP External Demand QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Annualized Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Price Index YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Private Consumption QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Commemoration of Atat\u00fcrk, Youth and Sports Day"
+    },
+    {
+      "event": "Westpac Consumer Confidence Change",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Westpac Consumer Confidence Change"
+    },
+    {
+      "event": "Westpac Consumer Confidence Index",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Westpac Consumer Confidence Index"
+    },
+    {
+      "event": "RBA Meeting Minutes",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "RBA Meeting Minutes"
+    },
+    {
+      "event": "1-Year Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "1-Year Bill Auction"
+    },
+    {
+      "event": "3-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month Bill Auction"
+    },
+    {
+      "event": "6-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month Bill Auction"
+    },
+    {
+      "event": "52-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "52-Week Bill Auction"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Capacity Utilization MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Capacity Utilization MoM"
+    },
+    {
+      "event": "Industrial Production MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production MoM Final"
+    },
+    {
+      "event": "Industrial Production YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY Final"
+    },
+    {
+      "event": "Tertiary Industry Index MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Tertiary Industry Index MoM"
+    },
+    {
+      "event": "MAS 12-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MAS 12-Week Bill Auction"
+    },
+    {
+      "event": "MAS 4-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MAS 4-Week Bill Auction"
+    },
+    {
+      "event": "Average Earnings excl. Bonus (3Mo/Yr)",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Average Earnings excl. Bonus (3Mo/Yr)"
+    },
+    {
+      "event": "Average Earnings incl. Bonus (3Mo/Yr)",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Average Earnings incl. Bonus (3Mo/Yr)"
+    },
+    {
+      "event": "Claimant Count Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Claimant Count Change"
+    },
+    {
+      "event": "Employment Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Employment Change"
+    },
+    {
+      "event": "HMRC Payrolls Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "HMRC Payrolls Change"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Labour Productivity QoQ",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Labour Productivity QoQ"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Index-linked Treasury Gilt 2031 Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Index-linked Treasury Gilt 2031 Auction"
+    },
+    {
+      "event": "3-Month DTB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month DTB Auction"
+    },
+    {
+      "event": "5-Year Bobl Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "5-Year Bobl Auction"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Weekly Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Weekly Bond Auction"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "RFGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "RFGB Auction"
+    },
+    {
+      "event": "IBC-BR Economic Activity",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "IBC-BR Economic Activity"
+    },
+    {
+      "event": "ADP Employment Change Weekly",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "ADP Employment Change Weekly"
+    },
+    {
+      "event": "Building Permits MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Building Permits MoM"
+    },
+    {
+      "event": "Core Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate MoM"
+    },
+    {
+      "event": "Core Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Core Inflation Rate YoY"
+    },
+    {
+      "event": "CPI Common YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "CPI Median YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "CPI Trimmed-Mean YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "New Housing Price Index MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "New Housing Price Index MoM"
+    },
+    {
+      "event": "Redbook YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Redbook YoY"
+    },
+    {
+      "event": "Global Dairy Trade Price Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Global Dairy Trade Price Index"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Pending Home Sales MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Pending Home Sales MoM"
+    },
+    {
+      "event": "Pending Home Sales YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Pending Home Sales YoY"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Imports YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports YoY"
+    },
+    {
+      "event": "6-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Week Bill Auction"
+    },
+    {
+      "event": "API Crude Oil Stock Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "API Crude Oil Stock Change"
+    },
+    {
+      "event": "Fed Paulson Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Paulson Speech"
+    },
+    {
+      "event": "Fed Venable Speech",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Fed Venable Speech"
+    },
+    {
+      "event": "National Day",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "National Day"
+    },
+    {
+      "event": "Westpac Leading Index MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Westpac Leading Index MoM"
+    },
+    {
+      "event": "Loan Prime Rate 1Y",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Loan Prime Rate 1Y"
+    },
+    {
+      "event": "Loan Prime Rate 5Y",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Loan Prime Rate 5Y"
+    },
+    {
+      "event": "20-Year JGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "20-Year JGB Auction"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Exports YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports YoY"
+    },
+    {
+      "event": "Imports YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports YoY"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Core Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate MoM"
+    },
+    {
+      "event": "Core Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Core Inflation Rate YoY"
+    },
+    {
+      "event": "GDP Growth Rate QoQ Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "GDP Growth Rate YoY Prel",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "PPI Core Output MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Core Output YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Input MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Input YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Output MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI Output YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Retail Price Index MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Retail Price Index MoM"
+    },
+    {
+      "event": "Retail Price Index YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Retail Price Index YoY"
+    },
+    {
+      "event": "Gross Wage YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Gross Wage YoY"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "ECB Non-Monetary Policy Meeting",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "ECB Non-Monetary Policy Meeting"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM"
+    },
+    {
+      "event": "Harmonised Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate MoM Final"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY Final"
+    },
+    {
+      "event": "Industrial Production YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Industrial Production YoY"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Deposit Facility Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Deposit Facility Rate"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Lending Facility Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Lending Facility Rate"
+    },
+    {
+      "event": "Loan Growth YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Loan Growth YoY"
+    },
+    {
+      "event": "Construction Output YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Construction Output YoY"
+    },
+    {
+      "event": "Core Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate MoM"
+    },
+    {
+      "event": "Core Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate YoY"
+    },
+    {
+      "event": "Export Orders YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Export Orders YoY"
+    },
+    {
+      "event": "Inflation Rate MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate MoM"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "DGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "DGB Auction"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Consumer Confidence",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Consumer Confidence"
+    },
+    {
+      "event": "Core Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Core Inflation Rate YoY Final"
+    },
+    {
+      "event": "CPI Final",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "Inflation Rate MoM Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate MoM Final"
+    },
+    {
+      "event": "Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY"
+    },
+    {
+      "event": "Inflation Rate YoY Final",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Inflation Rate YoY Final"
+    },
+    {
+      "event": "Labour Cost Index YoY Flash",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Labour Cost Index YoY Flash"
+    },
+    {
+      "event": "SGB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "SGB Auction"
+    },
+    {
+      "event": "10-Year Bund Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "10-Year Bund Auction"
+    },
+    {
+      "event": "6-Month DTB Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month DTB Auction"
+    },
+    {
+      "event": "Current Account",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Current Account"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "Unemployment Rate",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Unemployment Rate"
+    },
+    {
+      "event": "12-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "12-Month Bill Auction"
+    },
+    {
+      "event": "3-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "3-Month Bill Auction"
+    },
+    {
+      "event": "6-Month Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "6-Month Bill Auction"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "MBA 30-Year Mortgage Rate",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "MBA 30-Year Mortgage Rate"
+    },
+    {
+      "event": "MBA Mortgage Applications",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Applications"
+    },
+    {
+      "event": "MBA Mortgage Market Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Market Index"
+    },
+    {
+      "event": "MBA Mortgage Refinance Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Mortgage Refinance Index"
+    },
+    {
+      "event": "MBA Purchase Index",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "MBA Purchase Index"
+    },
+    {
+      "event": "Retail Sales MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Retail Sales YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Infrastructure Output YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Infrastructure Output YoY"
+    },
+    {
+      "event": "Harmonised Inflation Rate YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Harmonised Inflation Rate YoY"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Central Government Debt",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Central Government Debt"
+    },
+    {
+      "event": "EIA Crude Oil Imports Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Crude Oil Imports Change"
+    },
+    {
+      "event": "EIA Crude Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "EIA Crude Oil Stocks Change"
+    },
+    {
+      "event": "EIA Cushing Crude Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Cushing Crude Oil Stocks Change"
+    },
+    {
+      "event": "EIA Distillate Fuel Production Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Distillate Fuel Production Change"
+    },
+    {
+      "event": "EIA Distillate Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Distillate Stocks Change"
+    },
+    {
+      "event": "EIA Gasoline Production Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Gasoline Production Change"
+    },
+    {
+      "event": "EIA Gasoline Stocks Change",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "EIA Gasoline Stocks Change"
+    },
+    {
+      "event": "EIA Heating Oil Stocks Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Heating Oil Stocks Change"
+    },
+    {
+      "event": "EIA Refinery Crude Runs Change",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "EIA Refinery Crude Runs Change"
+    },
+    {
+      "event": "17-Week Bill Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "17-Week Bill Auction"
+    },
+    {
+      "event": "2-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "2-Year Bond Auction"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "20-Year Bond Auction",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "20-Year Bond Auction"
+    },
+    {
+      "event": "FOMC Minutes",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "PPI MoM",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "PPI YoY",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "Interest Rate Decision",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Interest Rate Decision"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Exports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Exports"
+    },
+    {
+      "event": "Imports",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports"
+    },
+    {
+      "event": "S&P Global Composite PMI Flash",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "S&P Global Composite PMI Flash"
+    },
+    {
+      "event": "S&P Global Manufacturing PMI Flash",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "S&P Global Manufacturing PMI Flash"
+    },
+    {
+      "event": "S&P Global Services PMI Flash",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "S&P Global Services PMI Flash"
+    },
+    {
+      "event": "Balance of Trade",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "Balance of Trade"
+    },
+    {
+      "event": "Exports YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Exports YoY"
+    },
+    {
+      "event": "Foreign Bond Investment",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Foreign Bond Investment"
+    },
+    {
+      "event": "Imports YoY",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Imports YoY"
+    },
+    {
+      "event": "Machinery Orders MoM",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Machinery Orders MoM"
+    },
+    {
+      "event": "Machinery Orders YoY",
+      "date": "2026-05-13",
+      "impact": "medium",
+      "description": "Machinery Orders YoY"
+    },
+    {
+      "event": "Stock Investment by Foreigners",
+      "date": "2026-05-13",
+      "impact": "low",
+      "description": "Stock Investment by Foreigners"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 4.37,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 139.41,
+    "skew_sma20": 139.92,
+    "skew_state": "elevated",
+    "skew_vs_sma": -0.51
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.241,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 679736,
+    "spy_put_volume": 843323
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 16.34000015258789,
+    "vix": 18.149999618530273,
+    "vix3m": 21.040000915527344
+  },
+  "cot_positioning": {
+    "net_position": -89289,
+    "percentile": 80.4,
+    "signal": "long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "surprise_score": 0.006,
+    "beats": 76.0,
+    "misses": 75.0,
+    "total_events": 165.0,
+    "signal": "inline"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.27,
+      "return_1d": -0.67,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.37,
+      "return_1d": 0.37,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 7.73,
+      "return_1d": 4.07,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "The case for owning cybersecurity stocks in the age of AI just got stronger",
+        "source": "CNBC",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Jim Cramer: Don't dump this AI leader after its stock slipped from a new high",
+        "source": "CNBC",
+        "sentiment": 0.292
+      },
+      {
+        "headline": "Stanford professor teaches his classes \u2018tech-free\u2019\u2014here\u2019s the skill he wants his students to build",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Evolving drone war in southern Lebanon clouds Iran peace prospects - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Iran war takes colour out of Japanese snack maker Calbee's chips packaging - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Rupee's rough patch worsens on oil, outflow strain; central bank likely steps in - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      },
+      {
+        "headline": "US issues alert to banks on IRGC efforts to evade sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Global oil supply to plunge below demand this year due to Iran war, IEA says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.66
+      },
+      {
+        "headline": "India races to shield economy from Iran war-driven oil shock, capital stress - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.66
+      },
+      {
+        "headline": "Vietnam imports more fuel to offset oil shortfall amid Iran war, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "European stocks rise, oil prices steady, government bond yields still high - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil little changed as Trump heads to China - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "FedEx CEO brushes off Amazon's new logistics service that recently sent shares tumbling",
+        "source": "CNBC",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "Israel sent Iron Dome air defense systems to UAE, US envoy says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Auto-state lawmakers seek to keep Chinese EV parts out of U.S. as Trump heads to Beijing",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US consumer inflation expected to have increased further in April amid Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Cola wars in India fuel booming demand for visi-coolers and retail fridges",
+        "source": "Bloomberg",
+        "sentiment": -0.625
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Europe's chemical makers catch a break as Iran war hits Asian rivals - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "China's commodity imports show Hormuz impact as oil slides, metals rise - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold falls as fading Middle East peace hopes lift dollar, oil - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.743
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Trump says stopping Iran's nuclear program outweighs Americans' economic pain - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Iran war to cast a shadow on BRICS foreign ministers meeting in Delhi - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Siemens orders rise more than expected despite Iranian war tension - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.626
+      },
+      {
+        "headline": "S&P 500, Nasdaq end lower as inflation, Iran tensions weigh - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "US war in Iran has cost $29 billion so far, Pentagon says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Exclusive: Saudi Arabia launched covert attacks on Iran as regional war widened, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.7
+      },
+      {
+        "headline": "UK to send drones, jets and warship to join defensive mission securing Strait of Hormuz - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Second Qatari LNG tanker successfully crosses Hormuz to Pakistan as Iran war continues, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.178
+      },
+      {
+        "headline": "Freight costs threaten Zimbabwe farmers' livelihoods as Iran war disrupts exports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.681
+      }
+    ]
+  },
+  "timestamp": "2026-05-13T09:09:03.985562"
+}
