@@ -1097,6 +1097,20 @@
       "context": {
         "length": 3521
       }
+    },
+    {
+      "timestamp": "2026-05-16T10:48:52.776537",
+      "week": "2026-W19",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "# CIO Weekly Review \u2014 Week of May 16, 2026\n\n---\n\n## Executive Summary\n\n**This is a ghost week \u2014 0W/0L/3 total with 0.0% average return means all three positions either expired worthless at exactly breakeven or, more likely, no scorecard data was recorded.** Without P&L figures, entry prices, or stri"
+      }
     }
   ],
   "weekly_summaries": []
