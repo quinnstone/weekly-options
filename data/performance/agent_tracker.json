@@ -1262,6 +1262,51 @@
       "context": {
         "brief": "Trend_persistence (85) and momentum (82) are solid but not spectacular, and the CALL thesis is fighting a bearish market narrative. The mechanical check notes price moving against thesis (-1.6% since open from $298.25 \u2192 $295.33), which actually brings the $295 strike back near-ATM \u2014 delta should still be ~0.50, which is fine. Premium compression from $5.28 \u2192 $3.94 (-25%) is partly the stock moving down, partly IV. The 0.7% breakeven at $300.28 is tight and achievable, and analyst upgrades (\u0394=+2) plus unusual options flow provide fundamental support. However, with credit spreads tight (HY OAS 2"
       }
+    },
+    {
+      "timestamp": "2026-05-18T14:51:41.971683",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "FTNT",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 45.9,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-18T14:51:41.973272",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "LULU",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 25.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-18T14:51:41.974682",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -1.0,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
