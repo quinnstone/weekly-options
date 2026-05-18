@@ -1,0 +1,69 @@
+{
+  "date": "2026-05-18",
+  "picks": [
+    {
+      "ticker": "FTNT",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.06,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 94.8843544014468,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 77.8,
+        "flow_conviction": 50.0,
+        "event_risk": 30.0,
+        "liquidity": 50.03926,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "LULU",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 64.97,
+      "direction_confidence": 0.303,
+      "scores": {
+        "momentum": 86.92384728591753,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 75.75,
+        "flow_conviction": 40.0,
+        "event_risk": 34.0,
+        "liquidity": 55.0969,
+        "strike_efficiency": 75.0,
+        "theta_cost": 53.0
+      }
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 62.29,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 81.82651590348642,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 40.0,
+        "flow_conviction": 65.0,
+        "event_risk": 45.0,
+        "liquidity": 76.0143,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-05-18T10:56:59.191375"
+}

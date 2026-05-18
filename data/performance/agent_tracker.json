@@ -1111,6 +1111,118 @@
         "proposals": [],
         "analysis_snippet": "# CIO Weekly Review \u2014 Week of May 16, 2026\n\n---\n\n## Executive Summary\n\n**This is a ghost week \u2014 0W/0L/3 total with 0.0% average return means all three positions either expired worthless at exactly breakeven or, more likely, no scorecard data was recorded.** Without P&L figures, entry prices, or stri"
       }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.583728",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "DDOG",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.585371",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "FTNT",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.586798",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "PANW",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.588176",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "CRWD",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.589503",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "AAPL",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.590823",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "UNH",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:19.592450",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "INTC",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-05-18T10:56:57.508506",
+      "week": "2026-W20",
+      "agent": "portfolio_reasoner",
+      "ticker": "PORTFOLIO",
+      "mechanical_signal": "DDOG,LULU,PANW",
+      "agent_signal": "FTNT,LULU,AAPL",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "dropped": [
+          "DDOG",
+          "PANW",
+          "CRWD",
+          "FTNT",
+          "LULU",
+          "AAPL"
+        ],
+        "reasoning": "SELECTED:\n\n1. **FTNT** \u2014 CALL\n   *Portfolio justification:* Highest momentum score in the field (95) with strong trend persistence (85) and favorable IV (78), no earnings this week, and sits in the dynamic sector \u2014 providing diversification away from the software_cloud cluster. No event risk on this name specifically.\n   **THESIS:** Momentum (95) and trend persistence (85) are the dominant signals, indicating FTNT is in a strong, sustained uptrend entering this week. IV mispricing at 78 suggests we're buying relatively cheap premium for the realized move potential. **Kill condition:** A break below the 20-day SMA or a VIX spike above 25 that would deweight momentum by 30% (high-regime multiplier 0.7x), undermining the core signal driving this pick.\n\n2. **AAPL** \u2014 CALL\n   *Portfolio justification:* Mega-cap tech provides the most liquid execution in the portfolio (liquidity score 76, highest among candidates), minimizing slippage risk on a week where holding-window risk is already elevated. Uncorrelated to FTNT's cybersecurity dynamics. Analyst upgrades (\u0394=+2) plus unusual options flow provide a secondary catalyst layer beyond pure momentum.\n   **THESIS:** Trend persistence (85) and momentum (82) are well-supported by unusual options flow and fresh analyst upgrades, suggesting institutional conviction behind the move. The liquidity score (76) means tight bid-ask spreads and clean execution \u2014 critical when macro edge is only 0.55x and we need every basis point. **Kill condition:** Monday's high-impact event creating a broad risk-off gap >2% in SPY, which would invalidate the call thesis on a high-beta-to-market name; also exit if delta drifts below 0.20 by Wednesday given charm decay on a weekly hold.\n\n3. **LULU** \u2014 PUT\n   *Portfolio justification:* Only candidate aligned with the bearish market narrative, providing critical direction balance to a book that would otherwise be 3/3 calls into a high holding-window-risk week with a Monday event. Earnings flag is a concern but the put direction actually benefits from the elevated IV and any post-earnings disappointment.\n   **THESIS:** Momentum (87) and trend persistence (85) are driving downside conviction, and this is the sole candidate where the bearish market narrative aligns with the scored direction \u2014 every other pick conflicts. Earnings this week actually amplifies the put thesis: if results disappoint, IV crush works in our favor as the stock gaps down through the strike. **Kill condition:** A blowout ear"
+      }
     }
   ],
   "weekly_summaries": []
