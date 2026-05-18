@@ -4215,7 +4215,7 @@
     },
     "strike": 125.0,
     "expiry": "2026-05-22",
-    "premium": 2.8,
+    "premium": 1.72,
     "confidence": 0.319,
     "current_price": 124.4,
     "breakeven": 127.8,
@@ -4239,7 +4239,8 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 2.7% move to $127.80 (weekly expected move: 7.3%)."
     },
     "git_sha": "a5554de3cfaeb337775bebf7f9aeb7cb9c3d2a0e",
-    "thesis": "** Momentum (95) and trend persistence (85) are the dominant signals, indicating FTNT is in a strong, sustained uptrend entering this week. IV mispricing at 78 suggests we're buying relatively cheap premium for the realized move potential. **Kill condition:** A break below the 20-day SMA or a VIX spike above 25 that would deweight momentum by 30% (high-regime multiplier 0.7x), undermining the core signal driving this pick."
+    "thesis": "** Momentum (95) and trend persistence (85) are the dominant signals, indicating FTNT is in a strong, sustained uptrend entering this week. IV mispricing at 78 suggests we're buying relatively cheap premium for the realized move potential. **Kill condition:** A break below the 20-day SMA or a VIX spike above 25 that would deweight momentum by 30% (high-regime multiplier 0.7x), undermining the core signal driving this pick.",
+    "original_premium_premarket": 2.8
   },
   {
     "ticker": "LULU",
@@ -12773,7 +12774,7 @@
     },
     "strike": 295.0,
     "expiry": "2026-05-22",
-    "premium": 5.28,
+    "premium": 3.94,
     "confidence": 0.319,
     "current_price": 298.25,
     "breakeven": 300.28,
@@ -12797,6 +12798,7 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.7% move to $300.28 (weekly expected move: 4.4%)."
     },
     "git_sha": "a5554de3cfaeb337775bebf7f9aeb7cb9c3d2a0e",
-    "thesis": "** Trend persistence (85) and momentum (82) are well-supported by unusual options flow and fresh analyst upgrades, suggesting institutional conviction behind the move. The liquidity score (76) means tight bid-ask spreads and clean execution \u2014 critical when macro edge is only 0.55x and we need every basis point. **Kill condition:** Monday's high-impact event creating a broad risk-off gap >2% in SPY, which would invalidate the call thesis on a high-beta-to-market name; also exit if delta drifts below 0.20 by Wednesday given charm decay on a weekly hold."
+    "thesis": "** Trend persistence (85) and momentum (82) are well-supported by unusual options flow and fresh analyst upgrades, suggesting institutional conviction behind the move. The liquidity score (76) means tight bid-ask spreads and clean execution \u2014 critical when macro edge is only 0.55x and we need every basis point. **Kill condition:** Monday's high-impact event creating a broad risk-off gap >2% in SPY, which would invalidate the call thesis on a high-beta-to-market name; also exit if delta drifts below 0.20 by Wednesday given charm decay on a weekly hold.",
+    "original_premium_premarket": 5.28
   }
 ]

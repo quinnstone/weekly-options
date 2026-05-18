@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "FTNT",
+    "direction": "call",
+    "strike": 125.0,
+    "original_premium": 1.72,
+    "original_price": 124.4,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+2.6% since open). Premium moved -39% ($2.80 \u2192 $1.72). Adjust limit order accordingly.",
+    "current_price": 125.23,
+    "new_delta": 0.536,
+    "new_premium": 1.72,
+    "gap_pct": -1.89,
+    "timestamp": "2026-05-18T12:47:01.990289",
+    "agent_signal": "ADJUST",
+    "agent_brief": "The momentum (95) and trend_persistence (85) scores are excellent with strong ensemble alignment from the momentum-only model, and iv_mispricing at 78 confirms cheap vol (likely IV/RV < 0.9). However, two issues demand attention: (1) premium has already cratered 39% from $2.80 \u2192 $1.72, meaning you're buying after a significant move against the option despite the stock only being down ~$0.80 \u2014 this suggests IV compression or time decay already biting hard, and the breakeven at $127.80 (2.7% move needed) is aggressive for a normal-VIX week with high holding-window risk; (2) the market narrative conflict (bearish lean vs. CALL thesis) combined with a -1.89% gap that's partially recovered (+2.6% since open) creates a noisy entry. The $125 strike now sits near-ATM at $125.23 (delta ~0.50 still reasonable), but **adjust the limit to the current $1.72 premium rather than a stale higher price, and watch for delta drift if the stock fades below $124 \u2014 that would push delta below 0.35 threshold.**"
+  },
+  {
+    "ticker": "LULU",
+    "direction": "put",
+    "strike": 122.0,
+    "original_premium": 2.92,
+    "original_price": 120.42,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.78 (price moved from $120.42 to $118.96). Consider re-selecting strike closer to current price.",
+    "current_price": 118.96,
+    "new_delta": 0.78,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-05-18T12:47:02.254795",
+    "agent_signal": "SKIP",
+    "agent_brief": "The mechanical check already flagged the critical issue: delta has ballooned from -0.51 to -0.78 as LULU dropped from $120.42 to $118.96, meaning the $122 put is now deep ITM. At -0.78 delta, this option behaves almost like short stock \u2014 you're paying $2.92 for an option with ~$3.04 intrinsic value, leaving only ~$0.00 extrinsic. You've lost the convexity advantage that makes options worthwhile. The social catalyst flagging \"earnings\" is concerning \u2014 if LULU has earnings this week, IV crush on a put that's already ITM could still hurt, and the 30% confidence is barely above the 25% hard gate. **If you proceed, re-strike to the $120 or $119 put to recover a ~0.50 delta and regain leverage. At the current $122 strike, this is a stock substitute, not an options trade.**"
+  },
+  {
+    "ticker": "AAPL",
+    "direction": "call",
+    "strike": 295.0,
+    "original_premium": 3.94,
+    "original_price": 298.25,
+    "signal": "GO",
+    "detail": "Price moving against thesis (-1.6% since open). Proceed with caution or wait for reversal. Premium moved -25% ($5.28 \u2192 $3.94). Adjust limit order accordingly.",
+    "current_price": 295.33,
+    "new_delta": 0.527,
+    "new_premium": 3.94,
+    "gap_pct": 0.67,
+    "timestamp": "2026-05-18T12:47:02.633384",
+    "agent_signal": "ADJUST",
+    "agent_brief": "Trend_persistence (85) and momentum (82) are solid but not spectacular, and the CALL thesis is fighting a bearish market narrative. The mechanical check notes price moving against thesis (-1.6% since open from $298.25 \u2192 $295.33), which actually brings the $295 strike back near-ATM \u2014 delta should still be ~0.50, which is fine. Premium compression from $5.28 \u2192 $3.94 (-25%) is partly the stock moving down, partly IV. The 0.7% breakeven at $300.28 is tight and achievable, and analyst upgrades (\u0394=+2) plus unusual options flow provide fundamental support. However, with credit spreads tight (HY OAS 2.8%, historically a 50.4% accuracy zone \u2014 worst in our backtest), and confidence at only 32%, this is a marginal trade. **GO cautiously \u2014 the entry at $3.94 is better than $5.28, but set a hard mental stop if AAPL breaks below $293 (>2% gap against thesis from current $295.33).**"
+  }
+]
