@@ -1,0 +1,69 @@
+{
+  "positions": [
+    {
+      "ticker": "FTNT",
+      "direction": "call",
+      "strike": 125.0,
+      "entry_price": 124.4,
+      "current_price": 127.61,
+      "entry_premium": 1.72,
+      "current_option_price": 3.9,
+      "current_delta": 0.67,
+      "stock_move_pct": 2.58,
+      "option_return_pct": 126.7,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 127% \u2014 at or above 35% day-2 target. Consider taking profit."
+    },
+    {
+      "ticker": "LULU",
+      "direction": "put",
+      "strike": 122.0,
+      "entry_price": 120.42,
+      "current_price": 119.24,
+      "entry_premium": 2.92,
+      "current_option_price": 3.88,
+      "current_delta": 0.686,
+      "stock_move_pct": 0.98,
+      "option_return_pct": 32.9,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 33% (target: 35% today). Stock moved +1.0%."
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 295.0,
+      "entry_price": 298.25,
+      "current_price": 298.98,
+      "entry_premium": 3.94,
+      "current_option_price": 5.35,
+      "current_delta": 0.731,
+      "stock_move_pct": 0.24,
+      "option_return_pct": 35.8,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 36% \u2014 at or above 35% day-2 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "FTNT: TARGET HIT (127% vs 35% target)",
+    "AAPL: TARGET HIT (36% vs 35% target)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 65.1,
+    "targets_hit": 2,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}

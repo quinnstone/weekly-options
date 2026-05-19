@@ -1307,6 +1307,51 @@
         "option_return_pct": -1.0,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-05-19T16:29:10.770191",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "FTNT",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 126.7,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-19T16:29:10.771504",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "LULU",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 32.9,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-05-19T16:29:10.772641",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 35.8,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
