@@ -1352,6 +1352,19 @@
         "option_return_pct": 35.8,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-05-20T09:38:00.496025",
+      "week": "2026-W20",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3310
+      }
     }
   ],
   "weekly_summaries": []
