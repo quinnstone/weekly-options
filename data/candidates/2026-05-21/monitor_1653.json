@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "FTNT",
+      "direction": "call",
+      "strike": 125.0,
+      "entry_price": 124.4,
+      "current_price": 129.42,
+      "entry_premium": 1.72,
+      "current_option_price": 4.25,
+      "current_delta": 0.799,
+      "stock_move_pct": 4.04,
+      "option_return_pct": 147.1,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 147% \u2014 at or above 15% day-4 target. Consider taking profit."
+    },
+    {
+      "ticker": "LULU",
+      "direction": "put",
+      "strike": 122.0,
+      "entry_price": 120.42,
+      "current_price": 126.76,
+      "entry_premium": 2.92,
+      "current_option_price": 0.15,
+      "current_delta": 0.035,
+      "stock_move_pct": -5.26,
+      "option_return_pct": -94.9,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -95% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 295.0,
+      "entry_price": 298.25,
+      "current_price": 305.09,
+      "entry_premium": 3.94,
+      "current_option_price": 9.93,
+      "current_delta": 0.945,
+      "stock_move_pct": 2.29,
+      "option_return_pct": 152.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 152% \u2014 at or above 15% day-4 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "FTNT: TARGET HIT (147% vs 15% target)",
+    "LULU: STOP LOSS HIT (-95%)",
+    "AAPL: TARGET HIT (152% vs 15% target)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n---\n\n### FTNT CALL: **+147%** \u2705 TARGET CRUSHED\nStock +4.0% drove this well past the 15% Thursday target. At day 4, charm has already eroded initial delta significantly \u2014 further upside from here requires continued strong momentum against accelerating theta. +147% on a weekly call with one day left is a gift. **Lock it in.**\n\n### LULU PUT: **-95%** \ud83d\uded1 STOP BLOWN\nThis breached the -50% hard stop and kept going. Stock moved +5.3% against a put \u2014 delta is effectively zero. This is dead money. Should have been closed at -50% per methodology. **Close immediately for whatever residual bid exists.**\n\n### AAPL CALL: **+152%** \u2705 TARGET CRUSHED\nStock +2.3% producing +152% option return \u2014 gamma amplification did its job. Same logic as FTNT: with one day to expiry, theta will burn ~4-5% of remaining premium per hour tomorrow. Holding overnight risks giving back a massive win for marginal upside. **Lock it in.**\n\n---\n\n### Ensemble check\nBoth FTNT and AAPL calls delivered outsized returns, confirming the directional thesis held through the week. LULU put was a complete miss \u2014 stock moved hard against direction. One clear loser, two massive winners. Portfolio net P&L is strongly positive despite the LULU wipeout.\n\n---\n\n## RECOMMENDATION\n\n**Close all three positions NOW.**\n\nLULU is a corpse \u2014 stop was triggered, execute the exit and stop the bleed. FTNT and AAPL at +147% and +152% are 10x the Thursday target; holding into Friday for an extra few percent while theta and charm accelerate is negative expected value. Book the wins. Two out of three at +150% with one stop-loss is an excellent week. Don't let Thursday's gifts become Friday's regrets.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 68.1,
+    "targets_hit": 2,
+    "stops_hit": 1,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
