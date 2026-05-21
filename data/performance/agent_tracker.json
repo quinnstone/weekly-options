@@ -1410,6 +1410,51 @@
         "option_return_pct": 92.1,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-05-21T12:34:35.812063",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "FTNT",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": 106.4,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-05-21T12:34:35.813880",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "LULU",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": -65.8,
+        "has_agent_analysis": true
+      }
+    },
+    {
+      "timestamp": "2026-05-21T12:34:35.815572",
+      "week": "2026-W20",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": 131.0,
+        "has_agent_analysis": true
+      }
     }
   ],
   "weekly_summaries": []

@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "FTNT",
+      "direction": "call",
+      "strike": 125.0,
+      "entry_price": 124.4,
+      "current_price": 128.3,
+      "entry_premium": 1.72,
+      "current_option_price": 3.55,
+      "current_delta": 0.839,
+      "stock_move_pct": 3.14,
+      "option_return_pct": 106.4,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 106% \u2014 at or above 15% day-4 target. Consider taking profit."
+    },
+    {
+      "ticker": "LULU",
+      "direction": "put",
+      "strike": 122.0,
+      "entry_price": 120.42,
+      "current_price": 123.14,
+      "entry_premium": 2.92,
+      "current_option_price": 1.0,
+      "current_delta": 0.338,
+      "stock_move_pct": -2.26,
+      "option_return_pct": -65.8,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -66% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 295.0,
+      "entry_price": 298.25,
+      "current_price": 303.7,
+      "entry_premium": 3.94,
+      "current_option_price": 9.1,
+      "current_delta": 0.946,
+      "stock_move_pct": 1.83,
+      "option_return_pct": 131.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 131% \u2014 at or above 15% day-4 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "FTNT: TARGET HIT (106% vs 15% target)",
+    "LULU: STOP LOSS HIT (-66%)",
+    "AAPL: TARGET HIT (131% vs 15% target)"
+  ],
+  "agent_analysis": "## POSITION MONITOR \u2014 Thursday (ELEVATED)\n\n---\n\n### FTNT CALL: +106% \u2705 TARGET HIT\nStock +3.1% confirms momentum thesis. At 7x the day-4 target of 15%. Charm is irrelevant \u2014 this option is deep ITM with high delta. **No reason to hold into Friday's theta cliff.** Take profit NOW.\n\n### AAPL CALL: +131% \u2705 TARGET HIT\nStock +1.8% driving outsized option return \u2014 gamma worked in our favor. Same logic: 8.7x the Thursday target. Holding overnight risks giving back 20-40% of gains to theta alone (~4%/day baseline, accelerating into expiry). **Take profit NOW.**\n\n### LULU PUT: -66% \ud83d\uded1 STOP BLOWN\nPast the -50% hard stop. Should have been closed already. Stock moved +2.3% against the put thesis \u2014 direction was wrong. At -66% on Thursday with 1 day left, recovery requires a ~4% reversal tomorrow. Not happening without a catalyst. **Close immediately at market.**\n\n---\n\n## RECOMMENDATION\n\n**Close all three positions today. No holds into Friday.**\n\nTwo winners at +106% and +131% are exceptional for a weekly hold \u2014 locking in profits eliminates overnight risk, gap risk, and Friday's liquidity cliff after 3 PM. LULU is a dead position bleeding past stop; every hour held is additional loss to theta.\n\n**Priority order:** LULU first (stop discipline), then FTNT and AAPL (profit locks). Market orders acceptable on all three given ELEVATED urgency.\n\nNet week: two strong wins easily offset the LULU loss. Portfolio-level outcome is solidly positive. Execute now.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 57.2,
+    "targets_hit": 2,
+    "stops_hit": 1,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
