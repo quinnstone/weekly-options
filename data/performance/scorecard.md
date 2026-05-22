@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 2 |
-| Total Picks | 6 |
-| Record | 2W - 1L - 3P |
-| Win Rate | 33% |
-| Total Invested | $3,766.00 |
-| Total Returned | $3,998.00 |
-| **Net P&L** | **+$232.00** |
-| **ROI** | **+6.16%** |
+| Weeks Tracked | 3 |
+| Total Picks | 9 |
+| Record | 4W - 2L - 3P |
+| Win Rate | 44% |
+| Total Invested | $4,624.00 |
+| Total Returned | $6,273.00 |
+| **Net P&L** | **+$1,649.00** |
+| **ROI** | **+35.66%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-05-18 (exp. 2026-05-22)
+
+**2W-1L-0P** | Cost: $858.00 | Return: $2,275.00 | **P&L: +$1,417.00 (+165.2%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | FTNT | CALL | $125.00 | $1.72 | $133.93 | $8.93 | +$721.00 | WIN |
+| 2 | LULU | PUT | $122.00 | $2.92 | $127.18 | $0.00 | -$292.00 | LOSS |
+| 3 | AAPL | CALL | $295.00 | $3.94 | $308.82 | $13.82 | +$988.00 | WIN |
 
 ### Week of 2026-05-04 (exp. 2026-05-08)
 
@@ -46,4 +56,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-05-08 17:33 ET*
+*Last updated: 2026-05-22 17:06 ET*
