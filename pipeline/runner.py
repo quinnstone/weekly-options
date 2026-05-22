@@ -68,8 +68,56 @@ class PipelineRunner:
                 f"Valid stages: {', '.join(dispatch.keys())}"
             )
 
+        # Market closure guard — skip stages that depend on live market data
+        # when the NYSE/NASDAQ is closed (Memorial Day, MLK Day, etc.). The
+        # crons fire regardless of market schedule, so without this check
+        # picks would generate against stale Friday data and produce
+        # unactionable Discord messages. See:
+        #   analysis/market_calendar.py for the holiday list
+        #   memory/project_market_holiday_handling.md for the playbook
+        from analysis.market_calendar import is_market_closed, is_market_dependent
+        holiday = is_market_closed()
+        if holiday and is_market_dependent(stage_name):
+            logger.info(
+                "=== %s SKIPPED — market closed today (%s) ===",
+                stage_name.upper(), holiday,
+            )
+            self._send_holiday_notice_once(holiday, stage_name)
+            return []
+
         logger.info("Running stage: %s", stage_name)
         return handler()
+
+    def _send_holiday_notice_once(self, holiday: str, stage_name: str) -> None:
+        """Post a Discord notice that today's pipeline is skipped due to
+        market closure. Uses a date-keyed flag file so multiple crons on the
+        same holiday don't produce duplicate Discord messages (only the first
+        skip-event of the day posts; subsequent ones log and stay silent).
+        """
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        flag_path = config.data_dir / f".holiday_notice_{date_str}.flag"
+        if flag_path.exists():
+            logger.info("Holiday notice already sent today — skipping duplicate")
+            return
+        try:
+            from notifications.discord import DiscordNotifier
+            notifier = DiscordNotifier()
+            if hasattr(notifier, "send_holiday_notice"):
+                notifier.send_holiday_notice(date_str, holiday)
+            else:
+                # Defensive fallback if notifier method is missing
+                notifier._post_webhook({
+                    "content": (
+                        f"⏸️ **Market closed today — {holiday}**\n"
+                        f"Pipeline auto-skipped (stage: {stage_name}). "
+                        f"No picks or positions this week. Normal cycle resumes next session."
+                    )
+                })
+            flag_path.parent.mkdir(parents=True, exist_ok=True)
+            flag_path.touch()
+            logger.info("Holiday notice posted for %s (%s)", date_str, holiday)
+        except Exception as exc:
+            logger.error("Failed to send holiday notice: %s", exc)
 
     # ------------------------------------------------------------------
     #  Day-based execution

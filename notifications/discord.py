@@ -42,6 +42,32 @@ class DiscordNotifier:
         return self._post_webhook(payload)
 
     # ------------------------------------------------------------------
+    #  Market Closure Notice — fires once per holiday day
+    # ------------------------------------------------------------------
+
+    def send_holiday_notice(self, date_str: str, holiday_name: str) -> bool:
+        """Post a positive-confirmation notice when the pipeline auto-skips
+        a market-closed day. Lets the user know the system saw the holiday
+        and intentionally chose not to run, rather than wondering whether
+        the cron silently failed.
+        """
+        if not self.enabled:
+            return False
+        embed = {
+            "title": f"Market Closed — {holiday_name}",
+            "description": (
+                f"**{date_str}** — US markets are closed for {holiday_name}.\n\n"
+                f"The pipeline has auto-skipped today's market-dependent stages "
+                f"(picks, entry confirmation, position monitor). No new positions "
+                f"will be entered, and no existing positions need management.\n\n"
+                f"Normal cycle resumes next trading day."
+            ),
+            "color": 0x808080,  # gray — informational
+            "footer": {"text": "Auto-skipped via market calendar"},
+        }
+        return self._post_webhook({"embeds": [embed]})
+
+    # ------------------------------------------------------------------
     #  Monday Picks — explicit entry instructions
     # ------------------------------------------------------------------
 
