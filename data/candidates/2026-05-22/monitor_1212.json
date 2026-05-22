@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "FTNT",
+      "direction": "call",
+      "strike": 125.0,
+      "entry_price": 124.4,
+      "current_price": 133.2,
+      "entry_premium": 1.72,
+      "current_option_price": 7.28,
+      "current_delta": null,
+      "stock_move_pct": 7.07,
+      "option_return_pct": 323.3,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 323% \u2014 at or above 10% day-5 target. Consider taking profit."
+    },
+    {
+      "ticker": "LULU",
+      "direction": "put",
+      "strike": 122.0,
+      "entry_price": 120.42,
+      "current_price": 125.62,
+      "entry_premium": 2.92,
+      "current_option_price": 0.04,
+      "current_delta": 0.07,
+      "stock_move_pct": -4.32,
+      "option_return_pct": -98.6,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 295.0,
+      "entry_price": 298.25,
+      "current_price": 310.2,
+      "entry_premium": 3.94,
+      "current_option_price": 15.88,
+      "current_delta": 0.894,
+      "stock_move_pct": 4.01,
+      "option_return_pct": 303.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 303% \u2014 at or above 10% day-5 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "FTNT: TARGET HIT (323% vs 10% target)",
+    "LULU: STOP LOSS HIT (-99%)",
+    "AAPL: TARGET HIT (303% vs 10% target)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Close-Out\n\n### Position Status\n\n| Position | Stock | Option P&L | Status | Action |\n|----------|-------|-----------|--------|--------|\n| **FTNT CALL** | +7.1% | **+323%** | TARGET HIT | **CLOSE NOW** |\n| **LULU PUT** | -4.3% | **-99%** | STOP HIT | **CLOSE NOW** |\n| **AAPL CALL** | +4.0% | **+303%** | TARGET HIT | **CLOSE NOW** |\n\n### Notes\n\n**FTNT / AAPL:** Massive winners. Both blew past the 10% Friday target by 30x. Every minute held past now is pure gamma risk \u2014 these are deep ITM weeklies at expiry, bid-ask spreads are widening as we speak, and a single adverse tick can shave significant dollar value off positions that are currently printing. No reason to hold. Book the gains.\n\n**LULU:** Down 99%. This is a dead position \u2014 the put is virtually worthless with the stock moving against thesis. The -50% hard stop should have triggered days ago. Close for whatever residual bid exists. If bid is $0.00\u2013$0.05, let it expire worthless rather than paying commissions to close.\n\n**Portfolio week:** Even with LULU's total loss, FTNT +323% and AAPL +303% make this an outstanding week. Two out of three won decisively \u2014 the ensemble got direction right where it mattered.\n\n---\n\n### **RECOMMENDATION: CLOSE ALL THREE POSITIONS IMMEDIATELY. MARKET ORDERS. NO EXCEPTIONS.**\n\nIt is Friday. Nothing stays open past 2:00 PM ET. FTNT and AAPL are enormous wins \u2014 protect them. LULU is dead money \u2014 clear it. Execute now.",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": 175.9,
+    "targets_hit": 2,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
