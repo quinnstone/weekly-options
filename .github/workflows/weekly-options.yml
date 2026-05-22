@@ -13,6 +13,11 @@ on:
     # === MONDAY ENTRY FLOW ===
     # Monday 8:00 AM ET (12:00 UTC) — final picks before open
     - cron: '0 12 * * 1'
+    # Monday 8:15 AM ET (12:15 UTC) — backup picks cron. Off-the-hour slot is
+    # statistically less contested than top-of-hour. Whichever fires first
+    # runs picks; the second one finds today's picks already exist and exits
+    # early (idempotency check in pipeline/stages.py monday_picks).
+    - cron: '15 12 * * 1'
     # Monday 10:00 AM ET (14:00 UTC) — entry confirmation (30 min after open)
     - cron: '0 14 * * 1'
     # Monday 1:00 PM ET (17:00 UTC) — midday position check
@@ -133,6 +138,7 @@ jobs:
               "0 20 * * 5")   STAGE=friday_close ;;
               "30 20 * * 5")  STAGE=scorecard ;;
               "0 12 * * 1")   STAGE=monday ;;
+              "15 12 * * 1")  STAGE=monday ;;
               "0 14 * * 1")   STAGE=confirm ;;
               "0 17 * * 1")   STAGE=monitor ;;
               "0 19 * * 2")   STAGE=monitor ;;

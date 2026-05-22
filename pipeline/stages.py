@@ -550,6 +550,31 @@ class DailyStages:
         date_str = self._current_date_str()
         logger.info("=== MONDAY PICKS — %s ===", date_str)
 
+        # Idempotency: if today's picks were already generated (e.g. by the
+        # 8:00 AM primary cron), the 8:15 AM backup cron should not re-run.
+        # Re-running would duplicate the Discord notification, re-call the
+        # Portfolio Reasoner ($), and produce fresh picks against different
+        # live data than the user already saw. Skip if existing file has at
+        # least one pick with a valid strike.
+        existing_path = config.candidates_dir / date_str / "monday_picks.json"
+        if existing_path.exists():
+            try:
+                with open(existing_path) as fh:
+                    existing = json.load(fh)
+                if existing and any(p.get("strike") for p in existing):
+                    logger.info(
+                        "Monday picks already generated for %s (%d picks) — "
+                        "skipping backup-cron re-run (idempotent)",
+                        date_str, len(existing),
+                    )
+                    return existing
+            except Exception as exc:
+                logger.warning(
+                    "Could not read existing picks for idempotency check: %s — "
+                    "proceeding with fresh generation",
+                    exc,
+                )
+
         # 1. Load Friday's refreshed data (falls back to Wednesday)
         candidates = self._load_previous_stage("friday_refresh")
         if not candidates:
