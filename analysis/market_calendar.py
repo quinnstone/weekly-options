@@ -17,7 +17,7 @@ Maintained as a hardcoded dict because:
 UPDATE EVERY DECEMBER for the upcoming year.
 """
 
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 
 US_MARKET_CLOSURES = {
@@ -93,3 +93,71 @@ def is_market_dependent(stage_name: str) -> bool:
     therefore be skipped on market-closed days.
     """
     return stage_name.lower() in MARKET_DEPENDENT_STAGES
+
+
+# How many days ahead each stage looks for its "pick week."
+# Wed scan + Fri refresh PREP for the FOLLOWING Monday's picks; Mon picks
+# and intraday monitor stages operate WITHIN the current week.
+_STAGE_PICK_WEEK_OFFSET = {
+    "wednesday": 5,         # Wed → Mon = 5 days
+    "wednesday_scan": 5,
+    "friday": 3,            # Fri → Mon = 3 days
+    "friday_refresh": 3,
+}
+
+
+def get_pick_week_start(today: date, stage: str) -> date:
+    """Return the Monday that begins the pick week associated with `stage`
+    running on `today`.
+
+    Wed scan and Fri refresh build the candidate pool for the NEXT Monday's
+    picks, so their pick week starts ahead. Monday picks, monitor stages, and
+    final_exit all operate within the CURRENT week (today's Monday).
+    """
+    offset = _STAGE_PICK_WEEK_OFFSET.get(stage.lower())
+    if offset is not None:
+        return today + timedelta(days=offset)
+    # weekday() returns 0=Mon, 1=Tue, ..., 6=Sun
+    return today - timedelta(days=today.weekday())
+
+
+def is_pick_week_holiday_affected(
+    today: "date | None" = None,
+    stage: str = "monday",
+) -> "tuple[str, str, str] | None":
+    """Check whether the pick week associated with `stage` on `today` contains
+    any US market closure.
+
+    A "pick week" is the Mon-Fri block of trading days for a given week's
+    options cycle. If ANY day in that block is a closure, the week is
+    "shortened" and the entire cycle (Wed scan + Fri refresh + Mon picks +
+    monitors + final_exit) should be skipped. Saves the user from getting
+    Discord noise on weeks that won't be traded anyway.
+
+    Parameters
+    ----------
+    today : date, optional
+        Defaults to today.
+    stage : str
+        The pipeline stage being considered. Disambiguates the pick week
+        (wed/fri prep stages reach FORWARD; in-week stages stay current).
+
+    Returns
+    -------
+    tuple of (holiday_name, holiday_date_iso, pick_week_start_iso) or None
+        Tuple if the pick week is shortened by a closure; None if all 5
+        days are tradeable.
+    """
+    if today is None:
+        today = datetime.now().date()
+    week_start = get_pick_week_start(today, stage)
+    for i in range(5):  # Mon through Fri
+        check_date = week_start + timedelta(days=i)
+        date_str = check_date.strftime("%Y-%m-%d")
+        if date_str in US_MARKET_CLOSURES:
+            return (
+                US_MARKET_CLOSURES[date_str],
+                date_str,
+                week_start.strftime("%Y-%m-%d"),
+            )
+    return None

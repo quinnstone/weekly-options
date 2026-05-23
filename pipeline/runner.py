@@ -68,54 +68,65 @@ class PipelineRunner:
                 f"Valid stages: {', '.join(dispatch.keys())}"
             )
 
-        # Market closure guard — skip stages that depend on live market data
-        # when the NYSE/NASDAQ is closed (Memorial Day, MLK Day, etc.). The
-        # crons fire regardless of market schedule, so without this check
-        # picks would generate against stale Friday data and produce
-        # unactionable Discord messages. See:
-        #   analysis/market_calendar.py for the holiday list
+        # Market closure guard — skip ALL market-dependent stages for any
+        # WEEK that contains a US market closure. This includes the Wed scan
+        # and Fri refresh that PREP for an upcoming holiday-shortened week,
+        # not just the holiday day itself. Without this, we'd build candidate
+        # pools for weeks that will never be traded. Pure week-level filter:
+        # no scoring change, no thesis change, no decision-logic change.
+        # See:
+        #   analysis/market_calendar.py for the holiday list + week logic
         #   memory/project_market_holiday_handling.md for the playbook
-        from analysis.market_calendar import is_market_closed, is_market_dependent
-        holiday = is_market_closed()
-        if holiday and is_market_dependent(stage_name):
+        from analysis.market_calendar import is_pick_week_holiday_affected, is_market_dependent
+        holiday_info = is_pick_week_holiday_affected(stage=stage_name)
+        if holiday_info and is_market_dependent(stage_name):
+            holiday_name, holiday_date, week_start = holiday_info
             logger.info(
-                "=== %s SKIPPED — market closed today (%s) ===",
-                stage_name.upper(), holiday,
+                "=== %s SKIPPED — pick week %s shortened by %s (%s) ===",
+                stage_name.upper(), week_start, holiday_name, holiday_date,
             )
-            self._send_holiday_notice_once(holiday, stage_name)
+            self._send_holiday_notice_once(holiday_name, holiday_date, week_start, stage_name)
             return []
 
         logger.info("Running stage: %s", stage_name)
         return handler()
 
-    def _send_holiday_notice_once(self, holiday: str, stage_name: str) -> None:
-        """Post a Discord notice that today's pipeline is skipped due to
-        market closure. Uses a date-keyed flag file so multiple crons on the
-        same holiday don't produce duplicate Discord messages (only the first
-        skip-event of the day posts; subsequent ones log and stay silent).
+    def _send_holiday_notice_once(
+        self, holiday_name: str, holiday_date: str, week_start: str, stage_name: str,
+    ) -> None:
+        """Post a Discord notice that the pipeline is skipping a holiday-shortened
+        pick week. Uses a flag file keyed by PICK WEEK START (not by date) so
+        Wed scan, Fri refresh, Mon picks, and all the monitor crons collectively
+        produce only ONE Discord message per affected week.
         """
-        date_str = datetime.now().strftime("%Y-%m-%d")
-        flag_path = config.data_dir / f".holiday_notice_{date_str}.flag"
+        flag_path = config.data_dir / f".holiday_notice_pickweek_{week_start}.flag"
         if flag_path.exists():
-            logger.info("Holiday notice already sent today — skipping duplicate")
+            logger.info(
+                "Holiday notice already sent for pick week %s — skipping duplicate",
+                week_start,
+            )
             return
         try:
             from notifications.discord import DiscordNotifier
             notifier = DiscordNotifier()
             if hasattr(notifier, "send_holiday_notice"):
-                notifier.send_holiday_notice(date_str, holiday)
+                notifier.send_holiday_notice(holiday_name, holiday_date, week_start)
             else:
                 # Defensive fallback if notifier method is missing
                 notifier._post_webhook({
                     "content": (
-                        f"⏸️ **Market closed today — {holiday}**\n"
-                        f"Pipeline auto-skipped (stage: {stage_name}). "
-                        f"No picks or positions this week. Normal cycle resumes next session."
+                        f"⏸️ **Pick week {week_start} skipped — {holiday_name}**\n"
+                        f"Market closed {holiday_date}. Pipeline auto-skipped all "
+                        f"market-dependent stages this week (scan, refresh, picks, "
+                        f"monitor, exit). No positions will be entered."
                     )
                 })
             flag_path.parent.mkdir(parents=True, exist_ok=True)
             flag_path.touch()
-            logger.info("Holiday notice posted for %s (%s)", date_str, holiday)
+            logger.info(
+                "Holiday notice posted for pick week %s (%s on %s)",
+                week_start, holiday_name, holiday_date,
+            )
         except Exception as exc:
             logger.error("Failed to send holiday notice: %s", exc)
 

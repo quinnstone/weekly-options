@@ -45,22 +45,30 @@ class DiscordNotifier:
     #  Market Closure Notice — fires once per holiday day
     # ------------------------------------------------------------------
 
-    def send_holiday_notice(self, date_str: str, holiday_name: str) -> bool:
+    def send_holiday_notice(self, holiday_name: str, holiday_date: str, week_start: str) -> bool:
         """Post a positive-confirmation notice when the pipeline auto-skips
-        a market-closed day. Lets the user know the system saw the holiday
-        and intentionally chose not to run, rather than wondering whether
-        the cron silently failed.
+        a holiday-shortened pick week. One notice per affected week, fired
+        from the FIRST skip event in that week (typically the Wed scan).
+
+        Tells the user the system saw the holiday and intentionally chose not
+        to build candidates / enter positions for the shortened week, rather
+        than wondering whether a cron silently failed.
         """
         if not self.enabled:
             return False
         embed = {
-            "title": f"Market Closed — {holiday_name}",
+            "title": f"Pick week {week_start} skipped — {holiday_name}",
             "description": (
-                f"**{date_str}** — US markets are closed for {holiday_name}.\n\n"
-                f"The pipeline has auto-skipped today's market-dependent stages "
-                f"(picks, entry confirmation, position monitor). No new positions "
-                f"will be entered, and no existing positions need management.\n\n"
-                f"Normal cycle resumes next trading day."
+                f"Markets are closed **{holiday_date}** for {holiday_name}, "
+                f"making the pick week of {week_start} shorter than 5 trading days.\n\n"
+                f"The pipeline has auto-skipped all market-dependent stages for "
+                f"this week:\n"
+                f"• Wednesday scan (candidate pool prep)\n"
+                f"• Friday refresh (delta-aware re-rank)\n"
+                f"• Monday picks (entry)\n"
+                f"• Position monitor + final exit\n\n"
+                f"No positions will be entered. No candidates ranked. "
+                f"Normal cycle resumes the following Wednesday's scan."
             ),
             "color": 0x808080,  # gray — informational
             "footer": {"text": "Auto-skipped via market calendar"},
