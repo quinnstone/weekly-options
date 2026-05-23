@@ -1614,6 +1614,20 @@
         "option_return_pct": 303.0,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-05-23T10:54:49.560099",
+      "week": "2026-W20",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "\n\n# CIO Weekly Reflection \u2014 Week of May 23, 2026\n\n---\n\n## I. Executive Summary\n\nThis is a ghost week \u2014 0W/0L/3 total with 0.0% average return and no scorecard detail. No trades were executed or scored, which means we have no P&L signal to diagnose. The system generated picks but either failed to ent"
+      }
     }
   ],
   "weekly_summaries": []
