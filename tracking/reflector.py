@@ -12,7 +12,7 @@ import os
 import json
 import logging
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import numpy as np
 
@@ -35,11 +35,65 @@ class WeeklyReflector:
         self.pattern_library = PatternLibrary()
 
     # ------------------------------------------------------------------
+    #  Redundancy guard — skip when nothing new to reflect on
+    # ------------------------------------------------------------------
+
+    def _last_reflection_date(self) -> "str | None":
+        """Find the YYYY-MM-DD of the most recent prior reflection on disk."""
+        files = sorted(
+            config.performance_dir.glob("*_reflection.json"),
+            reverse=True,
+        )
+        if not files:
+            return None
+        # Filenames look like "2026-05-23_reflection.json"
+        return files[0].name.split("_")[0]
+
+    def _most_recent_monday_picks_date(self, days_back: int = 14) -> "str | None":
+        """Find the YYYY-MM-DD of the most recent monday_picks.json on disk.
+
+        Walks back up to `days_back` days. Returns None if no picks file
+        exists in that window (suggests holiday-skipped or cron-failed
+        weeks since the last reflection).
+        """
+        today = datetime.now().date()
+        for i in range(days_back):
+            check_date = today - timedelta(days=i)
+            iso = check_date.strftime("%Y-%m-%d")
+            path = config.candidates_dir / iso / "monday_picks.json"
+            if path.exists():
+                return iso
+        return None
+
+    def _should_skip_redundant_reflection(self) -> bool:
+        """Return True if running reflect would just regenerate the prior
+        reflection's content (no new monday_picks.json since last reflect).
+        """
+        last_refl = self._last_reflection_date()
+        if not last_refl:
+            # No prior reflection — first run, never skip
+            return False
+        last_picks = self._most_recent_monday_picks_date()
+        if not last_picks:
+            # No picks anywhere in lookback window — definitely no new data
+            return True
+        # Skip if the most recent picks file is older than (or equal to)
+        # the last reflection. ISO date strings compare lexicographically.
+        return last_picks <= last_refl
+
+    # ------------------------------------------------------------------
     #  Core reflection
     # ------------------------------------------------------------------
 
-    def reflect(self, week_date: str) -> dict:
+    def reflect(self, week_date: str) -> "dict | None":
         """Generate a full reflection for the specified week.
+
+        Returns ``None`` if no new picks have been generated since the most
+        recent prior reflection — this covers holiday-skipped weeks and
+        cron-failure weeks where running a fresh reflection would just
+        regurgitate the prior week's content (and waste an Anthropic API
+        call in the downstream DeepReflectionAgent). Callers must handle
+        the None case explicitly (see main.py reflect command).
 
         Parameters
         ----------
@@ -48,10 +102,20 @@ class WeeklyReflector:
 
         Returns
         -------
-        dict
-            Reflection containing performance stats, signal analysis,
-            lessons, and suggested weight adjustments.
+        dict or None
+            Reflection dict containing performance stats, signal analysis,
+            lessons, and suggested weight adjustments. None if redundant.
         """
+        # Redundancy guard — see _should_skip_redundant_reflection() for the
+        # criterion. Saves ~$0.30-0.50 per holiday week (DeepReflectionAgent
+        # call) and keeps the historical reflection record clean.
+        if self._should_skip_redundant_reflection():
+            logger.info(
+                "Reflection skipped — no new monday_picks since last reflection "
+                "(likely a holiday-skipped week or missed cron)."
+            )
+            return None
+
         logger.info("Generating reflection for week of %s", week_date)
 
         # 1. Load picks and outcomes

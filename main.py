@@ -38,6 +38,16 @@ def main():
     elif args.command == 'reflect':
         reflector = WeeklyReflector()
         reflection = reflector.reflect(args.week or datetime.now().strftime('%Y-%m-%d'))
+
+        # Reflector returns None when there's nothing new to reflect on
+        # (holiday-skipped week, cron-failure week, etc.). Skip the whole
+        # downstream chain — no mechanical output, no DeepReflectionAgent
+        # call (saves API spend), no audit file generated for an empty week.
+        if reflection is None:
+            print("Reflection skipped — no new picks since last reflection "
+                  "(likely holiday week or no data).")
+            return
+
         print(reflector.format_reflection(reflection))
 
         # Run Deep Reflection agent for qualitative CIO analysis
