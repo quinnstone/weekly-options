@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "MDB",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PATH",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FTNT",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PDD",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "OKTA",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RBLX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MARA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RIOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "CLSK",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DLTR",
+    "source": "earnings_this_week",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "UBER",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DASH",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ZM",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TWLO",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ANET",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "GILD",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "REGN",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  }
+]

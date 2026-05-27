@@ -1628,6 +1628,19 @@
         "proposals": [],
         "analysis_snippet": "\n\n# CIO Weekly Reflection \u2014 Week of May 23, 2026\n\n---\n\n## I. Executive Summary\n\nThis is a ghost week \u2014 0W/0L/3 total with 0.0% average return and no scorecard detail. No trades were executed or scored, which means we have no P&L signal to diagnose. The system generated picks but either failed to ent"
       }
+    },
+    {
+      "timestamp": "2026-05-27T10:25:22.503718",
+      "week": "2026-W21",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3162
+      }
     }
   ],
   "weekly_summaries": []
