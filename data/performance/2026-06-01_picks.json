@@ -1,0 +1,69 @@
+{
+  "date": "2026-06-01",
+  "picks": [
+    {
+      "ticker": "DDOG",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.08,
+      "direction_confidence": 0.358,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 72.10000000000001,
+        "flow_conviction": 40.0,
+        "event_risk": 59.0,
+        "liquidity": 55.27586,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "SMCI",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 67.5,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 85.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 35.0,
+        "flow_conviction": 50.0,
+        "event_risk": 44.0,
+        "liquidity": 76.52492,
+        "strike_efficiency": 75.0,
+        "theta_cost": 42.0
+      }
+    },
+    {
+      "ticker": "F",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 67.28,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 99.19062744406222,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 62.75,
+        "flow_conviction": 50.0,
+        "event_risk": 40.0,
+        "liquidity": 76.48844,
+        "strike_efficiency": 75.0,
+        "theta_cost": 42.0
+      }
+    }
+  ],
+  "recorded_at": "2026-06-01T13:19:11.146146"
+}

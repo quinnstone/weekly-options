@@ -1641,6 +1641,27 @@
       "context": {
         "length": 3162
       }
+    },
+    {
+      "timestamp": "2026-06-01T13:19:10.162839",
+      "week": "2026-W22",
+      "agent": "portfolio_reasoner",
+      "ticker": "PORTFOLIO",
+      "mechanical_signal": "DDOG,AMD,WMT",
+      "agent_signal": "DDOG,SMCI,F",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "dropped": [
+          "AMD",
+          "F",
+          "MU",
+          "SMCI",
+          "MRVL",
+          "DDOG"
+        ],
+        "reasoning": "SELECTED:\n\n1. **SMCI** \u2014 CALL\nBest risk/reward in the semiconductor cluster: no earnings flag, strong triple-signal consensus (momentum 100, mean_reversion 85, trend_persistence 85), and diversifies away from the earnings-exposed names.\n\nTHESIS: SMCI is driven by momentum (perfect 100) with confirming mean-reversion and trend-persistence scores, a rare triple-alignment that historically signals sustained directional moves. This week is the right entry because SMCI has no earnings exposure during the holding window \u2014 unlike AMD, MU, MRVL, and DDOG \u2014 meaning the thesis can play out on technicals rather than being overridden by a binary event. Kill condition: if SMCI breaks below its 20-day SMA by >2% on Monday open (gap stop), or if the social \"breakdown/risk\" flags materialize as a specific negative catalyst (SEC filing issue, customer loss), exit immediately.\n\n2. **F** \u2014 CALL\nOnly non-semiconductor, non-tech name in the candidate pool; provides critical sector diversification and zero earnings risk. Momentum 99 with trend_persistence 85 on a liquid large-cap.\n\nTHESIS: F is a momentum-driven play (99/100) with strong trend persistence (85) in a sector completely uncorrelated to the semiconductor cluster, giving the portfolio a hedge against tech-specific risk. The entry is attractive now because normal-VIX (15.9) keeps all weight multipliers at baseline \u2014 momentum isn't being penalized as it would be in elevated/high regimes \u2014 and auto/EV is a sector where idiosyncratic catalysts (tariff news, production data) can drive weekly-scale moves independent of broad tech sentiment. Kill condition: a >2% gap down on Monday open from adverse tariff/trade headline, or if the holding-window high-impact event (Monday) triggers a broad risk-off move that pushes VIX above 20, shifting the regime and deweighting momentum.\n\n3. **DDOG** \u2014 CALL\nHighest composite score (71.1) in the pool and only software/cloud name, diversifying away from both semis and autos. Triple-signal strength (momentum 100, trend_persistence 95, mean_reversion 75) plus analyst upgrade catalyst.\n\nTHESIS: DDOG scores highest on the composite (71.1) driven by perfect momentum (100) and near-perfect trend persistence (95), with a fresh analyst upgrade cycle providing a fundamental catalyst that aligns with the technical signal. The mean_reversion score of 75 suggests the move still has room \u2014 it's not yet overbought \u2014 making this week's entry timing favorable before the trend gets crowded. Kill condition:"
+      }
     }
   ],
   "weekly_summaries": []
