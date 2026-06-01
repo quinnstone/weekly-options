@@ -174,11 +174,18 @@ class PositionMonitor(BaseAgent):
                 })
                 continue
 
-            # Stock move since entry
+            # Stock move since entry — store the TRUE directional move of the
+            # underlying, NOT a thesis-favorable-signed value. Downstream the
+            # Discord card and the agent prompt both label this "Stock: X%", so
+            # it must read like the actual quote: a put losing on a +5% rally
+            # should show "+5%", not "-5%". (Previously this was negated for
+            # puts, which made the Friday agent write a fictional post-mortem —
+            # "a -5% drop killed the put, must be bad strike" — when the stock
+            # had in fact risen +5% and the put was simply wrong on direction.)
+            # The thesis-favorable sign is computed locally below only where the
+            # fallback delta-estimate math needs it.
             if entry_price and entry_price > 0:
                 stock_move_pct = ((current_price - entry_price) / entry_price) * 100
-                if direction == "put":
-                    stock_move_pct = -stock_move_pct
             else:
                 stock_move_pct = 0
 
@@ -231,10 +238,15 @@ class PositionMonitor(BaseAgent):
                 # entry_premium is 0 — can't compute %, use absolute
                 option_return_pct = 0
             else:
-                # Fallback: delta approximation (pre-market or chain lookup failed)
-                delta = entry_delta or 0.35
+                # Fallback: delta approximation (pre-market or chain lookup failed).
+                # Use the move in the option's FAVOR (stock up helps calls, stock
+                # down helps puts) times the delta MAGNITUDE. entry_delta is stored
+                # signed (e.g. -0.507 for a put), so abs() it — otherwise the put's
+                # negative delta times a favorable move would wrongly net a loss.
+                favorable_move = stock_move_pct if direction == "call" else -stock_move_pct
+                delta = abs(entry_delta) if entry_delta else 0.35
                 premium_pct = (entry_premium / entry_price * 100) if entry_premium and entry_price else 3.0
-                option_return_pct = (delta * stock_move_pct / premium_pct * 100) if premium_pct > 0 else 0
+                option_return_pct = (delta * favorable_move / premium_pct * 100) if premium_pct > 0 else 0
                 if option_return_pct > 0:
                     option_return_pct *= 1.10
                 theta_cost = days_held * theta_per_day

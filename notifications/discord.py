@@ -357,27 +357,40 @@ class DiscordNotifier:
             detail = conf.get("detail", "")
             current = conf.get("current_price")
             new_premium = conf.get("new_premium")
+            original_premium = conf.get("original_premium")
             agent_brief = conf.get("agent_brief", "")
 
             strike_str = f"${strike:,.2f}" if strike else "N/A"
             price_str = f"${current:,.2f}" if current else "?"
             delta_str = f"{conf['new_delta']:.2f}" if conf.get("new_delta") else "?"
             prem_str = f"${new_premium:.2f}" if new_premium else "?"
+            # ADJUST/SKIP picks skip the BSM re-estimate so new_premium is always
+            # null. Fall back to the original pick premium so the user still sees a
+            # reference price. Keep this a BARE value; the "(orig)" marker is added
+            # only where it isn't already implied by surrounding labels.
+            using_orig_prem = not new_premium and bool(original_premium)
+            display_prem_str = prem_str if new_premium else (
+                f"${original_premium:.2f}" if original_premium else "?"
+            )
 
             cost = (new_premium * 100 * contracts) if new_premium else 0
 
             if signal == "GO":
                 action = f"**ENTER NOW:** Buy {contracts} {ticker} {direction} {strike_str} at {prem_str} (${cost:,.0f})"
             elif signal == "ADJUST":
-                action = f"**RE-CHECK STRIKE** before entering {ticker} — {detail[:150]}"
+                action = (
+                    f"**RE-CHECK STRIKE** — {ticker} {direction} {strike_str} "
+                    f"(orig premium: {display_prem_str}) — {detail[:150]}"
+                )
             else:
-                action = f"**DO NOT ENTER** {ticker} — {detail[:150]}"
+                action = f"**DO NOT ENTER** {ticker} {direction} {strike_str} — {detail[:150]}"
 
             agent_line = f"\n_Agent: {agent_brief[:150]}_" if agent_brief else ""
 
+            prem_label = f"{display_prem_str} (orig)" if using_orig_prem else display_prem_str
             value = (
                 f"{action}\n"
-                f"Stock: {price_str} | Delta: {delta_str} | Premium: {prem_str}"
+                f"Stock: {price_str} | Delta: {delta_str} | Premium: {prem_label}"
                 f"{agent_line}"
             )
 
@@ -678,6 +691,7 @@ class DiscordNotifier:
             exit_per_share = p.get("exit_value_per_share")
             pnl = p.get("pnl", 0)  # already correctly computed by the grader
             result = p.get("result", "?")
+            entry_signal = p.get("entry_signal", "GO")
 
             if result == "WIN":
                 marker = "++"
@@ -699,8 +713,13 @@ class DiscordNotifier:
             pnl_sign = "+" if dollar_pnl >= 0 else ""
             pnl_pct = (dollar_pnl / entry_cost * 100) if entry_cost else 0
 
+            # Flag picks the 10 AM confirmation told the user NOT to enter as-is.
+            # P&L still counts (directional grade), but the tag makes clear this
+            # was a SKIP/ADJUST — not necessarily a tradeable loss.
+            signal_tag = f" _(entry: {entry_signal})_" if entry_signal not in (None, "GO") else ""
+
             pick_lines.append(
-                f"`{marker}` **{ticker}** {direction} @ {strike_str}\n"
+                f"`{marker}` **{ticker}** {direction} @ {strike_str}{signal_tag}\n"
                 f"Bought: {entry_str} (${entry_cost:,.0f}) | Sold: {exit_str} (${exit_total:,.0f})\n"
                 f"**P&L: {pnl_sign}${dollar_pnl:,.0f}** ({pnl_sign}{pnl_pct:,.0f}%)"
             )

@@ -70,10 +70,32 @@ class Scorecard:
             logger.error("No expiry date in picks for %s", pick_date)
             return {}
 
+        # Load the 10 AM entry confirmations (GO / ADJUST / SKIP) so each graded
+        # pick can be tagged with the signal the system actually gave at entry.
+        # This separates DIRECTIONAL model accuracy from TRADEABLE P&L: a pick the
+        # system told you to SKIP or re-strike (e.g. LULU 2026-05-18 delta ballooned
+        # ITM; the entire 2026-04-27 week) still counts against the directional
+        # scorecard, but the entry_signal tag lets us answer "what could I actually
+        # have entered as-printed?" separately. Confirmations live alongside the
+        # candidates, keyed by ticker.
+        entry_signals = {}
+        conf_path = config.candidates_dir / pick_date / "entry_confirmations.json"
+        if conf_path.exists():
+            try:
+                with open(conf_path) as fh:
+                    for c in json.load(fh):
+                        if c.get("ticker"):
+                            entry_signals[c["ticker"]] = c.get("signal")
+            except Exception as exc:
+                logger.warning("Could not load entry confirmations for %s: %s", pick_date, exc)
+
         # Grade each pick
         graded = []
         for pick in picks:
             result = self._grade_pick(pick, expiry)
+            # Default GO when no confirmation was recorded (older weeks predate
+            # confirmation logging); only ADJUST/SKIP are the noteworthy cases.
+            result["entry_signal"] = entry_signals.get(result.get("ticker"), "GO")
             graded.append(result)
 
         # Weekly summary

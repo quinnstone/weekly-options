@@ -1205,7 +1205,15 @@ class DailyStages:
                         conf["agent_brief"] = brief["brief"]
 
                         mechanical = conf["signal"]
-                        override = (brief["signal"] == "SKIP" and mechanical == "GO")
+                        # Agent SKIP overrides any "would consider entering"
+                        # mechanical signal — both GO and ADJUST. ADJUST means
+                        # "fix the strike then maybe enter"; if the agent has
+                        # conviction NOT to enter at all (thesis broken, deep
+                        # ITM, IV trap), that's the stronger, more actionable
+                        # call and should win. Previously ADJUST+agentSKIP left
+                        # the card reading "RE-CHECK STRIKE", burying the
+                        # agent's don't-enter verdict in a footnote.
+                        override = (brief["signal"] == "SKIP" and mechanical in ("GO", "ADJUST"))
 
                         # Track every pre-trade decision for audit
                         log_decision(
@@ -1217,14 +1225,15 @@ class DailyStages:
                             context={"brief": brief["brief"][:600]},
                         )
 
-                        # Agent SKIP overrides mechanical GO — this is actionable,
-                        # not decorative. The agent found a thesis-invalidating
-                        # development the mechanical checks couldn't detect.
+                        # Agent SKIP overrides mechanical GO/ADJUST — this is
+                        # actionable, not decorative. The agent found a thesis-
+                        # invalidating development the mechanical checks couldn't
+                        # detect.
                         if override:
                             conf["signal"] = "SKIP"
                             conf["detail"] = (
                                 f"[AGENT OVERRIDE] {brief['brief']}\n"
-                                f"Original mechanical signal: GO — {conf['detail']}"
+                                f"Original mechanical signal: {mechanical} — {conf['detail']}"
                             )
                             logger.warning(
                                 "Agent SKIP override for %s: %s",
