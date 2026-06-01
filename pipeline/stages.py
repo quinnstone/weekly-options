@@ -903,6 +903,12 @@ class DailyStages:
             pick["breakeven_move_pct"] = strike_data.get("breakeven_move_pct")
             pick["expected_daily_move_pct"] = strike_data.get("expected_daily_move_pct")
             pick["estimated_delta"] = strike_data.get("estimated_delta")
+            # Capture the strike's IV so the Monday 10 AM confirmation can
+            # re-estimate delta/premium against the REAL vol surface rather than
+            # the hardcoded 0.30 fallback. (Without this, pick["iv"] was None and
+            # every confirmation delta was computed off 0.30, regardless of the
+            # actual option's vol.)
+            pick["iv"] = strike_data.get("iv")
             pick["entry"] = strike_data.get("entry", {})
             pick["exit"] = strike_data.get("exit", {})
             # Methodology version stamp (documentation only, see 2c above)
@@ -1056,6 +1062,24 @@ class DailyStages:
                 open_price = float(hist["Open"].iloc[0])
                 day_high = float(hist["High"].max())
                 day_low = float(hist["Low"].min())
+
+                # Prior trading day's close — the correct baseline for the
+                # overnight gap check. Fetched fresh here (a fixed historical
+                # fact) rather than reusing pick["current_price"], which is only
+                # ~prior-close when the Monday picks stage runs pre-market. When
+                # that stage runs late/intraday (GH Actions cron delay), the
+                # stored price is an intraday quote and comparing today's open to
+                # it fabricates huge "gaps" that false-SKIP every pick (3/3 on
+                # 2026-06-01: DDOG showed -9% vs a real +1.8% overnight move).
+                # Daily bars: the last row is today, the prior row is the real
+                # previous close, regardless of when any stage ran.
+                prior_close = None
+                try:
+                    daily = tk.history(period="5d")
+                    if len(daily) >= 2:
+                        prior_close = float(daily["Close"].iloc[-2])
+                except Exception:
+                    pass
             except Exception as exc:
                 logger.error("Price fetch failed for %s: %s", ticker, exc)
                 confirmations.append(self._build_confirmation(
@@ -1063,40 +1087,51 @@ class DailyStages:
                 ))
                 continue
 
-            # 1. Gap check
-            prev_close = original_price or open_price
-            gap_pct = ((open_price - prev_close) / prev_close * 100) if prev_close else 0
+            # Re-estimate delta at the current price FIRST, so that every
+            # confirmation — including a gap/other SKIP — can report a delta.
+            # (Previously this ran after the gap check's `continue`, so any
+            # gap-skipped pick rendered "Delta: ?".) The delta-based skip/adjust
+            # DECISIONS still happen below in section 2; this only hoists the
+            # computation and the T (time-to-expiry) used by the premium
+            # re-estimate in section 3.
+            new_delta = original_delta
+            delta_shift = 0.0
+            expiry_str = pick.get("expiry")
+            if expiry_str:
+                try:
+                    from datetime import datetime as _dt
+                    expiry_dt = _dt.strptime(expiry_str, "%Y-%m-%d").date()
+                    T = max((expiry_dt - _dt.now().date()).days, 1) / 365.0
+                except ValueError:
+                    T = 5 / 365.0
+            else:
+                T = 5 / 365.0
 
-            if abs(gap_pct) > 2.0:
-                confirmations.append(self._build_confirmation(
-                    pick, "SKIP",
-                    f"Gap {gap_pct:+.1f}% exceeds 2% threshold — move may be priced in",
-                    current_price=current_price, gap_pct=gap_pct,
-                ))
-                continue
-
-            # 2. Delta drift — re-estimate delta at current price
             if original_strike and original_strike > 0:
                 from scanners.options import _bsm_greeks, _RISK_FREE_RATE
-                expiry_str = pick.get("expiry")
-                if expiry_str:
-                    try:
-                        from datetime import datetime as _dt
-                        expiry_dt = _dt.strptime(expiry_str, "%Y-%m-%d").date()
-                        T = max((expiry_dt - _dt.now().date()).days, 1) / 365.0
-                    except ValueError:
-                        T = 5 / 365.0
-                else:
-                    T = 5 / 365.0
-
                 iv = pick.get("iv") or 0.30
                 option_type = "call" if direction == "call" else "put"
                 new_greeks = _bsm_greeks(current_price, original_strike, T,
                                           _RISK_FREE_RATE, iv, option_type)
                 new_delta = abs(new_greeks["delta"])
-
                 delta_shift = abs(new_delta - abs(original_delta))
 
+            # 1. Gap check — true overnight gap = today's open vs prior close.
+            # Fall back to original_price only if the prior-close fetch failed
+            # (preserves prior behavior in the degraded case).
+            gap_baseline = prior_close or original_price or open_price
+            gap_pct = ((open_price - gap_baseline) / gap_baseline * 100) if gap_baseline else 0
+
+            if abs(gap_pct) > 2.0:
+                confirmations.append(self._build_confirmation(
+                    pick, "SKIP",
+                    f"Gap {gap_pct:+.1f}% exceeds 2% threshold — move may be priced in",
+                    current_price=current_price, new_delta=new_delta, gap_pct=gap_pct,
+                ))
+                continue
+
+            # 2. Delta drift — act on the re-estimated delta computed above
+            if original_strike and original_strike > 0:
                 if new_delta < 0.10:
                     confirmations.append(self._build_confirmation(
                         pick, "SKIP",
@@ -1115,8 +1150,6 @@ class DailyStages:
                         current_price=current_price, new_delta=new_delta,
                     ))
                     continue
-            else:
-                new_delta = original_delta
 
             # 3. Premium re-estimate
             new_premium = None

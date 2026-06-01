@@ -5,13 +5,15 @@
     "strike": 280.0,
     "original_premium": 8.35,
     "original_price": 276.79,
-    "signal": "SKIP",
-    "detail": "Gap -9.0% exceeds 2% threshold \u2014 move may be priced in",
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+10.0% since open).",
     "current_price": 276.99,
-    "new_delta": null,
-    "new_premium": null,
-    "gap_pct": -9.04,
-    "timestamp": "2026-06-01T15:20:12.751270"
+    "new_delta": 0.463,
+    "new_premium": 7.35,
+    "gap_pct": 1.79,
+    "timestamp": "2026-06-01T15:20:12.751270",
+    "backfilled": true,
+    "backfill_note": "Regenerated with corrected gap baseline (real prior close) + delta; entry premiums in monday_picks/report intentionally unchanged."
   },
   {
     "ticker": "SMCI",
@@ -19,13 +21,15 @@
     "strike": 45.0,
     "original_premium": 3.45,
     "original_price": 47.46,
-    "signal": "SKIP",
-    "detail": "Gap -3.6% exceeds 2% threshold \u2014 move may be priced in",
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.53 to 0.73 (price moved from $47.46 to $47.70). Consider re-selecting strike closer to current price.",
     "current_price": 47.7,
-    "new_delta": null,
+    "new_delta": 0.731,
     "new_premium": null,
-    "gap_pct": -3.62,
-    "timestamp": "2026-06-01T15:20:12.975105"
+    "gap_pct": -0.76,
+    "timestamp": "2026-06-01T15:20:12.975105",
+    "backfilled": true,
+    "backfill_note": "Regenerated with corrected gap baseline (real prior close) + delta; entry premiums in monday_picks/report intentionally unchanged."
   },
   {
     "ticker": "F",
@@ -33,12 +37,14 @@
     "strike": 16.5,
     "original_premium": 0.71,
     "original_price": 16.98,
-    "signal": "SKIP",
-    "detail": "Gap +2.4% exceeds 2% threshold \u2014 move may be priced in",
+    "signal": "GO",
+    "detail": "Price moving against thesis (-3.9% since open). Proceed with caution or wait for reversal. Premium moved -31% ($0.71 \u2192 $0.49). Adjust limit order accordingly.",
     "current_price": 16.7,
-    "new_delta": null,
-    "new_premium": null,
-    "gap_pct": 2.36,
-    "timestamp": "2026-06-01T15:20:13.163288"
+    "new_delta": 0.599,
+    "new_premium": 0.49,
+    "gap_pct": -0.34,
+    "timestamp": "2026-06-01T15:20:13.163288",
+    "backfilled": true,
+    "backfill_note": "Regenerated with corrected gap baseline (real prior close) + delta; entry premiums in monday_picks/report intentionally unchanged."
   }
 ]
