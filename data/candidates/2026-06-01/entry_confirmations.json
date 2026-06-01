@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "DDOG",
+    "direction": "call",
+    "strike": 280.0,
+    "original_premium": 8.35,
+    "original_price": 276.79,
+    "signal": "SKIP",
+    "detail": "Gap -9.0% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 276.99,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": -9.04,
+    "timestamp": "2026-06-01T15:20:12.751270"
+  },
+  {
+    "ticker": "SMCI",
+    "direction": "call",
+    "strike": 45.0,
+    "original_premium": 3.45,
+    "original_price": 47.46,
+    "signal": "SKIP",
+    "detail": "Gap -3.6% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 47.7,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": -3.62,
+    "timestamp": "2026-06-01T15:20:12.975105"
+  },
+  {
+    "ticker": "F",
+    "direction": "call",
+    "strike": 16.5,
+    "original_premium": 0.71,
+    "original_price": 16.98,
+    "signal": "SKIP",
+    "detail": "Gap +2.4% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 16.7,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": 2.36,
+    "timestamp": "2026-06-01T15:20:13.163288"
+  }
+]
