@@ -1707,6 +1707,51 @@
         "option_return_pct": -32.4,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-06-02T17:46:12.951982",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "DDOG",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -53.3,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-06-02T17:46:12.955202",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "SMCI",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 58.0,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-06-02T17:46:12.957325",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "F",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -70.4,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
