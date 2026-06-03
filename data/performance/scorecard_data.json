@@ -15,8 +15,7 @@
           "exit_value_total": 554.0,
           "pnl": -416.0,
           "pnl_pct": -42.89,
-          "result": "PARTIAL",
-          "entry_signal": "SKIP"
+          "result": "PARTIAL"
         },
         {
           "ticker": "MRVL",
@@ -29,8 +28,7 @@
           "exit_value_total": 495.0,
           "pnl": -405.0,
           "pnl_pct": -45.0,
-          "result": "PARTIAL",
-          "entry_signal": "ADJUST"
+          "result": "PARTIAL"
         },
         {
           "ticker": "RTX",
@@ -43,8 +41,7 @@
           "exit_value_total": 351.0,
           "pnl": -160.0,
           "pnl_pct": -31.31,
-          "result": "PARTIAL",
-          "entry_signal": "ADJUST"
+          "result": "PARTIAL"
         }
       ],
       "total_cost": 2381.0,
@@ -72,8 +69,7 @@
           "exit_value_total": 1830.0,
           "pnl": 1055.0,
           "pnl_pct": 136.13,
-          "result": "WIN",
-          "entry_signal": "GO"
+          "result": "WIN"
         },
         {
           "ticker": "AMD",
@@ -87,8 +83,7 @@
           "pnl": 0,
           "pnl_pct": -100.0,
           "result": "LOSS",
-          "note": "Missing strike or premium data",
-          "entry_signal": "GO"
+          "note": "Missing strike or premium data"
         },
         {
           "ticker": "AMZN",
@@ -101,8 +96,7 @@
           "exit_value_total": 768.0,
           "pnl": 158.0,
           "pnl_pct": 25.9,
-          "result": "WIN",
-          "entry_signal": "ADJUST"
+          "result": "WIN"
         }
       ],
       "total_cost": 1385.0,
@@ -130,8 +124,7 @@
           "exit_value_total": 893.0,
           "pnl": 721.0,
           "pnl_pct": 419.19,
-          "result": "WIN",
-          "entry_signal": "GO"
+          "result": "WIN"
         },
         {
           "ticker": "LULU",
@@ -144,8 +137,7 @@
           "exit_value_total": 0,
           "pnl": -292.0,
           "pnl_pct": -100.0,
-          "result": "LOSS",
-          "entry_signal": "ADJUST"
+          "result": "LOSS"
         },
         {
           "ticker": "AAPL",
@@ -158,8 +150,7 @@
           "exit_value_total": 1382.0,
           "pnl": 988.0,
           "pnl_pct": 250.76,
-          "result": "WIN",
-          "entry_signal": "GO"
+          "result": "WIN"
         }
       ],
       "total_cost": 858.0,

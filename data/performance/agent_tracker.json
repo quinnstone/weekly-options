@@ -1752,6 +1752,19 @@
         "option_return_pct": -70.4,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-06-03T11:27:00.151028",
+      "week": "2026-W22",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3009
+      }
     }
   ],
   "weekly_summaries": []
