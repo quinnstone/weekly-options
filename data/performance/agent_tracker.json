@@ -1765,6 +1765,51 @@
       "context": {
         "length": 3009
       }
+    },
+    {
+      "timestamp": "2026-06-03T17:56:00.515962",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "DDOG",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -95.2,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-06-03T17:56:00.518095",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "SMCI",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -14.2,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-06-03T17:56:00.520196",
+      "week": "2026-W22",
+      "agent": "position_monitor",
+      "ticker": "F",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -90.1,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

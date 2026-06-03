@@ -1,0 +1,69 @@
+{
+  "positions": [
+    {
+      "ticker": "DDOG",
+      "direction": "call",
+      "strike": 280.0,
+      "entry_price": 276.79,
+      "current_price": 250.32,
+      "entry_premium": 8.35,
+      "current_option_price": 0.4,
+      "current_delta": 0.025,
+      "stock_move_pct": -9.56,
+      "option_return_pct": -95.2,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -95% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "SMCI",
+      "direction": "call",
+      "strike": 45.0,
+      "entry_price": 47.46,
+      "current_price": 47.42,
+      "entry_premium": 3.45,
+      "current_option_price": 2.96,
+      "current_delta": 0.804,
+      "stock_move_pct": -0.08,
+      "option_return_pct": -14.2,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -14% (target: 25% today). Stock moved -0.1%."
+    },
+    {
+      "ticker": "F",
+      "direction": "call",
+      "strike": 16.5,
+      "entry_price": 16.98,
+      "current_price": 15.75,
+      "entry_premium": 0.71,
+      "current_option_price": 0.07,
+      "current_delta": 0.127,
+      "stock_move_pct": -7.24,
+      "option_return_pct": -90.1,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -90% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "DDOG: STOP LOSS HIT (-95%)",
+    "F: STOP LOSS HIT (-90%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -66.5,
+    "targets_hit": 0,
+    "stops_hit": 2,
+    "urgency": "ROUTINE",
+    "day": "Wednesday",
+    "days_to_expiry": 3
+  }
+}
