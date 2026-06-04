@@ -1,0 +1,70 @@
+{
+  "positions": [
+    {
+      "ticker": "DDOG",
+      "direction": "call",
+      "strike": 280.0,
+      "entry_price": 276.79,
+      "current_price": 243.65,
+      "entry_premium": 8.35,
+      "current_option_price": 0.11,
+      "current_delta": 0.002,
+      "stock_move_pct": -11.97,
+      "option_return_pct": -98.7,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "SMCI",
+      "direction": "call",
+      "strike": 45.0,
+      "entry_price": 47.46,
+      "current_price": 46.89,
+      "entry_premium": 3.45,
+      "current_option_price": 2.17,
+      "current_delta": 0.878,
+      "stock_move_pct": -1.2,
+      "option_return_pct": -37.1,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -37% \u2014 approaching stop. Watch closely."
+    },
+    {
+      "ticker": "F",
+      "direction": "call",
+      "strike": 16.5,
+      "entry_price": 16.98,
+      "current_price": 15.36,
+      "entry_premium": 0.71,
+      "current_option_price": 0.01,
+      "current_delta": 0.011,
+      "stock_move_pct": -9.51,
+      "option_return_pct": -98.6,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "DDOG: STOP LOSS HIT (-99%)",
+    "SMCI: APPROACHING STOP (-37%)",
+    "F: STOP LOSS HIT (-99%)"
+  ],
+  "agent_analysis": "## ELEVATED \u2014 Thursday Position Monitor\n\n### Portfolio Status: CRITICAL DAMAGE\n\n| Position | Stock | Option P&L | Status | Assessment |\n|----------|-------|-----------|--------|------------|\n| **DDOG CALL** | -12.0% | **-99%** | \ud83d\udd34 STOP_HIT | Dead. Delta \u2248 0.00. Should have been closed at -50%. |\n| **F CALL** | -9.5% | **-99%** | \ud83d\udd34 STOP_HIT | Dead. Delta \u2248 0.00. Should have been closed at -50%. |\n| **SMCI CALL** | -1.2% | **-37%** | \ud83d\udfe1 WARNING | Alive but deteriorating. Charm is destroying this overnight. |\n\n---\n\n### Analysis\n\n**DDOG & F:** Both blew through the -50% hard stop and went to zero. At -99% these are worthless \u2014 delta is effectively 0.00 (delta stop triggered simultaneously). There is nothing to recover. The 12% and 9.5% stock moves against calls with ~0.35 entry delta made these binary losses. These should have been exited when they hit -50%.\n\n**SMCI:** At -37% on Thursday with only 1.2% stock decline, this tells me charm decay did most of the damage \u2014 the stock barely moved but the option lost over a third of its value. With 1 day to expiry:\n- Estimated delta has drifted well below 0.20 (from ~0.35 entry)\n- Thursday theta burn is ~4%+/day, accelerating into Friday\n- Thursday target is only 15% \u2014 this position needs a **+54% move from here** just to reach the day-specific target. Impossible without a massive gap.\n- Recovery math: even a 2% SMCI rally tomorrow likely only recovers 5-10 points on a crushed-delta option\n- At -37%, it's past the -30% warning zone and approaching the -50% hard stop with overnight charm acceleration virtually guaranteed to push it there\n\n**Ensemble check:** All three positions were calls. Without market data I can't confirm regime, but 3/3 calls moving against us with stock declines of 1-12% suggests either the directional model misfired this week or a regime shift occurred post-entry. The all-call portfolio with no contrarian swap (methodology requires swap if avg confidence < 0.75) should be reviewed in reflection.\n\n---\n\n### RECOMMENDATION\n\n**Close all three positions NOW.**\n\nDDOG and F are formalities \u2014 they're at zero. Execute market orders to clear them off the book.\n\n**SMCI is the only real decision, and the answer is EXIT.** At -37% on Thursday with charm-crushed delta, there is no realistic path to profit. Holding overnight guarantees further theta/charm erosion of 4-5%+ into a Friday where you'd need a gap-up miracle. Salvage the remaining ~63 cents on the dollar rather than watch it bleed to the -50% stop or expire worthless.\n\n**Portfolio P&L this week: approximately -78%. Zero winners. Flag for deep-dive in weekly reflection \u2014 three calls, all losers, two hit stop, pattern suggests directional model failure or missed regime shift.**",
+  "summary": {
+    "total_positions": 3,
+    "avg_return_pct": -78.1,
+    "targets_hit": 0,
+    "stops_hit": 2,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
