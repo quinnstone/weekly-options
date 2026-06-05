@@ -168,6 +168,60 @@ class DailyStages:
                 return results
         return []
 
+    def _load_entered_positions(self) -> list:
+        """Load the Monday picks that were ACTUALLY ENTERED, per the 10 AM
+        entry confirmation (GO / ADJUST / SKIP).
+
+        The position monitor and final_exit stages must track only what the
+        user holds — not every candidate. The 10 AM confirmation is the
+        authority on what was entered: only GO picks are clean entries. A SKIP
+        was explicitly "do not enter"; an ADJUST means "re-strike then maybe
+        enter" — its original strike/premium no longer describe a real position,
+        so it is excluded too (the user can monitor a re-struck ADJUST manually).
+
+        Without this filter the monitor reported live P&L on SKIP'd picks the
+        user never opened (e.g. 2026-06-01: all 3 were SKIP at 10 AM, yet the
+        1:54 PM monitor showed them as HOLD positions with dollar P&L).
+
+        Falls back to ALL picks when no confirmation file exists (older weeks
+        predate confirmation logging, or the confirm stage didn't run) — better
+        to over-report than to silently show nothing.
+        """
+        picks = self._load_previous_stage("monday_picks")
+        if not picks:
+            return []
+
+        # Find the matching confirmation file (same date the picks resolved to).
+        confirmations = None
+        for days_back in range(7):
+            date_str = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+            conf_path = config.candidates_dir / date_str / "entry_confirmations.json"
+            if conf_path.exists():
+                try:
+                    with open(conf_path) as fh:
+                        confirmations = json.load(fh)
+                    break
+                except Exception as exc:
+                    logger.warning("Could not read entry confirmations (%s): %s", date_str, exc)
+
+        if not confirmations:
+            logger.info(
+                "No entry confirmations found — monitoring all %d picks (fallback)",
+                len(picks),
+            )
+            return picks
+
+        signal_by_ticker = {c.get("ticker"): c.get("signal") for c in confirmations}
+        entered = [p for p in picks if signal_by_ticker.get(p.get("ticker")) == "GO"]
+        skipped = [p.get("ticker") for p in picks
+                   if signal_by_ticker.get(p.get("ticker")) != "GO"]
+        if skipped:
+            logger.info(
+                "Monitoring %d/%d entered (GO) positions; excluded non-GO: %s",
+                len(entered), len(picks), ", ".join(skipped),
+            )
+        return entered
+
     # ------------------------------------------------------------------
     #  Wednesday — Broad scan
     # ------------------------------------------------------------------
@@ -1392,10 +1446,12 @@ class DailyStages:
         day_name = datetime.now().strftime("%A")
         logger.info("=== POSITION MONITOR — %s %s [%s] ===", day_name, date_str, urgency)
 
-        # Load this week's picks
-        picks = self._load_previous_stage("monday_picks")
+        # Load only the positions actually entered (GO at 10 AM confirmation).
+        # Monitoring SKIP'd/ADJUST'd picks would report P&L on positions the
+        # user never opened. See _load_entered_positions.
+        picks = self._load_entered_positions()
         if not picks:
-            logger.warning("No Monday picks found — nothing to monitor")
+            logger.warning("No entered positions found — nothing to monitor")
             return {"positions": [], "alerts": [], "agent_analysis": "", "summary": {}}
 
         # Load market summary if available
@@ -1483,9 +1539,11 @@ class DailyStages:
         date_str = self._current_date_str()
         logger.info("=== FINAL EXIT — %s (Friday 1:30 PM ET) ===", date_str)
 
-        picks = self._load_previous_stage("monday_picks")
+        # Only close positions actually entered (GO at 10 AM confirmation) —
+        # don't emit "CLOSE NOW" for SKIP'd picks the user never opened.
+        picks = self._load_entered_positions()
         if not picks:
-            logger.warning("No Monday picks found — nothing to close")
+            logger.warning("No entered positions found — nothing to close")
             return {"positions": [], "alerts": [], "agent_analysis": "", "summary": {}}
 
         # Run position monitor at CRITICAL urgency
