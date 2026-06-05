@@ -6,23 +6,33 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 3 |
-| Total Picks | 9 |
-| Record | 4W - 2L - 3P |
-| Win Rate | 44% |
-| Total Invested | $4,624.00 |
+| Weeks Tracked | 4 |
+| Total Picks | 12 |
+| Record | 4W - 5L - 3P |
+| Win Rate | 33% |
+| Total Invested | $5,875.00 |
 | Total Returned | $6,273.00 |
-| **Net P&L** | **+$1,649.00** |
-| **ROI** | **+35.66%** |
+| **Net P&L** | **+$398.00** |
+| **ROI** | **+6.77%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
 | Best | GOOGL | 2026-05-04 | +$1,055.00 (+136.1%) |
-| Worst | AMD | 2026-04-27 | $-416.00 (-42.9%) |
+| Worst | DDOG | 2026-06-01 | $-835.00 (-100.0%) |
 
 ---
 
 ## Weekly Results
+
+### Week of 2026-06-01 (exp. 2026-06-05)
+
+**0W-3L-0P** | Cost: $1,251.00 | Return: $0.00 | **P&L: $-1,251.00 (-100.0%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | DDOG | CALL | $280.00 | $8.35 | $234.11 | $0.00 | -$835.00 | LOSS |
+| 2 | SMCI | CALL | $45.00 | $3.45 | $41.64 | $0.00 | -$345.00 | LOSS |
+| 3 | F | CALL | $16.50 | $0.71 | $14.90 | $0.00 | -$71.00 | LOSS |
 
 ### Week of 2026-05-18 (exp. 2026-05-22)
 
@@ -56,4 +66,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-05-22 17:41 ET*
+*Last updated: 2026-06-05 17:21 ET*

@@ -162,19 +162,76 @@
       "partials": 0,
       "win_rate": 0.6667,
       "graded_at": "2026-05-22T17:41:32.851971"
+    },
+    {
+      "pick_date": "2026-06-01",
+      "expiry": "2026-06-05",
+      "picks": [
+        {
+          "ticker": "DDOG",
+          "direction": "call",
+          "strike": 280.0,
+          "entry_premium": 8.35,
+          "entry_cost": 835.0,
+          "closing_price": 234.11,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -835.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "SKIP"
+        },
+        {
+          "ticker": "SMCI",
+          "direction": "call",
+          "strike": 45.0,
+          "entry_premium": 3.45,
+          "entry_cost": 345.0,
+          "closing_price": 41.64,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -345.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "SKIP"
+        },
+        {
+          "ticker": "F",
+          "direction": "call",
+          "strike": 16.5,
+          "entry_premium": 0.71,
+          "entry_cost": 71.0,
+          "closing_price": 14.9,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -71.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "SKIP"
+        }
+      ],
+      "total_cost": 1251.0,
+      "total_exit": 0,
+      "total_pnl": -1251.0,
+      "total_return_pct": -100.0,
+      "wins": 0,
+      "losses": 3,
+      "partials": 0,
+      "win_rate": 0.0,
+      "graded_at": "2026-06-05T17:21:46.602096"
     }
   ],
   "all_time": {
-    "total_weeks": 3,
-    "total_picks": 9,
+    "total_weeks": 4,
+    "total_picks": 12,
     "wins": 4,
-    "losses": 2,
+    "losses": 5,
     "partials": 3,
-    "win_rate": 0.4444,
-    "total_invested": 4624.0,
+    "win_rate": 0.3333,
+    "total_invested": 5875.0,
     "total_returned": 6273.0,
-    "total_pnl": 1649.0,
-    "total_return_pct": 35.66,
+    "total_pnl": 398.0,
+    "total_return_pct": 6.77,
     "best_pick": {
       "ticker": "GOOGL",
       "date": "2026-05-04",
@@ -182,10 +239,10 @@
       "pnl_pct": 136.13
     },
     "worst_pick": {
-      "ticker": "AMD",
-      "date": "2026-04-27",
-      "pnl": -416.0,
-      "pnl_pct": -42.89
+      "ticker": "DDOG",
+      "date": "2026-06-01",
+      "pnl": -835.0,
+      "pnl_pct": -100.0
     }
   }
 }
