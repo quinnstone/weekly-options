@@ -8531,7 +8531,7 @@
     },
     "strike": 315.0,
     "expiry": "2026-06-12",
-    "premium": 4.97,
+    "premium": 4.12,
     "confidence": 0.286,
     "current_price": 313.56,
     "breakeven": 319.97,
@@ -8556,7 +8556,8 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 2.0% move to $319.97 (weekly expected move: 4.0%)."
     },
     "git_sha": "682f667898f315e2b86d85b23b4f73635bc8164a",
-    "thesis": "Flow conviction (95) is the dominant differentiator \u2014 this isn't just a momentum chase but has institutional flow backing the bullish direction, with trend_persistence (95) confirming the trend is durable. Social sentiment flags \"release\" and \"upgrade\" catalysts, suggesting a product or analyst event may provide the weekly catalyst. **Kill condition:** AAPL has earnings flagged this week \u2014 if it reports and iPhone/Services revenue disappoints or forward guidance is cut, exit immediately. Also, if Monday's high-impact event (holding window risk) triggers a broad risk-off move and AAPL gaps >2% lower at open, skip entry entirely per gap-stop rules."
+    "thesis": "Flow conviction (95) is the dominant differentiator \u2014 this isn't just a momentum chase but has institutional flow backing the bullish direction, with trend_persistence (95) confirming the trend is durable. Social sentiment flags \"release\" and \"upgrade\" catalysts, suggesting a product or analyst event may provide the weekly catalyst. **Kill condition:** AAPL has earnings flagged this week \u2014 if it reports and iPhone/Services revenue disappoints or forward guidance is cut, exit immediately. Also, if Monday's high-impact event (holding window risk) triggers a broad risk-off move and AAPL gaps >2% lower at open, skip entry entirely per gap-stop rules.",
+    "original_premium_premarket": 4.97
   },
   {
     "ticker": "PYPL",

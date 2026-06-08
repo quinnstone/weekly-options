@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "T",
+    "direction": "put",
+    "strike": 23.0,
+    "original_premium": 0.52,
+    "original_price": 22.67,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.68 (price moved from $22.67 to $22.57). Consider re-selecting strike closer to current price.",
+    "current_price": 22.57,
+    "new_delta": 0.683,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-06-08T13:22:24.282490"
+  },
+  {
+    "ticker": "AAPL",
+    "direction": "call",
+    "strike": 315.0,
+    "original_premium": 4.12,
+    "original_price": 313.56,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+1.3% since open). Premium moved -17% ($4.97 \u2192 $4.12). Adjust limit order accordingly.",
+    "current_price": 312.69,
+    "new_delta": 0.441,
+    "new_premium": 4.12,
+    "gap_pct": 0.46,
+    "timestamp": "2026-06-08T13:22:24.690739"
+  },
+  {
+    "ticker": "PYPL",
+    "direction": "put",
+    "strike": 45.0,
+    "original_premium": 3.75,
+    "original_price": 41.19,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.55 to 0.93 (price moved from $41.19 to $41.04). Consider re-selecting strike closer to current price.",
+    "current_price": 41.04,
+    "new_delta": 0.929,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-06-08T13:22:24.934096"
+  }
+]
