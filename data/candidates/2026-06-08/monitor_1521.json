@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 315.0,
+      "entry_price": 313.56,
+      "current_price": 303.45,
+      "entry_premium": 4.12,
+      "current_option_price": 0.91,
+      "current_delta": 0.137,
+      "stock_move_pct": -3.22,
+      "option_return_pct": -77.9,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -78% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "AAPL: STOP LOSS HIT (-78%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -77.9,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "ROUTINE",
+    "day": "Monday",
+    "days_to_expiry": 5
+  }
+}
