@@ -1959,6 +1959,45 @@
         "proposals": [],
         "analysis_snippet": "\n\n# CIO Weekly Review \u2014 Week of June 6, 2026\n\n---\n\n## I. Executive Summary\n\n**This week produced no trades to score.** The pipeline generated 0W / 0L / 3 total with 0.0% average return, but the scorecard detail is empty \u2014 meaning either (a) picks were made but no entry was executed (gap stop trigger"
       }
+    },
+    {
+      "timestamp": "2026-06-08T11:31:32.735398",
+      "week": "2026-W23",
+      "agent": "portfolio_reasoner",
+      "ticker": "PORTFOLIO",
+      "mechanical_signal": "MRVL,T,AAPL",
+      "agent_signal": "MRVL,T,AAPL",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "dropped": [
+          "T",
+          "AAPL",
+          "AMZN",
+          "MRVL",
+          "MU"
+        ],
+        "reasoning": "SELECTED:\n\n1. **MRVL** \u2014 CALL\n   *Portfolio justification:* Highest composite score (69.2) with the strongest momentum (100) and trend_persistence (95) in the candidate set. Semiconductor sector with earnings catalyst this week provides the volatility needed for weekly options payoff \u2014 but earnings is also the key risk (see thesis).\n\n   THESIS: Momentum is the dominant signal here \u2014 MRVL scores a perfect 100, with trend_persistence at 95 confirming sustained directional strength, not a one-day spike. The COT extreme_short contrarian signal (percentile 3.9) supports a bullish call thesis this week, and the broad_rally breadth regime means this isn't narrow mega-cap leadership propping up the tape. **Kill condition:** Earnings are flagged this week \u2014 if MRVL reports before Friday and misses revenue or guides down on AI infrastructure spend, the momentum thesis is invalidated instantly; exit at open post-earnings regardless of P&L if guidance disappoints. Also exit if delta drifts below 0.10 or the option hits -50%.\n\n2. **PYPL** \u2014 PUT\n   *Portfolio justification:* Best non-earnings pick available, providing critical direction balance against two calls. Fintech/payments sector is uncorrelated with semiconductors and mega-cap tech, reducing portfolio concentration risk. No earnings flag removes the binary event risk that plagues most other candidates this week.\n\n   THESIS: Momentum (91) and trend_persistence (85) both point bearish, and in the normal VIX regime these signals run at baseline weight \u2014 no headwind from regime multipliers. Tight credit spreads (HY OAS 2.76%) signal complacency, which historically correlates with 50.4% directional accuracy \u2014 mediocre, but the put direction acts as a portfolio hedge if the high holding-window risk (Monday event) triggers a broad selloff. **Kill condition:** If PYPL breaks above its 20-day SMA by >2% on Monday/Tuesday, the bearish momentum thesis is broken \u2014 exit immediately. Hard stop at -50%.\n\n3. **AAPL** \u2014 CALL\n   *Portfolio justification:* Flow_conviction at 95 is the highest flow score across all candidates, suggesting institutional positioning supports the call direction. Unusual options flow catalyst adds confirmation. Provides mega-cap exposure that anchors the portfolio with high liquidity (tight spreads, clean execution).\n\n   THESIS: Flow conviction (95) is the dominant differentiator \u2014 this isn't just a momentum chase but has institutional flow backing the bullish direction, with trend_persistence (95) conf"
+      }
+    },
+    {
+      "timestamp": "2026-06-08T11:31:33.256241",
+      "week": "2026-W23",
+      "agent": "strike_selection",
+      "ticker": "MRVL",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 14.79,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": false
+      }
     }
   ],
   "weekly_summaries": []

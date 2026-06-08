@@ -1,0 +1,69 @@
+{
+  "date": "2026-06-08",
+  "picks": [
+    {
+      "ticker": "T",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 65.35,
+      "direction_confidence": 0.303,
+      "scores": {
+        "momentum": 92.64847270211625,
+        "mean_reversion": 75.0,
+        "regime_bias": 60.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 40.0,
+        "flow_conviction": 40.0,
+        "event_risk": 40.0,
+        "liquidity": 55.108,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 61.33,
+      "direction_confidence": 0.286,
+      "scores": {
+        "momentum": 76.860358036215,
+        "mean_reversion": 63.19199999999999,
+        "regime_bias": 50.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 10.760000000000002,
+        "flow_conviction": 95.0,
+        "event_risk": 59.0,
+        "liquidity": 76.7475,
+        "strike_efficiency": 65.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "PYPL",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 61.29,
+      "direction_confidence": 0.303,
+      "scores": {
+        "momentum": 91.26668745173704,
+        "mean_reversion": 75.0,
+        "regime_bias": 60.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 16.18,
+        "flow_conviction": 40.0,
+        "event_risk": 40.0,
+        "liquidity": 75.20696,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-06-08T11:31:34.250648"
+}
