@@ -41,6 +41,13 @@ on:
     # Saturday 10:00 AM ET (14:00 UTC)
     - cron: '0 14 * * 6'
 
+    # === WEDNESDAY DIRECTIONAL BACKTEST ===
+    # Wednesday 9:00 AM ET (13:00 UTC) — walk-forward validation of the
+    # direction signals (analysis/backtest.py). Restores the standing
+    # discipline that lapsed after 2026-03-27; no market-data deadline,
+    # cron lateness is harmless. Output saved to data/performance/.
+    - cron: '0 13 * * 3'
+
   workflow_dispatch:
     inputs:
       stage:
@@ -57,6 +64,7 @@ on:
           - final_exit
           - scorecard
           - reflect
+          - backtest
 
 permissions:
   contents: write
@@ -148,6 +156,7 @@ jobs:
               "0 14 * * 5")   STAGE=monitor ;;
               "30 17 * * 5")  STAGE=final_exit ;;
               "0 14 * * 6")   STAGE=reflect ;;
+              "0 13 * * 3")   STAGE=backtest ;;
               *)              STAGE=none ;;
             esac
             echo "Cron-routed: schedule='$SCHED' → stage='$STAGE'"
@@ -246,6 +255,11 @@ jobs:
               ;;
             reflect)
               python3 main.py reflect
+              ;;
+            backtest)
+              # Weekly directional backtest — 26-week lookback keeps runner
+              # time sane while covering two quarters of regimes.
+              python3 main.py backtest --weeks 26
               ;;
           esac
 

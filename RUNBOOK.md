@@ -54,6 +54,7 @@ name; pick `monday` first, `confirm` second.
 | Tue/Wed/Thu monitors | (cron) | Status updates on open positions |
 | Friday final_exit | Fri 1:30 PM (cron) | Close expiring positions |
 | Scorecard / Reflection | Fri/Sat (cron) | Grade prior week, agent reflection |
+| Directional backtest | Wed 9 AM ET (cron) | Walk-forward validation of direction signals (26-wk lookback); output in data/performance/ |
 
 These read **settled** data and have days of slack before they're consumed, so
 cron lateness does not corrupt them. They only need to *run* — see the health

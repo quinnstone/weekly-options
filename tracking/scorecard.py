@@ -98,6 +98,20 @@ class Scorecard:
             result["entry_signal"] = entry_signals.get(result.get("ticker"), "GO")
             graded.append(result)
 
+        # Attach per-pick diagnostics so the reflection layer has FEATURES to
+        # learn from, not just outcomes. Motivated by the 2026-06-10 study
+        # (n=105 candidate-weeks): the picked book is high-beta — extended
+        # momentum names continued +7..14% in SPY-up weeks and crashed -8.9%
+        # in the one SPY-down week. Whether losses come from beta vs signal
+        # decay vs premium cost is unanswerable without logging these at grade
+        # time. The 5/23 reflection returned empty weight_adjustments on a 0%
+        # week precisely because it had no features to attribute blame with.
+        # All fetches are best-effort; None on failure, never blocks grading.
+        try:
+            self._attach_diagnostics(graded, pick_date, expiry)
+        except Exception as exc:
+            logger.warning("Diagnostics attach failed for %s: %s", pick_date, exc)
+
         # Weekly summary
         total_cost = sum(r["entry_cost"] for r in graded)
         total_exit = sum(r["exit_value_total"] for r in graded)
@@ -187,6 +201,75 @@ class Scorecard:
             logger.error("Failed to send scorecard to Discord: %s", exc)
 
         return weekly
+
+    def _attach_diagnostics(self, graded: list, pick_date: str, expiry: str):
+        """Attach learning features to each graded pick (best-effort).
+
+        Features (None when unavailable — never blocks grading):
+          pre_run_5d_pct        — underlying's move over the 5 trading days
+                                  BEFORE entry (was the name extended?)
+          spy_week_move_pct     — SPY Mon-open -> Fri-close for the pick week
+                                  (separates market beta from stock selection)
+          rsi_at_entry          — RSI stored on the pick at selection time
+          premium_pct_of_spot   — entry premium / entry stock price (was the
+                                  option expensive relative to the underlying?)
+        """
+        # SPY week move — one fetch per week
+        spy_week_move = None
+        try:
+            spy = yf.Ticker("SPY").history(start=pick_date, end=expiry)
+            # include expiry day itself
+            spy2 = yf.Ticker("SPY").history(
+                start=pick_date,
+                end=(datetime.strptime(expiry, "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d"),
+            )
+            use = spy2 if len(spy2) >= len(spy) else spy
+            if len(use) >= 2:
+                spy_week_move = round(
+                    (float(use["Close"].iloc[-1]) - float(use["Open"].iloc[0]))
+                    / float(use["Open"].iloc[0]) * 100, 2)
+        except Exception:
+            pass
+
+        # Entry-time stock price + RSI from the candidates snapshot (richer
+        # than the report file, which strips technicals)
+        entry_meta = {}
+        try:
+            with open(config.candidates_dir / pick_date / "monday_picks.json") as fh:
+                for c in json.load(fh):
+                    entry_meta[c.get("ticker")] = {
+                        "entry_px": c.get("current_price"),
+                        "rsi": (c.get("technical") or {}).get("rsi"),
+                    }
+        except Exception:
+            pass
+
+        for g in graded:
+            t = g.get("ticker")
+            meta = entry_meta.get(t, {})
+            pre_run = None
+            try:
+                start = (datetime.strptime(pick_date, "%Y-%m-%d")
+                         - timedelta(days=14)).strftime("%Y-%m-%d")
+                h = yf.Ticker(t).history(start=start, end=pick_date)
+                if len(h) >= 6:
+                    pre_run = round(
+                        (float(h["Close"].iloc[-1]) - float(h["Close"].iloc[-6]))
+                        / float(h["Close"].iloc[-6]) * 100, 2)
+            except Exception:
+                pass
+
+            prem_pct = None
+            entry_px = meta.get("entry_px")
+            if g.get("entry_premium") and entry_px:
+                prem_pct = round(g["entry_premium"] / entry_px * 100, 2)
+
+            g["diagnostics"] = {
+                "pre_run_5d_pct": pre_run,
+                "spy_week_move_pct": spy_week_move,
+                "rsi_at_entry": meta.get("rsi"),
+                "premium_pct_of_spot": prem_pct,
+            }
 
     def _grade_pick(self, pick: dict, expiry: str) -> dict:
         """Grade a single pick against actual closing price on expiry.
