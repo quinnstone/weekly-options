@@ -1,0 +1,20 @@
+{
+  "positions": [
+    {
+      "ticker": "AAPL",
+      "status": "ERROR",
+      "detail": "Too Many Requests. Rate limited. Try after a while."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "## Thursday Position Monitor \u2014 ELEVATED Urgency\n\n### Status: NO POSITIONS TO MONITOR\n\nNo position data was provided. This means one of three things:\n\n1. **All positions were already closed** (stops hit or targets taken earlier this week)\n2. **Data feed failure** \u2014 no market data AND no position data suggests a pipeline issue\n3. **No trades were entered Monday** (all three candidates failed the gap-skip or delta-drift confirmation gates)\n\nAdditionally: **No market data available** \u2014 VIX regime, breadth, and credit spread context are all blind. On a Thursday with ELEVATED urgency, this is a problem.\n\n---\n\n### Recommendation\n\n**VERIFY PIPELINE STATUS IMMEDIATELY.**\n\nIf positions are open but not showing here, we're flying blind on the highest-theta day of the week. Charm acceleration means a position that was -20% at Wednesday close could be -40% by noon Thursday. Manual check of broker account required.\n\nIf no positions are open \u2014 nothing to do. Prep for Friday close-out protocol (everything by 2 PM ET) in case any stragglers exist.",
+  "summary": {
+    "total_positions": 0,
+    "avg_return_pct": 0.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
