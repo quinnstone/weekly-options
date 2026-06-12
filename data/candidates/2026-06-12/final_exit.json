@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "AAPL",
+      "direction": "call",
+      "strike": 315.0,
+      "entry_price": 313.56,
+      "current_price": 290.71,
+      "entry_premium": 4.12,
+      "current_option_price": 0.01,
+      "current_delta": 0.002,
+      "stock_move_pct": -7.29,
+      "option_return_pct": -99.8,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -100%. Use market order if needed \u2014 do not let expire unmanaged."
+    }
+  ],
+  "alerts": [
+    "AAPL: STOP LOSS HIT (-100%)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Expiry Day\n\n### Position Status\n\n| Ticker | Dir | Stock Move | Option P&L | Status | Action |\n|--------|-----|-----------|------------|--------|--------|\n| AAPL | CALL | -7.3% | **-100%** | STOP_HIT | **CLOSE NOW** |\n\n---\n\n### Assessment\n\n**AAPL CALL:** Total loss. Stock moved -7.3% against a call \u2014 that's catastrophic for a weekly option. At -100%, this position is either worthless or pennies. The -50% hard stop should have triggered earlier in the week; if it didn't fire automatically, this is a process failure to flag in reflection. Delta is effectively zero. There is nothing to recover.\n\nNo other positions reported \u2014 either this was a single-pick week or the other two were already closed.\n\n---\n\n### RECOMMENDATION\n\n**Close AAPL immediately at market. Do not wait for 2 PM. Accept the full loss.**\n\nIf any residual bid exists (even $0.01), hit it now \u2014 liquidity evaporates on expiry Friday afternoons. Every minute you hold a worthless 0DTE option is pure execution risk with zero upside.\n\n**Post-close action:** Flag for weekly reflection \u2014 a -7.3% stock move against thesis in a single week suggests either (1) an undetected event risk (earnings, downgrade, macro shock), or (2) directional signal failure. With the 8-week log showing **0/10 on calls** and 33% overall win rate, the call bias needs serious scrutiny in Sunday's reflection. The system is bleeding on calls consistently.",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -99.8,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
