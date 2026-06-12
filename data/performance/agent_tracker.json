@@ -2058,6 +2058,21 @@
         "option_return_pct": -99.5,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-06-12T12:36:57.331475",
+      "week": "2026-W23",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT+AGENT_REVIEW",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -99.8,
+        "has_agent_analysis": true
+      }
     }
   ],
   "weekly_summaries": []
