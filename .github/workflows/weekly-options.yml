@@ -260,6 +260,10 @@ jobs:
               # Weekly directional backtest — 26-week lookback keeps runner
               # time sane while covering two quarters of regimes.
               python3 main.py backtest --weeks 26
+              # Standing hypothesis tests (analysis-only, zero live-pipeline
+              # impact). Non-fatal: a hypothesis-test failure must never
+              # break the backtest commit.
+              python3 analysis/hypothesis_tests.py --weeks 26 || echo "hypothesis tests failed (non-fatal)"
               ;;
           esac
 

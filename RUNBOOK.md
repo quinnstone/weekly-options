@@ -55,6 +55,7 @@ name; pick `monday` first, `confirm` second.
 | Friday final_exit | Fri 1:30 PM (cron) | Close expiring positions |
 | Scorecard / Reflection | Fri/Sat (cron) | Grade prior week, agent reflection |
 | Directional backtest | Wed 9 AM ET (cron) | Walk-forward validation of direction signals (26-wk lookback); output in data/performance/ |
+| Hypothesis tests | Wed (with backtest) | Standing analysis-only tests of PROPOSED process changes (analysis/hypothesis_tests.py); a hypothesis must win here for weeks before touching the live pipeline |
 
 These read **settled** data and have days of slack before they're consumed, so
 cron lateness does not corrupt them. They only need to *run* — see the health
