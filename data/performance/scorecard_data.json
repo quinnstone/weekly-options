@@ -219,19 +219,94 @@
       "partials": 0,
       "win_rate": 0.0,
       "graded_at": "2026-06-05T17:55:21.986104"
+    },
+    {
+      "pick_date": "2026-06-08",
+      "expiry": "2026-06-12",
+      "picks": [
+        {
+          "ticker": "T",
+          "direction": "put",
+          "strike": 23.0,
+          "entry_premium": 0.52,
+          "entry_cost": 52.0,
+          "closing_price": 23.58,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -52.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": -8.27,
+            "spy_week_move_pct": -0.22,
+            "rsi_at_entry": 24.45,
+            "premium_pct_of_spot": 2.29
+          }
+        },
+        {
+          "ticker": "AAPL",
+          "direction": "call",
+          "strike": 315.0,
+          "entry_premium": 4.12,
+          "entry_cost": 412.0,
+          "closing_price": 291.13,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -412.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "GO",
+          "diagnostics": {
+            "pre_run_5d_pct": -1.51,
+            "spy_week_move_pct": -0.22,
+            "rsi_at_entry": 66.49,
+            "premium_pct_of_spot": 1.31
+          }
+        },
+        {
+          "ticker": "PYPL",
+          "direction": "put",
+          "strike": 45.0,
+          "entry_premium": 3.75,
+          "entry_cost": 375.0,
+          "closing_price": 41.53,
+          "exit_value_per_share": 3.47,
+          "exit_value_total": 347.0,
+          "pnl": -28.0,
+          "pnl_pct": -7.47,
+          "result": "PARTIAL",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": -7.43,
+            "spy_week_move_pct": -0.22,
+            "rsi_at_entry": 28.78,
+            "premium_pct_of_spot": 9.1
+          }
+        }
+      ],
+      "total_cost": 839.0,
+      "total_exit": 347.0,
+      "total_pnl": -492.0,
+      "total_return_pct": -58.64,
+      "wins": 0,
+      "losses": 2,
+      "partials": 1,
+      "win_rate": 0.0,
+      "graded_at": "2026-06-12T17:27:30.814691"
     }
   ],
   "all_time": {
-    "total_weeks": 4,
-    "total_picks": 12,
+    "total_weeks": 5,
+    "total_picks": 15,
     "wins": 4,
-    "losses": 5,
-    "partials": 3,
-    "win_rate": 0.3333,
-    "total_invested": 5875.0,
-    "total_returned": 6273.0,
-    "total_pnl": 398.0,
-    "total_return_pct": 6.77,
+    "losses": 7,
+    "partials": 4,
+    "win_rate": 0.2667,
+    "total_invested": 6714.0,
+    "total_returned": 6620.0,
+    "total_pnl": -94.0,
+    "total_return_pct": -1.4,
     "best_pick": {
       "ticker": "GOOGL",
       "date": "2026-05-04",
