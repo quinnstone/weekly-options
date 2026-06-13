@@ -2088,6 +2088,20 @@
         "option_return_pct": -99.8,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-06-13T11:26:43.718957",
+      "week": "2026-W23",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "# CIO Weekly Review \u2014 Week of 2026-06-13\n\n## Executive Summary\n\nThis is a ghost week \u2014 three trades were entered but no scorecard data was recorded, meaning we have zero P&L, zero signal correlation data, and zero ability to diagnose what actually happened. This is itself the most important finding:"
+      }
     }
   ],
   "weekly_summaries": []
