@@ -2102,6 +2102,19 @@
         "proposals": [],
         "analysis_snippet": "# CIO Weekly Review \u2014 Week of 2026-06-13\n\n## Executive Summary\n\nThis is a ghost week \u2014 three trades were entered but no scorecard data was recorded, meaning we have zero P&L, zero signal correlation data, and zero ability to diagnose what actually happened. This is itself the most important finding:"
       }
+    },
+    {
+      "timestamp": "2026-06-17T10:25:53.740731",
+      "week": "2026-W24",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3287
+      }
     }
   ],
   "weekly_summaries": []

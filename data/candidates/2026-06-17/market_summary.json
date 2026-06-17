@@ -1,0 +1,347 @@
+{
+  "vix": {
+    "current": 16.559999465942383,
+    "previous_close": 16.40999984741211,
+    "change": 0.15,
+    "change_pct": 0.91,
+    "trend_20d": "Date\n2026-05-21 00:00:00-05:00    16.760000\n2026-05-22 00:00:00-05:00    16.700001\n2026-05-25 00:00:00-05:00    16.590000\n2026-05-26 00:00:00-05:00    17.010000\n2026-05-27 00:00:00-05:00    16.290001\n2026-05-28 00:00:00-05:00    15.740000\n2026-05-29 00:00:00-05:00    15.320000\n2026-06-01 00:00:00-05:00    16.049999\n2026-06-02 00:00:00-05:00    15.770000\n2026-06-03 00:00:00-05:00    16.059999\n2026-06-04 00:00:00-05:00    15.400000\n2026-06-05 00:00:00-05:00    21.510000\n2026-06-08 00:00:00-05:00    18.920000\n2026-06-09 00:00:00-05:00    19.870001\n2026-06-10 00:00:00-05:00    22.219999\n2026-06-11 00:00:00-05:00    19.440001\n2026-06-12 00:00:00-05:00    17.680000\n2026-06-15 00:00:00-05:00    16.200001\n2026-06-16 00:00:00-05:00    16.410000\n2026-06-17 00:00:00-05:00    16.559999\nName: Close, dtype: float64",
+    "sma_20": 17.33,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.559999465942383,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.21,
+    "rsp_return_1d": 0.2,
+    "breadth_spread_1d": -0.01,
+    "spy_return_5d": 3.65,
+    "rsp_return_5d": 2.94,
+    "breadth_spread_5d": -0.71,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.0,
+    "yield_10y": 4.48,
+    "spread_2s10s": 0.48,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.71,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.505,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -25.43,
+    "regime_days": 5,
+    "persistence_score": 0.5
+  },
+  "skew": {
+    "skew": 142.66,
+    "skew_sma20": 141.15,
+    "skew_state": "elevated",
+    "skew_vs_sma": 1.51
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.977,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 274770,
+    "spy_put_volume": 268415
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.020000457763672,
+    "vix": 16.56999969482422,
+    "vix3m": 19.6200008392334
+  },
+  "cot_positioning": {
+    "net_position": -171790,
+    "percentile": 13.7,
+    "signal": "short",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.44,
+      "return_1d": 0.19,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.02,
+      "return_1d": 0.09,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -9.96,
+      "return_1d": 0.46,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Databricks sales growth tops 80%, but margin are shrinking from swarm of AI agents",
+        "source": "CNBC",
+        "sentiment": 0.45
+      },
+      {
+        "headline": "Jim Cramer debates his next move on a software stock on an 11 day losing streak",
+        "source": "CNBC",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "'Godfather' of options sees SpaceX surpassing Nvidia, Tesla as early trades come in",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Self-driving tech supplier Mobileye targets U.S. robotaxi launch in 2027",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Salesforce looks to strengthen its AI platform \u2014 plus, a positive note for J&J",
+        "source": "CNBC",
+        "sentiment": 0.71
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Gold holds ground with spotlight on Fed meet, US-Iran deal details - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Treasury yields fall ahead of Kevin Warsh's first Fed meeting",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Indian rupee extends gains; US-Iran peace agreement details, Fed guidance awaited - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.859
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Iranian oil tankers pass US blockade after US-Iran deal, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Middle East crude slips into discounts as U.S.-Iran deal lifts supply outlook - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.572
+      },
+      {
+        "headline": "Is the Iran war just an energy shock - or a turning point? - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.66
+      },
+      {
+        "headline": "Indian shares extend rally as lower crude lifts sentiment after US-Iran deal - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.459
+      },
+      {
+        "headline": "Stocks edge up as oil hovers near 3-month lows ahead of Warsh debut - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.202
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Australia relaxes Gulf travel advice in boost for Middle Eastern airlines - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "Carvana is expanding into new vehicles. The implications could reshape the U.S. automotive retail market",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran coach says team 'oppressed' by travel chaos after 2\u20112 draw - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.778
+      },
+      {
+        "headline": "US-Iran deal may not bring quick relief for auto shops - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.372
+      },
+      {
+        "headline": "Iran deal could expand market gains, with consumer shares, small caps seen benefiting - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.71
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Tehran can immediately sell oil upon signing US-Iran deal, US official says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold holds ground with spotlight on Fed meet, US-Iran deal details - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold rises over 1% as US-Iran peace deal optimism eases rate hike bets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.852
+      },
+      {
+        "headline": "Gold drifts higher as Iran, US agree to halt war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Hezbollah believes Iran will not sign final nuclear deal if Israel stays in Lebanon - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Trump says memo states clearly Iran will not have a nuclear weapon - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Trump: Iran deal says 'loud and clear' that Tehran won't have a nuclear weapon - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      }
+    ],
+    "macro": [
+      {
+        "headline": "BMW shares sink after profit warning highlights China and Iran risk - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Trump's Iran war weighs on G7 economies, but don't expect hard talk in France - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.251
+      },
+      {
+        "headline": "Has Trump achieved his goals in the war with Iran? - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Norway's Equinor doubles share buyback as Iran war boosts cash flow - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "BMW lowers profit outlook due to China downturn, Iran war double whammy - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "ECB will be proactive against high inflation even after Iran deal, Lane says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      },
+      {
+        "headline": "German investor morale rebounds on hopes Iran conflict will end - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "US-Iran ceasefire agreement to be public soon, permanent truce still awaits negotiation - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      }
+    ]
+  },
+  "timestamp": "2026-06-17T10:25:21.055454"
+}
