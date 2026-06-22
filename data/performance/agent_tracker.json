@@ -2168,6 +2168,21 @@
       "context": {
         "brief": "The strongest pick of the three. Trend_persistence (95) and momentum (90) are both near-ceiling, and all three ensemble models should agree directionally \u2014 momentum-model loves the momentum/trend combo, and the linear model benefits from strike_efficiency (75) rounding out the score. The 1.59% gap UP confirms the call thesis (below the 2% gap-against-skip threshold, and it's gap *with* thesis). Breakeven at $230.10 is only a 1.0% move from entry \u2014 the most achievable of the three picks. Delta at 0.51 is above our 0.35 target (paying more premium), but with price action confirming direction, th"
       }
+    },
+    {
+      "timestamp": "2026-06-22T16:09:29.925294",
+      "week": "2026-W25",
+      "agent": "position_monitor",
+      "ticker": "HOOD",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -19.7,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

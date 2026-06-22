@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "strike": 105.0,
+      "entry_price": 107.25,
+      "current_price": 105.68,
+      "entry_premium": 5.08,
+      "current_option_price": 4.08,
+      "current_delta": 0.551,
+      "stock_move_pct": -1.46,
+      "option_return_pct": -19.7,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -20% (target: 40% today). Stock moved -1.5%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -19.7,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Monday",
+    "days_to_expiry": 5
+  }
+}
