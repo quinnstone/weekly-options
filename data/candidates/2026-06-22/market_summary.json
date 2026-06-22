@@ -1,0 +1,293 @@
+{
+  "vix": {
+    "current": 17.530000686645508,
+    "previous_close": 16.399999618530273,
+    "change": 1.13,
+    "change_pct": 6.89,
+    "trend_20d": "Date\n2026-05-25 00:00:00-05:00    16.590000\n2026-05-26 00:00:00-05:00    17.010000\n2026-05-27 00:00:00-05:00    16.290001\n2026-05-28 00:00:00-05:00    15.740000\n2026-05-29 00:00:00-05:00    15.320000\n2026-06-01 00:00:00-05:00    16.049999\n2026-06-02 00:00:00-05:00    15.770000\n2026-06-03 00:00:00-05:00    16.059999\n2026-06-04 00:00:00-05:00    15.400000\n2026-06-05 00:00:00-05:00    21.510000\n2026-06-08 00:00:00-05:00    18.920000\n2026-06-09 00:00:00-05:00    19.870001\n2026-06-10 00:00:00-05:00    22.219999\n2026-06-11 00:00:00-05:00    19.440001\n2026-06-12 00:00:00-05:00    17.680000\n2026-06-15 00:00:00-05:00    16.200001\n2026-06-16 00:00:00-05:00    16.410000\n2026-06-17 00:00:00-05:00    18.440001\n2026-06-18 00:00:00-05:00    16.400000\n2026-06-22 00:00:00-05:00    17.530001\nName: Close, dtype: float64",
+    "sma_20": 17.44,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 17.530000686645508,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": -0.31,
+    "rsp_return_1d": -0.15,
+    "breadth_spread_1d": 0.17,
+    "spy_return_5d": 0.62,
+    "rsp_return_5d": -0.94,
+    "breadth_spread_5d": -1.56,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.0,
+    "yield_10y": 4.48,
+    "spread_2s10s": 0.48,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.66,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.505,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -0.85,
+    "regime_days": 7,
+    "persistence_score": 0.7
+  },
+  "skew": {
+    "skew": 146.72,
+    "skew_sma20": 146.72,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 0.0
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.98,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 2265762,
+    "spy_put_volume": 2220790
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.799999237060547,
+    "vix": 17.530000686645508,
+    "vix3m": 19.889999389648438
+  },
+  "cot_positioning": {
+    "net_position": -171790,
+    "percentile": 13.7,
+    "signal": "short",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.4,
+      "return_1d": -0.79,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 1.38,
+      "return_1d": 0.19,
+      "signal": "headwind"
+    },
+    "crude_oil": {
+      "return_5d": -7.85,
+      "return_1d": -2.76,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "The AI trade has left the hyperscalers in the dust. What will it take for that to change?",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "No one wants AI data centers on Earth. Do they make sense in space?",
+        "source": "CNBC",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "Big tech stock buybacks vanish as AI spending spree eats up cash",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "29-year-old making $250k in tech went 'undercover' at a coffee chain before opening her own matcha cafe",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US equity fund inflows surge on Iran deal, tech draws record weekly investments - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Airline ticket prices may stay high as carriers bank fuel relief from Iran deal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.477
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "US authorizes Iranian oil sales amid talks on final peace deal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      },
+      {
+        "headline": "Iran war triggers global race to build oil reserves - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Stocks steady, oil falls as Iran peace talks progress - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.743
+      },
+      {
+        "headline": "Oil falls after US-Iran talks signal easing supply risks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "Iran's Tasnim news agency says Hormuz will not reopen until Lebanon ceasefire holds, oil waivers issued - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "US defends Iran World Cup travel restrictions, says discussions ongoing - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Belgium face Iran in pivotal Group G clash amid travel row - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran to lodge FIFA complaint over World Cup travel restrictions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold bounces back on encouraging US-Iran peace talks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.784
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Israeli strikes kill at least 20 in Lebanon hours after ceasefire - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.802
+      },
+      {
+        "headline": "Iran closes Strait of Hormuz over ceasefire violations - MEHR - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "Iranian Guards' business empire to win big if U.S. sanctions lifted - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "With Lebanon ceasefire set, Trump envoy heads to Switzerland for U.S.-Iran talks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Israeli envoy and UN official clash at hearing on children in conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Israel, Hezbollah agree to ceasefire in Lebanon, U.S. official says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "Brent set for 8% weekly fall as Israel, Hezbollah agree ceasefire - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "DOJ rebuffs judge's request to put in writing it won't move forward with 'anti-weaponization' fund",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-06-22T12:28:18.851616"
+}

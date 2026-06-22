@@ -1,0 +1,69 @@
+{
+  "date": "2026-06-22",
+  "picks": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.89,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 99.99818637375738,
+        "mean_reversion": 75.0,
+        "regime_bias": 47.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 35.0,
+        "flow_conviction": 50.0,
+        "event_risk": 70.0,
+        "liquidity": 76.96886,
+        "strike_efficiency": 75.0,
+        "theta_cost": 47.0
+      }
+    },
+    {
+      "ticker": "T",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 69.22,
+      "direction_confidence": 0.358,
+      "scores": {
+        "momentum": 82.68927441424104,
+        "mean_reversion": 63.048,
+        "regime_bias": 65.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 61.099999999999994,
+        "flow_conviction": 40.0,
+        "event_risk": 63.0,
+        "liquidity": 55.17932,
+        "strike_efficiency": 60.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "MS",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 68.89,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 89.76989440867169,
+        "mean_reversion": 65.0,
+        "regime_bias": 47.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 45.0,
+        "flow_conviction": 50.0,
+        "event_risk": 70.0,
+        "liquidity": 55.02586,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    }
+  ],
+  "recorded_at": "2026-06-22T12:30:31.708484"
+}
