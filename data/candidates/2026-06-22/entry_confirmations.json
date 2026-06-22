@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "HOOD",
+    "direction": "call",
+    "strike": 105.0,
+    "original_premium": 5.08,
+    "original_price": 107.25,
+    "signal": "GO",
+    "detail": "Price moving against thesis (-1.3% since open). Proceed with caution or wait for reversal.",
+    "current_price": 106.64,
+    "new_delta": 0.584,
+    "new_premium": 5.08,
+    "gap_pct": -0.13,
+    "timestamp": "2026-06-22T14:12:32.331496",
+    "agent_signal": "GO",
+    "agent_brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already requires a 3.4% breakeven move \u2014 a high bar for a weekly hold; (3) confidence at 38% is barely above the 25% hard gate and well below the 50-70% sweet spot where calibrated confidence peaks (0.58). The delta at 0.51 is above our 0.35 target, meaning we're paying for more premium than our methodology wants. Proceed, but this is a tight-leash trade \u2014 if price doesn't reclaim $107+ by Tuesday, charm decay on this slightly ITM call will erode quickly."
+  },
+  {
+    "ticker": "T",
+    "direction": "put",
+    "strike": 23.0,
+    "original_premium": 0.73,
+    "original_price": 22.3,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.86 (price moved from $22.30 to $22.25). Consider re-selecting strike closer to current price.",
+    "current_price": 22.25,
+    "new_delta": 0.86,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-06-22T14:12:32.893153",
+    "agent_signal": "GO",
+    "agent_brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already requires a 3.4% breakeven move \u2014 a high bar for a weekly hold; (3) confidence at 38% is barely above the 25% hard gate and well below the 50-70% sweet spot where calibrated confidence peaks (0.58). The delta at 0.51 is above our 0.35 target, meaning we're paying for more premium than our methodology wants. Proceed, but this is a tight-leash trade \u2014 if price doesn't reclaim $107+ by Tuesday, charm decay on this slightly ITM call will erode quickly."
+  },
+  {
+    "ticker": "MS",
+    "direction": "call",
+    "strike": 225.0,
+    "original_premium": 4.98,
+    "original_price": 227.78,
+    "signal": "SKIP",
+    "detail": "[AGENT OVERRIDE] The strongest pick of the three. Trend_persistence (95) and momentum (90) are both near-ceiling, and all three ensemble models should agree directionally \u2014 momentum-model loves the momentum/trend combo, and the linear model benefits from strike_efficiency (75) rounding out the score. The 1.59% gap UP confirms the call thesis (below the 2% gap-against-skip threshold, and it's gap *with* thesis). Breakeven at $230.10 is only a 1.0% move from entry \u2014 the most achievable of the three picks. Delta at 0.51 is above our 0.35 target (paying more premium), but with price action confirming direction, this is acceptable. Key risk: MS is a financial sector name in a tight-credit, narrow-leadership environment \u2014 our backtest shows tight credit yields only 50.4% accuracy. The COT extreme short positioning (13.7 percentile) provides a contrarian bullish tailwind (+2.5 for calls per methodology), which partially offsets the credit headwind.\nOriginal mechanical signal: GO \u2014 Early action confirms call thesis (+0.5% since open).",
+    "current_price": 227.76,
+    "new_delta": 0.641,
+    "new_premium": 4.98,
+    "gap_pct": 1.59,
+    "timestamp": "2026-06-22T14:12:33.297167",
+    "agent_signal": "SKIP",
+    "agent_brief": "The strongest pick of the three. Trend_persistence (95) and momentum (90) are both near-ceiling, and all three ensemble models should agree directionally \u2014 momentum-model loves the momentum/trend combo, and the linear model benefits from strike_efficiency (75) rounding out the score. The 1.59% gap UP confirms the call thesis (below the 2% gap-against-skip threshold, and it's gap *with* thesis). Breakeven at $230.10 is only a 1.0% move from entry \u2014 the most achievable of the three picks. Delta at 0.51 is above our 0.35 target (paying more premium), but with price action confirming direction, this is acceptable. Key risk: MS is a financial sector name in a tight-credit, narrow-leadership environment \u2014 our backtest shows tight credit yields only 50.4% accuracy. The COT extreme short positioning (13.7 percentile) provides a contrarian bullish tailwind (+2.5 for calls per methodology), which partially offsets the credit headwind."
+  }
+]

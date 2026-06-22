@@ -688,7 +688,7 @@
     },
     "strike": 105.0,
     "expiry": "2026-06-26",
-    "premium": 5.9,
+    "premium": 5.08,
     "confidence": 0.377,
     "current_price": 107.25,
     "breakeven": 110.9,
@@ -713,7 +713,8 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 3.4% move to $110.90 (weekly expected move: 13.7%)."
     },
     "git_sha": "5e46908e832cce81a3426240894f54c73490e034",
-    "thesis": "** HOOD is driven by perfect momentum (100) and strong trend persistence (85), suggesting a sustained directional move rather than a mean-reversion trap \u2014 critical in a normal VIX regime where momentum weights run at baseline 1.0x. This week is the right entry because COT speculative positioning is at the 13.7th percentile (extreme short), which per our methodology adds +2.5 contrarian bullish bias, and the stock has no earnings event to create binary risk. The thesis is invalidated if HOOD gaps down >2% on Monday open (gap-skip rule), or if broad risk-off sentiment intensifies \u2014 with cross-asset already showing 2 headwinds/0 tailwinds, any further deterioration (e.g., VIX push above 20) would undercut the directional bet."
+    "thesis": "** HOOD is driven by perfect momentum (100) and strong trend persistence (85), suggesting a sustained directional move rather than a mean-reversion trap \u2014 critical in a normal VIX regime where momentum weights run at baseline 1.0x. This week is the right entry because COT speculative positioning is at the 13.7th percentile (extreme short), which per our methodology adds +2.5 contrarian bullish bias, and the stock has no earnings event to create binary risk. The thesis is invalidated if HOOD gaps down >2% on Monday open (gap-skip rule), or if broad risk-off sentiment intensifies \u2014 with cross-asset already showing 2 headwinds/0 tailwinds, any further deterioration (e.g., VIX push above 20) would undercut the directional bet.",
+    "original_premium_premarket": 5.9
   },
   {
     "ticker": "T",
@@ -2096,7 +2097,7 @@
     },
     "strike": 225.0,
     "expiry": "2026-06-26",
-    "premium": 5.1,
+    "premium": 4.98,
     "confidence": 0.377,
     "current_price": 227.78,
     "breakeven": 230.1,
@@ -2121,6 +2122,7 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.0% move to $230.10 (weekly expected move: 5.6%)."
     },
     "git_sha": "5e46908e832cce81a3426240894f54c73490e034",
-    "thesis": "** MS is anchored by elite trend persistence (95) and strong momentum (90), with strike efficiency (75) suggesting clean execution at the 0.35 delta target. Tight credit spreads, while penalizing our macro edge multiplier broadly, are directly favorable for bank earnings expectations and credit book quality \u2014 this is a case where the macro headwind for the system is a micro tailwind for the name. The thesis dies if credit spreads widen sharply (HY OAS moving above 3.5% mid-week), which would reverse the financials-specific tailwind, or if VIX spikes above 25 where momentum weight drops to 0.7x and the call thesis loses its primary engine."
+    "thesis": "** MS is anchored by elite trend persistence (95) and strong momentum (90), with strike efficiency (75) suggesting clean execution at the 0.35 delta target. Tight credit spreads, while penalizing our macro edge multiplier broadly, are directly favorable for bank earnings expectations and credit book quality \u2014 this is a case where the macro headwind for the system is a micro tailwind for the name. The thesis dies if credit spreads widen sharply (HY OAS moving above 3.5% mid-week), which would reverse the financials-specific tailwind, or if VIX spikes above 25 where momentum weight drops to 0.7x and the call thesis loses its primary engine.",
+    "original_premium_premarket": 5.1
   }
 ]

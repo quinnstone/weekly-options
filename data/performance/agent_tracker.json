@@ -2129,6 +2129,45 @@
         "dropped": [],
         "reasoning": "SELECTED:\n\n1. **HOOD** \u2014 CALL\n   *Portfolio justification:* Strongest momentum (100) + trend_persistence (85) in a non-earnings name. Fintech/payments sector provides differentiated exposure vs. industrials/energy/telecom in the rest of the candidate pool. No earnings-week event risk. COT extreme short (13.7 percentile) provides contrarian tailwind for calls per methodology (+2.5 call bias).\n\n   **THESIS:** HOOD is driven by perfect momentum (100) and strong trend persistence (85), suggesting a sustained directional move rather than a mean-reversion trap \u2014 critical in a normal VIX regime where momentum weights run at baseline 1.0x. This week is the right entry because COT speculative positioning is at the 13.7th percentile (extreme short), which per our methodology adds +2.5 contrarian bullish bias, and the stock has no earnings event to create binary risk. The thesis is invalidated if HOOD gaps down >2% on Monday open (gap-skip rule), or if broad risk-off sentiment intensifies \u2014 with cross-asset already showing 2 headwinds/0 tailwinds, any further deterioration (e.g., VIX push above 20) would undercut the directional bet.\n\n2. **T** \u2014 PUT\n   *Portfolio justification:* Provides critical direction balance against two call positions. Trend_persistence is the highest single signal in the candidate pool (95), and telecom is completely uncorrelated to fintech and banking. No earnings-week flag. Defensive sector that tends to sell off when narrow leadership persists (money flows into mega-cap growth, out of yield plays).\n\n   **THESIS:** T is driven by exceptional trend persistence (95) and solid momentum (83) to the downside, indicating a well-established bearish trend rather than a one-day dip. The narrow-leadership breadth regime specifically hurts telecom \u2014 when SPY outperforms RSP, capital rotates away from yield-oriented defensives like T toward growth leaders. Kill condition: if T reclaims its SMA20 by Tuesday close or RSI drops below 30 (entering oversold territory where mean-reversion signals would conflict with the put thesis at 1.0x weight in normal VIX).\n\n3. **MS** \u2014 CALL\n   *Portfolio justification:* Banks/finance is uncorrelated to both fintech (HOOD) and telecom (T), providing genuine sector diversification. Trend_persistence (95) matches T's strength but in the opposite direction, and tight credit spreads (HY OAS 2.66%) \u2014 while a headwind for overall edge \u2014 actually signal a benign environment for financials specifically. No earnings flag.\n\n   **TH"
       }
+    },
+    {
+      "timestamp": "2026-06-22T14:13:26.128970",
+      "week": "2026-W25",
+      "agent": "pre_trade",
+      "ticker": "HOOD",
+      "mechanical_signal": "GO",
+      "agent_signal": "GO",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already re"
+      }
+    },
+    {
+      "timestamp": "2026-06-22T14:13:26.130898",
+      "week": "2026-W25",
+      "agent": "pre_trade",
+      "ticker": "T",
+      "mechanical_signal": "ADJUST",
+      "agent_signal": "GO",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already re"
+      }
+    },
+    {
+      "timestamp": "2026-06-22T14:13:26.132680",
+      "week": "2026-W25",
+      "agent": "pre_trade",
+      "ticker": "MS",
+      "mechanical_signal": "GO",
+      "agent_signal": "SKIP",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "brief": "The strongest pick of the three. Trend_persistence (95) and momentum (90) are both near-ceiling, and all three ensemble models should agree directionally \u2014 momentum-model loves the momentum/trend combo, and the linear model benefits from strike_efficiency (75) rounding out the score. The 1.59% gap UP confirms the call thesis (below the 2% gap-against-skip threshold, and it's gap *with* thesis). Breakeven at $230.10 is only a 1.0% move from entry \u2014 the most achievable of the three picks. Delta at 0.51 is above our 0.35 target (paying more premium), but with price action confirming direction, th"
+      }
     }
   ],
   "weekly_summaries": []
