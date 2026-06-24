@@ -2198,6 +2198,21 @@
         "option_return_pct": -57.1,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-06-24T16:51:17.566237",
+      "week": "2026-W25",
+      "agent": "position_monitor",
+      "ticker": "HOOD",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -92.9,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []

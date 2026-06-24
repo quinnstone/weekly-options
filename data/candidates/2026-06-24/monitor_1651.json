@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "strike": 105.0,
+      "entry_price": 107.25,
+      "current_price": 97.2,
+      "entry_premium": 5.08,
+      "current_option_price": 0.36,
+      "current_delta": 0.075,
+      "stock_move_pct": -9.37,
+      "option_return_pct": -92.9,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -93% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "HOOD: STOP LOSS HIT (-93%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -92.9,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "ROUTINE",
+    "day": "Wednesday",
+    "days_to_expiry": 3
+  }
+}
