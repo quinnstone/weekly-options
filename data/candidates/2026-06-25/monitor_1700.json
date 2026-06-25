@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "strike": 105.0,
+      "entry_price": 107.25,
+      "current_price": 93.49,
+      "entry_premium": 5.08,
+      "current_option_price": 0.04,
+      "current_delta": 0.002,
+      "stock_move_pct": -12.83,
+      "option_return_pct": -99.2,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "HOOD: STOP LOSS HIT (-99%)"
+  ],
+  "agent_analysis": "## POSITION MONITOR \u2014 Thursday (ELEVATED)\n\n### HOOD CALL: \u2620\ufe0f TOTAL LOSS\n\n| Metric | Value | Threshold |\n|--------|-------|-----------|\n| Stock move | **-12.8%** | Catastrophic against call thesis |\n| Option P&L | **-99%** | Hard stop (-50%) blown through |\n| Status | STOP_HIT | Should have exited at -50% |\n| Estimated delta | **~0.01** | Delta stop (< 0.10) also triggered |\n\nStock dropped 12.8% against a call \u2014 this option is functionally worthless. With 1 day to expiry and delta near zero, there is no recovery scenario. The -50% hard stop was triggered and the position should have been closed at that point; the additional -49% loss beyond stop represents slippage or delayed execution.\n\n**Post-mortem flag:** This is a -99% loss on a position where the stop was -50%. The reflection engine needs to investigate whether the stop was not executable (gap down, illiquidity) or was simply not enforced. Either way, this is the kind of outcome that the 3% Kelly cap exists to contain \u2014 but it still represents a max-severity loss.\n\n---\n\n### Portfolio Status\n\n| Position | P&L | Action |\n|----------|-----|--------|\n| HOOD CALL | -99% | **CLOSE NOW** \u2014 market order, accept any residual bid |\n\nOnly 1 of 3 positions visible. If the other two positions exist, they need Thursday ELEVATED review immediately \u2014 theta is accelerating into tomorrow's close.\n\n---\n\n## RECOMMENDATION\n\n**CLOSE HOOD immediately via market order.** The option is near-zero but sell for whatever penny bid exists rather than let it expire worthless \u2014 recoup any residual value. Flag for reflection: a 12.8% adverse stock move on a weekly call is a regime event. Review whether direction signals (momentum model, flow conviction) gave false confidence, and whether this ticker's weekly ATR% justified the position size. **No new action possible \u2014 damage is done, capture lessons.**",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -99.2,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
