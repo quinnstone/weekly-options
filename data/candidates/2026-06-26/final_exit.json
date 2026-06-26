@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "strike": 105.0,
+      "entry_price": 107.25,
+      "current_price": 96.71,
+      "entry_premium": 5.08,
+      "current_option_price": 0.01,
+      "current_delta": 0.005,
+      "stock_move_pct": -9.83,
+      "option_return_pct": -99.8,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "CLOSE",
+      "detail": "MANDATORY CLOSE by 2:00 PM ET. Current P&L: -100%. Use market order if needed \u2014 do not let expire unmanaged."
+    }
+  ],
+  "alerts": [
+    "HOOD: STOP LOSS HIT (-100%)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Expiry Day\n\n### HOOD CALL \u2014 EXPIRED WORTHLESS\n- **Stock:** -9.8% against thesis\n- **Option P&L:** -100%\n- **Status:** STOP_HIT (should have been closed at -50%)\n\nThe stop loss at -50% was triggered but the position was apparently held through to total loss. This is a process failure \u2014 the -50% hard stop exists precisely to prevent -100% outcomes. A 9.8% adverse move on a weekly call is catastrophic for delta and gamma; this option was dead by midweek at the latest.\n\n**Post-mortem flag:** Review whether the stop was not executable (illiquidity, gap-through) or simply not enforced. If the latter, this is the single highest-priority fix for next week. The hard stop rule saved $416 on the AMD loss previously \u2014 skipping it here cost the full premium.\n\n---\n\n### RECOMMENDATION\n\n**Close HOOD immediately at market if any residual bid exists. Book the full loss. No portfolio positions carry into next week.**\n\nFor Monday's reflection: the 8-week record is now 4W/16L with CALL win rate near 0%. The system has a persistent bullish bias that is not converting. Next week's picks must address this \u2014 either the direction model is broken in the current regime, or position sizing on calls needs to be cut until accuracy improves.",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -99.8,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
