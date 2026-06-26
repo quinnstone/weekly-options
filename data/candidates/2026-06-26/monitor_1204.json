@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "HOOD",
+      "direction": "call",
+      "strike": 105.0,
+      "entry_price": 107.25,
+      "current_price": 97.95,
+      "entry_premium": 5.08,
+      "current_option_price": 0.02,
+      "current_delta": 0.006,
+      "stock_move_pct": -8.67,
+      "option_return_pct": -99.6,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "STOP_HIT",
+      "detail": "Down -100% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "HOOD: STOP LOSS HIT (-100%)"
+  ],
+  "agent_analysis": "## CRITICAL \u2014 Friday Position Monitor (Expiry Day)\n\n---\n\n### HOOD CALL \u2014 CLOSED / TOTAL LOSS\n\n| Metric | Value |\n|--------|-------|\n| Stock move | **-8.7%** |\n| Option P&L | **-100%** |\n| Status | **STOP_HIT** |\n| Delta (est.) | ~0.00 \u2014 expired worthless |\n\nStock dropped 8.7% against a call thesis. The -50% hard stop was triggered earlier in the week; if it wasn't executed at the stop, the position bled to zero. At expiry with this magnitude of adverse move, the option has no recoverable value. Direction signal was definitively wrong.\n\n---\n\n### Portfolio Summary\n\n| Position | P&L | Action |\n|----------|-----|--------|\n| HOOD CALL | -100% | **CLOSE NOW** (if not already closed at stop) |\n\n**Week result: 0W / 1L. Full loss on sole position.**\n\n---\n\n## RECOMMENDATION\n\n**Close HOOD immediately at market if any residual bid exists. Do not hold past 2:00 PM ET under any circumstance.**\n\nPost-mortem flag for Sunday reflection: HOOD moved -8.7% in a single week \u2014 well beyond normal weekly ATR for this name. Check whether (1) the hard stop at -50% was actually executed intraday when triggered or if the position was held hoping for recovery, and (2) whether an earnings or news catalyst drove this that should have been caught by the event_risk filter. This is the fourth consecutive week with a losing CALL position (0/11 on calls in the 8-week log). **The reflection engine must address systematic call-side failure** \u2014 either direction determination is biased bullish, or entry timing/strike selection is broken. Consider whether the system should impose a temporary call moratorium until the pattern library has enough data to identify what's different about winning vs. losing call setups.",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -99.6,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
