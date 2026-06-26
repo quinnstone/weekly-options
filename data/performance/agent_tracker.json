@@ -2138,7 +2138,10 @@
       "mechanical_signal": "GO",
       "agent_signal": "GO",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already re"
       }
@@ -2151,7 +2154,10 @@
       "mechanical_signal": "ADJUST",
       "agent_signal": "GO",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "PARTIAL",
+        "pnl": -45.0
+      },
       "context": {
         "brief": "Momentum (100) and trend_persistence (85) are both elite, and with VIX at 17.5 (normal regime, all multipliers at 1.0x baseline), these signals carry full weight. The three-model ensemble should show strong agreement: the momentum-only model loves this (momentum 100 + trend_persistence 85), and the linear model should as well. However, three concerns temper enthusiasm: (1) analyst downgrades flagged as a catalyst (\u0394=-2), which creates headwind tension against the momentum thesis; (2) price is moving against the call thesis (-1.3% since open per mechanical check), and the $105 strike already re"
       }
@@ -2164,7 +2170,10 @@
       "mechanical_signal": "GO",
       "agent_signal": "SKIP",
       "override": true,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -498.0
+      },
       "context": {
         "brief": "The strongest pick of the three. Trend_persistence (95) and momentum (90) are both near-ceiling, and all three ensemble models should agree directionally \u2014 momentum-model loves the momentum/trend combo, and the linear model benefits from strike_efficiency (75) rounding out the score. The 1.59% gap UP confirms the call thesis (below the 2% gap-against-skip threshold, and it's gap *with* thesis). Breakeven at $230.10 is only a 1.0% move from entry \u2014 the most achievable of the three picks. Delta at 0.51 is above our 0.35 target (paying more premium), but with price action confirming direction, th"
       }
@@ -2177,7 +2186,10 @@
       "mechanical_signal": "HOLD",
       "agent_signal": "HOLD",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -19.7,
@@ -2192,7 +2204,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -57.1,
@@ -2207,7 +2222,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -92.9,
@@ -2222,7 +2240,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT+AGENT_REVIEW",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "ELEVATED",
         "option_return_pct": -98.8,
@@ -2237,7 +2258,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT+AGENT_REVIEW",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "ELEVATED",
         "option_return_pct": -99.2,
@@ -2252,7 +2276,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT+AGENT_REVIEW",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -508.0
+      },
       "context": {
         "urgency": "CRITICAL",
         "option_return_pct": -99.6,
