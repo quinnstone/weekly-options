@@ -2285,6 +2285,20 @@
         "option_return_pct": -99.6,
         "has_agent_analysis": true
       }
+    },
+    {
+      "timestamp": "2026-06-27T11:08:43.168670",
+      "week": "2026-W25",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "# CIO Weekly Reflection \u2014 Week of 2026-06-27\n\n## Executive Summary\n\nThis week produced no scorecard data \u2014 zero wins, zero losses, zero recorded outcomes. Before I treat this as a non-event, I need to diagnose *why* we have no data, because a week with picks but no outcomes is itself a signal worth "
+      }
     }
   ],
   "weekly_summaries": []
