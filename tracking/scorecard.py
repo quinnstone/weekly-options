@@ -24,6 +24,29 @@ config = Config()
 SCORECARD_PATH = config.performance_dir / "scorecard.md"
 SCORECARD_DATA_PATH = config.performance_dir / "scorecard_data.json"
 
+# Grader schema version — stamped onto every graded week so analysis can tell
+# WHICH grading capabilities produced a given week's record, explicitly rather
+# than inferring it from field-presence (which can't distinguish "feature
+# didn't exist yet" from "feature ran but returned None", e.g. a yfinance
+# failure leaving diagnostics empty). Bump this whenever grade_week's output
+# schema changes; keep the history below so a version maps to capabilities.
+#   1  pre-2026-06: base grading (pnl/result/W-L-P, hold-to-expiry intrinsic)
+#   2  2026-06-01:  entry_signal (GO/ADJUST/SKIP) joined onto each pick
+#   3  2026-06-08:  diagnostics block (pre_run, spy_week, rsi, premium_pct)
+#   4  2026-06-29:  entry_features (model scores) + traded_* (GO-only realized)
+GRADER_VERSION = 4
+
+
+def _current_git_sha() -> "str | None":
+    """Short git SHA of the grading run (provenance). None if unavailable."""
+    try:
+        import subprocess
+        r = subprocess.run(["git", "rev-parse", "HEAD"],
+                           capture_output=True, text=True, timeout=5)
+        return r.stdout.strip() if r.returncode == 0 else None
+    except Exception:
+        return None
+
 
 class Scorecard:
     """Track hypothetical 1-contract P&L for each week's picks."""
@@ -154,6 +177,9 @@ class Scorecard:
             "traded_losses": traded_losses,
             "traded_partials": traded_partials,
             "graded_at": datetime.now().isoformat(),
+            # Provenance — explicit, not inferred from field-presence.
+            "grader_version": GRADER_VERSION,
+            "grader_git_sha": _current_git_sha(),
         }
 
         # Save to running data (JSON + DB)

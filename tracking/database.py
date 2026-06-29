@@ -131,6 +131,19 @@ class Database:
         if "git_sha" not in cols:
             conn.execute("ALTER TABLE picks ADD COLUMN git_sha TEXT")
 
+        # Grader provenance on weekly_results (added 2026-06-29) — records WHICH
+        # grading-code version produced each week's row, so analysis can tell
+        # explicitly which weeks carry entry_signal / diagnostics / entry_features
+        # / traded_* rather than inferring from field-presence (which can't tell
+        # "feature absent" from "feature ran but yielded None"). Documentation
+        # only — not read by any operational logic.
+        wr_cols = {row[1] for row in conn.execute("PRAGMA table_info(weekly_results)").fetchall()}
+        if "grader_version" not in wr_cols:
+            conn.execute("ALTER TABLE weekly_results ADD COLUMN grader_version INTEGER")
+            conn.execute("ALTER TABLE weekly_results ADD COLUMN grader_git_sha TEXT")
+            conn.execute("ALTER TABLE weekly_results ADD COLUMN traded_pnl REAL")
+            conn.execute("ALTER TABLE weekly_results ADD COLUMN traded_return_pct REAL")
+
         conn.commit()
         conn.close()
 
@@ -280,8 +293,9 @@ class Database:
         conn.execute("""
             INSERT OR REPLACE INTO weekly_results
                 (pick_date, expiry, total_picks, wins, losses, partials,
-                 total_cost, total_exit, total_pnl, total_return_pct, win_rate, graded_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 total_cost, total_exit, total_pnl, total_return_pct, win_rate, graded_at,
+                 grader_version, grader_git_sha, traded_pnl, traded_return_pct)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             weekly.get("pick_date"),
             weekly.get("expiry"),
@@ -295,6 +309,10 @@ class Database:
             weekly.get("total_return_pct"),
             weekly.get("win_rate"),
             datetime.now().isoformat(),
+            weekly.get("grader_version"),
+            weekly.get("grader_git_sha"),
+            weekly.get("traded_pnl"),
+            weekly.get("traded_return_pct"),
         ))
 
         conn.commit()
