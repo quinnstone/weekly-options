@@ -205,7 +205,9 @@ class Scorecard:
     def _attach_diagnostics(self, graded: list, pick_date: str, expiry: str):
         """Attach learning features to each graded pick (best-effort).
 
-        Features (None when unavailable — never blocks grading):
+        Two blocks, both None/empty when unavailable — never blocks grading:
+
+        diagnostics — market-context features (require a fresh fetch):
           pre_run_5d_pct        — underlying's move over the 5 trading days
                                   BEFORE entry (was the name extended?)
           spy_week_move_pct     — SPY Mon-open -> Fri-close for the pick week
@@ -213,6 +215,15 @@ class Scorecard:
           rsi_at_entry          — RSI stored on the pick at selection time
           premium_pct_of_spot   — entry premium / entry stock price (was the
                                   option expensive relative to the underlying?)
+
+        entry_features — the MODEL'S OWN scoring that drove the pick, snapshotted
+          from monday_picks.json at grade time. These live in the (huge,
+          cache-clobber-prone) candidate pool; the score->outcome join across
+          drop-and-promote and re-saves rots over many weeks, so we capture it
+          here at the one moment it's unambiguous. Lets us finally answer "does
+          our composite_score actually predict wins?" once ~30 weeks accumulate.
+          (Gap 2, 2026-06-29; Gap 1 / intra-week MFE rejected — already
+          reconstructable from the per-day committed monitor snapshots.)
         """
         # SPY week move — one fetch per week
         spy_week_move = None
@@ -231,8 +242,9 @@ class Scorecard:
         except Exception:
             pass
 
-        # Entry-time stock price + RSI from the candidates snapshot (richer
-        # than the report file, which strips technicals)
+        # Entry-time stock price + RSI + the model's own scoring features from
+        # the candidates snapshot (richer than the report file, which strips
+        # technicals and most scores).
         entry_meta = {}
         try:
             with open(config.candidates_dir / pick_date / "monday_picks.json") as fh:
@@ -240,6 +252,19 @@ class Scorecard:
                     entry_meta[c.get("ticker")] = {
                         "entry_px": c.get("current_price"),
                         "rsi": (c.get("technical") or {}).get("rsi"),
+                        "features": {
+                            "composite_score": c.get("composite_score"),
+                            "confidence": c.get("confidence"),
+                            "raw_confidence": c.get("raw_confidence"),
+                            "scan_rank": c.get("scan_rank"),
+                            "friday_score": c.get("friday_score"),
+                            "iv_rank": (c.get("options") or {}).get("iv_rank"),
+                            "narrative_lean": c.get("narrative_lean"),
+                            "narrative_conflict": c.get("narrative_scoring_conflict"),
+                            "scan_components": c.get("scan_components"),
+                            "scores": c.get("scores"),
+                            "ensemble_consensus": (c.get("ensemble") or {}).get("consensus"),
+                        },
                     }
         except Exception:
             pass
@@ -270,6 +295,7 @@ class Scorecard:
                 "rsi_at_entry": meta.get("rsi"),
                 "premium_pct_of_spot": prem_pct,
             }
+            g["entry_features"] = meta.get("features", {})
 
     def _grade_pick(self, pick: dict, expiry: str) -> dict:
         """Grade a single pick against actual closing price on expiry.
