@@ -1,8 +1,16 @@
 """
 SQLite database for the Zero-DTE Options Trading Analysis System.
 
-Persistent backend tracking all picks, outcomes, weekly results,
-and all-time performance. Single file at data/performance/zero_dte.db.
+Single file at data/performance/zero_dte.db.
+
+NOTE (verified 2026-06-29): this DB is currently WRITE-ONLY and gitignored.
+Picks / graded results are written here every run (record_picks, grade_picks,
+record_weekly_result), but NO code reads it back — all six get_* query methods
+have zero callers, and every learning/report path (reflector, backtest,
+scorecard render) reads data/performance/scorecard_data.json instead. The DB is
+kept in sync as a future analysis option, not an active source of truth. It
+persists only inside the CI cache (not git), so a local clone sees 0 rows.
+See data/DATA_PROVENANCE.md before learning off any stored data.
 """
 
 import sys
@@ -131,12 +139,12 @@ class Database:
         if "git_sha" not in cols:
             conn.execute("ALTER TABLE picks ADD COLUMN git_sha TEXT")
 
-        # Grader provenance on weekly_results (added 2026-06-29) — records WHICH
-        # grading-code version produced each week's row, so analysis can tell
-        # explicitly which weeks carry entry_signal / diagnostics / entry_features
-        # / traded_* rather than inferring from field-presence (which can't tell
-        # "feature absent" from "feature ran but yielded None"). Documentation
-        # only — not read by any operational logic.
+        # Grader provenance on weekly_results (added 2026-06-29) — mirrors the
+        # grader_version / traded_* stamped onto scorecard_data.json (the
+        # canonical source). Kept in sync here for if/when the DB becomes a read
+        # path; nothing currently reads these columns (the DB is write-only —
+        # see the module docstring and data/DATA_PROVENANCE.md). The AUTHORITATIVE
+        # provenance lives in the JSON, which is what analysis actually reads.
         wr_cols = {row[1] for row in conn.execute("PRAGMA table_info(weekly_results)").fetchall()}
         if "grader_version" not in wr_cols:
             conn.execute("ALTER TABLE weekly_results ADD COLUMN grader_version INTEGER")
