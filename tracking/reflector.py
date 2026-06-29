@@ -85,6 +85,55 @@ class WeeklyReflector:
     #  Core reflection
     # ------------------------------------------------------------------
 
+    def _load_scorecard_week(self, week_date: str):
+        """Adapt the scorecard's graded week into (picks, outcomes) the rest of
+        the reflector expects.
+
+        Returns ([], None) if no scorecard week matches `week_date` — caller
+        then falls back to the legacy tracker path.
+
+        outcome dicts: {ticker, win, peak_return, pnl}. NOTE peak_return here is
+        the realized return at expiry (pnl/entry_cost), NOT a true intra-week
+        peak — the scorecard grades hold-to-expiry. Good enough for signal
+        correlation; a future change can read the per-day monitors for true MFE.
+
+        pick dicts carry "scores" (the per-signal sub-scores captured in
+        entry_features at grade time) so _compute_signal_correlations works.
+        For weeks graded before entry_features existed, scores is {} and
+        correlations degrade to 0.0 — honest, not fabricated.
+        """
+        try:
+            with open(config.performance_dir / "scorecard_data.json") as fh:
+                data = json.load(fh)
+        except Exception:
+            return [], None
+
+        week = next((w for w in data.get("weeks", []) if w.get("pick_date") == week_date), None)
+        if not week:
+            return [], None
+
+        picks, outcomes = [], []
+        for g in week.get("picks", []):
+            feats = g.get("entry_features") or {}
+            entry_cost = g.get("entry_cost") or 0
+            pnl = g.get("pnl", 0)
+            picks.append({
+                "ticker": g.get("ticker"),
+                "direction": g.get("direction"),
+                "scores": feats.get("scores") or {},
+                "entry_signal": g.get("entry_signal", "GO"),
+                "result": g.get("result"),
+                "diagnostics": g.get("diagnostics") or {},
+                "entry_features": feats,
+            })
+            outcomes.append({
+                "ticker": g.get("ticker"),
+                "win": g.get("result") == "WIN",
+                "peak_return": round(pnl / entry_cost, 4) if entry_cost else 0.0,
+                "pnl": pnl,
+            })
+        return picks, outcomes
+
     def reflect(self, week_date: str) -> "dict | None":
         """Generate a full reflection for the specified week.
 
@@ -118,18 +167,24 @@ class WeeklyReflector:
 
         logger.info("Generating reflection for week of %s", week_date)
 
-        # 1. Load picks and outcomes
-        history = self.tracker.get_history(n_weeks=1)
-        if not history:
-            logger.warning("No history found for reflection")
-            return self._empty_reflection(week_date)
-
-        week_data = history[0]
-        picks = week_data.get("picks", [])
-        outcomes = week_data.get("outcomes")
-
+        # 1. Load picks and outcomes — from the SCORECARD (the real grader),
+        # not the legacy tracker outcomes path (whose {date}_outcomes.json files
+        # were never written, so the reflector reported win_rate 0.0 on EVERY
+        # week, incl. winning weeks). The scorecard has real W/L/P, pnl, and the
+        # entry_features/diagnostics captured at grade time.
+        picks, outcomes = self._load_scorecard_week(week_date)
         if not picks:
-            return self._empty_reflection(week_date)
+            # Fall back to the legacy tracker path if the scorecard has no
+            # matching week (e.g. grading hasn't run yet for this date).
+            history = self.tracker.get_history(n_weeks=1)
+            if not history:
+                logger.warning("No scorecard or tracker history for reflection")
+                return self._empty_reflection(week_date)
+            week_data = history[0]
+            picks = week_data.get("picks", [])
+            outcomes = week_data.get("outcomes")
+            if not picks:
+                return self._empty_reflection(week_date)
 
         # 2. Overall performance
         stats = self.tracker.get_stats()

@@ -112,13 +112,26 @@ class Scorecard:
         except Exception as exc:
             logger.warning("Diagnostics attach failed for %s: %s", pick_date, exc)
 
-        # Weekly summary
+        # Weekly summary — graded over ALL picks (directional accuracy needs the
+        # full set, incl. SKIP/ADJUST the system didn't enter).
         total_cost = sum(r["entry_cost"] for r in graded)
         total_exit = sum(r["exit_value_total"] for r in graded)
         total_pnl = sum(r["pnl"] for r in graded)
         wins = sum(1 for r in graded if r["result"] == "WIN")
         losses = sum(1 for r in graded if r["result"] == "LOSS")
         partials = sum(1 for r in graded if r["result"] == "PARTIAL")
+
+        # TRADED summary — GO-only, i.e. what was ACTUALLY entered per the 10 AM
+        # confirmation. The all-pick totals above corrupt account-level P&L with
+        # phantom losses on SKIP/ADJUST picks the user was told not to take
+        # (e.g. 2026-06-22: -$1,051 all-pick vs -$508 actually-traded HOOD). This
+        # is the realized number; the all-pick block stays for directional study.
+        go = [r for r in graded if r.get("entry_signal", "GO") == "GO"]
+        traded_cost = sum(r["entry_cost"] for r in go)
+        traded_pnl = sum(r["pnl"] for r in go)
+        traded_wins = sum(1 for r in go if r["result"] == "WIN")
+        traded_losses = sum(1 for r in go if r["result"] == "LOSS")
+        traded_partials = sum(1 for r in go if r["result"] == "PARTIAL")
 
         weekly = {
             "pick_date": pick_date,
@@ -132,6 +145,14 @@ class Scorecard:
             "losses": losses,
             "partials": partials,
             "win_rate": round(wins / len(graded), 4) if graded else 0,
+            # Realized / actually-traded (GO-only) — the honest account P&L
+            "traded_count": len(go),
+            "traded_cost": round(traded_cost, 2),
+            "traded_pnl": round(traded_pnl, 2),
+            "traded_return_pct": round((traded_pnl / traded_cost * 100) if traded_cost > 0 else 0, 2),
+            "traded_wins": traded_wins,
+            "traded_losses": traded_losses,
+            "traded_partials": traded_partials,
             "graded_at": datetime.now().isoformat(),
         }
 
@@ -429,6 +450,15 @@ class Scorecard:
         best_pnl = float("-inf")
         worst_pnl = float("inf")
 
+        # Realized (GO-only) all-time accumulators — the honest account P&L,
+        # excluding SKIP/ADJUST picks the user was told not to enter.
+        traded_pnl = 0
+        traded_invested = 0
+        traded_picks = 0
+        traded_wins = 0
+        traded_losses = 0
+        traded_partials = 0
+
         for week in self.data["weeks"]:
             for pick in week.get("picks", []):
                 total_picks += 1
@@ -442,6 +472,19 @@ class Scorecard:
                     total_losses += 1
                 else:
                     total_partials += 1
+
+                # Realized rollup: only GO picks. Default GO for weeks graded
+                # before entry_signal existed (keeps history consistent).
+                if pick.get("entry_signal", "GO") == "GO":
+                    traded_picks += 1
+                    traded_invested += pick.get("entry_cost", 0)
+                    traded_pnl += pick.get("pnl", 0)
+                    if pick["result"] == "WIN":
+                        traded_wins += 1
+                    elif pick["result"] == "LOSS":
+                        traded_losses += 1
+                    else:
+                        traded_partials += 1
 
                 if pick["pnl"] > best_pnl:
                     best_pnl = pick["pnl"]
@@ -473,6 +516,15 @@ class Scorecard:
             "total_return_pct": round((total_pnl / total_invested * 100) if total_invested > 0 else 0, 2),
             "best_pick": best_pick,
             "worst_pick": worst_pick,
+            # Realized / actually-traded (GO-only) all-time — the honest number
+            "traded_picks": traded_picks,
+            "traded_wins": traded_wins,
+            "traded_losses": traded_losses,
+            "traded_partials": traded_partials,
+            "traded_win_rate": round(traded_wins / traded_picks, 4) if traded_picks > 0 else 0,
+            "traded_invested": round(traded_invested, 2),
+            "traded_pnl": round(traded_pnl, 2),
+            "traded_return_pct": round((traded_pnl / traded_invested * 100) if traded_invested > 0 else 0, 2),
         }
 
     def _empty_alltime(self) -> dict:

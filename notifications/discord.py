@@ -677,8 +677,6 @@ class DiscordNotifier:
         losses = weekly.get("losses", 0)
         partials = weekly.get("partials", 0)
 
-        color = 0x22CC44 if week_pnl >= 0 else 0xCC4422
-
         pick_lines = []
         for i, p in enumerate(weekly.get("picks", []), 1):
             ticker = p.get("ticker", "?")
@@ -726,25 +724,42 @@ class DiscordNotifier:
 
         picks_text = "\n\n".join(pick_lines) if pick_lines else "No picks graded."
 
+        # Realized = GO-only (actually entered). This is the headline; the
+        # all-pick line below is the broader DIRECTIONAL grade (incl. the
+        # SKIP/ADJUST picks the system told you not to take).
+        tr_pnl = weekly.get("traded_pnl", week_pnl)
+        tr_cost = weekly.get("traded_cost", week_cost)
+        tr_ret = weekly.get("traded_return_pct", week_return)
+        tr_w = weekly.get("traded_wins", wins)
+        tr_l = weekly.get("traded_losses", losses)
+        tr_p = weekly.get("traded_partials", partials)
+        tr_n = weekly.get("traded_count", wins + losses + partials)
+        tr_sign = "+" if tr_pnl >= 0 else ""
         week_sign = "+" if week_pnl >= 0 else ""
+        color = 0x22CC44 if tr_pnl >= 0 else 0xCC4422  # color on REALIZED result
         week_summary = (
-            f"**{wins}W - {losses}L - {partials}P**\n"
-            f"Invested: ${week_cost:,.2f}\n"
-            f"Net P&L: **{week_sign}${week_pnl:,.2f} ({week_sign}{week_return:.1f}%)**"
+            f"**REALIZED (entered):** {tr_w}W-{tr_l}L-{tr_p}P on {tr_n} GO pick(s)\n"
+            f"Invested: ${tr_cost:,.2f}\n"
+            f"Net P&L: **{tr_sign}${tr_pnl:,.2f} ({tr_sign}{tr_ret:.1f}%)**\n"
+            f"_Directional (all {wins+losses+partials}): {wins}W-{losses}L-{partials}P, "
+            f"{week_sign}${week_pnl:,.0f}_"
         )
 
-        at_pnl = alltime.get("total_pnl", 0)
+        at_pnl = alltime.get("traded_pnl", alltime.get("total_pnl", 0))
         at_sign = "+" if at_pnl >= 0 else ""
-        at_wins = alltime.get("wins", 0)
-        at_losses = alltime.get("losses", 0)
-        at_partials = alltime.get("partials", 0)
+        at_wins = alltime.get("traded_wins", alltime.get("wins", 0))
+        at_losses = alltime.get("traded_losses", alltime.get("losses", 0))
+        at_partials = alltime.get("traded_partials", alltime.get("partials", 0))
         at_weeks = alltime.get("total_weeks", 0)
-        at_roi = alltime.get("total_return_pct", 0)
+        at_roi = alltime.get("traded_return_pct", alltime.get("total_return_pct", 0))
+        at_dir_pnl = alltime.get("total_pnl", 0)
+        at_dir_sign = "+" if at_dir_pnl >= 0 else ""
 
         alltime_text = (
-            f"**{at_weeks} weeks** | "
+            f"**{at_weeks} weeks** (realized) | "
             f"{at_wins}W-{at_losses}L-{at_partials}P | "
-            f"**{at_sign}${at_pnl:,.2f} ({at_sign}{at_roi:.1f}%)**"
+            f"**{at_sign}${at_pnl:,.2f} ({at_sign}{at_roi:.1f}%)**\n"
+            f"_Directional: {at_dir_sign}${at_dir_pnl:,.0f}_"
         )
 
         embed = {
