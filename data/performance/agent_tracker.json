@@ -2299,6 +2299,19 @@
         "proposals": [],
         "analysis_snippet": "# CIO Weekly Reflection \u2014 Week of 2026-06-27\n\n## Executive Summary\n\nThis week produced no scorecard data \u2014 zero wins, zero losses, zero recorded outcomes. Before I treat this as a non-event, I need to diagnose *why* we have no data, because a week with picks but no outcomes is itself a signal worth "
       }
+    },
+    {
+      "timestamp": "2026-07-01T09:33:15.768956",
+      "week": "2026-W26",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3258
+      }
     }
   ],
   "weekly_summaries": []

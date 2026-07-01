@@ -1,0 +1,342 @@
+{
+  "vix": {
+    "current": 16.829999923706055,
+    "previous_close": 16.450000762939453,
+    "change": 0.38,
+    "change_pct": 2.31,
+    "trend_20d": "Date\n2026-06-03 00:00:00-05:00    16.059999\n2026-06-04 00:00:00-05:00    15.400000\n2026-06-05 00:00:00-05:00    21.510000\n2026-06-08 00:00:00-05:00    18.920000\n2026-06-09 00:00:00-05:00    19.870001\n2026-06-10 00:00:00-05:00    22.219999\n2026-06-11 00:00:00-05:00    19.440001\n2026-06-12 00:00:00-05:00    17.680000\n2026-06-15 00:00:00-05:00    16.200001\n2026-06-16 00:00:00-05:00    16.410000\n2026-06-17 00:00:00-05:00    18.440001\n2026-06-18 00:00:00-05:00    16.400000\n2026-06-22 00:00:00-05:00    17.280001\n2026-06-23 00:00:00-05:00    19.490000\n2026-06-24 00:00:00-05:00    18.629999\n2026-06-25 00:00:00-05:00    18.889999\n2026-06-26 00:00:00-05:00    18.410000\n2026-06-29 00:00:00-05:00    17.650000\n2026-06-30 00:00:00-05:00    16.450001\n2026-07-01 00:00:00-05:00    16.830000\nName: Close, dtype: float64",
+    "sma_20": 18.11,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.829999923706055,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.39,
+    "rsp_return_1d": 0.11,
+    "breadth_spread_1d": 0.49,
+    "spy_return_5d": 1.45,
+    "rsp_return_5d": 1.25,
+    "breadth_spread_5d": -0.21,
+    "breadth_signal": "neutral"
+  },
+  "yields": {},
+  "credit_spread": {
+    "hy_oas": 2.8,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.504,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -9.66,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 149.6,
+    "skew_sma20": 143.5,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 6.1
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.88,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 793236,
+    "spy_put_volume": 698190
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.799999237060547,
+    "vix": 16.829999923706055,
+    "vix3m": 20.1299991607666
+  },
+  "cot_positioning": {
+    "net_position": -31807,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -2.15,
+      "return_1d": -1.1,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": -0.04,
+      "return_1d": 0.21,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -4.37,
+      "return_1d": -1.79,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Wall St futures slip as US-Iran tensions cloud Middle East peace prospects - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "US and Iran enter technical talks to secure peace deal, shipping restart - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.71
+      },
+      {
+        "headline": "Tech leads first half stock gains \u2014 but the biggest winners weren't in the U.S.",
+        "source": "CNBC",
+        "sentiment": 0.705
+      },
+      {
+        "headline": "Nvidia mostly sat out the chip sector's best quarter ever. What needs to change?",
+        "source": "CNBC",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "Iran war and AI boom drive wild ride on global markets - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Indian shares rise as gains in auto, financials outweigh IT losses - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.226
+      },
+      {
+        "headline": "EXCLUSIVE: ECB considers lifting banks' minimum reserves to lessen own losses, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.12
+      },
+      {
+        "headline": "BoE's Bailey sees no rush to act on interest rates - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Gold set for worst quarterly loss in 13 years on hawkish Fed stance - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.751
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Oil falls as markets await outcome of Iran-US talks, US stocks data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "US oil production rises to record high in April, EIA says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Nigeria's biggest refinery imports UAE crude for first time, traders say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.572
+      },
+      {
+        "headline": "UAE exports record oil volumes after OPEC exit, ship-tracking data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Asia's crude oil imports tick up in June but uncertainty reigns - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.665
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Buy the UK DIP? Defense stocks lifted by $20 billion spending boost as gilts come under fire",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Our rating, price target and outlook for newly spun off Honeywell Aerospace",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Indian shares rise as gains in auto, financials outweigh IT losses - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.226
+      },
+      {
+        "headline": "US consumer confidence edges up in June; labor market perceptions deteriorate - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.511
+      },
+      {
+        "headline": "Trump urges gasoline retailers to lower prices, warns of 'big problems' if they don't - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      },
+      {
+        "headline": "Trump calls housing bill 'a big yawn,' presses voting curbs - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "Strawberries and ice cream push UK food price inflation to lowest since March 2025, BRC data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold lingers near 7-month low on firm Treasury yields, rate hike bets - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.077
+      },
+      {
+        "headline": "Wall Street says sell Goldman, buy Capital One. Here's where we stand",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold slips as US-Iran tensions spark inflation, rate hike fears - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "Gold set for worst quarterly loss in 13 years on hawkish Fed stance - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.751
+      }
+    ],
+    "macro": [
+      {
+        "headline": "The next Iran war may come sooner than you think - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Rupee hits near three-week low as Asian currencies drop on Fed, Iran war caution - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.796
+      },
+      {
+        "headline": "GLOBAL ECONOMY Factory activity was strong in June despite war-driven cost pressures, PMIs show - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.644
+      },
+      {
+        "headline": "World stocks pause after rally as focus turns to Warsh - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "S&P 500, Nasdaq register best quarter since 2020 despite Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.81
+      },
+      {
+        "headline": "Major egg producers settle price inflation probe for $3.3 million",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Bird nests of fibre-optic cables show war's impact on Ukraine - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "UK economy grows as expected before Iran war impact, ONS data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ]
+  },
+  "timestamp": "2026-07-01T09:32:45.202998"
+}
