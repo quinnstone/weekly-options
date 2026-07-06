@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "PANW",
+    "direction": "call",
+    "strike": 367.5,
+    "original_premium": 9.38,
+    "original_price": 362.34,
+    "signal": "SKIP",
+    "detail": "Gap -3.0% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 357.33,
+    "new_delta": 0.365,
+    "new_premium": null,
+    "gap_pct": -2.98,
+    "timestamp": "2026-07-06T12:51:07.204830",
+    "agent_signal": "SKIP",
+    "agent_brief": "The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. **Hard skip.**"
+  },
+  {
+    "ticker": "JNJ",
+    "direction": "call",
+    "strike": 255.0,
+    "original_premium": 4.97,
+    "original_price": 258.32,
+    "signal": "SKIP",
+    "detail": "[AGENT OVERRIDE] The delta has drifted from 0.51 to 0.71, a shift of +0.20 which exceeds our 0.15 delta drift skip threshold. The stock moved modestly ($258.32 \u2192 $258.65), but the $255 strike is now ~$3.65 ITM, making this essentially a deep-ITM call with low leverage, high capital at risk, and reduced gamma upside \u2014 it behaves more like stock than an options trade. The directional signals are decent (trend_persistence=85, momentum=83) but not exceptional. **Recommendation: Re-strike to ~$260 or $262.50 to get delta back near 0.35 target.** If no liquid strike is available near that delta, this becomes a SKIP \u2014 paying $4.97 for a delta-0.71 weekly is poor strike efficiency and contradicts our methodology's 0.35 delta target.\nOriginal mechanical signal: ADJUST \u2014 Delta shifted from 0.51 to 0.71 (price moved from $258.32 to $258.65). Consider re-selecting strike closer to current price.",
+    "current_price": 258.65,
+    "new_delta": 0.71,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-07-06T12:51:07.524839",
+    "agent_signal": "SKIP",
+    "agent_brief": "The delta has drifted from 0.51 to 0.71, a shift of +0.20 which exceeds our 0.15 delta drift skip threshold. The stock moved modestly ($258.32 \u2192 $258.65), but the $255 strike is now ~$3.65 ITM, making this essentially a deep-ITM call with low leverage, high capital at risk, and reduced gamma upside \u2014 it behaves more like stock than an options trade. The directional signals are decent (trend_persistence=85, momentum=83) but not exceptional. **Recommendation: Re-strike to ~$260 or $262.50 to get delta back near 0.35 target.** If no liquid strike is available near that delta, this becomes a SKIP \u2014 paying $4.97 for a delta-0.71 weekly is poor strike efficiency and contradicts our methodology's 0.35 delta target."
+  },
+  {
+    "ticker": "T",
+    "direction": "put",
+    "strike": 21.0,
+    "original_premium": 0.74,
+    "original_price": 20.33,
+    "signal": "SKIP",
+    "detail": "[AGENT OVERRIDE] The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. **Hard skip.**\nOriginal mechanical signal: GO \u2014 Early action confirms put thesis (-0.5% since open). Premium moved -27% ($1.01 \u2192 $0.74). Adjust limit order accordingly.",
+    "current_price": 20.65,
+    "new_delta": 0.585,
+    "new_premium": 0.74,
+    "gap_pct": 0.83,
+    "timestamp": "2026-07-06T12:51:07.783826",
+    "agent_signal": "SKIP",
+    "agent_brief": "The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. **Hard skip.**"
+  }
+]

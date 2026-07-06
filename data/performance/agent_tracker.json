@@ -2333,6 +2333,45 @@
         ],
         "reasoning": "SELECTED:\n\n1. **PANW** \u2014 CALL\nHighest composite score (70.1) with perfect momentum (100) and near-perfect trend persistence (95). Software/cloud sector provides diversification against healthcare-heavy candidate pool. Mean-reversion at 75 confirms the trend isn't overextended, reducing reversal risk.\n\nTHESIS: Momentum is the dominant signal here \u2014 scoring 100 with trend persistence at 95 indicates a strong, sustained move rather than a spike. In normal VIX (all multipliers at 1.0x baseline), momentum carries its full 0.20 weight without regime headwinds, and all three ensemble models should agree on a momentum+trend combination this clean. Kill condition: if PANW gaps down >2% at Monday open (skip per gap-stop rule) or if the software/cloud sector sells off on any rotation out of narrow leadership names \u2014 with breadth showing narrow_leadership, PANW's large-cap status is actually favorable, but a breadth regime shift mid-week would undermine the thesis.\n\n2. **JNJ** \u2014 CALL\nScore 68.1, healthcare/biotech sector diversifies against PANW's tech exposure. Trend persistence (85) and momentum (83) are both strong without being extreme, and strike efficiency at 75 suggests clean execution. Defensive name provides portfolio ballast if narrow leadership cracks.\n\nTHESIS: JNJ is a trend-persistence play (85) in a defensive sector that benefits from the current narrow-leadership breadth regime \u2014 large-cap quality names attract flows when market breadth is thin. The strike efficiency score of 75 indicates favorable liquidity and bid-ask spreads for weekly options execution, which matters given our 15% execution tier weight. Kill condition: JNJ is sensitive to drug pricing headlines or FDA actions \u2014 any negative regulatory news during the holding window invalidates the steady-trend thesis. Also watch for charm decay: JNJ's lower volatility means delta will erode faster in percentage terms by Wednesday.\n\n3. **T** \u2014 PUT\nOnly directional counterweight available. Score 66.0 with trend persistence at 95 and momentum at 94 \u2014 both pointing bearish. Telecom sector is uncorrelated with PANW (software) and JNJ (healthcare), providing genuine diversification.\n\nTHESIS: T is a momentum-driven bearish play with trend persistence (95) confirming the downtrend is established, not a one-day dip. This pick serves double duty: it's the highest-conviction put candidate AND it provides critical direction balance \u2014 running three calls into a week with COT at extreme_long (100th percentile, st"
       }
+    },
+    {
+      "timestamp": "2026-07-06T12:51:52.754318",
+      "week": "2026-W27",
+      "agent": "pre_trade",
+      "ticker": "PANW",
+      "mechanical_signal": "SKIP",
+      "agent_signal": "SKIP",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "brief": "The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. *"
+      }
+    },
+    {
+      "timestamp": "2026-07-06T12:51:52.757105",
+      "week": "2026-W27",
+      "agent": "pre_trade",
+      "ticker": "JNJ",
+      "mechanical_signal": "ADJUST",
+      "agent_signal": "SKIP",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "brief": "The delta has drifted from 0.51 to 0.71, a shift of +0.20 which exceeds our 0.15 delta drift skip threshold. The stock moved modestly ($258.32 \u2192 $258.65), but the $255 strike is now ~$3.65 ITM, making this essentially a deep-ITM call with low leverage, high capital at risk, and reduced gamma upside \u2014 it behaves more like stock than an options trade. The directional signals are decent (trend_persistence=85, momentum=83) but not exceptional. **Recommendation: Re-strike to ~$260 or $262.50 to get delta back near 0.35 target.** If no liquid strike is available near that delta, this becomes a SKIP "
+      }
+    },
+    {
+      "timestamp": "2026-07-06T12:51:52.759487",
+      "week": "2026-W27",
+      "agent": "pre_trade",
+      "ticker": "T",
+      "mechanical_signal": "GO",
+      "agent_signal": "SKIP",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "brief": "The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. *"
+      }
     }
   ],
   "weekly_summaries": []

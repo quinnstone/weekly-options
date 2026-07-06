@@ -1961,7 +1961,7 @@
     },
     "strike": 21.0,
     "expiry": "2026-07-10",
-    "premium": 1.01,
+    "premium": 0.74,
     "confidence": 0.413,
     "current_price": 20.33,
     "breakeven": 19.99,
@@ -1986,6 +1986,7 @@
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.6% move to $19.99 (weekly expected move: 7.5%)."
     },
     "git_sha": "a64a5bf82215308c33496f2d134244d33bfa0d13",
-    "thesis": "T is a momentum-driven bearish play with trend persistence (95) confirming the downtrend is established, not a one-day dip. This pick serves double duty: it's the highest-conviction put candidate AND it provides critical direction balance \u2014 running three calls into a week with COT at extreme_long (100th percentile, strong contrarian bearish signal) and tight credit spreads (complacent market) would leave the book fully exposed to a risk-off move. Kill condition: if T bounces above its 20-day SMA at Monday open, the bearish trend thesis is weakening; also invalidated if telecom sector catches a bid on any defensive rotation (which would contradict the put direction)."
+    "thesis": "T is a momentum-driven bearish play with trend persistence (95) confirming the downtrend is established, not a one-day dip. This pick serves double duty: it's the highest-conviction put candidate AND it provides critical direction balance \u2014 running three calls into a week with COT at extreme_long (100th percentile, strong contrarian bearish signal) and tight credit spreads (complacent market) would leave the book fully exposed to a risk-off move. Kill condition: if T bounces above its 20-day SMA at Monday open, the bearish trend thesis is weakening; also invalidated if telecom sector catches a bid on any defensive rotation (which would contradict the put direction).",
+    "original_premium_premarket": 1.01
   }
 ]
