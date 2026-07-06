@@ -1,0 +1,300 @@
+{
+  "vix": {
+    "current": 16.09000015258789,
+    "previous_close": 16.149999618530273,
+    "change": -0.06,
+    "change_pct": -0.37,
+    "trend_20d": "Date\n2026-06-05 00:00:00-05:00    21.510000\n2026-06-08 00:00:00-05:00    18.920000\n2026-06-09 00:00:00-05:00    19.870001\n2026-06-10 00:00:00-05:00    22.219999\n2026-06-11 00:00:00-05:00    19.440001\n2026-06-12 00:00:00-05:00    17.680000\n2026-06-15 00:00:00-05:00    16.200001\n2026-06-16 00:00:00-05:00    16.410000\n2026-06-17 00:00:00-05:00    18.440001\n2026-06-18 00:00:00-05:00    16.400000\n2026-06-22 00:00:00-05:00    17.280001\n2026-06-23 00:00:00-05:00    19.490000\n2026-06-24 00:00:00-05:00    18.629999\n2026-06-25 00:00:00-05:00    18.889999\n2026-06-26 00:00:00-05:00    18.410000\n2026-06-29 00:00:00-05:00    17.650000\n2026-06-30 00:00:00-05:00    16.450001\n2026-07-01 00:00:00-05:00    16.590000\n2026-07-02 00:00:00-05:00    16.150000\n2026-07-06 00:00:00-05:00    16.090000\nName: Close, dtype: float64",
+    "sma_20": 18.14,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.09000015258789,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": 0.71,
+    "rsp_return_1d": -0.16,
+    "breadth_spread_1d": -0.87,
+    "spy_return_5d": 2.89,
+    "rsp_return_5d": 2.02,
+    "breadth_spread_5d": -0.87,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.75,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.504,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -12.55,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 150.02,
+    "skew_sma20": 150.02,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 0.0
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.858,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 947848,
+    "spy_put_volume": 812796
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.479999542236328,
+    "vix": 16.100000381469727,
+    "vix3m": 19.020000457763672
+  },
+  "cot_positioning": {
+    "net_position": -31807,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -2.2,
+      "return_1d": -0.34,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.09,
+      "return_1d": 0.19,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -2.41,
+      "return_1d": 0.5,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "'Electronic warfare is a tech phenomenon': Why the market is rethinking defense valuations",
+        "source": "CNBC",
+        "sentiment": -0.178
+      },
+      {
+        "headline": "We're buying more shares of Jim Cramer's new favorite chip stock",
+        "source": "CNBC",
+        "sentiment": 0.67
+      },
+      {
+        "headline": "Morning Bid: Samsung to serve chip taster for earnings feast - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Jim Cramer: What caused the pre-holiday chip stock slump and what to do about it",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Investors looking for shelter from AI storm are turning to India",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "In the West Bank, Israeli settlers take over Palestinian's dream home - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.25
+      },
+      {
+        "headline": "ICICI Bank mulls first benchmark dollar bond sale since 2017",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "World absorbs historic Iran war oil supply loss, but depleted stocks bring risks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.696
+      },
+      {
+        "headline": "OPEC+ to boost crude output, but can it deliver and who will buy? - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      },
+      {
+        "headline": "Stocks inch up as oil weighed by supply while earnings loom - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "Oil prices steady at pre-Iran war levels - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "How does the Iran crisis compare with the 1979 oil shock? - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.772
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "'Electronic warfare is a tech phenomenon': Why the market is rethinking defense valuations",
+        "source": "CNBC",
+        "sentiment": -0.178
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Record heat, crowds drive offseason boom in international travel",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Israel government says it will defy Supreme Court ruling on media regulator - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.557
+      },
+      {
+        "headline": "Iran and Qatar resume maritime trade, Iranian state media reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Qatar says all maritime activities will resume immediately - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "UK's Burnham vows discipline on fiscal rules he may need to bend - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Alternative-fuel vehicles hit record market share in June after Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "Russia says Ukraine rejects local ceasefire for handover of soldiers' bodies - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.494
+      },
+      {
+        "headline": "Mass grief in Iran at Khamenei funeral after US, Israel war killing - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.932
+      },
+      {
+        "headline": "UK, Italy, Japan award \u00a34.6 billion contract to advance GCAP fighter jet - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.625
+      },
+      {
+        "headline": "American Express and Chase move luxury lounge wars beyond the airport",
+        "source": "CNBC",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "Britain's services sector contracts sharply under strain of Iran war, PMI shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      }
+    ]
+  },
+  "timestamp": "2026-07-06T10:58:42.544863"
+}

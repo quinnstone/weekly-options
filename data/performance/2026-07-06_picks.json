@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-06",
+  "picks": [
+    {
+      "ticker": "PANW",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.14,
+      "direction_confidence": 0.435,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 25.0,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 55.09058,
+        "strike_efficiency": 75.0,
+        "theta_cost": 47.0
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 68.11,
+      "direction_confidence": 0.435,
+      "scores": {
+        "momentum": 82.98617941087356,
+        "mean_reversion": 63.727999999999994,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 72.45,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 35.05338,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "T",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 65.99,
+      "direction_confidence": 0.413,
+      "scores": {
+        "momentum": 93.70803732632052,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 20.0,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.1591,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-07-06T11:01:27.045025"
+}
