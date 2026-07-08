@@ -2372,6 +2372,19 @@
       "context": {
         "brief": "The mechanical check already flagged this correctly: price gapped from $362.34 (scan price) to $357.33, a **-2.98% gap against the call thesis**, which exceeds the hard 2% gap-skip threshold per our risk rules. Despite excellent directional signals (momentum=100, trend_persistence=95), a gap this size on a call means the move may already be priced in or the thesis is breaking down. The breakeven of $376.88 now requires a 5.5% move from the current $357.33 in four days \u2014 unrealistic at normal VIX with baseline weight multipliers. The system's gap stop rule exists precisely for this situation. *"
       }
+    },
+    {
+      "timestamp": "2026-07-08T08:17:57.369362",
+      "week": "2026-W27",
+      "agent": "market_narrative",
+      "ticker": "MARKET",
+      "mechanical_signal": "raw_data",
+      "agent_signal": "narrative_generated",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "length": 3007
+      }
     }
   ],
   "weekly_summaries": []

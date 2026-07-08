@@ -1,0 +1,276 @@
+{
+  "vix": {
+    "current": 17.780000686645508,
+    "previous_close": 16.1299991607666,
+    "change": 1.65,
+    "change_pct": 10.23,
+    "trend_20d": "Date\n2026-06-09 00:00:00-05:00    19.870001\n2026-06-10 00:00:00-05:00    22.219999\n2026-06-11 00:00:00-05:00    19.440001\n2026-06-12 00:00:00-05:00    17.680000\n2026-06-15 00:00:00-05:00    16.200001\n2026-06-16 00:00:00-05:00    16.410000\n2026-06-17 00:00:00-05:00    18.440001\n2026-06-18 00:00:00-05:00    16.400000\n2026-06-22 00:00:00-05:00    17.280001\n2026-06-23 00:00:00-05:00    19.490000\n2026-06-24 00:00:00-05:00    18.629999\n2026-06-25 00:00:00-05:00    18.889999\n2026-06-26 00:00:00-05:00    18.410000\n2026-06-29 00:00:00-05:00    17.650000\n2026-06-30 00:00:00-05:00    16.450001\n2026-07-01 00:00:00-05:00    16.590000\n2026-07-02 00:00:00-05:00    16.150000\n2026-07-06 00:00:00-05:00    15.570000\n2026-07-07 00:00:00-05:00    16.129999\n2026-07-08 00:00:00-05:00    17.780001\nName: Close, dtype: float64",
+    "sma_20": 17.78,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 17.780000686645508,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": -0.48,
+    "rsp_return_1d": -0.13,
+    "breadth_spread_1d": 0.35,
+    "spy_return_5d": 0.91,
+    "rsp_return_5d": 0.79,
+    "breadth_spread_5d": -0.12,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.72,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.504,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 8.09,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 145.74,
+    "skew_sma20": 144.58,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 1.16
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.059,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 755234,
+    "spy_put_volume": 799718
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.369999885559082,
+    "vix": 17.780000686645508,
+    "vix3m": 19.040000915527344
+  },
+  "cot_positioning": {
+    "net_position": -32251,
+    "percentile": 98.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.8,
+      "return_1d": -1.05,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": -0.04,
+      "return_1d": 0.28,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 2.33,
+      "return_1d": 4.38,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "As chip sector takes it on the chin, traders bet on a big Nvidia rally",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "The implications of Amazon's $25B bond sale, and Microsoft's evolving AI model strategy",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Why the global memory bottleneck may signal early innings in the cyber stock comeback",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Rheinmetall freezes naval hiring plans after Germany scraps frigate programme - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Fed meeting minutes to show 'family fight' over rates. The squabble could drag on for a while",
+        "source": "CNBC",
+        "sentiment": -0.542
+      },
+      {
+        "headline": "Canada wants more backers for global defence bank, foreign minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "US stock futures tumble as Trump says Iran deal is 'over', oil climbs - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Rupee slumps to one-month low as oil soars after Trump says Iran deal is 'over' - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Four oil and gas tankers turn back from Hormuz strait after vessel attacks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Indian benchmarks log biggest one-day loss in three months as oil prices soar - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Gold falls over 1% as oil jumps after Trump says Iran peace deal 'over' - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold falls over 1% as oil jumps after Trump says Iran peace deal 'over' - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Trump says interim accord with Iran to end war is \"over\" - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Morning Bid: Ceasefire? What ceasefire? - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Trump says interim accord to end war is 'over' after Iranian strikes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.751
+      },
+      {
+        "headline": "EXCLUSIVE BOJ dissenter Asada needs demand-driven inflation before backing rate hike - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.325
+      },
+      {
+        "headline": "Five NATO members seen to spend over 3.5% of GDP on core defence this year, alliance estimates show - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Prince Harry's war with UK press is over, and he's lost - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.735
+      },
+      {
+        "headline": "Britain's Farage quits parliament in protest, but will stand for re-election - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      },
+      {
+        "headline": "Trump says he will lift Turkey sanctions, decide on selling F-35s - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-07-08T08:17:16.684787"
+}
