@@ -6,23 +6,33 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 6 |
-| Total Picks | 18 |
-| Record | 4W - 9L - 5P |
-| Win Rate | 22% |
-| Total Invested | $7,793.00 |
-| Total Returned | $6,648.00 |
-| **Net P&L** | **$-1,145.00** |
-| **ROI** | **-14.69%** |
+| Weeks Tracked | 7 |
+| Total Picks | 21 |
+| Record | 4W - 11L - 6P |
+| Win Rate | 19% |
+| Total Invested | $9,302.00 |
+| Total Returned | $6,846.00 |
+| **Net P&L** | **$-2,456.00** |
+| **ROI** | **-26.40%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
 | Best | GOOGL | 2026-05-04 | +$1,055.00 (+136.1%) |
-| Worst | DDOG | 2026-06-01 | $-835.00 (-100.0%) |
+| Worst | PANW | 2026-07-06 | $-938.00 (-100.0%) |
 
 ---
 
 ## Weekly Results
+
+### Week of 2026-07-06 (exp. 2026-07-10)
+
+**0W-2L-1P** | Cost: $1,509.00 | Return: $198.00 | **P&L: $-1,311.00 (-86.9%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | PANW | CALL | $367.50 | $9.38 | $325.91 | $0.00 | -$938.00 | LOSS |
+| 2 | JNJ | CALL | $255.00 | $4.97 | $256.98 | $1.98 | -$299.00 | PARTIAL |
+| 3 | T | PUT | $21.00 | $0.74 | $21.13 | $0.00 | -$74.00 | LOSS |
 
 ### Week of 2026-06-22 (exp. 2026-06-26)
 
@@ -86,4 +96,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-06-26 17:47 ET*
+*Last updated: 2026-07-10 17:02 ET*
