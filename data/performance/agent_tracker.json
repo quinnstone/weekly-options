@@ -2394,6 +2394,20 @@
       "context": {
         "length": 3007
       }
+    },
+    {
+      "timestamp": "2026-07-11T10:45:06.092140",
+      "week": "2026-W27",
+      "agent": "deep_reflection",
+      "ticker": "SYSTEM",
+      "mechanical_signal": "current_weights",
+      "agent_signal": "0 proposals",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "proposals": [],
+        "analysis_snippet": "# CIO Weekly Review \u2014 Week of 2026-07-11\n\n## Executive Summary\n\nThis is a ghost week \u2014 three trades were entered but no scorecard data was returned, yielding 0W/0L/3 total with 0.0% average return. This is not a \"0% win rate\" week in the traditional sense; it's a data completeness failure. Before di"
+      }
     }
   ],
   "weekly_summaries": []
