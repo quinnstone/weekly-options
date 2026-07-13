@@ -1,0 +1,16 @@
+[
+  {
+    "ticker": "SCHW",
+    "direction": "call",
+    "strike": 95.0,
+    "original_premium": 8.11,
+    "original_price": 103.12,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.54 to 0.99 (price moved from $103.12 to $102.65). Consider re-selecting strike closer to current price.",
+    "current_price": 102.65,
+    "new_delta": 0.994,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-07-13T10:10:44.473243"
+  }
+]
