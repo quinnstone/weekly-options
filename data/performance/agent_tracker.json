@@ -2408,6 +2408,263 @@
         "proposals": [],
         "analysis_snippet": "# CIO Weekly Review \u2014 Week of 2026-07-11\n\n## Executive Summary\n\nThis is a ghost week \u2014 three trades were entered but no scorecard data was returned, yielding 0W/0L/3 total with 0.0% average return. This is not a \"0% win rate\" week in the traditional sense; it's a data completeness failure. Before di"
       }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.292587",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "META",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.295281",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "SNOW",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.297810",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "SCHW",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.300557",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "BABA",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.303019",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "HOOD",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.305537",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "XLF",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.308056",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "NET",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:36:51.310593",
+      "week": "2026-W28",
+      "agent": "market_narrative",
+      "ticker": "MRNA",
+      "mechanical_signal": "direction=call",
+      "agent_signal": "narrative_lean=bearish",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "reason": "scoring direction conflicts with narrative lean"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:27.807807",
+      "week": "2026-W28",
+      "agent": "portfolio_reasoner",
+      "ticker": "PORTFOLIO",
+      "mechanical_signal": "META,SNOW,INTC",
+      "agent_signal": "META,SNOW,XLF",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "dropped": [
+          "SCHW",
+          "XLF",
+          "BABA",
+          "HOOD",
+          "META"
+        ],
+        "reasoning": "SELECTED:\n\n1. **META** \u2014 Highest composite score (70.6) with perfect momentum (100) and strong flow conviction (90); provides mega-cap liquidity as portfolio anchor.\n\nTHESIS: Momentum is the dominant signal here \u2014 META scores 100, the ceiling, supported by 90 flow conviction suggesting institutional positioning aligns with the trend. Unusual options flow this week provides the catalyst-timing rationale: large directional bets are being placed now, and in a normal VIX regime momentum carries its full 0.20 weight with no regime discount. The kill condition is a gap down >2% at Monday open (triggering our gap-skip rule), or if the flow conviction proves to be hedging activity rather than directional \u2014 watch for put-heavy flow emerging Tuesday that would flip the narrative.\n\n2. **SNOW** \u2014 Strongest confidence among non-META picks (41%) with balanced signal profile; software/cloud sector decorrelates from META's ad-revenue sensitivity.\n\nTHESIS: Trend persistence (85) is the dominant driver \u2014 SNOW is in a sustained directional move with momentum (79) confirming rather than leading, which is the more reliable configuration (trend-following > trend-chasing). Strike efficiency scoring 75 means we can get a clean 0.35-delta entry without paying excessive spread or theta. Kill condition: ADX dropping below 25 mid-week would reclassify the trend state from \"trending\" to \"choppy,\" collapsing the trend_persistence signal that anchors this pick \u2014 exit immediately if that happens.\n\n3. **XLF** \u2014 Best confidence of the field (44%) and an ETF, providing built-in diversification; financials sector uncorrelated to tech thesis in picks 1-2.\n\nTHESIS: Trend persistence (85) and strike efficiency (75) are the co-dominant signals \u2014 XLF offers a clean, liquid entry into a persistent trend with tight spreads that minimize execution drag on a weekly hold. As an ETF it dampens single-name event risk, which is valuable when we're already carrying two individual stocks. Kill condition: COT positioning is extreme_long (96th percentile), which is a contrarian bearish signal for equity markets broadly \u2014 if XLF breaks below its 20-day SMA early in the week, the contrarian signal is activating and the trend thesis is dead; exit at that point.\n\nDROPPED:\n- **SCHW** \u2014 Sector overlap with XLF (banks/finance); our same-sector gate requires both to rank top-5 AND have 20-day return correlation <0.60. SCHW and XLF are highly correlated (financials ETF literally contains SCHW), so this fails the dedu"
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:28.076409",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "META",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 14.4,
+          "budget_max": 10.0,
+          "pre_market_mode": true
+        },
+        "promoted_from_bench": false
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:28.358887",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "SNOW",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 8.58,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": false
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:28.588097",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "XLF",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 0.47,
+          "budget_max": 3.89,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": false
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:29.177367",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "BABA",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 1.99,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:29.424166",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "HOOD",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 4.49,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:29.663876",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "NET",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 8.36,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
+    },
+    {
+      "timestamp": "2026-07-13T08:37:29.898768",
+      "week": "2026-W28",
+      "agent": "strike_selection",
+      "ticker": "MRNA",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 3.96,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
     }
   ],
   "weekly_summaries": []

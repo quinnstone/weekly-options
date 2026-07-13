@@ -1,0 +1,96 @@
+{
+  "date": "2026-07-13",
+  "market_context": {
+    "vix": 16.420000076293945,
+    "regime": "normal",
+    "trend": "flat",
+    "holding_window": {
+      "has_earnings_risk": false,
+      "has_fomc": false,
+      "has_cpi_nfp": false,
+      "high_impact_count": 0,
+      "events": [],
+      "risk_level": "low",
+      "event_days": []
+    },
+    "regime_persistence": {
+      "is_stable": true,
+      "transition_direction": null,
+      "vix_5d_change_pct": 5.39,
+      "regime_days": 10,
+      "persistence_score": 1.0
+    },
+    "macro_edge": {
+      "has_edge": true,
+      "confidence_multiplier": 0.75,
+      "regime": "normal",
+      "reasons": [
+        "VIX normal (16.4) \u2014 lower directional edge",
+        "VIX regime stable \u2014 good for weekly holds",
+        "Credit spreads tight (HY OAS 2.7%) \u2014 complacent",
+        "Financial conditions loose (NFCI -0.515)",
+        "COT extreme_long \u2014 strong contrarian signal available"
+      ]
+    }
+  },
+  "picks": [
+    {
+      "ticker": "SCHW",
+      "direction": "call",
+      "strike": 95.0,
+      "expiry": "2026-07-17",
+      "premium": 8.11,
+      "composite_score": 66.06,
+      "confidence": 0.413,
+      "current_price": 103.12,
+      "breakeven": 103.11,
+      "breakeven_move_pct": -0.01,
+      "expected_daily_move_pct": 2.24,
+      "estimated_delta": 0.543,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (8.11) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires -0.0% move to $103.11 (weekly expected move: 5.0%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 66.04,
+        "momentum": 74.91,
+        "reversion": 57.26,
+        "model_std": 7.2,
+        "consensus": "moderate"
+      },
+      "scores": {
+        "momentum": 92.90318946385518,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 50.14004,
+        "strike_efficiency": 65.0,
+        "theta_cost": 55.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|call|unknown|overbought|choppy|unknown"
+      },
+      "active_regime": "normal"
+    }
+  ],
+  "generated_at": "2026-07-13T08:37:29.900998"
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-13",
+  "picks": [
+    {
+      "ticker": "SCHW",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.06,
+      "direction_confidence": 0.413,
+      "scores": {
+        "momentum": 92.90318946385518,
+        "mean_reversion": 65.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 50.14004,
+        "strike_efficiency": 65.0,
+        "theta_cost": 55.0
+      }
+    }
+  ],
+  "recorded_at": "2026-07-13T08:37:30.094027"
+}

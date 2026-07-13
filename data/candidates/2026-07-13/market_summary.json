@@ -1,0 +1,336 @@
+{
+  "vix": {
+    "current": 16.420000076293945,
+    "previous_close": 15.029999732971191,
+    "change": 1.39,
+    "change_pct": 9.25,
+    "trend_20d": "Date\n2026-06-12 00:00:00-04:00    17.680000\n2026-06-15 00:00:00-04:00    16.200001\n2026-06-16 00:00:00-04:00    16.410000\n2026-06-17 00:00:00-04:00    18.440001\n2026-06-18 00:00:00-04:00    16.400000\n2026-06-22 00:00:00-04:00    17.280001\n2026-06-23 00:00:00-04:00    19.490000\n2026-06-24 00:00:00-04:00    18.629999\n2026-06-25 00:00:00-04:00    18.889999\n2026-06-26 00:00:00-04:00    18.410000\n2026-06-29 00:00:00-04:00    17.650000\n2026-06-30 00:00:00-04:00    16.450001\n2026-07-01 00:00:00-04:00    16.590000\n2026-07-02 00:00:00-04:00    16.150000\n2026-07-06 00:00:00-04:00    15.570000\n2026-07-07 00:00:00-04:00    16.129999\n2026-07-08 00:00:00-04:00    16.900000\n2026-07-09 00:00:00-04:00    15.840000\n2026-07-10 00:00:00-04:00    15.030000\n2026-07-13 00:00:00-04:00    16.420000\nName: Close, dtype: float64",
+    "sma_20": 17.03,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.420000076293945,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.43,
+    "rsp_return_1d": 0.37,
+    "breadth_spread_1d": -0.06,
+    "spy_return_5d": 1.37,
+    "rsp_return_5d": -0.28,
+    "breadth_spread_5d": -1.65,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.7,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.515,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 5.39,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 144.27,
+    "skew_sma20": 145.01,
+    "skew_state": "elevated",
+    "skew_vs_sma": -0.74
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.097,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 716574,
+    "spy_put_volume": 786258
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 11.149999618530273,
+    "vix": 16.40999984741211,
+    "vix3m": 18.56999969482422
+  },
+  "cot_positioning": {
+    "net_position": -37136,
+    "percentile": 96.1,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.15,
+      "return_1d": -0.02,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.25,
+      "return_1d": 0.11,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 4.17,
+      "return_1d": -0.28,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Wall Street climbs, oil slides as investors bet on AI growth over Middle East tensions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "US makes it easier to export Nvidia AI chips and military equipment to the UAE - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      },
+      {
+        "headline": "European shares snap four-week winning streak on tech selloff, US-Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.178
+      },
+      {
+        "headline": "Fed report cites 'stepped-up' inflation due to tariffs, Iran war, AI buildout - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "We're looking to buy more of this chip stock as the once-hot group cools",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "HDFC Bank workforce drops by over 3,300 as operations automated",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Turkey still evaluating participation in Canada's global defence bank, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Fed report cites 'stepped-up' inflation due to tariffs, Iran war, AI buildout - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Iran widens attacks on US bases in Gulf, Hormuz tensions lift oil prices - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.681
+      },
+      {
+        "headline": "Oil pangs resurface for rupee, options market gauge signals bearish bias - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "Indian shares fall as oil jumps on renewed escalation in the Middle East - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "Shares skid, bond yields rise as Gulf conflict sends oil surging - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "Oil gains over 3% as fresh military strikes threaten Hormuz shipments - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "From booksmaxxing to looksmaxxing: Why the viral trends concern some mental health experts",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "HDFC Bank workforce drops by over 3,300 as operations automated",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Retail traders chase shiny objects but refuse to bet on S&P 500",
+        "source": "Bloomberg",
+        "sentiment": -0.421
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Iran's IRGC navy says Strait of Hormuz closed until further notice, state media reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran state media says explosion in eastern Tehran province was controlled ammunition disposal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Fire at western Iranian mini-refinery contained, Iran media says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Qatari delegation is in Iran, aims to boost mediation role, Tasnim news agency says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold extends decline as Middle East tensions bolster higher-for-longer rate view - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "Gold under pressure as Middle East tensions lift rate-hike bets - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "How Bangladesh\u2019s first nuclear power plant could reshape its energy future",
+        "source": "Bloomberg",
+        "sentiment": 0.273
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Israel's election will be held on October 27, coalition head says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran's IRNA says 'enemy' launches missiles towards Qeshm Island - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.542
+      },
+      {
+        "headline": "Trump says US agreed to Iran's request to continue talks, but ceasefire is over - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.141
+      },
+      {
+        "headline": "US issues fresh Iran-related sanctions as conflict flares - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Turkey says it hopes to achieve result on lifting U.S. sanctions soon - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      },
+      {
+        "headline": "48-year-old worked at a garden center for $17/hour to make ends meet: 'It's one of the best jobs I've ever had'",
+        "source": "CNBC",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "ECB is back to square one as US-Iran war resumes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ]
+  },
+  "timestamp": "2026-07-13T08:35:06.523985",
+  "narrative_lean": "bearish",
+  "narrative_lean_date": "2026-07-08"
+}
