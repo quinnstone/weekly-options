@@ -2443,7 +2443,10 @@
       "mechanical_signal": "direction=call",
       "agent_signal": "narrative_lean=bearish",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "PARTIAL",
+        "pnl": -155.0
+      },
       "context": {
         "reason": "scoring direction conflicts with narrative lean"
       }

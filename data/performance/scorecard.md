@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 7 |
-| Total Picks | 21 |
-| Record | 4W - 11L - 6P |
-| Win Rate | 19% |
-| Total Invested | $9,302.00 |
-| Total Returned | $6,846.00 |
-| **Net P&L** | **$-2,456.00** |
-| **ROI** | **-26.40%** |
+| Weeks Tracked | 8 |
+| Total Picks | 22 |
+| Record | 4W - 11L - 7P |
+| Win Rate | 18% |
+| Total Invested | $10,113.00 |
+| Total Returned | $7,502.00 |
+| **Net P&L** | **$-2,611.00** |
+| **ROI** | **-25.82%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-07-13 (exp. 2026-07-17)
+
+**0W-0L-1P** | Cost: $811.00 | Return: $656.00 | **P&L: $-155.00 (-19.1%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | SCHW | CALL | $95.00 | $8.11 | $101.56 | $6.56 | -$155.00 | PARTIAL |
 
 ### Week of 2026-07-06 (exp. 2026-07-10)
 
@@ -96,4 +104,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-07-10 17:33 ET*
+*Last updated: 2026-07-17 16:48 ET*
