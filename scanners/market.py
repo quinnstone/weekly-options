@@ -208,7 +208,15 @@ class MarketScanner:
 
         # Add momentum rank (1 = best) and relative strength vs SPY
         if not df.empty and "return_5d" in df.columns:
-            df["momentum_rank"] = df["return_5d"].rank(ascending=False, method="min").astype(int)
+            # Use a NULLABLE integer dtype: if any sector's return_5d is NaN
+            # (a yfinance fetch gap), its rank is NaN and plain .astype(int)
+            # raises IntCastingNaNError — which on 2026-07-15 crashed the entire
+            # Wednesday scan and silently emptied the 7/20 pick week. Sector
+            # momentum is decorative context, NOT used for pick selection, so it
+            # must never be able to take down the scan. Int64 keeps NaN as <NA>.
+            df["momentum_rank"] = (
+                df["return_5d"].rank(ascending=False, method="min").astype("Int64")
+            )
             spy_5d = df.loc["XLK", "return_5d"] if "XLK" in df.index else df["return_5d"].mean()
             # Use SPY if we have breadth data, otherwise use sector average
             try:
@@ -1216,7 +1224,15 @@ class MarketScanner:
 
         vix_data = self.get_vix_data()
         vix_regime = self.get_vix_regime()
-        sectors = self.get_sector_performance()
+        # Sector performance is decorative context (not used for pick selection).
+        # Guard it so a fetch gap / data anomaly can never crash the whole market
+        # summary and, through it, the Wednesday scan + the entire pick week
+        # (see the 2026-07-15 IntCastingNaNError -> empty 7/20 week incident).
+        try:
+            sectors = self.get_sector_performance()
+        except Exception as exc:
+            logger.error("Sector performance failed (non-fatal): %s", exc)
+            sectors = pd.DataFrame()
         breadth = self.get_market_breadth()
         yields = self.get_treasury_yields()
         credit = self.get_credit_spread()
