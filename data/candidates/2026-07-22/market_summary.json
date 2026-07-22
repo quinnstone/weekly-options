@@ -1,0 +1,342 @@
+{
+  "vix": {
+    "current": 17.670000076293945,
+    "previous_close": 17.049999237060547,
+    "change": 0.62,
+    "change_pct": 3.64,
+    "trend_20d": "Date\n2026-06-24 00:00:00-05:00    18.629999\n2026-06-25 00:00:00-05:00    18.889999\n2026-06-26 00:00:00-05:00    18.410000\n2026-06-29 00:00:00-05:00    17.650000\n2026-06-30 00:00:00-05:00    16.450001\n2026-07-01 00:00:00-05:00    16.590000\n2026-07-02 00:00:00-05:00    16.150000\n2026-07-06 00:00:00-05:00    15.570000\n2026-07-07 00:00:00-05:00    16.129999\n2026-07-08 00:00:00-05:00    16.900000\n2026-07-09 00:00:00-05:00    15.840000\n2026-07-10 00:00:00-05:00    15.030000\n2026-07-13 00:00:00-05:00    17.160000\n2026-07-14 00:00:00-05:00    16.500000\n2026-07-15 00:00:00-05:00    15.670000\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    17.670000\nName: Close, dtype: float64",
+    "sma_20": 17.02,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 17.670000076293945,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.83,
+    "rsp_return_1d": 0.16,
+    "breadth_spread_1d": -0.67,
+    "spy_return_5d": -0.47,
+    "rsp_return_5d": -0.32,
+    "breadth_spread_5d": 0.15,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.69,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.538,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 12.76,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 151.66,
+    "skew_sma20": 146.33,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 5.33
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.209,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 672305,
+    "spy_put_volume": 812914
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.850000381469727,
+    "vix": 17.670000076293945,
+    "vix3m": 20.540000915527344
+  },
+  "cot_positioning": {
+    "net_position": -31753,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.69,
+      "return_1d": -0.27,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.81,
+      "return_1d": 0.32,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 6.15,
+      "return_1d": 2.66,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Wall St ends higher on chip stocks recovery; earnings in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "The company behind Post-it notes has found an unlikely role in the AI buildout",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Apple prepares a new way to buy iPhones. Plus, making sense of Google's new AI models",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Here's our advice for investors looking to buy the dip in volatile AI stocks",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "2 things capping Monday's market \u2014 plus, Alphabet's new AI chip roadmap",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "European banks set for profit boost from lending, trading windfall - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.681
+      },
+      {
+        "headline": "Red Sea war insurance costs rise after Houthi blockade, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Mideast war escalation threatens recovery in global oil refining - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.758
+      },
+      {
+        "headline": "Rupee languishes at two-month lows as supply worries raise oil prices - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "Oil climbs over 4% to near six-week high as conflict threatens key oil transit routes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Asian refiners look to Suez Canal to move Saudi oil amid Houthi shipping threats - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Indian refiners turn to Russia, LatAm oil in June quarter, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Healthcare students are turning to Kalshi and betting platforms to pay for their degrees, survey shows",
+        "source": "CNBC",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "In Gaza, a mother's hunt for water lays bare a worsening health crisis - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.796
+      },
+      {
+        "headline": "Health workers may get experimental Ebola vaccine strategy as outbreak grows",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "GM announces new gas-powered Cadillac vehicles amid EV pullback",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Saudi, UAE ministers use social media to signal unity after months of tension - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "EXCLUSIVE: Pakistan seeks $10 billion fund from US after mediating Iran talks, source says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.303
+      },
+      {
+        "headline": "Stocks rebound as Mideast mediation pushes oil lower - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold climbs to two-week high as investors watch Middle East conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Goldman Sachs creates private markets platform as rich investors seek the next SpaceX and Stripe",
+        "source": "CNBC",
+        "sentiment": 0.691
+      },
+      {
+        "headline": "Gold rises on dip-buying as traders weigh West Asia crisis escalates again",
+        "source": "Bloomberg",
+        "sentiment": -0.625
+      },
+      {
+        "headline": "Goldman says Brent could top $120 if Hormuz disruptions persist",
+        "source": "Bloomberg",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "Gold gains on hopes of de-escalation in Middle East conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.44
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Bulgaria plays down Iran warning over US tanker aircraft - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "War in Iran has cost the US $37.5 billion so far, Pentagon says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Houthis warn shipping companies to avoid Saudi ports, email shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Halliburton tumbles on tepid revenue forecast, Middle East recovery warning - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Middle Eastern airline execs project stability at Farnborough despite conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.241
+      },
+      {
+        "headline": "Iran warns Bulgaria against aiding US military operations after move to station US aircraft - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "Iran war 'stagflation' premium quietly mounts - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "As the U.S.-Iran war heats up again, these parts of the stock market and economy could be affected",
+        "source": "CNBC",
+        "sentiment": -0.67
+      }
+    ]
+  },
+  "timestamp": "2026-07-22T08:23:31.457894"
+}

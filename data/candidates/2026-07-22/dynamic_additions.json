@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PATH",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FTNT",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "CME",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MMM",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FCX",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "NEM",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "KO",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PEP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SPOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "JD",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BIDU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MARA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RIOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "CLSK",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "AXP",
+    "source": "earnings_this_week",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PINS",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  }
+]
