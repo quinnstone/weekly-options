@@ -2109,7 +2109,7 @@
     },
     "strike": 175.0,
     "expiry": "2026-07-31",
-    "premium": 3.88,
+    "premium": 3.41,
     "confidence": 0.435,
     "current_price": 178.15,
     "breakeven": 178.88,
@@ -2133,6 +2133,7 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.4% move to $178.88 (weekly expected move: 5.1%)."
     },
-    "git_sha": "d042b3c1adac04cd39653f95bfc58d5727008cde"
+    "git_sha": "d042b3c1adac04cd39653f95bfc58d5727008cde",
+    "original_premium_premarket": 3.88
   }
 ]

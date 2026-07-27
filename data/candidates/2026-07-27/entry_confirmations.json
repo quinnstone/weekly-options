@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "TSLA",
+    "direction": "put",
+    "strike": 315.0,
+    "original_premium": 9.82,
+    "original_price": 308.42,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.66 (price moved from $308.42 to $308.73). Consider re-selecting strike closer to current price.",
+    "current_price": 308.73,
+    "new_delta": 0.662,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-07-27T12:15:25.477338"
+  },
+  {
+    "ticker": "T",
+    "direction": "call",
+    "strike": 24.0,
+    "original_premium": 0.43,
+    "original_price": 24.23,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.72 (price moved from $24.23 to $24.41). Consider re-selecting strike closer to current price.",
+    "current_price": 24.41,
+    "new_delta": 0.717,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-07-27T12:15:25.727325"
+  },
+  {
+    "ticker": "MMM",
+    "direction": "call",
+    "strike": 175.0,
+    "original_premium": 3.41,
+    "original_price": 178.15,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.9% since open).",
+    "current_price": 176.69,
+    "new_delta": 0.622,
+    "new_premium": 3.41,
+    "gap_pct": 1.47,
+    "timestamp": "2026-07-27T12:15:26.058343"
+  }
+]
