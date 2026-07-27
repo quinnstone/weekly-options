@@ -1,0 +1,339 @@
+{
+  "vix": {
+    "current": 18.209999084472656,
+    "previous_close": 18.700000762939453,
+    "change": -0.49,
+    "change_pct": -2.62,
+    "trend_20d": "Date\n2026-06-26 00:00:00-05:00    18.410000\n2026-06-29 00:00:00-05:00    17.650000\n2026-06-30 00:00:00-05:00    16.450001\n2026-07-01 00:00:00-05:00    16.590000\n2026-07-02 00:00:00-05:00    16.150000\n2026-07-06 00:00:00-05:00    15.570000\n2026-07-07 00:00:00-05:00    16.129999\n2026-07-08 00:00:00-05:00    16.900000\n2026-07-09 00:00:00-05:00    15.840000\n2026-07-10 00:00:00-05:00    15.030000\n2026-07-13 00:00:00-05:00    17.160000\n2026-07-14 00:00:00-05:00    16.500000\n2026-07-15 00:00:00-05:00    15.670000\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    16.639999\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-27 00:00:00-05:00    18.209999\nName: Close, dtype: float64",
+    "sma_20": 16.94,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 18.209999084472656,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.41,
+    "rsp_return_1d": 1.41,
+    "breadth_spread_1d": 1.0,
+    "spy_return_5d": -0.28,
+    "rsp_return_5d": 0.72,
+    "breadth_spread_5d": 1.0,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.77,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.552,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -2.93,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 145.95,
+    "skew_sma20": 145.95,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 0.0
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.101,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 467524,
+    "spy_put_volume": 514630
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 17.68000030517578,
+    "vix": 18.219999313354492,
+    "vix3m": 20.040000915527344
+  },
+  "cot_positioning": {
+    "net_position": -2633,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.23,
+      "return_1d": 0.64,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.63,
+      "return_1d": 0.04,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 1.6,
+      "return_1d": -8.58,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "How AI wealth could be distributed to all Americans",
+        "source": "CNBC",
+        "sentiment": 0.494
+      },
+      {
+        "headline": "The 'sell chips, buy software' trade reappears as Wall Street caps off another volatile week",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "EU sanctions Iranian judges, leading cyber group figure - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Morning Bid: Oil batters bonds as AI burns cash - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US stocks tumble as AI spending and oil prices weigh on market",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Gold gains over 1% on pause in US-Iran fighting; Fed decision looms - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.178
+      },
+      {
+        "headline": "Oil near $100 puts fed and peers in interest-rate spotlight",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Palestinians hope UNESCO designation halts Israeli push at West Bank site - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Bank of England to hold steady this year but Iran war inflation risks persist: Reuters poll - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.84
+      },
+      {
+        "headline": "UAE\u2019s First Abu Dhabi Bank offers $1.5 billion for India expats FX programme",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Crude oil futures are pricing market adaptability, not hopeful Iran peace - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.85
+      },
+      {
+        "headline": "Indian rupee heads for steepest rise in three weeks as oil falls - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Shares, bonds bounce in Asia as oil skids - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "Dollar pulls back as US-Iran attacks pause, oil drops - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Oil prices drop after US, Iran pause fighting over weekend - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.557
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Logistics giants are racing to keep up with healthcare boom as GLP-1s highlight need for cold storage",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "WestBridge said to be considering stake sale in Star Health",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Temasek-backed Manipal Health seeks to raise $960 million in IPO; price band set at \u20b9560-590",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Logistics giants are racing to keep up with healthcare boom as GLP-1s highlight need for cold storage",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "US House passes $1 trillion defense bill despite Iran, Israel concerns - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Why Costco keeps gas prices so low\u2014it's 'straight out of the retail playbook,' expert says",
+        "source": "CNBC",
+        "sentiment": 0.291
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold gains over 1% on pause in US-Iran fighting; Fed decision looms - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.178
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Trump says he won't proceed with nuclear deal unless Saudis join Abraham Accords - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Morning Bid: Markets dare to hope as US, Iran put war on hold - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "Iran war spreads to Red Sea and Caspian, Gulf quiet as US forgoes strikes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.751
+      },
+      {
+        "headline": "Britain would be target if it supports US in war, Iran's Revolutionary Guards say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Trump\u2019s tariffs are likely to stick around despite unpopularity",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Yemen teeters towards renewed war in shadow of Iran conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.735
+      },
+      {
+        "headline": "Pakistan, Iran explore path towards new talks with US in a China-initiated push, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US hits network of Iranian financier Zanjani with more sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "UK says armed forces ready to defend country after Iran warns over US bombers - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.273
+      }
+    ]
+  },
+  "timestamp": "2026-07-27T10:10:25.207769"
+}

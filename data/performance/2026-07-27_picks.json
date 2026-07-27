@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-27",
+  "picks": [
+    {
+      "ticker": "TSLA",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 74.16,
+      "direction_confidence": 0.413,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 63.05,
+        "flow_conviction": 75.0,
+        "event_risk": 75.0,
+        "liquidity": 77.27878,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "T",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.52,
+      "direction_confidence": 0.413,
+      "scores": {
+        "momentum": 97.41650731598496,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 75.0,
+        "iv_mispricing": 60.400000000000006,
+        "flow_conviction": 50.0,
+        "event_risk": 63.0,
+        "liquidity": 55.13666,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "MMM",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.06,
+      "direction_confidence": 0.435,
+      "scores": {
+        "momentum": 96.96451979169528,
+        "mean_reversion": 75.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 80.0,
+        "iv_mispricing": 59.900000000000006,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 50.04784,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-07-27T10:12:10.100235"
+}
