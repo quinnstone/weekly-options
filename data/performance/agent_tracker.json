@@ -2668,6 +2668,21 @@
         },
         "promoted_from_bench": true
       }
+    },
+    {
+      "timestamp": "2026-07-27T14:24:08.066410",
+      "week": "2026-W30",
+      "agent": "position_monitor",
+      "ticker": "MMM",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 8.5,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
