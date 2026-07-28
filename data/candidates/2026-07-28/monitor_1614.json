@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "MMM",
+      "direction": "call",
+      "strike": 175.0,
+      "entry_price": 178.15,
+      "current_price": 182.46,
+      "entry_premium": 3.41,
+      "current_option_price": 7.65,
+      "current_delta": 0.851,
+      "stock_move_pct": 2.42,
+      "option_return_pct": 124.3,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 124% \u2014 at or above 35% day-2 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "MMM: TARGET HIT (124% vs 35% target)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": 124.3,
+    "targets_hit": 1,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}

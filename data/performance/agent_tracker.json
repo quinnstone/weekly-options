@@ -2683,6 +2683,21 @@
         "option_return_pct": 8.5,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-07-28T16:14:31.597792",
+      "week": "2026-W30",
+      "agent": "position_monitor",
+      "ticker": "MMM",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 124.3,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
