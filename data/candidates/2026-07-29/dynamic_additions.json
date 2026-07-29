@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "GEHC",
+    "source": "earnings_this_week, news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PINS",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ANET",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "KO",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PG",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "REGN",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BIIB",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FTNT",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SNAP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "U",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PATH",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "LULU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PEP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MMM",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FCX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTWO",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SPOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  }
+]

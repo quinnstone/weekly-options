@@ -1,0 +1,317 @@
+{
+  "vix": {
+    "current": 18.700000762939453,
+    "previous_close": 18.209999084472656,
+    "change": 0.49,
+    "change_pct": 2.69,
+    "trend_20d": "Date\n2026-07-01 00:00:00-05:00    16.590000\n2026-07-02 00:00:00-05:00    16.150000\n2026-07-06 00:00:00-05:00    15.570000\n2026-07-07 00:00:00-05:00    16.129999\n2026-07-08 00:00:00-05:00    16.900000\n2026-07-09 00:00:00-05:00    15.840000\n2026-07-10 00:00:00-05:00    15.030000\n2026-07-13 00:00:00-05:00    17.160000\n2026-07-14 00:00:00-05:00    16.500000\n2026-07-15 00:00:00-05:00    15.670000\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    16.639999\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    18.700001\nName: Close, dtype: float64",
+    "sma_20": 17.11,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 18.700000762939453,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.24,
+    "rsp_return_1d": 1.17,
+    "breadth_spread_1d": 0.93,
+    "spy_return_5d": -0.99,
+    "rsp_return_5d": 2.32,
+    "breadth_spread_5d": 3.31,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.11,
+    "yield_10y": 4.47,
+    "spread_2s10s": 0.36,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.81,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.554,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 12.38,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 142.98,
+    "skew_sma20": 147.37,
+    "skew_state": "elevated",
+    "skew_vs_sma": -4.39
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.065,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 614745,
+    "spy_put_volume": 655002
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 17.25,
+    "vix": 18.700000762939453,
+    "vix3m": 19.860000610351562
+  },
+  "cot_positioning": {
+    "net_position": -2633,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.96,
+      "return_1d": 0.59,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.46,
+      "return_1d": -0.07,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -8.5,
+      "return_1d": -3.42,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "The Dow jumps as the AI trade wobbles. Plus, a portfolio name goes on the M&A hunt",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Fitch warns AI market correction emerging as major global credit risk - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.03
+      },
+      {
+        "headline": "AI is finding twice as many cyber flaws in 2026 as it did in 2025",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Wall Street ends mixed as investors focus on tech earnings - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Apple ends day as world's most valuable company, passing Nvidia",
+        "source": "CNBC",
+        "sentiment": 0.526
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Trump says Fed should lower interest rates - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "From 'oil' to 'shock',  here's what Kalshi traders expect Fed Chair Kevin Warsh will say this week",
+        "source": "CNBC",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Gold rises as oil retreats on pause in US-Iran strikes; Fed rate decision in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.784
+      },
+      {
+        "headline": "Top US oil trade group opposes Hormuz tolls after Gulf-backed voluntary fee proposal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Yemen's Houthis say they fired missiles at Saudi oil tanker in Red Sea - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "Oil prices fall 5% to two-week low after several days without US-Iran strikes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.003
+      },
+      {
+        "headline": "QatarEnergy extends force majeure on three LNG cargoes, Edison says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Houthis say they targeted Saudi east-west oil transport - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "We're buying more of a slumping industrial stock and a hard-hit chipmaker",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "YES Network, MSG Networks to exit Gotham app for DAZN streaming service",
+        "source": "CNBC",
+        "sentiment": 0.532
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold rises as oil retreats on pause in US-Iran strikes; Fed rate decision in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Gold climbs as pause in West Asia crisis curbs inflation risk",
+        "source": "Bloomberg",
+        "sentiment": -0.735
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "Trump cites 'good' talks on Iran, reiterates threat to hit targets - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      }
+    ],
+    "macro": [
+      {
+        "headline": "EXCLUSIVE: US commander warns troops their videos help Iran, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.547
+      },
+      {
+        "headline": "Israeli elections: how they work and who is in the race - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US says it intercepted Iranian ballistic missiles launched towards US forces in Middle East - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Petrobras cuts imports as it pushes local output amid U.S.-Iran conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.542
+      },
+      {
+        "headline": "Ukrainian foreign minister says he warned Iranian counterpart against escalation, support for Russia - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Russia sanctions championed by Graham clear first Senate hurdle as Zelenskiy visits - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "Israel's yellow line, a shifting edge of war pushing Gazans from home - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Persistently high inflation to nag global economy, say economists: Reuters poll - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      }
+    ]
+  },
+  "timestamp": "2026-07-29T08:58:03.305853"
+}
