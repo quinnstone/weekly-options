@@ -2743,6 +2743,21 @@
         "option_return_pct": -40.2,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-07-31T11:51:02.835787",
+      "week": "2026-W30",
+      "agent": "position_monitor",
+      "ticker": "MMM",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -68.3,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
