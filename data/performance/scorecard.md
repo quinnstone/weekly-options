@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 8 |
-| Total Picks | 22 |
-| Record | 4W - 11L - 7P |
-| Win Rate | 18% |
-| Total Invested | $10,113.00 |
-| Total Returned | $7,502.00 |
-| **Net P&L** | **$-2,611.00** |
-| **ROI** | **-25.82%** |
+| Weeks Tracked | 9 |
+| Total Picks | 25 |
+| Record | 4W - 12L - 9P |
+| Win Rate | 16% |
+| Total Invested | $11,479.00 |
+| Total Returned | $8,009.00 |
+| **Net P&L** | **$-3,470.00** |
+| **ROI** | **-30.23%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-07-27 (exp. 2026-07-31)
+
+**0W-1L-2P** | Cost: $1,366.00 | Return: $507.00 | **P&L: $-859.00 (-62.9%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | TSLA | PUT | $315.00 | $9.82 | $311.21 | $3.79 | -$603.00 | PARTIAL |
+| 2 | T | CALL | $24.00 | $0.43 | $23.25 | $0.00 | -$43.00 | LOSS |
+| 3 | MMM | CALL | $175.00 | $3.41 | $176.28 | $1.28 | -$213.00 | PARTIAL |
 
 ### Week of 2026-07-13 (exp. 2026-07-17)
 
@@ -104,4 +114,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-07-17 17:13 ET*
+*Last updated: 2026-07-31 17:09 ET*

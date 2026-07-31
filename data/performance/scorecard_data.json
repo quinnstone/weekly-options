@@ -617,19 +617,193 @@
       "graded_at": "2026-07-17T17:13:56.529418",
       "grader_version": 4,
       "grader_git_sha": "bd8fc66947d7e070d56a8ef2d3d85d6a1ebbfdad"
+    },
+    {
+      "pick_date": "2026-07-27",
+      "expiry": "2026-07-31",
+      "picks": [
+        {
+          "ticker": "TSLA",
+          "direction": "put",
+          "strike": 315.0,
+          "entry_premium": 9.82,
+          "entry_cost": 982.0,
+          "closing_price": 311.21,
+          "exit_value_per_share": 3.79,
+          "exit_value_total": 379.0,
+          "pnl": -603.0,
+          "pnl_pct": -61.41,
+          "result": "PARTIAL",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": -17.81,
+            "spy_week_move_pct": 0.28,
+            "rsi_at_entry": 27.2,
+            "premium_pct_of_spot": 3.18
+          },
+          "entry_features": {
+            "composite_score": 74.16,
+            "confidence": 0.413,
+            "raw_confidence": 0.414,
+            "scan_rank": 0.6482,
+            "friday_score": 0.6601,
+            "iv_rank": 58.1,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.8839,
+              "trend": 0.4975,
+              "volatility": 0.6524,
+              "options": 0.68,
+              "extremity": 0.2616
+            },
+            "scores": {
+              "momentum": 100.0,
+              "mean_reversion": 75.0,
+              "regime_bias": 55.0,
+              "trend_persistence": 70.0,
+              "iv_mispricing": 63.05,
+              "flow_conviction": 75.0,
+              "event_risk": 75.0,
+              "liquidity": 77.27878,
+              "strike_efficiency": 75.0,
+              "theta_cost": 37.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "T",
+          "direction": "call",
+          "strike": 24.0,
+          "entry_premium": 0.43,
+          "entry_cost": 43.0,
+          "closing_price": 23.25,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -43.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": 10.64,
+            "spy_week_move_pct": 0.28,
+            "rsi_at_entry": 70.21,
+            "premium_pct_of_spot": 1.77
+          },
+          "entry_features": {
+            "composite_score": 70.52,
+            "confidence": 0.413,
+            "raw_confidence": 0.483,
+            "scan_rank": 0.7824,
+            "friday_score": 0.6888,
+            "iv_rank": 55.4,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.9363,
+              "trend": 0.7531,
+              "volatility": 0.934,
+              "options": 0.68,
+              "extremity": 0.2448
+            },
+            "scores": {
+              "momentum": 97.41650731598496,
+              "mean_reversion": 75.0,
+              "regime_bias": 55.0,
+              "trend_persistence": 75.0,
+              "iv_mispricing": 60.400000000000006,
+              "flow_conviction": 50.0,
+              "event_risk": 63.0,
+              "liquidity": 55.13666,
+              "strike_efficiency": 75.0,
+              "theta_cost": 37.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "MMM",
+          "direction": "call",
+          "strike": 175.0,
+          "entry_premium": 3.41,
+          "entry_cost": 341.0,
+          "closing_price": 176.28,
+          "exit_value_per_share": 1.28,
+          "exit_value_total": 128.0,
+          "pnl": -213.0,
+          "pnl_pct": -62.46,
+          "result": "PARTIAL",
+          "entry_signal": "GO",
+          "diagnostics": {
+            "pre_run_5d_pct": 8.0,
+            "spy_week_move_pct": 0.28,
+            "rsi_at_entry": 73.85,
+            "premium_pct_of_spot": 1.91
+          },
+          "entry_features": {
+            "composite_score": 70.06,
+            "confidence": 0.435,
+            "raw_confidence": 0.538,
+            "scan_rank": 0.8411,
+            "friday_score": 0.6846,
+            "iv_rank": 54.9,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 1.0,
+              "trend": 0.8066,
+              "volatility": 1.0,
+              "options": 0.4687,
+              "extremity": 0.6912
+            },
+            "scores": {
+              "momentum": 96.96451979169528,
+              "mean_reversion": 75.0,
+              "regime_bias": 55.0,
+              "trend_persistence": 80.0,
+              "iv_mispricing": 59.900000000000006,
+              "flow_conviction": 40.0,
+              "event_risk": 60.0,
+              "liquidity": 50.04784,
+              "strike_efficiency": 75.0,
+              "theta_cost": 37.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        }
+      ],
+      "total_cost": 1366.0,
+      "total_exit": 507.0,
+      "total_pnl": -859.0,
+      "total_return_pct": -62.88,
+      "wins": 0,
+      "losses": 1,
+      "partials": 2,
+      "win_rate": 0.0,
+      "traded_count": 1,
+      "traded_cost": 341.0,
+      "traded_pnl": -213.0,
+      "traded_return_pct": -62.46,
+      "traded_wins": 0,
+      "traded_losses": 0,
+      "traded_partials": 1,
+      "graded_at": "2026-07-31T17:09:11.602117",
+      "grader_version": 4,
+      "grader_git_sha": "fb0d377cf1671e3de952c4e4988c186f4a8a127d"
     }
   ],
   "all_time": {
-    "total_weeks": 8,
-    "total_picks": 22,
+    "total_weeks": 9,
+    "total_picks": 25,
     "wins": 4,
-    "losses": 11,
-    "partials": 7,
-    "win_rate": 0.1818,
-    "total_invested": 10113.0,
-    "total_returned": 7502.0,
-    "total_pnl": -2611.0,
-    "total_return_pct": -25.82,
+    "losses": 12,
+    "partials": 9,
+    "win_rate": 0.16,
+    "total_invested": 11479.0,
+    "total_returned": 8009.0,
+    "total_pnl": -3470.0,
+    "total_return_pct": -30.23,
     "best_pick": {
       "ticker": "GOOGL",
       "date": "2026-05-04",
@@ -642,13 +816,13 @@
       "pnl": -938.0,
       "pnl_pct": -100.0
     },
-    "traded_picks": 11,
+    "traded_picks": 12,
     "traded_wins": 4,
     "traded_losses": 4,
-    "traded_partials": 3,
-    "traded_win_rate": 0.3636,
-    "traded_invested": 5544.0,
-    "traded_pnl": 729.0,
-    "traded_return_pct": 13.15
+    "traded_partials": 4,
+    "traded_win_rate": 0.3333,
+    "traded_invested": 5885.0,
+    "traded_pnl": 516.0,
+    "traded_return_pct": 8.77
   }
 }
