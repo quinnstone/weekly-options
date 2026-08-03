@@ -153,7 +153,7 @@
       "direction": "put",
       "strike": 310.0,
       "expiry": "2026-08-07",
-      "premium": 7.67,
+      "premium": 7.95,
       "composite_score": 66.1,
       "confidence": 0.33,
       "current_price": 306.18,
@@ -206,5 +206,5 @@
       "active_regime": "normal"
     }
   ],
-  "generated_at": "2026-08-03T10:17:16.930074"
+  "generated_at": "2026-08-03T12:22:40.439420"
 }

@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "PYPL",
+    "direction": "call",
+    "strike": 51.0,
+    "original_premium": 7.03,
+    "original_price": 57.76,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.57 to 0.92 (price moved from $57.76 to $57.49). Consider re-selecting strike closer to current price.",
+    "current_price": 57.49,
+    "new_delta": 0.92,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-03T12:22:38.903385"
+  },
+  {
+    "ticker": "AMZN",
+    "direction": "call",
+    "strike": 285.0,
+    "original_premium": 5.28,
+    "original_price": 284.42,
+    "signal": "SKIP",
+    "detail": "Gap +2.8% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 284.52,
+    "new_delta": 0.499,
+    "new_premium": null,
+    "gap_pct": 2.78,
+    "timestamp": "2026-08-03T12:22:39.101403"
+  },
+  {
+    "ticker": "AAPL",
+    "direction": "put",
+    "strike": 310.0,
+    "original_premium": 7.95,
+    "original_price": 306.18,
+    "signal": "GO",
+    "detail": "Early action confirms put thesis (-1.6% since open).",
+    "current_price": 304.83,
+    "new_delta": 0.647,
+    "new_premium": 7.95,
+    "gap_pct": 0.29,
+    "timestamp": "2026-08-03T12:22:39.345495"
+  }
+]
