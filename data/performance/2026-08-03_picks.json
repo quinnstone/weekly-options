@@ -1,0 +1,69 @@
+{
+  "date": "2026-08-03",
+  "picks": [
+    {
+      "ticker": "PYPL",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 77.57,
+      "direction_confidence": 0.348,
+      "scores": {
+        "momentum": 77.81593329444925,
+        "mean_reversion": 75.0,
+        "regime_bias": 63.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 85.85000000000001,
+        "flow_conviction": 50.0,
+        "event_risk": 63.0,
+        "liquidity": 50.09564,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.16,
+      "direction_confidence": 0.33,
+      "scores": {
+        "momentum": 99.74184999394082,
+        "mean_reversion": 75.0,
+        "regime_bias": 63.0,
+        "trend_persistence": 65.0,
+        "iv_mispricing": 75.8,
+        "flow_conviction": 90.0,
+        "event_risk": 63.0,
+        "liquidity": 66.5486,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "AAPL",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.1,
+      "direction_confidence": 0.33,
+      "scores": {
+        "momentum": 91.3757440710118,
+        "mean_reversion": 60.0,
+        "regime_bias": 45.0,
+        "trend_persistence": 50.0,
+        "iv_mispricing": 56.150000000000006,
+        "flow_conviction": 65.0,
+        "event_risk": 72.0,
+        "liquidity": 66.04756,
+        "strike_efficiency": 50.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-08-03T10:17:17.190271"
+}

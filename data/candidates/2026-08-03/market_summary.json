@@ -1,0 +1,327 @@
+{
+  "vix": {
+    "current": 16.030000686645508,
+    "previous_close": 15.989999771118164,
+    "change": 0.04,
+    "change_pct": 0.25,
+    "trend_20d": "Date\n2026-07-07 00:00:00-05:00    16.129999\n2026-07-08 00:00:00-05:00    16.900000\n2026-07-09 00:00:00-05:00    15.840000\n2026-07-10 00:00:00-05:00    15.030000\n2026-07-13 00:00:00-05:00    17.160000\n2026-07-14 00:00:00-05:00    16.500000\n2026-07-15 00:00:00-05:00    15.670000\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    16.639999\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-07-31 00:00:00-05:00    15.990000\n2026-08-03 00:00:00-05:00    16.030001\nName: Close, dtype: float64",
+    "sma_20": 17.25,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.030000686645508,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.93,
+    "rsp_return_1d": 0.95,
+    "breadth_spread_1d": 0.03,
+    "spy_return_5d": 2.01,
+    "rsp_return_5d": 0.87,
+    "breadth_spread_5d": -1.14,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {},
+  "credit_spread": {
+    "hy_oas": 2.84,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.554,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "calming",
+    "vix_5d_change_pct": -14.03,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 141.23,
+    "skew_sma20": 145.68,
+    "skew_state": "elevated",
+    "skew_vs_sma": -4.45
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.718,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 737925,
+    "spy_put_volume": 529838
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.829999923706055,
+    "vix": 16.06999969482422,
+    "vix3m": 18.940000534057617
+  },
+  "cot_positioning": {
+    "net_position": -1974,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -2.28,
+      "return_1d": 0.09,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": -1.52,
+      "return_1d": -0.09,
+      "signal": "tailwind"
+    },
+    "crude_oil": {
+      "return_5d": 0.08,
+      "return_1d": -6.65,
+      "signal": "neutral"
+    },
+    "composite": "risk_on",
+    "headwinds": 0,
+    "tailwinds": 2
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Op-ed: The U.S. lead over China in AI is all but gone",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "OpenAI's Hugging Face hack confirmed months of AI cyber warnings: 'Pandora's box is open'",
+        "source": "CNBC",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Trump says Iran not to blame for Minnesota cyberattack - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.258
+      },
+      {
+        "headline": "Andy Jassy soothed concerns over Amazon's massive AI spending. Here's how he did it",
+        "source": "CNBC",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Fintech broker Clear Street offers investors pre-IPO access to $188 billion AI giant Databricks",
+        "source": "CNBC",
+        "sentiment": 0.382
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "India central bank to stay on hold even as peers pivot to rate hikes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Dollar logs its worst week in over 3 months amid Fed doubts",
+        "source": "Bloomberg",
+        "sentiment": -0.743
+      },
+      {
+        "headline": "Fintech broker Clear Street offers investors pre-IPO access to $188 billion AI giant Databricks",
+        "source": "CNBC",
+        "sentiment": 0.382
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "OPEC+ oil output hike is irrelevant for now, not for later - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran war ushers in oil refining golden era. It won\u2019t last - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Iran peace hopes boost stocks, weaken crude; yen firms after intervention - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "Gold gains as US dollar declines, hopes of Mideast deal hit oil - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "Oil prices drop after Trump cancels attack on Iran to seek deal - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.727
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Jim Cramer: Buy this industrial stock on the dip if you don't own it already",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "The Tech Download: Anduril CEO Brian Schimpf talks AI in warfare and manufacturing push",
+        "source": "CNBC",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "US cyber defense agency warns hackers are increasingly targeting water systems - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.026
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "PODCAST: Iran pause, Moscow restaurant attack and GLP-1 clothes shopping - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "Data centre boom fuels demand for workforce housing",
+        "source": "Bloomberg",
+        "sentiment": -0.128
+      },
+      {
+        "headline": "China to raise retail gasoline and diesel price caps amid renewed Middle East conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Iran war ushers in oil refining golden era. It won\u2019t last - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Gold gains as US dollar declines, hopes of Mideast deal hit oil - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.637
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "Russian court confiscates 123 real estate assets belonging to Jehovah's Witnesses - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.178
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Iran war hit euro zone consumption especially hard, ECB says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.68
+      },
+      {
+        "headline": "Index snub to test Indian bonds; rupee, RBI policy and US-Iran war in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.772
+      },
+      {
+        "headline": "UK faces recession if Strait of Hormuz stays closed, forecaster warns - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.494
+      },
+      {
+        "headline": "Why people are dropping out of the workforce and not looking for new jobs: 'The market wore me down'",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Israeli strikes kill two in Gaza, destroy medicine storage warehouses - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.893
+      },
+      {
+        "headline": "Indian companies plan for fresh price hikes, testing inflation outlook",
+        "source": "Bloomberg",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Exxon, Chevron warn of continued high fuel prices from Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      },
+      {
+        "headline": "Tariff provisions could doom long-awaited Russia sanctions bill - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      }
+    ]
+  },
+  "timestamp": "2026-08-03T10:15:34.969011"
+}
