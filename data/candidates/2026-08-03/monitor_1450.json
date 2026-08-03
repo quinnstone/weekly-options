@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "AAPL",
+      "direction": "put",
+      "strike": 310.0,
+      "entry_price": 306.18,
+      "current_price": 305.04,
+      "entry_premium": 7.95,
+      "current_option_price": 6.72,
+      "current_delta": 0.706,
+      "stock_move_pct": -0.37,
+      "option_return_pct": -15.5,
+      "days_held": 0,
+      "today_target_pct": 40,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -15% (target: 40% today). Stock moved -0.4%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -15.5,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Monday",
+    "days_to_expiry": 5
+  }
+}

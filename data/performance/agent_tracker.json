@@ -2795,6 +2795,21 @@
         },
         "promoted_from_bench": false
       }
+    },
+    {
+      "timestamp": "2026-08-03T14:50:53.782871",
+      "week": "2026-W31",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -15.5,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
