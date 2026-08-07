@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 9 |
-| Total Picks | 25 |
-| Record | 4W - 12L - 9P |
-| Win Rate | 16% |
-| Total Invested | $11,479.00 |
-| Total Returned | $8,009.00 |
-| **Net P&L** | **$-3,470.00** |
-| **ROI** | **-30.23%** |
+| Weeks Tracked | 10 |
+| Total Picks | 28 |
+| Record | 5W - 14L - 9P |
+| Win Rate | 18% |
+| Total Invested | $13,505.00 |
+| Total Returned | $8,816.00 |
+| **Net P&L** | **$-4,689.00** |
+| **ROI** | **-34.72%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-08-03 (exp. 2026-08-07)
+
+**1W-2L-0P** | Cost: $2,026.00 | Return: $807.00 | **P&L: $-1,219.00 (-60.2%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | PYPL | CALL | $51.00 | $7.03 | $59.07 | $8.07 | +$104.00 | WIN |
+| 2 | AMZN | CALL | $285.00 | $5.28 | $274.48 | $0.00 | -$528.00 | LOSS |
+| 3 | AAPL | PUT | $310.00 | $7.95 | $313.33 | $0.00 | -$795.00 | LOSS |
 
 ### Week of 2026-07-27 (exp. 2026-07-31)
 
@@ -114,4 +124,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-07-31 17:36 ET*
+*Last updated: 2026-08-07 16:35 ET*

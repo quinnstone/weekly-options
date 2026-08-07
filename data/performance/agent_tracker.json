@@ -2804,7 +2804,10 @@
       "mechanical_signal": "HOLD",
       "agent_signal": "HOLD",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -795.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -15.5,
@@ -2819,7 +2822,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -795.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -53.1,
@@ -2834,7 +2840,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -795.0
+      },
       "context": {
         "urgency": "ROUTINE",
         "option_return_pct": -70.4,
@@ -2849,7 +2858,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -795.0
+      },
       "context": {
         "urgency": "ELEVATED",
         "option_return_pct": -89.8,
@@ -2864,7 +2876,10 @@
       "mechanical_signal": "STOP_HIT",
       "agent_signal": "STOP_HIT",
       "override": false,
-      "outcome": null,
+      "outcome": {
+        "result": "LOSS",
+        "pnl": -795.0
+      },
       "context": {
         "urgency": "CRITICAL",
         "option_return_pct": -97.9,
