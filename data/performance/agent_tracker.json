@@ -2840,6 +2840,21 @@
         "option_return_pct": -70.4,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-08-06T20:42:04.951785",
+      "week": "2026-W31",
+      "agent": "position_monitor",
+      "ticker": "AAPL",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": -89.8,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
