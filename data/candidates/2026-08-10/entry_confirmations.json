@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "ZS",
+    "direction": "call",
+    "strike": 162.5,
+    "original_premium": 8.66,
+    "original_price": 168.68,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.99 (price moved from $168.68 to $174.84). Consider re-selecting strike closer to current price.",
+    "current_price": 174.84,
+    "new_delta": 0.991,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-10T10:56:01.715619"
+  },
+  {
+    "ticker": "PLTR",
+    "direction": "call",
+    "strike": 170.0,
+    "original_premium": 5.85,
+    "original_price": 172.01,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.95 (price moved from $172.01 to $178.80). Consider re-selecting strike closer to current price.",
+    "current_price": 178.8,
+    "new_delta": 0.949,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-10T10:56:02.067578"
+  },
+  {
+    "ticker": "ROKU",
+    "direction": "call",
+    "strike": 152.5,
+    "original_premium": 1.93,
+    "original_price": 153.11,
+    "signal": "GO",
+    "detail": "Flat since open (-0.0%) \u2014 no strong confirmation yet. Premium moved +21% ($1.60 \u2192 $1.93). Adjust limit order accordingly.",
+    "current_price": 152.47,
+    "new_delta": 0.51,
+    "new_premium": 1.93,
+    "gap_pct": -0.4,
+    "timestamp": "2026-08-10T10:56:02.404910"
+  }
+]
