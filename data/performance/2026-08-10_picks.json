@@ -1,0 +1,69 @@
+{
+  "date": "2026-08-10",
+  "picks": [
+    {
+      "ticker": "ZS",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 72.8,
+      "direction_confidence": 0.348,
+      "scores": {
+        "momentum": 97.77465444936047,
+        "mean_reversion": 84.296,
+        "regime_bias": 50.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 50.08278,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "PLTR",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.79,
+      "direction_confidence": 0.33,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 90.0,
+        "event_risk": 60.0,
+        "liquidity": 55.64072,
+        "strike_efficiency": 75.0,
+        "theta_cost": 55.0
+      }
+    },
+    {
+      "ticker": "ROKU",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.71,
+      "direction_confidence": 0.348,
+      "scores": {
+        "momentum": 88.96227616123885,
+        "mean_reversion": 75.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 90.0,
+        "event_risk": 63.0,
+        "liquidity": 50.07792,
+        "strike_efficiency": 65.0,
+        "theta_cost": 55.0
+      }
+    }
+  ],
+  "recorded_at": "2026-08-10T08:45:41.482085"
+}

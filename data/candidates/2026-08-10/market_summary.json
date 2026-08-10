@@ -1,0 +1,304 @@
+{
+  "vix": {
+    "current": 15.399999618530273,
+    "previous_close": 14.899999618530273,
+    "change": 0.5,
+    "change_pct": 3.36,
+    "trend_20d": "Date\n2026-07-14 00:00:00-05:00    16.500000\n2026-07-15 00:00:00-05:00    15.670000\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    16.639999\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-07-31 00:00:00-05:00    15.990000\n2026-08-03 00:00:00-05:00    15.860000\n2026-08-04 00:00:00-05:00    16.500000\n2026-08-05 00:00:00-05:00    15.810000\n2026-08-06 00:00:00-05:00    15.150000\n2026-08-07 00:00:00-05:00    14.900000\n2026-08-10 00:00:00-05:00    15.400000\nName: Close, dtype: float64",
+    "sma_20": 17.08,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.399999618530273,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": 0.61,
+    "rsp_return_1d": 0.69,
+    "breadth_spread_1d": 0.08,
+    "spy_return_5d": 3.51,
+    "rsp_return_5d": 2.36,
+    "breadth_spread_5d": -1.15,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.71,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.529,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -2.9,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 132.57,
+    "skew_sma20": 142.54,
+    "skew_state": "elevated",
+    "skew_vs_sma": -9.97
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.126,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 708794,
+    "spy_put_volume": 798136
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 11.960000038146973,
+    "vix": 15.399999618530273,
+    "vix3m": 18.719999313354492
+  },
+  "cot_positioning": {
+    "net_position": -6948,
+    "percentile": 96.1,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.69,
+      "return_1d": 0.29,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.35,
+      "return_1d": -0.43,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -3.39,
+      "return_1d": -0.75,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Turkey, Pakistan, Saudi Arabia defence pact technically same as NATO's Article 5, Turkish minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "\u2018SaaSpocalypse\u2019 debate intensifies as software stocks swing wildly",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Rheinmetall says ramping up ATACMS output will take time as US rebuilds stocks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "AI demand keeps China's export engine humming, but risks loom - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.643
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Dollar drops as weak US jobs data pushes out Fed hike expectations - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "China is balancing Asia's crude oil demand by itself - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.637
+      },
+      {
+        "headline": "Global stocks tick up with oil steady on Hormuz plans - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil edges higher as Iran tempers hopes of swift Hormuz reopening - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Yemen's Houthis attack Saudi refinery after kingdom signs defence pact - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "Saudi Arabia, Turkey, Pakistan pledge mutual defence as Middle East turmoil escalates - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "US expects deal soon on Strait of Hormuz; Sunni powers unite in defense pact - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Trump administration to invest $3 billion in minerals projects to boost US defense supply chains - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Prices in UK housing market flat in July as Iran war weighs - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Iran's Pezeshkian recently met Supreme Leader Khamenei, state media says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.557
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold inches down from seven-week high, US inflation data in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold set for best week since January as inflation fears ebb - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "Prices in UK housing market flat in July as Iran war weighs - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Pope Leo renews call for Ukraine war to end - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "China July factory-gate inflation eases to 3-month low, CPI slows - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.052
+      },
+      {
+        "headline": "US Senate passes Russia sanctions championed by Graham; US House next - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "US stocks, bonds rally after soft jobs report; yen bounces back - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Houthis strike Marib again as UN warns Yemen nearing wider conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.494
+      },
+      {
+        "headline": "Brent climbs $1 on uncertainty over end to Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.743
+      },
+      {
+        "headline": "Europe's drought reveals medieval buildings, Nazi warships, mammoth remains and more - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      }
+    ]
+  },
+  "timestamp": "2026-08-10T08:44:04.385919"
+}
