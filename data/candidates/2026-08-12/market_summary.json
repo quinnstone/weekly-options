@@ -1,0 +1,338 @@
+{
+  "vix": {
+    "current": 15.390000343322754,
+    "previous_close": 15.279999732971191,
+    "change": 0.11,
+    "change_pct": 0.72,
+    "trend_20d": "Date\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-21 00:00:00-05:00    17.049999\n2026-07-22 00:00:00-05:00    16.639999\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-07-31 00:00:00-05:00    15.990000\n2026-08-03 00:00:00-05:00    15.860000\n2026-08-04 00:00:00-05:00    16.500000\n2026-08-05 00:00:00-05:00    15.810000\n2026-08-06 00:00:00-05:00    15.150000\n2026-08-07 00:00:00-05:00    14.900000\n2026-08-10 00:00:00-05:00    15.460000\n2026-08-11 00:00:00-05:00    15.280000\n2026-08-12 00:00:00-05:00    15.390000\nName: Close, dtype: float64",
+    "sma_20": 17.0,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.390000343322754,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": -0.32,
+    "rsp_return_1d": 0.21,
+    "breadth_spread_1d": 0.53,
+    "spy_return_5d": -0.1,
+    "rsp_return_5d": 0.21,
+    "breadth_spread_5d": 0.31,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.7,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.529,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -2.72,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 135.59,
+    "skew_sma20": 135.59,
+    "skew_state": "elevated",
+    "skew_vs_sma": 0.0
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.131,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 582221,
+    "spy_put_volume": 658360
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.520000457763672,
+    "vix": 15.380000114440918,
+    "vix3m": 18.90999984741211
+  },
+  "cot_positioning": {
+    "net_position": -6948,
+    "percentile": 96.1,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.98,
+      "return_1d": 0.16,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.18,
+      "return_1d": 0.0,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 11.08,
+      "return_1d": 1.34,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Cramer: Intel may have something up its sleeve; Nvidia's financing push is 'monumentally positive'",
+        "source": "CNBC",
+        "sentiment": 0.557
+      },
+      {
+        "headline": "We're exiting our position in an industrial stock to make room for a new AI play",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "Intel raises $20 billion in upsized share sale to fund AI plans",
+        "source": "Bloomberg",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "Nvidia taps Wall Street for $500 billion funding commitment",
+        "source": "Bloomberg",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "RBI chief urges lenders to accelerate AI spend",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Iran to join BRICS development bank soon, central bank governor says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "HDFC leads Indian private banks\u2019 push to raise billions overseas",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Global stocks inch up, oil steady before US CPI - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil rises after attacks on ships in Hormuz, Bab el-Mandeb - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Canadian dollar hits two-month high as oil prices rise - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Rupee retreats to near two-week low as US-Iran standoff pushes oil higher - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Oil prices continue climb on US-Iran deal doubts; stocks retreat - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "We're lifting our price target on Cardinal Health after issuing rosy profit guidance",
+        "source": "CNBC",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Trump wants to split the MMR vaccine. Experts say that's unlikely \u2014 and comes with consequences",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Pickup truck accident in Egypt's Ismailia leaves 15 dead, health ministry says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.813
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "We're exiting our position in an industrial stock to make room for a new AI play",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "L&T joins India\u2019s race to build rare-earth magnet supply chain outside China",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "TUI avoids another profit warning as Iran war further dents travel bookings - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      },
+      {
+        "headline": "US consumer prices likely increased moderately in July as gasoline prices eased - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.511
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "HHS moves to tighten oversight of food ingredients as safety concerns mount",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Invitation Homes CEO says ban on institutional homebuying will bring down prices, but not immediately",
+        "source": "CNBC",
+        "sentiment": -0.318
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold climbs to nine-week high on buying momentum as inflation data looms - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "Gold eases from over two-month high as rising oil prices cloud rate outlook - reuters.com",
+        "source": "Reuters",
+        "sentiment": 0.318
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Syria says IAEA will announce 'significant progress' on nuclear file - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.557
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Wall St futures tick up heading into July inflation data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "European stocks steady ahead of US inflation data; geopolitical risks in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Zelenskiy: Ukraine has given US negotiators proposals for ending the war with Russia - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "New attacks on shipping as Iran war talks hit fresh impasse - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "IHG's room revenue growth slows as Iran war offsets US, China growth - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      },
+      {
+        "headline": "Austria breaks up sanctions-evasion scheme supplying Russian arms industry - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-08-12T07:42:36.507321"
+}
