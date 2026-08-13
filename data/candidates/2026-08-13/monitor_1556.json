@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "ROKU",
+      "direction": "call",
+      "strike": 152.5,
+      "entry_price": 153.11,
+      "current_price": 153.97,
+      "entry_premium": 1.93,
+      "current_option_price": 1.39,
+      "current_delta": 0.774,
+      "stock_move_pct": 0.56,
+      "option_return_pct": -28.0,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -28%. Consider closing to limit further decay."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -28.0,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
