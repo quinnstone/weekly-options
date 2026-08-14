@@ -2960,6 +2960,21 @@
         "option_return_pct": -28.0,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-08-14T10:43:16.276020",
+      "week": "2026-W32",
+      "agent": "position_monitor",
+      "ticker": "ROKU",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": 128.0,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
