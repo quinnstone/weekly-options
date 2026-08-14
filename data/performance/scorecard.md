@@ -6,23 +6,33 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 10 |
-| Total Picks | 28 |
-| Record | 5W - 14L - 9P |
-| Win Rate | 18% |
-| Total Invested | $13,505.00 |
-| Total Returned | $8,816.00 |
-| **Net P&L** | **$-4,689.00** |
-| **ROI** | **-34.72%** |
+| Weeks Tracked | 11 |
+| Total Picks | 31 |
+| Record | 7W - 14L - 10P |
+| Win Rate | 23% |
+| Total Invested | $15,149.00 |
+| Total Returned | $11,848.00 |
+| **Net P&L** | **$-3,301.00** |
+| **ROI** | **-21.79%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
-| Best | GOOGL | 2026-05-04 | +$1,055.00 (+136.1%) |
+| Best | ZS | 2026-08-10 | +$1,244.00 (+143.7%) |
 | Worst | PANW | 2026-07-06 | $-938.00 (-100.0%) |
 
 ---
 
 ## Weekly Results
+
+### Week of 2026-08-10 (exp. 2026-08-14)
+
+**2W-0L-1P** | Cost: $1,644.00 | Return: $3,032.00 | **P&L: +$1,388.00 (+84.4%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | ZS | CALL | $162.50 | $8.66 | $183.60 | $21.10 | +$1,244.00 | WIN |
+| 2 | PLTR | CALL | $170.00 | $5.85 | $174.04 | $4.04 | -$181.00 | PARTIAL |
+| 3 | ROKU | CALL | $152.50 | $1.93 | $157.68 | $5.18 | +$325.00 | WIN |
 
 ### Week of 2026-08-03 (exp. 2026-08-07)
 
@@ -124,4 +134,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-08-07 17:08 ET*
+*Last updated: 2026-08-14 16:25 ET*

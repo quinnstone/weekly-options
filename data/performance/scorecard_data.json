@@ -965,24 +965,198 @@
       "graded_at": "2026-08-07T17:08:36.005679",
       "grader_version": 4,
       "grader_git_sha": "30a4527cc83c0f3747c048fff9e7922facee6080"
+    },
+    {
+      "pick_date": "2026-08-10",
+      "expiry": "2026-08-14",
+      "picks": [
+        {
+          "ticker": "ZS",
+          "direction": "call",
+          "strike": 162.5,
+          "entry_premium": 8.66,
+          "entry_cost": 866.0,
+          "closing_price": 183.6,
+          "exit_value_per_share": 21.1,
+          "exit_value_total": 2110.0,
+          "pnl": 1244.0,
+          "pnl_pct": 143.65,
+          "result": "WIN",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": 11.56,
+            "spy_week_move_pct": 0.48,
+            "rsi_at_entry": 67.87,
+            "premium_pct_of_spot": 5.13
+          },
+          "entry_features": {
+            "composite_score": 72.8,
+            "confidence": 0.348,
+            "raw_confidence": 0.652,
+            "scan_rank": 0.7043,
+            "friday_score": 0.6347,
+            "iv_rank": null,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 1.0,
+              "trend": 0.4862,
+              "volatility": 0.6444,
+              "options": 0.599,
+              "extremity": 0.6399
+            },
+            "scores": {
+              "momentum": 97.77465444936047,
+              "mean_reversion": 84.296,
+              "regime_bias": 50.0,
+              "trend_persistence": 70.0,
+              "iv_mispricing": 50.0,
+              "flow_conviction": 40.0,
+              "event_risk": 60.0,
+              "liquidity": 50.08278,
+              "strike_efficiency": 75.0,
+              "theta_cost": 55.0
+            },
+            "ensemble_consensus": "strong"
+          }
+        },
+        {
+          "ticker": "PLTR",
+          "direction": "call",
+          "strike": 170.0,
+          "entry_premium": 5.85,
+          "entry_cost": 585.0,
+          "closing_price": 174.04,
+          "exit_value_per_share": 4.04,
+          "exit_value_total": 404.0,
+          "pnl": -181.0,
+          "pnl_pct": -30.94,
+          "result": "PARTIAL",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": 39.78,
+            "spy_week_move_pct": 0.48,
+            "rsi_at_entry": 72.99,
+            "premium_pct_of_spot": 3.4
+          },
+          "entry_features": {
+            "composite_score": 71.79,
+            "confidence": 0.33,
+            "raw_confidence": 0.483,
+            "scan_rank": 0.7527,
+            "friday_score": 0.5771,
+            "iv_rank": null,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 1.0,
+              "trend": 0.4446,
+              "volatility": 0.7678,
+              "options": 0.68,
+              "extremity": 0.8604
+            },
+            "scores": {
+              "momentum": 100.0,
+              "mean_reversion": 75.0,
+              "regime_bias": 50.0,
+              "trend_persistence": 70.0,
+              "iv_mispricing": 50.0,
+              "flow_conviction": 90.0,
+              "event_risk": 60.0,
+              "liquidity": 55.64072,
+              "strike_efficiency": 75.0,
+              "theta_cost": 55.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "ROKU",
+          "direction": "call",
+          "strike": 152.5,
+          "entry_premium": 1.93,
+          "entry_cost": 193.0,
+          "closing_price": 157.68,
+          "exit_value_per_share": 5.18,
+          "exit_value_total": 518.0,
+          "pnl": 325.0,
+          "pnl_pct": 168.39,
+          "result": "WIN",
+          "entry_signal": "GO",
+          "diagnostics": {
+            "pre_run_5d_pct": 5.59,
+            "spy_week_move_pct": 0.48,
+            "rsi_at_entry": 77.43,
+            "premium_pct_of_spot": 1.26
+          },
+          "entry_features": {
+            "composite_score": 71.71,
+            "confidence": 0.348,
+            "raw_confidence": 0.538,
+            "scan_rank": 0.706,
+            "friday_score": 0.7641,
+            "iv_rank": null,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.6067,
+              "trend": 0.8518,
+              "volatility": 0.908,
+              "options": 0.4414,
+              "extremity": 0.6325
+            },
+            "scores": {
+              "momentum": 88.96227616123885,
+              "mean_reversion": 75.0,
+              "regime_bias": 50.0,
+              "trend_persistence": 85.0,
+              "iv_mispricing": 50.0,
+              "flow_conviction": 90.0,
+              "event_risk": 63.0,
+              "liquidity": 50.07792,
+              "strike_efficiency": 65.0,
+              "theta_cost": 55.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        }
+      ],
+      "total_cost": 1644.0,
+      "total_exit": 3032.0,
+      "total_pnl": 1388.0,
+      "total_return_pct": 84.43,
+      "wins": 2,
+      "losses": 0,
+      "partials": 1,
+      "win_rate": 0.6667,
+      "traded_count": 1,
+      "traded_cost": 193.0,
+      "traded_pnl": 325.0,
+      "traded_return_pct": 168.39,
+      "traded_wins": 1,
+      "traded_losses": 0,
+      "traded_partials": 0,
+      "graded_at": "2026-08-14T16:25:34.802903",
+      "grader_version": 4,
+      "grader_git_sha": "44419b5732a413b1a895e5828a7296e25d71c666"
     }
   ],
   "all_time": {
-    "total_weeks": 10,
-    "total_picks": 28,
-    "wins": 5,
+    "total_weeks": 11,
+    "total_picks": 31,
+    "wins": 7,
     "losses": 14,
-    "partials": 9,
-    "win_rate": 0.1786,
-    "total_invested": 13505.0,
-    "total_returned": 8816.0,
-    "total_pnl": -4689.0,
-    "total_return_pct": -34.72,
+    "partials": 10,
+    "win_rate": 0.2258,
+    "total_invested": 15149.0,
+    "total_returned": 11848.0,
+    "total_pnl": -3301.0,
+    "total_return_pct": -21.79,
     "best_pick": {
-      "ticker": "GOOGL",
-      "date": "2026-05-04",
-      "pnl": 1055.0,
-      "pnl_pct": 136.13
+      "ticker": "ZS",
+      "date": "2026-08-10",
+      "pnl": 1244.0,
+      "pnl_pct": 143.65
     },
     "worst_pick": {
       "ticker": "PANW",
@@ -990,13 +1164,13 @@
       "pnl": -938.0,
       "pnl_pct": -100.0
     },
-    "traded_picks": 13,
-    "traded_wins": 4,
+    "traded_picks": 14,
+    "traded_wins": 5,
     "traded_losses": 5,
     "traded_partials": 4,
-    "traded_win_rate": 0.3077,
-    "traded_invested": 6680.0,
-    "traded_pnl": -279.0,
-    "traded_return_pct": -4.18
+    "traded_win_rate": 0.3571,
+    "traded_invested": 6873.0,
+    "traded_pnl": 46.0,
+    "traded_return_pct": 0.67
   }
 }
