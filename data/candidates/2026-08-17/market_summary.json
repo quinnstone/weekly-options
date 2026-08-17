@@ -1,0 +1,165 @@
+{
+  "vix": {
+    "current": 14.9399995803833,
+    "previous_close": 14.25,
+    "change": 0.69,
+    "change_pct": 4.84,
+    "trend_20d": "Date\n2026-07-16 00:00:00-05:00    16.730000\n2026-07-17 00:00:00-05:00    18.770000\n2026-07-20 00:00:00-05:00    18.650000\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-08-03 00:00:00-05:00    15.860000\n2026-08-04 00:00:00-05:00    16.500000\n2026-08-05 00:00:00-05:00    15.810000\n2026-08-06 00:00:00-05:00    15.150000\n2026-08-07 00:00:00-05:00    14.900000\n2026-08-10 00:00:00-05:00    15.460000\n2026-08-11 00:00:00-05:00    15.280000\n2026-08-12 00:00:00-05:00    14.550000\n2026-08-13 00:00:00-05:00    14.630000\n2026-08-14 00:00:00-05:00    14.250000\n2026-08-17 00:00:00-05:00    14.940000\nName: Close, dtype: float64",
+    "sma_20": 16.67,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "low",
+    "vix_level": 14.9399995803833,
+    "description": "Low volatility - favor selling premium, smaller moves expected",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": -0.2,
+    "rsp_return_1d": 0.02,
+    "breadth_spread_1d": 0.22,
+    "spy_return_5d": 0.4,
+    "rsp_return_5d": 1.22,
+    "breadth_spread_5d": 0.82,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.71,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.549,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -3.36,
+    "regime_days": 4,
+    "persistence_score": 0.4
+  },
+  "skew": {
+    "skew": 138.36,
+    "skew_sma20": 139.94,
+    "skew_state": "elevated",
+    "skew_vs_sma": -1.58
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.235,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 515981,
+    "spy_put_volume": 637181
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 10.609999656677246,
+    "vix": 14.9399995803833,
+    "vix3m": 18.459999084472656
+  },
+  "cot_positioning": {
+    "net_position": 25427,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.02,
+      "return_1d": -0.67,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.11,
+      "return_1d": -0.25,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 0.54,
+      "return_1d": 1.26,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 0
+  },
+  "sector_news": {},
+  "timestamp": "2026-08-17T08:22:43.324704"
+}

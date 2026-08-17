@@ -2993,6 +2993,101 @@
         "option_return_pct": 128.0,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-08-17T08:24:24.624076",
+      "week": "2026-W33",
+      "agent": "strike_selection",
+      "ticker": "MPC",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 8.32,
+          "budget_max": 10.0,
+          "pre_market_mode": true
+        },
+        "promoted_from_bench": false
+      }
+    },
+    {
+      "timestamp": "2026-08-17T08:24:24.902423",
+      "week": "2026-W33",
+      "agent": "strike_selection",
+      "ticker": "ZS",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 5.21,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": false
+      }
+    },
+    {
+      "timestamp": "2026-08-17T08:24:25.531051",
+      "week": "2026-W33",
+      "agent": "strike_selection",
+      "ticker": "U",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 1.49,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
+    },
+    {
+      "timestamp": "2026-08-17T08:24:26.144673",
+      "week": "2026-W33",
+      "agent": "strike_selection",
+      "ticker": "PANW",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 9.75,
+          "budget_max": 10.0,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
+    },
+    {
+      "timestamp": "2026-08-17T08:24:26.408016",
+      "week": "2026-W33",
+      "agent": "strike_selection",
+      "ticker": "BAC",
+      "mechanical_signal": "CALL_intended",
+      "agent_signal": "DROPPED_no_strike",
+      "override": true,
+      "outcome": null,
+      "context": {
+        "reason": "no_strike_in_budget",
+        "details": {
+          "budget_min": 0.65,
+          "budget_max": 5.43,
+          "pre_market_mode": false
+        },
+        "promoted_from_bench": true
+      }
     }
   ],
   "weekly_summaries": []
