@@ -3088,6 +3088,21 @@
         },
         "promoted_from_bench": true
       }
+    },
+    {
+      "timestamp": "2026-08-17T13:25:44.009816",
+      "week": "2026-W33",
+      "agent": "position_monitor",
+      "ticker": "ROKU",
+      "mechanical_signal": "WARNING",
+      "agent_signal": "WARNING",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -37.3,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
