@@ -602,7 +602,7 @@
     },
     "strike": 157.5,
     "expiry": "2026-08-21",
-    "premium": 1.33,
+    "premium": 2.36,
     "confidence": 0.348,
     "current_price": 157.68,
     "breakeven": 158.83,
@@ -626,7 +626,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.7% move to $158.83 (weekly expected move: 2.6%)."
     },
-    "git_sha": "6c7b849ed51f1addfad290f2107f8a6866e9c2b5"
+    "git_sha": "6c7b849ed51f1addfad290f2107f8a6866e9c2b5",
+    "original_premium_premarket": 1.33
   },
   {
     "ticker": "WBD",

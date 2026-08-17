@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "ROKU",
+    "direction": "call",
+    "strike": 157.5,
+    "original_premium": 2.36,
+    "original_price": 157.68,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.7% since open). Premium moved +77% ($1.33 \u2192 $2.36). Adjust limit order accordingly.",
+    "current_price": 158.15,
+    "new_delta": 0.565,
+    "new_premium": 2.36,
+    "gap_pct": -0.36,
+    "timestamp": "2026-08-17T10:24:46.152380"
+  },
+  {
+    "ticker": "WBD",
+    "direction": "call",
+    "strike": 28.0,
+    "original_premium": 0.35,
+    "original_price": 27.99,
+    "signal": "SKIP",
+    "detail": "Delta collapsed to 0.00 \u2014 option nearly worthless",
+    "current_price": 27.83,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-17T10:24:46.374300"
+  },
+  {
+    "ticker": "TGT",
+    "direction": "call",
+    "strike": 157.5,
+    "original_premium": 4.06,
+    "original_price": 154.48,
+    "signal": "SKIP",
+    "detail": "Delta collapsed to 0.00 \u2014 option nearly worthless",
+    "current_price": 153.12,
+    "new_delta": null,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-17T10:24:46.790257"
+  }
+]
