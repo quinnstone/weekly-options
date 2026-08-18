@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "ROKU",
+      "direction": "call",
+      "strike": 157.5,
+      "entry_price": 157.68,
+      "current_price": 158.4,
+      "entry_premium": 2.36,
+      "current_option_price": 1.94,
+      "current_delta": 0.59,
+      "stock_move_pct": 0.46,
+      "option_return_pct": -17.8,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -18% (target: 35% today). Stock moved +0.5%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -17.8,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}
