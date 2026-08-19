@@ -1,0 +1,329 @@
+{
+  "vix": {
+    "current": 15.75,
+    "previous_close": 15.84000015258789,
+    "change": -0.09,
+    "change_pct": -0.57,
+    "trend_20d": "Date\n2026-07-23 00:00:00-05:00    18.700001\n2026-07-24 00:00:00-05:00    18.580000\n2026-07-27 00:00:00-05:00    18.670000\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-07-31 00:00:00-05:00    15.990000\n2026-08-03 00:00:00-05:00    15.860000\n2026-08-04 00:00:00-05:00    16.500000\n2026-08-05 00:00:00-05:00    15.810000\n2026-08-06 00:00:00-05:00    15.150000\n2026-08-07 00:00:00-05:00    14.900000\n2026-08-10 00:00:00-05:00    15.460000\n2026-08-11 00:00:00-05:00    15.280000\n2026-08-12 00:00:00-05:00    14.550000\n2026-08-13 00:00:00-05:00    14.630000\n2026-08-14 00:00:00-05:00    14.250000\n2026-08-17 00:00:00-05:00    15.190000\n2026-08-18 00:00:00-05:00    15.840000\n2026-08-19 00:00:00-05:00    15.750000\nName: Close, dtype: float64",
+    "sma_20": 16.35,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.75,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": -0.68,
+    "rsp_return_1d": -0.45,
+    "breadth_spread_1d": 0.22,
+    "spy_return_5d": -0.4,
+    "rsp_return_5d": -0.41,
+    "breadth_spread_5d": -0.0,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.7,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.549,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 8.25,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 143.6,
+    "skew_sma20": 139.46,
+    "skew_state": "elevated",
+    "skew_vs_sma": 4.14
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.545,
+    "market_pc_state": "bearish",
+    "spy_call_volume": 442853,
+    "spy_put_volume": 684318
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.59000015258789,
+    "vix": 15.75,
+    "vix3m": 19.270000457763672
+  },
+  "cot_positioning": {
+    "net_position": 25427,
+    "percentile": 100.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.55,
+      "return_1d": 0.38,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.21,
+      "return_1d": 0.14,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 2.64,
+      "return_1d": 0.28,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Tech selloff weighs down Wall Street as bond yields climb - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Millennials and Gen Z are landing fast-growing, high-paying AI jobs, according to LinkedIn study",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Sea Ray parent Brunswick bets on AI navigation and new revenue streams to help stalling boat sales",
+        "source": "CNBC",
+        "sentiment": 0.226
+      },
+      {
+        "headline": "Eli Lilly and J&J bounce on new data, as software stocks give up last week's gains",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "Cramer's advice on Apple after analyst upgrade. Plus, why 2 chipmakers are up big",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "EXCLUSIVE: Saudi Arabia tightens anti-crime oversight on UAE-bound bank transfers - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.303
+      },
+      {
+        "headline": "Dollar range-bound as markets price dovish Fed response - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "A Palestinian American's journey to his West Bank home under settler siege - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Oil hits three-week high on uncertainty over Hormuz - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "FTSE 100 steady as energy stocks offset bond jitters - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.273
+      },
+      {
+        "headline": "US 30-year yields hit highest level since 2007 as war, oil worries fester - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.772
+      },
+      {
+        "headline": "European shares slip as oil prices and bond yields surge on Middle East fears - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "China's state shippers deploy oil tankers outside Gulf, avoid chokepoints, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "US housing market remains under pressure in July; factory output rises - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "Wall Street indexes slip as oil prices rise, retail results awaited - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "FTSE 100 falls for sixth day in a row as consumer stocks weigh - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Cyclospora is changing the American workplace lunch: 'We switched our marketing immediately,' says Saladworks CEO",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold retreats as bond yields surge to highest levels in decades - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold shows early signs of reclaiming safe-haven appeal after Iran war selloff - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Nuclear material found in Syria will remain in the country, minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "US housing market remains under pressure in July; factory output rises - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      }
+    ],
+    "macro": [
+      {
+        "headline": "US working on deconfliction mechanism among Turkey, Israel and Syria, US envoy says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "At a Gaza zoo, war takes its toll on the animals - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "PODCAST: US-Iran ceasefire expires, Tupac murder trial and microdramas - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.691
+      },
+      {
+        "headline": "The 30-year Treasury yield just hit a 19-year high. Three things could drive it even higher",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "China's fuel exports edge back towards levels before Iran war as Beijing eases curbs - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Nasdaq slides, yields elevated as Mideast conflict fears grow - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      },
+      {
+        "headline": "ExxonMobil awards $1.1 billion in contracts for Mozambique's Rovuma LNG project - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Battered by war, Iran\u2019s rulers wary of more economic pain and unrest if US tightens pressure - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.865
+      }
+    ]
+  },
+  "timestamp": "2026-08-19T07:23:29.667942"
+}

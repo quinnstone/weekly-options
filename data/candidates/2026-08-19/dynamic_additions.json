@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "EL",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BIDU",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SHOP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SNAP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RBLX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DOCU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MDB",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "U",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PATH",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ANET",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "LULU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "KO",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PG",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FCX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "COP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PSX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTWO",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  }
+]
