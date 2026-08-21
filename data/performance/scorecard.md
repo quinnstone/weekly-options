@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 11 |
-| Total Picks | 31 |
-| Record | 7W - 14L - 10P |
-| Win Rate | 23% |
-| Total Invested | $15,149.00 |
-| Total Returned | $11,848.00 |
-| **Net P&L** | **$-3,301.00** |
-| **ROI** | **-21.79%** |
+| Weeks Tracked | 12 |
+| Total Picks | 34 |
+| Record | 9W - 15L - 10P |
+| Win Rate | 26% |
+| Total Invested | $15,826.00 |
+| Total Returned | $12,697.00 |
+| **Net P&L** | **$-3,129.00** |
+| **ROI** | **-19.77%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-08-17 (exp. 2026-08-21)
+
+**2W-1L-0P** | Cost: $677.00 | Return: $849.00 | **P&L: +$172.00 (+25.4%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | ROKU | CALL | $157.50 | $2.36 | $157.49 | $0.00 | -$236.00 | LOSS |
+| 2 | WBD | CALL | $28.00 | $0.35 | $28.55 | $0.55 | +$20.00 | WIN |
+| 3 | TGT | CALL | $157.50 | $4.06 | $165.44 | $7.94 | +$388.00 | WIN |
 
 ### Week of 2026-08-10 (exp. 2026-08-14)
 
@@ -134,4 +144,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-08-14 16:54 ET*
+*Last updated: 2026-08-21 16:19 ET*
