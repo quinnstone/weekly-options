@@ -1,0 +1,331 @@
+{
+  "vix": {
+    "current": 15.920000076293945,
+    "previous_close": 15.130000114440918,
+    "change": 0.79,
+    "change_pct": 5.22,
+    "trend_20d": "Date\n2026-07-28 00:00:00-05:00    18.209999\n2026-07-29 00:00:00-05:00    20.660000\n2026-07-30 00:00:00-05:00    17.090000\n2026-07-31 00:00:00-05:00    15.990000\n2026-08-03 00:00:00-05:00    15.860000\n2026-08-04 00:00:00-05:00    16.500000\n2026-08-05 00:00:00-05:00    15.810000\n2026-08-06 00:00:00-05:00    15.150000\n2026-08-07 00:00:00-05:00    14.900000\n2026-08-10 00:00:00-05:00    15.460000\n2026-08-11 00:00:00-05:00    15.280000\n2026-08-12 00:00:00-05:00    14.550000\n2026-08-13 00:00:00-05:00    14.630000\n2026-08-14 00:00:00-05:00    14.250000\n2026-08-17 00:00:00-05:00    15.190000\n2026-08-18 00:00:00-05:00    15.840000\n2026-08-19 00:00:00-05:00    14.890000\n2026-08-20 00:00:00-05:00    16.010000\n2026-08-21 00:00:00-05:00    15.130000\n2026-08-24 00:00:00-05:00    15.920000\nName: Close, dtype: float64",
+    "sma_20": 15.87,
+    "trend_direction": "falling"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.920000076293945,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "falling"
+  },
+  "breadth": {
+    "spy_return_1d": 0.41,
+    "rsp_return_1d": 0.63,
+    "breadth_spread_1d": 0.22,
+    "spy_return_5d": -1.37,
+    "rsp_return_5d": -0.49,
+    "breadth_spread_5d": 0.87,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.75,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.559,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 4.81,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 143.9,
+    "skew_sma20": 138.79,
+    "skew_state": "elevated",
+    "skew_vs_sma": 5.11
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.16,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 511836,
+    "spy_put_volume": 593948
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.579999923706055,
+    "vix": 15.920000076293945,
+    "vix3m": 18.5
+  },
+  "cot_positioning": {
+    "net_position": -407,
+    "percentile": 98.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.86,
+      "return_1d": -0.35,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.71,
+      "return_1d": -0.04,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 3.34,
+      "return_1d": 0.07,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "UK briefs energy chiefs after Iran-linked cyber attack reports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "Alibaba launches Wan3.0 AI video model after $10 billion share sale - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "European shares slip as tech drags; Iran sanctions in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Alibaba seeks $10 billion from share sale for AI expansion",
+        "source": "Bloomberg",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "Nvidia customers notified about AI-related price hikes above 15%, Bloomberg News reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Israeli shoots dead Palestinian teen after settlers enter West Bank village, officials say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "The Hormuz crude volume debate masks the real shortage of refined fuels - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.691
+      },
+      {
+        "headline": "Looming US sanctions on Iran put China oil buying in spotlight - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      },
+      {
+        "headline": "Six countries want EU talks in September on taxing windfall profits of oil companies - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      },
+      {
+        "headline": "UK briefs energy chiefs after Iran-linked cyber attack reports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "Shares, oil dip as US sanctions on Iran loom - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "UPS is investing $2 billion in international, healthcare and supply chain businesses",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "How a physician with a 1 a.m. bedtime optimizes his health: I try to 'tick all the longevity boxes that I can'",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "UPS is investing $2 billion in international, healthcare and supply chain businesses",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Russian online retailer Ozon warehouse in Orenburg region hit in drone attack, governor says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Trump Media CEO defends selling faster access to president's Truth Social posts, says more have signed up",
+        "source": "CNBC",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Syria, Israel hold US-mediated talks to ease tensions, Syria news agency says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.052
+      },
+      {
+        "headline": "Mediator Pakistan to hold talks in Iran on US 'economic D-Day' - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold climbs to more than three-month high as markets await US inflation data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Gold rebounds as bond jitters, debt fears and weaker dollar revive bullion demand",
+        "source": "CNBC",
+        "sentiment": -0.743
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Nuclear power: Domestic companies to opt for locally-designed reactors to avoid delays",
+        "source": "Bloomberg",
+        "sentiment": -0.296
+      }
+    ],
+    "macro": [
+      {
+        "headline": "US cancels joint marine drills with South Korea over Iran war-related force constraints - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "Morning Bid: Mixing economic wars, trade wars and actual wars - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.896
+      },
+      {
+        "headline": "Interventions hold rupee on narrow leash, traders await US sanctions on Iran - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Indian shares fall as investors await details on Iran sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Iran says new sanctions threatened by 'desperate' US will fail - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.832
+      },
+      {
+        "headline": "U.S.-Canada trade talks collapse, ushering in wave of new tariffs",
+        "source": "CNBC",
+        "sentiment": -0.494
+      },
+      {
+        "headline": "EAM Jaishankar to visit Russia amid Trump\u2019s tariff threat",
+        "source": "Bloomberg",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "Iran condemns US plans to announce new sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      }
+    ]
+  },
+  "timestamp": "2026-08-24T08:26:33.628008"
+}
