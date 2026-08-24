@@ -96,7 +96,7 @@
       "direction": "call",
       "strike": 437.5,
       "expiry": "2026-08-28",
-      "premium": 8.88,
+      "premium": 7.44,
       "composite_score": 69.93,
       "confidence": 0.348,
       "current_price": 439.33,
@@ -206,5 +206,5 @@
       "active_regime": "normal"
     }
   ],
-  "generated_at": "2026-08-24T08:28:08.038094"
+  "generated_at": "2026-08-24T10:39:11.854038"
 }

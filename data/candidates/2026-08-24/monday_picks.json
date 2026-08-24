@@ -1256,7 +1256,7 @@
     },
     "strike": 437.5,
     "expiry": "2026-08-28",
-    "premium": 8.88,
+    "premium": 7.44,
     "confidence": 0.348,
     "current_price": 439.33,
     "breakeven": 446.38,
@@ -1280,7 +1280,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.6% move to $446.38 (weekly expected move: 5.7%)."
     },
-    "git_sha": "0fa0a3f2cc2ed1fac57cc325bb49a2e1b7b67860"
+    "git_sha": "0fa0a3f2cc2ed1fac57cc325bb49a2e1b7b67860",
+    "original_premium_premarket": 8.88
   },
   {
     "ticker": "AAL",

@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "PSKY",
+    "direction": "call",
+    "strike": 10.0,
+    "original_premium": 0.54,
+    "original_price": 10.35,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.81 (price moved from $10.35 to $10.27). Consider re-selecting strike closer to current price.",
+    "current_price": 10.27,
+    "new_delta": 0.81,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-24T10:39:10.628910"
+  },
+  {
+    "ticker": "AMGN",
+    "direction": "call",
+    "strike": 437.5,
+    "original_premium": 7.44,
+    "original_price": 439.33,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.1% since open). Premium moved -16% ($8.88 \u2192 $7.44). Adjust limit order accordingly.",
+    "current_price": 440.8,
+    "new_delta": 0.607,
+    "new_premium": 7.44,
+    "gap_pct": 0.22,
+    "timestamp": "2026-08-24T10:39:10.892139"
+  },
+  {
+    "ticker": "AAL",
+    "direction": "put",
+    "strike": 14.0,
+    "original_premium": 0.37,
+    "original_price": 13.82,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.75 (price moved from $13.82 to $13.69). Consider re-selecting strike closer to current price.",
+    "current_price": 13.69,
+    "new_delta": 0.752,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-24T10:39:11.002102"
+  }
+]
