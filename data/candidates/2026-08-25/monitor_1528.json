@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "AMGN",
+      "direction": "call",
+      "strike": 437.5,
+      "entry_price": 439.33,
+      "current_price": 443.29,
+      "entry_premium": 7.44,
+      "current_option_price": 9.43,
+      "current_delta": 0.666,
+      "stock_move_pct": 0.9,
+      "option_return_pct": 26.7,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 27% (target: 35% today). Stock moved +0.9%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": 26.7,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}
