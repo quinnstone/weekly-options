@@ -1,0 +1,317 @@
+{
+  "vix": {
+    "current": 15.640000343322754,
+    "previous_close": 15.449999809265137,
+    "change": 0.19,
+    "change_pct": 1.23,
+    "trend_20d": "Date\n2026-07-30 00:00:00-05:00    17.09\n2026-07-31 00:00:00-05:00    15.99\n2026-08-03 00:00:00-05:00    15.86\n2026-08-04 00:00:00-05:00    16.50\n2026-08-05 00:00:00-05:00    15.81\n2026-08-06 00:00:00-05:00    15.15\n2026-08-07 00:00:00-05:00    14.90\n2026-08-10 00:00:00-05:00    15.46\n2026-08-11 00:00:00-05:00    15.28\n2026-08-12 00:00:00-05:00    14.55\n2026-08-13 00:00:00-05:00    14.63\n2026-08-14 00:00:00-05:00    14.25\n2026-08-17 00:00:00-05:00    15.19\n2026-08-18 00:00:00-05:00    15.84\n2026-08-19 00:00:00-05:00    14.89\n2026-08-20 00:00:00-05:00    16.01\n2026-08-21 00:00:00-05:00    15.13\n2026-08-24 00:00:00-05:00    15.85\n2026-08-25 00:00:00-05:00    15.45\n2026-08-26 00:00:00-05:00    15.64\nName: Close, dtype: float64",
+    "sma_20": 15.47,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.640000343322754,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.32,
+    "rsp_return_1d": -0.07,
+    "breadth_spread_1d": -0.39,
+    "spy_return_5d": -0.2,
+    "rsp_return_5d": 0.9,
+    "breadth_spread_5d": 1.1,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.6,
+    "spread_2s10s": 0.38,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.69,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.559,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 5.04,
+    "regime_days": 5,
+    "persistence_score": 0.5
+  },
+  "skew": {
+    "skew": 143.27,
+    "skew_sma20": 138.76,
+    "skew_state": "elevated",
+    "skew_vs_sma": 4.51
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.046,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 416359,
+    "spy_put_volume": 435512
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.449999809265137,
+    "vix": 15.640000343322754,
+    "vix3m": 18.209999084472656
+  },
+  "cot_positioning": {
+    "net_position": -407,
+    "percentile": 98.0,
+    "signal": "extreme_long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.54,
+      "return_1d": 1.1,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.22,
+      "return_1d": -0.07,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -3.64,
+      "return_1d": -4.58,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "2 of our software stocks face major tests of whether their rallies are for real",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "OpenAI says its Broadcom custom chip is a winner. What does that mean for Nvidia?",
+        "source": "CNBC",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "We're trimming our position in an AI stock to protect our profits",
+        "source": "CNBC",
+        "sentiment": 0.67
+      },
+      {
+        "headline": "To cram more AI skills onto LinkedIn profiles, more job seekers are turning to 'time travel,' say researchers",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "OpenAI bans Russian ChatGPT accounts used in covert misinformation campaign",
+        "source": "CNBC",
+        "sentiment": -0.318
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Shadow lender Cholamandalam to sell largest India perpetual bonds by a non-bank",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "US-Iran war spurs Europe, Asia to boost renewables - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "British energy price cap to rise 4% as Iran war pushes up costs - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "US-Iran war sinks into energy trench warfare six months on - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.612
+      },
+      {
+        "headline": "Some oil companies to avoid ships on Iran blacklist, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "IMF's Georgieva says global economy weathering energy shock, sees fiscal concerns - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Dubai's DXB first-half passenger traffic falls more than 30% as Iran war disrupts travel - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "To cram more AI skills onto LinkedIn profiles, more job seekers are turning to 'time travel,' say researchers",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "United Airlines adds 2027 flights spanning Sardinia to Okinawa. Here's what it says about travel today",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "US spy chief visits Russia for meetings, media reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold steadies after hitting over 3-month peak ahead of US inflation data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold rally gains momentum ahead of US inflation data, Jackson Hole event - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "Gold lifts TSX as trade tensions escalate - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Trump sends Saudi nuclear deal to Congress but says Riyadh must recognize Israel - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "As war strands Qatari gas for 6 months, US sales rise and European stocks plummet - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "US starts returning staff to Middle East missions after Iran war evacuations, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "U.S. Secret Service aware of Iranian video threat against Barron Trump - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "ECB set for September rate hike with no appetite to signal more, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "Trump says Strait of Hormuz has been demined, warns Iran not to plant more - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "Canada poised to retaliate against Trump tariffs: 'We're not waiting by the phone'",
+        "source": "CNBC",
+        "sentiment": 0.25
+      },
+      {
+        "headline": "What are the new US economic sanctions on Iran and its trade partners? - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Treasury yields steady as traders await more economic data",
+        "source": "CNBC",
+        "sentiment": 0.296
+      }
+    ]
+  },
+  "timestamp": "2026-08-26T07:24:19.075475"
+}
