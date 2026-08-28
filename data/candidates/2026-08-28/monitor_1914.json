@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "AMGN",
+      "direction": "call",
+      "strike": 437.5,
+      "entry_price": 439.33,
+      "current_price": 432.4,
+      "entry_premium": 7.44,
+      "current_option_price": 6.52,
+      "current_delta": 0.303,
+      "stock_move_pct": -1.58,
+      "option_return_pct": -12.4,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "CLOSE",
+      "detail": "Friday expiry \u2014 close by 2 PM ET. Current P&L: -12%"
+    }
+  ],
+  "alerts": [
+    "AMGN: CLOSE BY 2PM (P&L -12%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -12.4,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}

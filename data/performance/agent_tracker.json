@@ -3271,6 +3271,21 @@
         "option_return_pct": -58.3,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-08-28T19:14:50.545979",
+      "week": "2026-W34",
+      "agent": "position_monitor",
+      "ticker": "AMGN",
+      "mechanical_signal": "CLOSE",
+      "agent_signal": "CLOSE",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": -12.4,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
