@@ -3256,6 +3256,21 @@
         "option_return_pct": -58.3,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-08-27T22:27:07.930742",
+      "week": "2026-W34",
+      "agent": "position_monitor",
+      "ticker": "AMGN",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": -58.3,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
