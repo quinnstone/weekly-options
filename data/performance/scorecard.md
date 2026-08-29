@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 12 |
-| Total Picks | 34 |
-| Record | 9W - 15L - 10P |
-| Win Rate | 26% |
-| Total Invested | $15,826.00 |
-| Total Returned | $12,697.00 |
-| **Net P&L** | **$-3,129.00** |
-| **ROI** | **-19.77%** |
+| Weeks Tracked | 13 |
+| Total Picks | 37 |
+| Record | 10W - 16L - 11P |
+| Win Rate | 27% |
+| Total Invested | $16,661.00 |
+| Total Returned | $12,821.00 |
+| **Net P&L** | **$-3,840.00** |
+| **ROI** | **-23.05%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-08-24 (exp. 2026-08-28)
+
+**1W-1L-1P** | Cost: $835.00 | Return: $124.00 | **P&L: $-711.00 (-85.2%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | PSKY | CALL | $10.00 | $0.54 | $10.88 | $0.88 | +$34.00 | WIN |
+| 2 | AMGN | CALL | $437.50 | $7.44 | $432.42 | $0.00 | -$744.00 | LOSS |
+| 3 | AAL | PUT | $14.00 | $0.37 | $13.64 | $0.36 | -$1.00 | PARTIAL |
 
 ### Week of 2026-08-17 (exp. 2026-08-21)
 
@@ -144,4 +154,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-08-21 16:48 ET*
+*Last updated: 2026-08-28 22:39 ET*
