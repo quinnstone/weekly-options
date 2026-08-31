@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "CRM",
+    "direction": "call",
+    "strike": 255.0,
+    "original_premium": 8.68,
+    "original_price": 261.45,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.66 (price moved from $261.45 to $259.41). Consider re-selecting strike closer to current price.",
+    "current_price": 259.41,
+    "new_delta": 0.665,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-31T15:50:14.066192"
+  },
+  {
+    "ticker": "MRNA",
+    "direction": "call",
+    "strike": 133.0,
+    "original_premium": 9.97,
+    "original_price": 137.99,
+    "signal": "SKIP",
+    "detail": "Gap -6.1% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 139.21,
+    "new_delta": 0.672,
+    "new_premium": null,
+    "gap_pct": -6.07,
+    "timestamp": "2026-08-31T15:50:14.316855"
+  },
+  {
+    "ticker": "WMT",
+    "direction": "put",
+    "strike": 106.0,
+    "original_premium": 1.83,
+    "original_price": 104.5,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.75 (price moved from $104.50 to $104.48). Consider re-selecting strike closer to current price.",
+    "current_price": 104.48,
+    "new_delta": 0.749,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-08-31T15:50:14.727525"
+  }
+]
