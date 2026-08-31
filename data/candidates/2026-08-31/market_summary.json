@@ -1,0 +1,305 @@
+{
+  "vix": {
+    "current": 15.079999923706055,
+    "previous_close": 14.430000305175781,
+    "change": 0.65,
+    "change_pct": 4.5,
+    "trend_20d": "Date\n2026-08-04 00:00:00-05:00    16.50\n2026-08-05 00:00:00-05:00    15.81\n2026-08-06 00:00:00-05:00    15.15\n2026-08-07 00:00:00-05:00    14.90\n2026-08-10 00:00:00-05:00    15.46\n2026-08-11 00:00:00-05:00    15.28\n2026-08-12 00:00:00-05:00    14.55\n2026-08-13 00:00:00-05:00    14.63\n2026-08-14 00:00:00-05:00    14.25\n2026-08-17 00:00:00-05:00    15.19\n2026-08-18 00:00:00-05:00    15.84\n2026-08-19 00:00:00-05:00    14.89\n2026-08-20 00:00:00-05:00    16.01\n2026-08-21 00:00:00-05:00    15.13\n2026-08-24 00:00:00-05:00    15.85\n2026-08-25 00:00:00-05:00    15.45\n2026-08-26 00:00:00-05:00    15.21\n2026-08-27 00:00:00-05:00    14.51\n2026-08-28 00:00:00-05:00    14.43\n2026-08-31 00:00:00-05:00    15.08\nName: Close, dtype: float64",
+    "sma_20": 15.21,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.079999923706055,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.37,
+    "rsp_return_1d": -0.56,
+    "breadth_spread_1d": -0.19,
+    "spy_return_5d": 0.39,
+    "rsp_return_5d": -1.12,
+    "breadth_spread_5d": -1.51,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {},
+  "credit_spread": {
+    "hy_oas": 2.6,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.566,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -4.86,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 149.77,
+    "skew_sma20": 139.56,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 10.21
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.178,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 2370259,
+    "spy_put_volume": 2791512
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.6899995803833,
+    "vix": 15.079999923706055,
+    "vix3m": 17.6299991607666
+  },
+  "cot_positioning": {
+    "net_position": -63412,
+    "percentile": 78.4,
+    "signal": "long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.41,
+      "return_1d": -0.71,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.63,
+      "return_1d": -0.23,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 5.87,
+      "return_1d": 2.97,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Why Nvidia and CrowdStrike are up in an otherwise down stock market",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "We're trimming one of our top-performing tech stocks to lock in some gains",
+        "source": "CNBC",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "PODCAST: US-Iran strikes, Meta's AI layoff plan, and bear break-ins - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "The big lesson from this week's earnings: The AI buildout is not a zero-sum game",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "OpenAI to end partnership with Cursor after SpaceX acquisition",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Mortgage rates surge to the highest since June 2025 as new Middle East attacks push oil prices up",
+        "source": "CNBC",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Indian shares set for cautious start; MSCI rejig, HDFC Bank in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "UAE, Egyptian central banks say they are coordinating on Banque Misr after US Treasury notice - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Gulf stocks fall as Fed rate-hike bets rise after Warsh remarks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "HDFC Bank CEO search tests investor confidence, governance",
+        "source": "Bloomberg",
+        "sentiment": 0.511
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Mortgage rates surge to the highest since June 2025 as new Middle East attacks push oil prices up",
+        "source": "CNBC",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Europe's STOXX 600 falls as oil prices jump, but secures fifth monthly gain - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.82
+      },
+      {
+        "headline": "Depleted US oil stash loses potency as Iran war grinds on - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.735
+      },
+      {
+        "headline": "A look at Iran's Kharg Island and energy sector - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.273
+      },
+      {
+        "headline": "Oil to hold above $80 a barrel as Middle East supply risks persist - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Trump reportedly plans to announce new drug pricing deals with nearly a dozen drugmakers",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "North Korea names new defense minister, KCNA says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "EXCLUSIVE: Turkey's wealth fund to become shareholder in local EV maker TOGG, Vestel and Anadolu to exit - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.663
+      }
+    ],
+    "macro": [
+      {
+        "headline": "EU aviation safety agency narrows Gulf airspace warning - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Bessent expects new US secondary sanctions weekly, aiming to increase pressure on Iran - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.026
+      },
+      {
+        "headline": "Ukraine defence chief to outline war plan as Kyiv seeks more funds - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.542
+      },
+      {
+        "headline": "Trump criticizes NBC over election comment as Treasury denies some NYT, WSJ and Bloomberg reporters G20 credentials",
+        "source": "CNBC",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "Nepal warns of more floods as rescue efforts risk disruption",
+        "source": "Bloomberg",
+        "sentiment": -0.112
+      },
+      {
+        "headline": "Warsh\u2019s inflation warning sets up September showdown for the Fed",
+        "source": "Bloomberg",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "War weighs on Iran's economy as US intensifies sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Gen Zers quit their jobs to start a pickle company\u2014now it\u2019s valued at $8.5 million",
+        "source": "CNBC",
+        "sentiment": 0.44
+      }
+    ]
+  },
+  "timestamp": "2026-08-31T14:25:42.179799"
+}

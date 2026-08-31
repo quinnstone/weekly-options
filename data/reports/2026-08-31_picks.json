@@ -1,0 +1,209 @@
+{
+  "date": "2026-08-31",
+  "market_context": {
+    "vix": 15.079999923706055,
+    "regime": "normal",
+    "trend": "flat",
+    "holding_window": {
+      "has_earnings_risk": false,
+      "has_fomc": false,
+      "has_cpi_nfp": false,
+      "high_impact_count": 0,
+      "events": [],
+      "risk_level": "low",
+      "event_days": []
+    },
+    "regime_persistence": {
+      "is_stable": false,
+      "transition_direction": "choppy",
+      "vix_5d_change_pct": -4.86,
+      "regime_days": 1,
+      "persistence_score": 0.1
+    },
+    "macro_edge": {
+      "has_edge": true,
+      "confidence_multiplier": 0.55,
+      "regime": "normal",
+      "reasons": [
+        "VIX normal (15.1) \u2014 lower directional edge",
+        "VIX regime transitioning (choppy) \u2014 signals may not hold 5 days",
+        "Credit spreads tight (HY OAS 2.6%) \u2014 complacent",
+        "Financial conditions loose (NFCI -0.566)"
+      ]
+    }
+  },
+  "picks": [
+    {
+      "ticker": "CRM",
+      "direction": "call",
+      "strike": 255.0,
+      "expiry": "2026-09-04",
+      "premium": 8.68,
+      "composite_score": 80.2,
+      "confidence": 0.319,
+      "current_price": 261.45,
+      "breakeven": 263.68,
+      "breakeven_move_pct": 0.85,
+      "expected_daily_move_pct": 3.46,
+      "estimated_delta": 0.513,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (8.68) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.9% move to $263.68 (weekly expected move: 7.8%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 75.07,
+        "momentum": 81.25,
+        "reversion": 74.14,
+        "model_std": 3.16,
+        "consensus": "strong"
+      },
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 75.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 90.05,
+        "flow_conviction": 40.0,
+        "event_risk": 64.0,
+        "liquidity": 75.72776,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|call|unknown|overbought|trending|cheap"
+      },
+      "active_regime": "normal"
+    },
+    {
+      "ticker": "MRNA",
+      "direction": "call",
+      "strike": 133.0,
+      "expiry": "2026-09-04",
+      "premium": 9.97,
+      "composite_score": 70.28,
+      "confidence": 0.303,
+      "current_price": 137.99,
+      "breakeven": 142.97,
+      "breakeven_move_pct": 3.61,
+      "expected_daily_move_pct": 10.56,
+      "estimated_delta": 0.519,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (9.97) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 3.6% move to $142.97 (weekly expected move: 23.6%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 65.3,
+        "momentum": 68.59,
+        "reversion": 68.52,
+        "model_std": 1.53,
+        "consensus": "strong"
+      },
+      "scores": {
+        "momentum": 59.61047149020166,
+        "mean_reversion": 60.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 95.0,
+        "flow_conviction": 40.0,
+        "event_risk": 65.0,
+        "liquidity": 50.65288,
+        "strike_efficiency": 65.0,
+        "theta_cost": 42.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|call|unknown|neutral|trending|cheap"
+      },
+      "active_regime": "normal"
+    },
+    {
+      "ticker": "WMT",
+      "direction": "put",
+      "strike": 106.0,
+      "expiry": "2026-09-04",
+      "premium": 1.83,
+      "composite_score": 68.69,
+      "confidence": 0.319,
+      "current_price": 104.5,
+      "breakeven": 104.17,
+      "breakeven_move_pct": 0.31,
+      "expected_daily_move_pct": 2.04,
+      "estimated_delta": -0.507,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (1.83) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.3% move to $104.17 (weekly expected move: 4.6%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 64.52,
+        "momentum": 68.79,
+        "reversion": 63.85,
+        "model_std": 2.19,
+        "consensus": "strong"
+      },
+      "scores": {
+        "momentum": 81.98568107807122,
+        "mean_reversion": 50.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 84.15,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 76.05826,
+        "strike_efficiency": 65.0,
+        "theta_cost": 45.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|put|unknown|neutral|choppy|cheap"
+      },
+      "active_regime": "normal"
+    }
+  ],
+  "generated_at": "2026-08-31T14:27:18.189962"
+}
