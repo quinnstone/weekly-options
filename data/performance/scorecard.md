@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 13 |
-| Total Picks | 37 |
-| Record | 10W - 16L - 11P |
-| Win Rate | 27% |
-| Total Invested | $16,661.00 |
-| Total Returned | $12,821.00 |
-| **Net P&L** | **$-3,840.00** |
-| **ROI** | **-23.05%** |
+| Weeks Tracked | 14 |
+| Total Picks | 40 |
+| Record | 11W - 17L - 12P |
+| Win Rate | 28% |
+| Total Invested | $18,709.00 |
+| Total Returned | $14,499.00 |
+| **Net P&L** | **$-4,210.00** |
+| **ROI** | **-22.50%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-08-31 (exp. 2026-09-04)
+
+**1W-1L-1P** | Cost: $2,048.00 | Return: $1,678.00 | **P&L: $-370.00 (-18.1%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | CRM | CALL | $255.00 | $8.68 | $259.23 | $4.23 | -$445.00 | PARTIAL |
+| 2 | MRNA | CALL | $133.00 | $9.97 | $145.55 | $12.55 | +$258.00 | WIN |
+| 3 | WMT | PUT | $106.00 | $1.83 | $107.14 | $0.00 | -$183.00 | LOSS |
 
 ### Week of 2026-08-24 (exp. 2026-08-28)
 
@@ -154,4 +164,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-08-28 22:52 ET*
+*Last updated: 2026-09-04 18:01 ET*
