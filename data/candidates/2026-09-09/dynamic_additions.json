@@ -1,0 +1,92 @@
+[
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "LULU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MARA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RIOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SNAP",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DASH",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DOCU",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TWLO",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PATH",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ANET",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FTNT",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "GILD",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "REGN",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "VRTX",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ISRG",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  }
+]
