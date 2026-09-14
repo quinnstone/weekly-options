@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "MRNA",
+    "direction": "call",
+    "strike": 140.0,
+    "original_premium": 9.62,
+    "original_price": 146.9,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.53 to 0.72 (price moved from $146.90 to $146.45). Consider re-selecting strike closer to current price.",
+    "current_price": 146.45,
+    "new_delta": 0.717,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-09-14T15:01:33.648843"
+  },
+  {
+    "ticker": "NKE",
+    "direction": "put",
+    "strike": 38.0,
+    "original_premium": 0.96,
+    "original_price": 37.17,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.77 (price moved from $37.17 to $37.18). Consider re-selecting strike closer to current price.",
+    "current_price": 37.18,
+    "new_delta": 0.767,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-09-14T15:01:34.100313"
+  },
+  {
+    "ticker": "AMGN",
+    "direction": "put",
+    "strike": 385.0,
+    "original_premium": 9.01,
+    "original_price": 381.2,
+    "signal": "GO",
+    "detail": "Early action confirms put thesis (-0.9% since open). Premium moved +18% ($7.62 \u2192 $9.01). Adjust limit order accordingly.",
+    "current_price": 379.6,
+    "new_delta": 0.627,
+    "new_premium": 9.01,
+    "gap_pct": 1.48,
+    "timestamp": "2026-09-14T15:01:34.627141"
+  }
+]
