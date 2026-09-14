@@ -1,0 +1,304 @@
+{
+  "vix": {
+    "current": 16.68000030517578,
+    "previous_close": 15.84000015258789,
+    "change": 0.84,
+    "change_pct": 5.3,
+    "trend_20d": "Date\n2026-08-18 00:00:00-05:00    15.840000\n2026-08-19 00:00:00-05:00    14.890000\n2026-08-20 00:00:00-05:00    16.010000\n2026-08-21 00:00:00-05:00    15.130000\n2026-08-24 00:00:00-05:00    15.850000\n2026-08-25 00:00:00-05:00    15.450000\n2026-08-26 00:00:00-05:00    15.210000\n2026-08-27 00:00:00-05:00    14.510000\n2026-08-28 00:00:00-05:00    14.430000\n2026-08-31 00:00:00-05:00    14.920000\n2026-09-01 00:00:00-05:00    16.340000\n2026-09-02 00:00:00-05:00    15.200000\n2026-09-03 00:00:00-05:00    14.320000\n2026-09-04 00:00:00-05:00    14.530000\n2026-09-07 00:00:00-05:00    15.300000\n2026-09-08 00:00:00-05:00    15.720000\n2026-09-09 00:00:00-05:00    16.459999\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    16.680000\nName: Close, dtype: float64",
+    "sma_20": 15.52,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.68000030517578,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.26,
+    "rsp_return_1d": 0.13,
+    "breadth_spread_1d": 0.38,
+    "spy_return_5d": -1.02,
+    "rsp_return_5d": -1.76,
+    "breadth_spread_5d": -0.74,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.68,
+    "spread_2s10s": 0.46,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.65,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.564,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 9.02,
+    "regime_days": 6,
+    "persistence_score": 0.6
+  },
+  "skew": {
+    "skew": 154.49,
+    "skew_sma20": 146.22,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 8.27
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.064,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 2556031,
+    "spy_put_volume": 2720575
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.059999465942383,
+    "vix": 16.68000030517578,
+    "vix3m": 19.09000015258789
+  },
+  "cot_positioning": {
+    "net_position": -63533,
+    "percentile": 76.5,
+    "signal": "long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.27,
+      "return_1d": 0.35,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.54,
+      "return_1d": 0.25,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 7.11,
+      "return_1d": 0.97,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "AI stocks tumble on safety warnings. How to proceed \u2014 including 2 names on our shopping list",
+        "source": "CNBC",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Washington scrambles to meet calls for AI guardrails while the window to act closes",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Trump downplays AI concerns as CEOs call for slowing technology",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Anthropic\u2019s AI warning may weigh on chips, but trade seen intact",
+        "source": "Bloomberg",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "How Anthropic says Claude was used for weapons, spying and cyber operations - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "AirBaltic files for Chapter 11 bankruptcy as Iran war costs bite - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "All eyes on Warsh as rate-hike fever spreads across G7 central banks",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Morning Bid: Shipping oil gets ever harder, costlier - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "COMMENTARY: Oil markets survived the Iran war sprint. Now comes the marathon - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "Oil prices climb over 2% after strikes on Saudi pipeline and ships in Middle East - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Trump says US could stay in Iran and keep oil, like Venezuela deal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "New attacks in Hormuz and Saudi test nerves as war's spread worsens oil disruption - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.836
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Meet Ottava, J&J's surgical robot leading the healthcare giant into a lucrative new market",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Why this industrial gas giant deserves its premium valuation (and should be owned)",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "25 years after 9/11, the U.S. starts rolling back travel restrictions, from liquids to gate access",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Treasury yields steady as traders await consumer inflation data amid oil price pressure",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "Jim Cramer calls an AI data center stock a buy, offers a level to buy a household name",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Senior Sunni cleric shot dead by unidentified gunmen in southeast Iran - Iranian state media - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      },
+      {
+        "headline": "Iran-Oman understanding does not provide for immediate reopening of Strait of Hormuz, Tasnim reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "As Saudi tensions with Iran-backed Houthis escalate, mediator Pakistan faces pressure to choose a side - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Iran and UAE back joint BRICS statement urging restraint in war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Iran takes defiant stance as US war deepens its isolation",
+        "source": "Bloomberg",
+        "sentiment": -0.818
+      },
+      {
+        "headline": "Election officials ban certain public workers from trading on prediction markets ahead of midterms",
+        "source": "CNBC",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Leopold Aschenbrenner's Situational Awareness is active in options market, sources say",
+        "source": "CNBC",
+        "sentiment": 0.402
+      }
+    ]
+  },
+  "timestamp": "2026-09-14T13:14:27.704892"
+}

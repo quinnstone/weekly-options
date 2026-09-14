@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-14",
+  "picks": [
+    {
+      "ticker": "MRNA",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 74.27,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 76.91610385251029,
+        "mean_reversion": 50.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 90.0,
+        "flow_conviction": 50.0,
+        "event_risk": 65.0,
+        "liquidity": 75.80154,
+        "strike_efficiency": 75.0,
+        "theta_cost": 42.0
+      }
+    },
+    {
+      "ticker": "NKE",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 65.68,
+      "direction_confidence": 0.377,
+      "scores": {
+        "momentum": 82.86687773012108,
+        "mean_reversion": 50.0,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 55.0,
+        "flow_conviction": 40.0,
+        "event_risk": 63.0,
+        "liquidity": 75.79352,
+        "strike_efficiency": 75.0,
+        "theta_cost": 53.0
+      }
+    },
+    {
+      "ticker": "AMGN",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 69.41,
+      "direction_confidence": 0.195,
+      "scores": {
+        "momentum": 97.72154793708684,
+        "mean_reversion": 62.528,
+        "regime_bias": 55.0,
+        "trend_persistence": 50.0,
+        "iv_mispricing": 82.2,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 55.24292,
+        "strike_efficiency": 65.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-09-14T13:16:13.136974"
+}
