@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SNAP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RBLX",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "GILD",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BILL",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ICE",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "LULU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "COP",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PSX",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PDD",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BIDU",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BILI",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MARA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RIOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PINS",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "DASH",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ZM",
+    "source": "news_buzz",
+    "sector": "dynamic"
+  }
+]
