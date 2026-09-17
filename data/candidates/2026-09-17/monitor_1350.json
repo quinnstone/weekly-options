@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "AMGN",
+      "direction": "put",
+      "strike": 385.0,
+      "entry_price": 381.2,
+      "current_price": 379.36,
+      "entry_premium": 9.01,
+      "current_option_price": 5.82,
+      "current_delta": 0.891,
+      "stock_move_pct": -0.48,
+      "option_return_pct": -35.4,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -35% \u2014 approaching stop. Watch closely."
+    }
+  ],
+  "alerts": [
+    "AMGN: APPROACHING STOP (-35%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -35.4,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
