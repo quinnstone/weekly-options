@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "AMGN",
+      "direction": "put",
+      "strike": 385.0,
+      "entry_price": 381.2,
+      "current_price": 379.76,
+      "entry_premium": 9.01,
+      "current_option_price": 6.77,
+      "current_delta": 0.71,
+      "stock_move_pct": -0.38,
+      "option_return_pct": -24.9,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "Theta accelerating. Down -25%. Consider closing to limit further decay."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -24.9,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
