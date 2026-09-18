@@ -1832,9 +1832,9 @@
       "traded_wins": 0,
       "traded_losses": 1,
       "traded_partials": 0,
-      "graded_at": "2026-09-18T18:11:46.746774",
+      "graded_at": "2026-09-18T18:43:24.118398",
       "grader_version": 4,
-      "grader_git_sha": "99fe10bdd7f86779b66c6fca6dd5adc90c36d700"
+      "grader_git_sha": "ef6fae283ea3266ec2c75cc600d496427d47310b"
     }
   ],
   "all_time": {
