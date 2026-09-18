@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 14 |
-| Total Picks | 40 |
-| Record | 11W - 17L - 12P |
-| Win Rate | 28% |
-| Total Invested | $18,709.00 |
-| Total Returned | $14,499.00 |
-| **Net P&L** | **$-4,210.00** |
-| **ROI** | **-22.50%** |
+| Weeks Tracked | 15 |
+| Total Picks | 43 |
+| Record | 13W - 18L - 12P |
+| Win Rate | 30% |
+| Total Invested | $20,668.00 |
+| Total Returned | $16,152.00 |
+| **Net P&L** | **$-4,516.00** |
+| **ROI** | **-21.85%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-09-14 (exp. 2026-09-18)
+
+**2W-1L-0P** | Cost: $1,959.00 | Return: $1,653.00 | **P&L: $-306.00 (-15.6%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | MRNA | CALL | $140.00 | $9.62 | $154.04 | $14.04 | +$442.00 | WIN |
+| 2 | NKE | PUT | $38.00 | $0.96 | $35.51 | $2.49 | +$153.00 | WIN |
+| 3 | AMGN | PUT | $385.00 | $9.01 | $385.65 | $0.00 | -$901.00 | LOSS |
 
 ### Week of 2026-08-31 (exp. 2026-09-04)
 
@@ -164,4 +174,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-09-04 18:26 ET*
+*Last updated: 2026-09-18 18:11 ET*
