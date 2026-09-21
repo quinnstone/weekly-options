@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "ZS",
+    "direction": "call",
+    "strike": 200.0,
+    "original_premium": 7.22,
+    "original_price": 204.63,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.68 (price moved from $204.63 to $205.03). Consider re-selecting strike closer to current price.",
+    "current_price": 205.03,
+    "new_delta": 0.683,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-09-21T15:02:51.782028"
+  },
+  {
+    "ticker": "COIN",
+    "direction": "call",
+    "strike": 200.0,
+    "original_premium": 7.93,
+    "original_price": 202.72,
+    "signal": "SKIP",
+    "detail": "Gap +5.8% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 202.45,
+    "new_delta": 0.584,
+    "new_premium": null,
+    "gap_pct": 5.79,
+    "timestamp": "2026-09-21T15:02:51.921823"
+  },
+  {
+    "ticker": "CMCSA",
+    "direction": "put",
+    "strike": 23.5,
+    "original_premium": 0.72,
+    "original_price": 23.03,
+    "signal": "GO",
+    "detail": "Price moving against thesis (+1.0% since open). Proceed with caution or wait for reversal. Premium moved +18% ($0.61 \u2192 $0.72). Adjust limit order accordingly.",
+    "current_price": 23.03,
+    "new_delta": 0.644,
+    "new_premium": 0.72,
+    "gap_pct": 0.26,
+    "timestamp": "2026-09-21T15:02:52.170634"
+  }
+]
