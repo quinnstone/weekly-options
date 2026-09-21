@@ -1,0 +1,303 @@
+{
+  "vix": {
+    "current": 14.960000038146973,
+    "previous_close": 14.8100004196167,
+    "change": 0.15,
+    "change_pct": 1.01,
+    "trend_20d": "Date\n2026-08-25 00:00:00-05:00    15.450000\n2026-08-26 00:00:00-05:00    15.210000\n2026-08-27 00:00:00-05:00    14.510000\n2026-08-28 00:00:00-05:00    14.430000\n2026-08-31 00:00:00-05:00    14.920000\n2026-09-01 00:00:00-05:00    16.340000\n2026-09-02 00:00:00-05:00    15.200000\n2026-09-03 00:00:00-05:00    14.320000\n2026-09-04 00:00:00-05:00    14.530000\n2026-09-07 00:00:00-05:00    15.300000\n2026-09-08 00:00:00-05:00    15.720000\n2026-09-09 00:00:00-05:00    16.459999\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    17.100000\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.960000\nName: Close, dtype: float64",
+    "sma_20": 15.66,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "low",
+    "vix_level": 14.960000038146973,
+    "description": "Low volatility - favor selling premium, smaller moves expected",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 1.43,
+    "rsp_return_1d": 0.35,
+    "breadth_spread_1d": -1.08,
+    "spy_return_5d": 1.79,
+    "rsp_return_5d": -0.92,
+    "breadth_spread_5d": -2.71,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.68,
+    "spread_2s10s": 0.46,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.68,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.56,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "calming",
+    "vix_5d_change_pct": -12.51,
+    "regime_days": 2,
+    "persistence_score": 0.2
+  },
+  "skew": {
+    "skew": 148.1,
+    "skew_sma20": 147.59,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 0.51
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.755,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 3168164,
+    "spy_put_volume": 2392466
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.289999961853027,
+    "vix": 14.960000038146973,
+    "vix3m": 18.100000381469727
+  },
+  "cot_positioning": {
+    "net_position": -67379,
+    "percentile": 72.5,
+    "signal": "long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 1.25,
+      "return_1d": 0.57,
+      "signal": "headwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.76,
+      "return_1d": 0.16,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -8.91,
+      "return_1d": -4.15,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Wall St rises on AI gains as oil slides, Treasury yields retreat - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.612
+      },
+      {
+        "headline": "PODCAST: Iran-US threats, Germany elections and AI at the UN - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Meta-tied data centre draws blowout demand for debut junk bond",
+        "source": "Bloomberg",
+        "sentiment": -0.128
+      },
+      {
+        "headline": "What it will take for us to buy the dip in DuPont. Plus, profit-taking hits cyber stocks",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Disney names CTO for the first time as media giant expands tech push",
+        "source": "CNBC",
+        "sentiment": 0.103
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Palestinian gunman shoots dead Israeli in the West Bank, soldiers kill motorist - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.875
+      },
+      {
+        "headline": "Turkey revokes operating license of Iran's Mellat Bank amid US measures - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Global rate-hike cycle in view as central banks take on inflation - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Wendy's franchisee files for Chapter 11 bankruptcy protection as burger chain struggles",
+        "source": "CNBC",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "COMMENTARY: Global rates reset, AI angst and oil's long haul: The financial week in five charts - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Wall St rises on AI gains as oil slides, Treasury yields retreat - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.612
+      },
+      {
+        "headline": "COMMENTARY: Hormuz shuttles keep oil flowing, but at a high cost - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil price dips briefly below $100 on Saudi exports, hopes of US-Iran diplomacy - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      },
+      {
+        "headline": "Oil slides after China asks Iran to limit Houthi attacks on Saudi oil facilities - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "France's Macron says G7 will meet to discuss energy crisis in coming weeks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.459
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Saudi Civil Defense lifts warnings of potential danger in several areas - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Disney names CTO for the first time as media giant expands tech push",
+        "source": "CNBC",
+        "sentiment": 0.103
+      }
+    ],
+    "macro": [
+      {
+        "headline": "LNG buyers and sellers seek greater supply diversity amid Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Vessels trickle through Strait of Hormuz as Middle East conflict persists - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Iran and US trade threats after Houthi attacks escalate regional conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.791
+      },
+      {
+        "headline": "Budget airline king Bill Franke warms to first-class seats and premium upgrades",
+        "source": "CNBC",
+        "sentiment": 0.273
+      },
+      {
+        "headline": "World leaders return to UN amid wars in Middle East and Ukraine - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "Trump signs Russia sanctions bill into law - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Russia sanctions bill gives Trump sweeping new tariff powers - reuters.com",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US troop deaths during Iran war exceed Pentagon count by at least four, Washington Post reports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ]
+  },
+  "timestamp": "2026-09-21T13:25:07.686835"
+}

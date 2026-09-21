@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-21",
+  "picks": [
+    {
+      "ticker": "ZS",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 77.34,
+      "direction_confidence": 0.286,
+      "scores": {
+        "momentum": 93.27698732728699,
+        "mean_reversion": 73.392,
+        "regime_bias": 62.0,
+        "trend_persistence": 80.0,
+        "iv_mispricing": 78.75,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 55.10662,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "COIN",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.93,
+      "direction_confidence": 0.286,
+      "scores": {
+        "momentum": 90.15941735085595,
+        "mean_reversion": 70.0,
+        "regime_bias": 62.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 64.75,
+        "flow_conviction": 90.0,
+        "event_risk": 60.0,
+        "liquidity": 76.56536,
+        "strike_efficiency": 75.0,
+        "theta_cost": 47.0
+      }
+    },
+    {
+      "ticker": "CMCSA",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.13,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 93.64744654332985,
+        "mean_reversion": 63.44,
+        "regime_bias": 55.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 66.8,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 55.05592,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    }
+  ],
+  "recorded_at": "2026-09-21T13:26:45.077155"
+}
