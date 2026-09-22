@@ -1,0 +1,34 @@
+{
+  "positions": [
+    {
+      "ticker": "CMCSA",
+      "direction": "put",
+      "strike": 23.5,
+      "entry_price": 23.03,
+      "current_price": 22.42,
+      "entry_premium": 0.72,
+      "current_option_price": 1.06,
+      "current_delta": 0.852,
+      "stock_move_pct": -2.65,
+      "option_return_pct": 47.2,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 47% \u2014 at or above 35% day-2 target. Consider taking profit."
+    }
+  ],
+  "alerts": [
+    "CMCSA: TARGET HIT (47% vs 35% target)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": 47.2,
+    "targets_hit": 1,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}
