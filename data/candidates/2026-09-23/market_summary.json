@@ -1,0 +1,315 @@
+{
+  "vix": {
+    "current": 14.520000457763672,
+    "previous_close": 14.869999885559082,
+    "change": -0.35,
+    "change_pct": -2.35,
+    "trend_20d": "Date\n2026-08-26 00:00:00-05:00    15.210000\n2026-08-27 00:00:00-05:00    14.510000\n2026-08-28 00:00:00-05:00    14.430000\n2026-08-31 00:00:00-05:00    14.920000\n2026-09-01 00:00:00-05:00    16.340000\n2026-09-02 00:00:00-05:00    15.200000\n2026-09-03 00:00:00-05:00    14.320000\n2026-09-04 00:00:00-05:00    14.530000\n2026-09-07 00:00:00-05:00    15.300000\n2026-09-08 00:00:00-05:00    15.720000\n2026-09-09 00:00:00-05:00    16.459999\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    17.100000\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-23 00:00:00-05:00    14.520000\nName: Close, dtype: float64",
+    "sma_20": 15.61,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "low",
+    "vix_level": 14.520000457763672,
+    "description": "Low volatility - favor selling premium, smaller moves expected",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.48,
+    "rsp_return_1d": -0.24,
+    "breadth_spread_1d": 0.25,
+    "spy_return_5d": 1.88,
+    "rsp_return_5d": -0.46,
+    "breadth_spread_5d": -2.35,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.68,
+    "spread_2s10s": 0.46,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.68,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.555,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "calming",
+    "vix_5d_change_pct": -15.64,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 142.19,
+    "skew_sma20": 147.5,
+    "skew_state": "elevated",
+    "skew_vs_sma": -5.31
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.422,
+    "market_pc_state": "bearish",
+    "spy_call_volume": 1309886,
+    "spy_put_volume": 1862755
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.630000114440918,
+    "vix": 14.510000228881836,
+    "vix3m": 17.790000915527344
+  },
+  "cot_positioning": {
+    "net_position": -67379,
+    "percentile": 72.5,
+    "signal": "long",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.21,
+      "return_1d": -1.33,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.78,
+      "return_1d": 0.49,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -5.53,
+      "return_1d": -0.42,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "A top chip stock analyst sees big things for Nvidia, Broadcom. How his case aligns with ours",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Nvidia options are doing something unusual ahead of two catalysts. Here's how one trader is playing it",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Nasdaq hits intraday record high on tech boost, Mideast negotiation hopes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.67
+      },
+      {
+        "headline": "We're protecting big profits in tech, and buying more non-tech in this oversold market",
+        "source": "CNBC",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "COMMENTARY: Morning Bid: As oil swoons, AI recharges - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "72% of Americans would slow financial progress to enjoy life now, SoFi survey finds",
+        "source": "CNBC",
+        "sentiment": 0.718
+      },
+      {
+        "headline": "UK's FTSE 100 up as banks gain, oil prices steady - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.527
+      },
+      {
+        "headline": "Rupee slips as dollar gets Fed hike expectations tailwind - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Indian shares advance on oil retreat; financials lead - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Dollar hits near two-month high on Fed rate hike prospects - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.296
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "UK's FTSE 100 up as banks gain, oil prices steady - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.527
+      },
+      {
+        "headline": "PODCAST: Crude hopes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "Indian shares advance on oil retreat; financials lead - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Global stocks stall, oil ticks up as investors await Mideast peace signals - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.477
+      },
+      {
+        "headline": "Oil holds near two-week lows while diesel cracks hit record - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.202
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "NSE\u2019s \u20b9226 billion IPO gets subdued demand from retail crowd",
+        "source": "Bloomberg",
+        "sentiment": -0.128
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Iran submits conditions for reopening of Hormuz to U.S. representative, state media says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Banks, telecoms weigh on FTSE 100; focus on US-Iran talks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold loses shine as rate hike bets foster a stronger dollar - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      }
+    ],
+    "macro": [
+      {
+        "headline": "OECD raises Turkey inflation forecast, trims growth outlook - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Trump warns in UN speech he could 'annihilate' Iran without peace deal - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.502
+      },
+      {
+        "headline": "PODCAST: Trump's UN speech, ICC sanctions and Turkey's LGBTQ+ crackdown (Updated) - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iraq suspends Iranian flights to Baghdad after US sanctions threat, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "EU renews Russia sanctions, drops Russian billionaires Usmanov and Fridman - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Czech man gets fine and 13 days' custody for anti-war protest on Red Square - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.052
+      },
+      {
+        "headline": "Trump says he thinks US will make deal with Iran after election - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "September surge or October offload? Jobs experts weigh in on this fall\u2019s hiring trends",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-09-23T11:16:10.387262"
+}
