@@ -3461,6 +3461,21 @@
         "option_return_pct": 47.2,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-09-23T18:10:18.587492",
+      "week": "2026-W38",
+      "agent": "position_monitor",
+      "ticker": "CMCSA",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 18.1,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
