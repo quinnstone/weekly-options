@@ -3506,6 +3506,21 @@
         "option_return_pct": 91.7,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-09-25T14:07:00.873479",
+      "week": "2026-W38",
+      "agent": "position_monitor",
+      "ticker": "CMCSA",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": 155.6,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
