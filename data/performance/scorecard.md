@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 15 |
-| Total Picks | 43 |
-| Record | 13W - 18L - 12P |
+| Weeks Tracked | 16 |
+| Total Picks | 46 |
+| Record | 14W - 20L - 12P |
 | Win Rate | 30% |
-| Total Invested | $20,668.00 |
-| Total Returned | $16,152.00 |
-| **Net P&L** | **$-4,516.00** |
-| **ROI** | **-21.85%** |
+| Total Invested | $22,255.00 |
+| Total Returned | $16,311.00 |
+| **Net P&L** | **$-5,944.00** |
+| **ROI** | **-26.71%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-09-21 (exp. 2026-09-25)
+
+**1W-2L-0P** | Cost: $1,587.00 | Return: $159.00 | **P&L: $-1,428.00 (-90.0%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | ZS | CALL | $200.00 | $7.22 | $193.05 | $0.00 | -$722.00 | LOSS |
+| 2 | COIN | CALL | $200.00 | $7.93 | $195.11 | $0.00 | -$793.00 | LOSS |
+| 3 | CMCSA | PUT | $23.50 | $0.72 | $21.91 | $1.59 | +$87.00 | WIN |
 
 ### Week of 2026-09-14 (exp. 2026-09-18)
 
@@ -174,4 +184,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-09-18 18:43 ET*
+*Last updated: 2026-09-25 19:01 ET*
