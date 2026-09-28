@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "MRNA",
+    "direction": "call",
+    "strike": 195.0,
+    "original_premium": 7.27,
+    "original_price": 199.48,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+0.9% since open). Premium moved -21% ($9.15 \u2192 $7.27). Adjust limit order accordingly.",
+    "current_price": 197.35,
+    "new_delta": 0.58,
+    "new_premium": 7.27,
+    "gap_pct": -1.61,
+    "timestamp": "2026-09-28T16:22:46.431026"
+  },
+  {
+    "ticker": "SCHW",
+    "direction": "put",
+    "strike": 102.0,
+    "original_premium": 3.67,
+    "original_price": 98.18,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.92 (price moved from $98.18 to $98.30). Consider re-selecting strike closer to current price.",
+    "current_price": 98.3,
+    "new_delta": 0.917,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-09-28T16:22:46.644789"
+  },
+  {
+    "ticker": "OKTA",
+    "direction": "call",
+    "strike": 197.5,
+    "original_premium": 7.88,
+    "original_price": 202.37,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.67 (price moved from $202.37 to $202.17). Consider re-selecting strike closer to current price.",
+    "current_price": 202.17,
+    "new_delta": 0.673,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-09-28T16:22:46.774098"
+  }
+]

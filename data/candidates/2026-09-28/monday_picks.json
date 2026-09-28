@@ -673,7 +673,7 @@
     },
     "strike": 195.0,
     "expiry": "2026-10-02",
-    "premium": 9.15,
+    "premium": 7.27,
     "confidence": 0.319,
     "current_price": 199.48,
     "breakeven": 204.15,
@@ -697,7 +697,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 2.3% move to $204.15 (weekly expected move: 12.7%)."
     },
-    "git_sha": "a4e7d92f8d7d06297251d12c578c0bcf675456a9"
+    "git_sha": "a4e7d92f8d7d06297251d12c578c0bcf675456a9",
+    "original_premium_premarket": 9.15
   },
   {
     "ticker": "SCHW",
