@@ -3539,6 +3539,21 @@
         "option_return_pct": 155.6,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-09-28T18:25:07.430481",
+      "week": "2026-W39",
+      "agent": "position_monitor",
+      "ticker": "MRNA",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 16.5,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
