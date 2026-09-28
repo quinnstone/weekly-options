@@ -1,0 +1,311 @@
+{
+  "vix": {
+    "current": 15.970000267028809,
+    "previous_close": 14.869999885559082,
+    "change": 1.1,
+    "change_pct": 7.4,
+    "trend_20d": "Date\n2026-09-01 00:00:00-05:00    16.340000\n2026-09-02 00:00:00-05:00    15.200000\n2026-09-03 00:00:00-05:00    14.320000\n2026-09-04 00:00:00-05:00    14.530000\n2026-09-07 00:00:00-05:00    15.300000\n2026-09-08 00:00:00-05:00    15.720000\n2026-09-09 00:00:00-05:00    16.459999\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    17.100000\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    15.970000\nName: Close, dtype: float64",
+    "sma_20": 15.73,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.970000267028809,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.56,
+    "rsp_return_1d": -0.55,
+    "breadth_spread_1d": 0.01,
+    "spy_return_5d": -0.84,
+    "rsp_return_5d": -1.28,
+    "breadth_spread_5d": -0.44,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.68,
+    "spread_2s10s": 0.46,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 2.93,
+    "credit_state": "tight"
+  },
+  "financial_conditions": {
+    "nfci": -0.555,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 7.4,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 144.91,
+    "skew_sma20": 147.8,
+    "skew_state": "elevated",
+    "skew_vs_sma": -2.89
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.057,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 3820283,
+    "spy_put_volume": 4038016
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 14.329999923706055,
+    "vix": 15.970000267028809,
+    "vix3m": 18.149999618530273
+  },
+  "cot_positioning": {
+    "net_position": -110924,
+    "percentile": 49.0,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -3.99,
+      "return_1d": -1.05,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.72,
+      "return_1d": 0.23,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 3.37,
+      "return_1d": 0.4,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "A key test looms for the AI trade this week. Here's how Mike Khouw is trading it",
+        "source": "CNBC",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "Nvidia says it can keep AI models under control \u2014 plus, what to do about Boeing's dip",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "At NFL games this season, drone defense tech aims to bring down disruptions",
+        "source": "CNBC",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "China\u2019s consumer stocks trapped in a lost decade as AI boom dominates",
+        "source": "Bloomberg",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "China, US agree to AI dialogue, tariff cuts on $30 billion in goods during Xi visit - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Monzo in talks on sale to Nubank at about \u00a310 billion valuation, Sky News reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Wall St declines as oil spikes after Trump rejects Iran peace proposal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      },
+      {
+        "headline": "South African rand slips as US-Iran stalemate pushes oil prices higher - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Tullow Oil swings to positive free cash flow as Ghana output, higher oil prices drive growth - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.859
+      },
+      {
+        "headline": "COMMENTARY: Cash-rich oil majors face post-Iran strategy rethink - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil woes push rupee to over one-week low, RBI caps fall near 96/USD - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.612
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Seven people killed in strike on market in Yemen, Houthi-run health ministry says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "US FDA approves AbbVie's drug for Parkinson's disease - reuters.com",
+        "source": "Reuters",
+        "sentiment": 0.402
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "At NFL games this season, drone defense tech aims to bring down disruptions",
+        "source": "CNBC",
+        "sentiment": -0.226
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "China\u2019s consumer stocks trapped in a lost decade as AI boom dominates",
+        "source": "Bloomberg",
+        "sentiment": -0.67
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "Whole Foods co-founder shares 3 tips for launching a successful second act: 'I'm relearning some lessons'",
+        "source": "CNBC",
+        "sentiment": 0.718
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "US, Iran set to hold separate talks with mediators on Monday or Tuesday, official says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold drops more than 2% on US rate-hike bets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Feds can't withhold counterterrorism funds from states to force election admin changes, judge rules",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "UK diesel prices hit record highs due to impact of Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "EU imposes sanctions over deportation of Ukrainian children to Russia - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "Qatar-linked LNG traffic through Hormuz strait picks up despite conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.241
+      },
+      {
+        "headline": "PODCAST: Iran-US diplomacy, RAF Fairford and Brazil elections - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iranian tennis player savours refuge from war at Asian Games - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Rupee soothed by intervention, surge in forward premiums tipped to cool - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      }
+    ]
+  },
+  "timestamp": "2026-09-28T14:56:49.685151"
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-28",
+  "picks": [
+    {
+      "ticker": "MRNA",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 69.81,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 100.0,
+        "mean_reversion": 65.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 35.0,
+        "flow_conviction": 40.0,
+        "event_risk": 65.0,
+        "liquidity": 75.48228,
+        "strike_efficiency": 75.0,
+        "theta_cost": 42.0
+      }
+    },
+    {
+      "ticker": "SCHW",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 67.93,
+      "direction_confidence": 0.303,
+      "scores": {
+        "momentum": 92.27054060619626,
+        "mean_reversion": 65.0,
+        "regime_bias": 50.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 50.0,
+        "event_risk": 60.0,
+        "liquidity": 55.0501,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "OKTA",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 66.08,
+      "direction_confidence": 0.319,
+      "scores": {
+        "momentum": 89.90076126913091,
+        "mean_reversion": 62.272000000000006,
+        "regime_bias": 50.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 40.0,
+        "flow_conviction": 40.0,
+        "event_risk": 65.0,
+        "liquidity": 65.11044,
+        "strike_efficiency": 75.0,
+        "theta_cost": 47.0
+      }
+    }
+  ],
+  "recorded_at": "2026-09-28T14:58:47.362633"
+}
