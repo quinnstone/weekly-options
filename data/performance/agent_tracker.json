@@ -3569,6 +3569,21 @@
         "option_return_pct": 58.9,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-09-30T18:54:31.367929",
+      "week": "2026-W39",
+      "agent": "position_monitor",
+      "ticker": "MRNA",
+      "mechanical_signal": "WARNING",
+      "agent_signal": "WARNING",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -44.6,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
