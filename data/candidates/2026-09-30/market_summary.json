@@ -1,0 +1,344 @@
+{
+  "vix": {
+    "current": 15.880000114440918,
+    "previous_close": 16.040000915527344,
+    "change": -0.16,
+    "change_pct": -1.0,
+    "trend_20d": "Date\n2026-09-03 00:00:00-05:00    14.320000\n2026-09-04 00:00:00-05:00    14.530000\n2026-09-07 00:00:00-05:00    15.300000\n2026-09-08 00:00:00-05:00    15.720000\n2026-09-09 00:00:00-05:00    16.459999\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    17.100000\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    15.880000\nName: Close, dtype: float64",
+    "sma_20": 15.75,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.880000114440918,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": 0.52,
+    "rsp_return_1d": -0.08,
+    "breadth_spread_1d": -0.6,
+    "spy_return_5d": 0.05,
+    "rsp_return_5d": -0.93,
+    "breadth_spread_5d": -0.98,
+    "breadth_signal": "narrow_leadership"
+  },
+  "yields": {
+    "yield_2y": 4.22,
+    "yield_10y": 4.68,
+    "spread_2s10s": 0.46,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.08,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.548,
+    "conditions_state": "loose"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 4.61,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 144.58,
+    "skew_sma20": 147.43,
+    "skew_state": "elevated",
+    "skew_vs_sma": -2.85
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.888,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 2252277,
+    "spy_put_volume": 2000415
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 13.649999618530273,
+    "vix": 15.880000114440918,
+    "vix3m": 18.09000015258789
+  },
+  "cot_positioning": {
+    "net_position": -110924,
+    "percentile": 49.0,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -2.18,
+      "return_1d": -0.69,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.27,
+      "return_1d": 0.06,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -3.92,
+      "return_1d": 2.61,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Passengers overcame pilot who tried to crash flydubai flight, Israel says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "John Ternus' vision for Apple is coming into view, and we like what we see",
+        "source": "CNBC",
+        "sentiment": 0.542
+      },
+      {
+        "headline": "Gina Raimondo thinks AI ultimately will create jobs. It's the initial mass layoffs wave that worries her",
+        "source": "CNBC",
+        "sentiment": -0.178
+      },
+      {
+        "headline": "Google fights EU attempt to prise open Android to rival AI bots",
+        "source": "Bloomberg",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "US aviation regulator to delay approval for Boeing 737 Max 10 amid software issue",
+        "source": "Bloomberg",
+        "sentiment": 0.202
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Higher interest rates can be scary for stocks \u2014 but it's not that simple",
+        "source": "CNBC",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "US Senate blocks measure demanding report on rights violations in West Bank - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.735
+      },
+      {
+        "headline": "Israeli settlers attack West Bank village, blocking family's return home - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.691
+      },
+      {
+        "headline": "Battered bond market braces for a new era of interest rates - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Meta's splashy new business AI hire offers yet another reason to bank on Zuckerberg",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Oil gains as stalled US-Iran talks trump supply recovery - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "How the US controls Iraq's oil revenues - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US to loan up to 40 million barrels of oil from SPR, last batch from global deal - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Fuel rationing begins at India\u2019s Reliance, Nayara pumps as crude prices surge",
+        "source": "Bloomberg",
+        "sentiment": -0.572
+      },
+      {
+        "headline": "Euro's dollar resilience faces energy price, political risk tests - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Saudi defense minister invites UAE vice president to visit kingdom - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Holiday retail sales are expected to top $1 trillion as inflation boosts growth",
+        "source": "CNBC",
+        "sentiment": 0.813
+      },
+      {
+        "headline": "Alaska Airlines unveils massive premium cabin overhaul in high-end travel race",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "US, Iran separately talk with mediators in latest bid to end war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Qatari mediators press peace deal between US and Iran - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Goldman Sachs CEO succession planning faces one big problem",
+        "source": "CNBC",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "Cramer weighs in on Goldman amid CEO succession talks \u2014 plus, Boeing bounces back",
+        "source": "CNBC",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Exxon veteran Liam Mallon joins TMC board ahead of seabed mining push - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold ticks up after hitting over 7-week low; US data in focus - reuters.com",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Trump denies offering Iran sanctions relief for nuclear concessions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      }
+    ],
+    "macro": [
+      {
+        "headline": "US imposes sanctions on 13 tied to Iran weapons procurement - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      },
+      {
+        "headline": "Prediction market traders think the U.S. added more jobs in September than economists estimate",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Using old election playbook, Netanyahu projects image as Israel's protector despite Hamas attack - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.372
+      },
+      {
+        "headline": "Iranians stagger under soaring costs of seven months of war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Pentagon awards RTX's Raytheon $20.7 billion contract for AMRAAM missiles amid stockpile concerns - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Trump says US will win Iran war 'very soon' - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "Feds can't withhold counterterrorism funds from states to force election admin changes, judge rules",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-09-30T12:42:26.978881"
+}
