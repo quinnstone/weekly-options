@@ -1,0 +1,41 @@
+{
+  "run_date": "2026-09-30",
+  "weeks": 26,
+  "leader_def": "21d>15.0%",
+  "h1_consolidation_entry": {
+    "consolidating": {
+      "n": 59,
+      "avg_next_wk": 1.539,
+      "median_next_wk": 1.53,
+      "win_rate": 0.661
+    },
+    "extended": {
+      "n": 114,
+      "avg_next_wk": 2.029,
+      "median_next_wk": 0.215,
+      "win_rate": 0.535
+    },
+    "other": {
+      "n": 143,
+      "avg_next_wk": 1.437,
+      "median_next_wk": 0.46,
+      "win_rate": 0.517
+    }
+  },
+  "h2_regime_participation": {
+    "OFF": {
+      "n": 139,
+      "avg_next_wk": 0.068,
+      "median_next_wk": 0.14,
+      "win_rate": 0.504
+    },
+    "ON": {
+      "n": 177,
+      "avg_next_wk": 2.927,
+      "median_next_wk": 0.88,
+      "win_rate": 0.588
+    }
+  },
+  "h2_weeks_on": 10,
+  "h2_weeks_off": 16
+}
