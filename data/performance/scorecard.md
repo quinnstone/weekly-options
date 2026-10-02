@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 16 |
-| Total Picks | 46 |
-| Record | 14W - 20L - 12P |
-| Win Rate | 30% |
-| Total Invested | $22,255.00 |
-| Total Returned | $16,311.00 |
-| **Net P&L** | **$-5,944.00** |
-| **ROI** | **-26.71%** |
+| Weeks Tracked | 17 |
+| Total Picks | 49 |
+| Record | 16W - 21L - 12P |
+| Win Rate | 33% |
+| Total Invested | $24,137.00 |
+| Total Returned | $18,240.00 |
+| **Net P&L** | **$-5,897.00** |
+| **ROI** | **-24.43%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-09-28 (exp. 2026-10-02)
+
+**2W-1L-0P** | Cost: $1,882.00 | Return: $1,929.00 | **P&L: +$47.00 (+2.5%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | MRNA | CALL | $195.00 | $7.27 | $190.01 | $0.00 | -$727.00 | LOSS |
+| 2 | SCHW | PUT | $102.00 | $3.67 | $96.70 | $5.30 | +$163.00 | WIN |
+| 3 | OKTA | CALL | $197.50 | $7.88 | $211.49 | $13.99 | +$611.00 | WIN |
 
 ### Week of 2026-09-21 (exp. 2026-09-25)
 
@@ -184,4 +194,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-09-25 19:23 ET*
+*Last updated: 2026-10-02 19:31 ET*
