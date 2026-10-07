@@ -1,0 +1,428 @@
+{
+  "overall_accuracy": 0.5068,
+  "total_predictions": 2121,
+  "correct_predictions": 1075,
+  "per_signal": {
+    "momentum_5d": {
+      "times_active": 2118,
+      "times_neutral": 3,
+      "accuracy": 0.4849,
+      "bullish_calls": 1104,
+      "bullish_accuracy": 0.4991,
+      "bearish_calls": 1014,
+      "bearish_accuracy": 0.4694
+    },
+    "momentum_10d": {
+      "times_active": 2119,
+      "times_neutral": 2,
+      "accuracy": 0.5168,
+      "bullish_calls": 1202,
+      "bullish_accuracy": 0.5275,
+      "bearish_calls": 917,
+      "bearish_accuracy": 0.5027
+    },
+    "trend_adx": {
+      "times_active": 1882,
+      "times_neutral": 239,
+      "accuracy": 0.517,
+      "bullish_calls": 1068,
+      "bullish_accuracy": 0.53,
+      "bearish_calls": 814,
+      "bearish_accuracy": 0.5
+    },
+    "sma_slope": {
+      "times_active": 2043,
+      "times_neutral": 78,
+      "accuracy": 0.5027,
+      "bullish_calls": 1210,
+      "bullish_accuracy": 0.5116,
+      "bearish_calls": 833,
+      "bearish_accuracy": 0.4898
+    },
+    "rsi": {
+      "times_active": 901,
+      "times_neutral": 1220,
+      "accuracy": 0.5072,
+      "bullish_calls": 297,
+      "bullish_accuracy": 0.5185,
+      "bearish_calls": 604,
+      "bearish_accuracy": 0.5017
+    },
+    "macd": {
+      "times_active": 2121,
+      "times_neutral": 0,
+      "accuracy": 0.5017,
+      "bullish_calls": 1087,
+      "bullish_accuracy": 0.5152,
+      "bearish_calls": 1034,
+      "bearish_accuracy": 0.4874
+    },
+    "sma20_position": {
+      "times_active": 2121,
+      "times_neutral": 0,
+      "accuracy": 0.5116,
+      "bullish_calls": 1196,
+      "bullish_accuracy": 0.5226,
+      "bearish_calls": 925,
+      "bearish_accuracy": 0.4973
+    },
+    "bb": {
+      "times_active": 220,
+      "times_neutral": 1901,
+      "accuracy": 0.5636,
+      "bullish_calls": 73,
+      "bullish_accuracy": 0.5753,
+      "bearish_calls": 147,
+      "bearish_accuracy": 0.5578
+    },
+    "volume": {
+      "times_active": 109,
+      "times_neutral": 2012,
+      "accuracy": 0.4679,
+      "bullish_calls": 61,
+      "bullish_accuracy": 0.4918,
+      "bearish_calls": 48,
+      "bearish_accuracy": 0.4375
+    }
+  },
+  "by_regime": {
+    "low": {
+      "count": 505,
+      "accuracy": 0.5703,
+      "avg_return_pct": 0.407
+    },
+    "normal": {
+      "count": 1515,
+      "accuracy": 0.4838,
+      "avg_return_pct": 0.46
+    },
+    "elevated": {
+      "count": 101,
+      "accuracy": 0.5347,
+      "avg_return_pct": 1.065
+    }
+  },
+  "by_confidence": {
+    "low": {
+      "count": 136,
+      "accuracy": 0.4632
+    },
+    "medium": {
+      "count": 1985,
+      "accuracy": 0.5098
+    }
+  },
+  "signal_correlations": {
+    "momentum_5d": -0.002,
+    "momentum_10d": 0.0226,
+    "trend_adx": 0.0198,
+    "sma_slope": -0.0136,
+    "rsi": 0.0231,
+    "macd": 0.0198,
+    "sma20_position": 0.0128,
+    "bb": 0.0717,
+    "volume": -0.1503
+  },
+  "optimal_weights": {
+    "momentum_5d": 0.006,
+    "momentum_10d": 0.0673,
+    "trend_adx": 0.059,
+    "sma_slope": 0.0405,
+    "rsi": 0.0688,
+    "macd": 0.059,
+    "sma20_position": 0.0381,
+    "bb": 0.2136,
+    "volume": 0.4477
+  },
+  "weekly_summary": [
+    {
+      "week": "2026-04-13",
+      "predictions": 101,
+      "correct": 73,
+      "accuracy": 0.7228
+    },
+    {
+      "week": "2026-04-20",
+      "predictions": 101,
+      "correct": 38,
+      "accuracy": 0.3762
+    },
+    {
+      "week": "2026-04-27",
+      "predictions": 101,
+      "correct": 61,
+      "accuracy": 0.604
+    },
+    {
+      "week": "2026-05-04",
+      "predictions": 101,
+      "correct": 54,
+      "accuracy": 0.5347
+    },
+    {
+      "week": "2026-05-11",
+      "predictions": 101,
+      "correct": 46,
+      "accuracy": 0.4554
+    },
+    {
+      "week": "2026-05-18",
+      "predictions": 101,
+      "correct": 47,
+      "accuracy": 0.4653
+    },
+    {
+      "week": "2026-06-01",
+      "predictions": 101,
+      "correct": 34,
+      "accuracy": 0.3366
+    },
+    {
+      "week": "2026-06-08",
+      "predictions": 101,
+      "correct": 54,
+      "accuracy": 0.5347
+    },
+    {
+      "week": "2026-06-22",
+      "predictions": 101,
+      "correct": 55,
+      "accuracy": 0.5446
+    },
+    {
+      "week": "2026-07-06",
+      "predictions": 101,
+      "correct": 29,
+      "accuracy": 0.2871
+    },
+    {
+      "week": "2026-07-13",
+      "predictions": 101,
+      "correct": 60,
+      "accuracy": 0.5941
+    },
+    {
+      "week": "2026-07-20",
+      "predictions": 101,
+      "correct": 45,
+      "accuracy": 0.4455
+    },
+    {
+      "week": "2026-07-27",
+      "predictions": 101,
+      "correct": 53,
+      "accuracy": 0.5248
+    },
+    {
+      "week": "2026-08-03",
+      "predictions": 101,
+      "correct": 46,
+      "accuracy": 0.4554
+    },
+    {
+      "week": "2026-08-10",
+      "predictions": 101,
+      "correct": 60,
+      "accuracy": 0.5941
+    },
+    {
+      "week": "2026-08-17",
+      "predictions": 101,
+      "correct": 53,
+      "accuracy": 0.5248
+    },
+    {
+      "week": "2026-08-24",
+      "predictions": 101,
+      "correct": 35,
+      "accuracy": 0.3465
+    },
+    {
+      "week": "2026-08-31",
+      "predictions": 101,
+      "correct": 44,
+      "accuracy": 0.4356
+    },
+    {
+      "week": "2026-09-14",
+      "predictions": 101,
+      "correct": 57,
+      "accuracy": 0.5644
+    },
+    {
+      "week": "2026-09-21",
+      "predictions": 101,
+      "correct": 68,
+      "accuracy": 0.6733
+    },
+    {
+      "week": "2026-09-28",
+      "predictions": 101,
+      "correct": 63,
+      "accuracy": 0.6238
+    }
+  ],
+  "contextual": {
+    "earnings_in_window": {
+      "with_earnings": {
+        "count": 3,
+        "accuracy": 0.6667
+      },
+      "without_earnings": {
+        "count": 2118,
+        "accuracy": 0.5066
+      }
+    },
+    "macro_event": {
+      "with_event": null,
+      "without_event": {
+        "count": 2121,
+        "accuracy": 0.5068
+      },
+      "avg_abs_return_calm": 3.769
+    },
+    "by_yield_curve": {
+      "slightly_positive": {
+        "count": 808,
+        "accuracy": 0.5322
+      },
+      "normal": {
+        "count": 1313,
+        "accuracy": 0.4912
+      }
+    },
+    "by_credit_spread": {
+      "tight": {
+        "count": 2020,
+        "accuracy": 0.501
+      },
+      "normal": {
+        "count": 101,
+        "accuracy": 0.6238
+      }
+    },
+    "by_financial_conditions": {
+      "loose": {
+        "count": 1818,
+        "accuracy": 0.4967
+      },
+      "normal": {
+        "count": 303,
+        "accuracy": 0.5677
+      }
+    },
+    "signal_macro_interaction": {}
+  },
+  "walk_forward": {
+    "train_start": "2026-04-13",
+    "train_end": "2026-07-13",
+    "test_start": "2026-07-13",
+    "test_end": "2026-09-28",
+    "train_count": 1060,
+    "test_count": 1061,
+    "train_accuracy": 0.4877,
+    "test_accuracy": 0.5259,
+    "overfit_gap": -0.0382,
+    "train_signal_correlations": {
+      "momentum_5d": -0.0252,
+      "momentum_10d": -0.0091,
+      "trend_adx": -0.0016,
+      "sma_slope": -0.043,
+      "rsi": 0.0563,
+      "macd": -0.0137,
+      "sma20_position": -0.0056,
+      "bb": 0.0926,
+      "volume": -0.1627
+    },
+    "test_signal_correlations": {
+      "momentum_5d": 0.0215,
+      "momentum_10d": 0.0526,
+      "trend_adx": 0.0378,
+      "sma_slope": 0.0141,
+      "rsi": -0.0309,
+      "macd": 0.0508,
+      "sma20_position": 0.0303,
+      "bb": 0.036,
+      "volume": -0.1489
+    },
+    "stable_signals": [
+      "bb",
+      "volume"
+    ],
+    "unstable_signals": [
+      "momentum_5d",
+      "momentum_10d",
+      "trend_adx",
+      "sma_slope",
+      "rsi",
+      "macd",
+      "sma20_position"
+    ]
+  },
+  "monte_carlo": {
+    "n_bootstraps": 10000,
+    "confidence_level": 0.95,
+    "mean_accuracy": 0.5069,
+    "std_accuracy": 0.0109,
+    "ci_lower": 0.4856,
+    "ci_upper": 0.5281
+  },
+  "simulated_options_pnl": {
+    "total_trades": 2121,
+    "wins": 452,
+    "losses": 1669,
+    "win_rate": 0.2131,
+    "avg_return_pct": -29.32,
+    "avg_winner_pct": 33.19,
+    "avg_loser_pct": -46.25,
+    "expected_return_pct": -29.32,
+    "profit_factor": 0.194,
+    "max_drawdown_pct": 62226.11,
+    "total_return_pct": -62186.11
+  },
+  "meta": {
+    "tickers_scanned": 103,
+    "tickers_failed": 0,
+    "lookback_weeks": 26,
+    "holding_period": "Mon->Fri (5 trading days)",
+    "run_date": "2026-10-07T15:08:27.298556",
+    "testable_signals": [
+      "momentum_5d",
+      "momentum_10d",
+      "trend_adx",
+      "sma_slope",
+      "rsi",
+      "macd",
+      "sma20_position",
+      "bb",
+      "volume"
+    ],
+    "context_features": [
+      "earnings_in_window",
+      "macro_event",
+      "yield_curve",
+      "credit_spread",
+      "financial_conditions"
+    ],
+    "untestable_signals": [
+      "pc_ratio",
+      "max_pain",
+      "iv_data",
+      "iv_rv_ratio",
+      "sentiment",
+      "flow",
+      "finviz_pre_market",
+      "analyst_rating",
+      "insider"
+    ],
+    "external_data": {
+      "fred_series": [
+        "T10Y2Y",
+        "BAMLH0A0HYM2",
+        "NFCI"
+      ],
+      "earnings_tickers": 406,
+      "economic_event_dates": 0
+    }
+  }
+}
