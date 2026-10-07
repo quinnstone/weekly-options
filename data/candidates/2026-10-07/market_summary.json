@@ -1,0 +1,305 @@
+{
+  "vix": {
+    "current": 15.180000305175781,
+    "previous_close": 15.010000228881836,
+    "change": 0.17,
+    "change_pct": 1.13,
+    "trend_20d": "Date\n2026-09-10 00:00:00-05:00    17.840000\n2026-09-11 00:00:00-05:00    15.840000\n2026-09-14 00:00:00-05:00    17.100000\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.180000\nName: Close, dtype: float64",
+    "sma_20": 15.83,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.180000305175781,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.24,
+    "rsp_return_1d": -0.61,
+    "breadth_spread_1d": -0.37,
+    "spy_return_5d": 1.92,
+    "rsp_return_5d": 1.45,
+    "breadth_spread_5d": -0.46,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.03,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.494,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -7.1,
+    "regime_days": 8,
+    "persistence_score": 0.8
+  },
+  "skew": {
+    "skew": 141.21,
+    "skew_sma20": 145.9,
+    "skew_state": "elevated",
+    "skew_vs_sma": -4.69
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.026,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 2855942,
+    "spy_put_volume": 2931522
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.039999961853027,
+    "vix": 15.180000305175781,
+    "vix3m": 17.75
+  },
+  "cot_positioning": {
+    "net_position": -125076,
+    "percentile": 37.3,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.66,
+      "return_1d": -0.11,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.24,
+      "return_1d": 0.45,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -4.85,
+      "return_1d": -1.5,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "EXCLUSIVE: Saudi Arabia launches air safety probe into flydubai incident, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.617
+      },
+      {
+        "headline": "Turkey sending technical, defensive support to Saudi Arabia to help fight Houthis, officials say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Google ordered to halt work on two data centers in \u2018Texas of Europe\u2019",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "What Marvell's rosy long-term guidance means for our AI chip stocks",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Google DeepMind's Lila Ibrahim, world's top AI 'readiness' officer, on preparing for what's to come",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Gold slips as dollar gains; investors await Fed minutes for rate clues - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      },
+      {
+        "headline": "'I'm getting fed up': early US midterm voters line up before dawn in Ohio - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "High inflation has become embedded in Britain, Bank of England's Mann says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "World Bank raises Africa's 2026 growth forecast, urges AI investments - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Shell expects record refining margins as Iran war boosts fuel markets - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Oil rises as investors weigh supply threats - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Northeast Democrats urge Trump administration action as heating oil costs surge - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US EIA hikes oil price forecasts again as Iran war drains global stockpile - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "EU to delay methane emissions rules for one year and no more, energy chief says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.681
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Nigeria's Dangote refinery targets 10 million retail investors for planned IPO, CEO says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold slips as dollar gains; investors await Fed minutes for rate clues - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.421
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Rubio says Tehran missed 'multiple' chances for nuclear deal amid Iran stalemate",
+        "source": "CNBC",
+        "sentiment": -0.103
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Attacks on tankers in Hormuz hit highest of any week since start of Iran war, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.778
+      },
+      {
+        "headline": "EXCLUSIVE: Vance says Iran must cut enrichment to end war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.581
+      },
+      {
+        "headline": "Kalshi launches transparency features on its election contracts ahead of midterms",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Catalan separatist Puigdemont set to return home after court lifts arrest warrant - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "EU envoys set to approve major new Russia sanctions on Wednesday - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Russia drops war posts case against children\u2019s hospice founder Moniava - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Most Gulf markets slip as geopolitical risks weigh - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Cost-of-living crises have lasting impact on inflation expectations, poverty, IMF says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      }
+    ]
+  },
+  "timestamp": "2026-10-07T13:39:11.380173"
+}
