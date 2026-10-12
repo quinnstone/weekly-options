@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "MSFT",
+    "direction": "call",
+    "strike": 535.0,
+    "original_premium": 9.57,
+    "original_price": 541.15,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.68 (price moved from $541.15 to $541.18). Consider re-selecting strike closer to current price.",
+    "current_price": 541.18,
+    "new_delta": 0.68,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-12T17:58:23.487306"
+  },
+  {
+    "ticker": "SHOP",
+    "direction": "call",
+    "strike": 175.0,
+    "original_premium": 6.55,
+    "original_price": 179.22,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.68 (price moved from $179.22 to $179.21). Consider re-selecting strike closer to current price.",
+    "current_price": 179.21,
+    "new_delta": 0.676,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-12T17:58:23.664532"
+  },
+  {
+    "ticker": "RIVN",
+    "direction": "put",
+    "strike": 14.0,
+    "original_premium": 0.58,
+    "original_price": 13.54,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.72 (price moved from $13.54 to $13.55). Consider re-selecting strike closer to current price.",
+    "current_price": 13.55,
+    "new_delta": 0.716,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-12T17:58:23.896316"
+  }
+]
