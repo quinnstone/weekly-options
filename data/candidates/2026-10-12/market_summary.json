@@ -1,0 +1,310 @@
+{
+  "vix": {
+    "current": 15.210000038146973,
+    "previous_close": 14.84000015258789,
+    "change": 0.37,
+    "change_pct": 2.49,
+    "trend_20d": "Date\n2026-09-15 00:00:00-05:00    17.200001\n2026-09-16 00:00:00-05:00    17.709999\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\nName: Close, dtype: float64",
+    "sma_20": 15.56,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.210000038146973,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.06,
+    "rsp_return_1d": 0.07,
+    "breadth_spread_1d": 0.13,
+    "spy_return_5d": 0.42,
+    "rsp_return_5d": 0.98,
+    "breadth_spread_5d": 0.56,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.15,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.494,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -2.0,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 154.34,
+    "skew_sma20": 145.63,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 8.71
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.097,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 2937632,
+    "spy_put_volume": 3223658
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 11.680000305175781,
+    "vix": 15.210000038146973,
+    "vix3m": 17.93000030517578
+  },
+  "cot_positioning": {
+    "net_position": -127955,
+    "percentile": 33.3,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 1.0,
+      "return_1d": 0.09,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.8,
+      "return_1d": 0.38,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 4.22,
+      "return_1d": 1.91,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Bear to bull: A double upgrade of Salesforce illustrates the folly of the 'SaaSpocalypse'",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Microsoft, Micron and Meta make news. Here's what the updates mean for our stakes",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "AI FOMO driving some family offices into tech investments, survey suggests",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "NBA commissioner Adam Silver says league could introduce \u2018smart ball\u2019 technology as soon as next year",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Stocks saw new highs and big declines: How the volatile AI trade moved last week's market",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "World Bank in talks with dozens of countries about crisis aid, Banga says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      },
+      {
+        "headline": "Middle East war, high debt levels to dominate IMF-World Bank meetings in Bangkok - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.784
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Top oil executives dropped from event schedule after Riyadh attacks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Emerging Asia's power-driven LNG demand at risk as renewables gain ground - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "COMMENTARY: The oil market's center of gravity is moving east - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Trump says Russia and Ukraine reached 'energy ceasefire' - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "Trump announces Ukraine energy ceasefire with Russia, surprising Zelenskiy - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Yemen's Houthis renew warning to airlines, travellers against using Saudi airports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "Fire destroys French capital's 'Enfants Rouges' covered food market - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "I\u2019m a psychologist who studies couples: The No. 1 way to end a fight before it escalates\u2014it works \u2018almost immediately\u2019",
+        "source": "CNBC",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Kremlin says Putin in phone call with Trump downplays immediate Ukraine talks resumption - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "London stocks post weekly gains as gilt yields retreat; telecom stocks fall - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      },
+      {
+        "headline": "ChatGPT for Teens is not necessarily 'safer than the previous version,' Common Sense Media finds",
+        "source": "CNBC",
+        "sentiment": -0.325
+      }
+    ],
+    "macro": [
+      {
+        "headline": "FAA warns U.S. airlines of safety risks over Saudi Arabia after attacks",
+        "source": "CNBC",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "India Sept inflation nears RBI tolerance ceiling, boosting case for further rate hikes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.557
+      },
+      {
+        "headline": "India inflation jumps to 5.54% in September, strengthening case for further rate hikes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      },
+      {
+        "headline": "COMMENTARY: Middle East LNG industry remains hostage of Iran war: Bousso - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Dollar hovers near 18-month high as Gulf unrest, US inflation keep investors on edge - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "UK's Healey can't risk a 'steady as you go' budget, think tank warns - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.106
+      },
+      {
+        "headline": "Wall Street posts weekly gains with earnings, inflation data on tap - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "Trump says US will not attack Iran before midterm elections in November - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.372
+      }
+    ]
+  },
+  "timestamp": "2026-10-12T16:35:35.252731"
+}
