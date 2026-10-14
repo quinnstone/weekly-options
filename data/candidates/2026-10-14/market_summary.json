@@ -1,0 +1,324 @@
+{
+  "vix": {
+    "current": 15.880000114440918,
+    "previous_close": 15.270000457763672,
+    "change": 0.61,
+    "change_pct": 3.99,
+    "trend_20d": "Date\n2026-09-17 00:00:00-05:00    15.440000\n2026-09-18 00:00:00-05:00    14.810000\n2026-09-21 00:00:00-05:00    14.870000\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    15.880000\nName: Close, dtype: float64",
+    "sma_20": 15.37,
+    "trend_direction": "flat"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 15.880000114440918,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "flat"
+  },
+  "breadth": {
+    "spy_return_1d": -0.92,
+    "rsp_return_1d": -0.93,
+    "breadth_spread_1d": -0.02,
+    "spy_return_5d": -0.81,
+    "rsp_return_5d": 0.34,
+    "breadth_spread_5d": 1.15,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.16,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.494,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 5.31,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 154.74,
+    "skew_sma20": 146.18,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 8.56
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.301,
+    "market_pc_state": "bearish",
+    "spy_call_volume": 1652851,
+    "spy_put_volume": 2149897
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 12.760000228881836,
+    "vix": 15.880000114440918,
+    "vix3m": 18.239999771118164
+  },
+  "cot_positioning": {
+    "net_position": -127955,
+    "percentile": 33.3,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.73,
+      "return_1d": 0.09,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.86,
+      "return_1d": 0.72,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 3.77,
+      "return_1d": 0.04,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Meta shares rise for a second straight day as new AI model family impresses",
+        "source": "CNBC",
+        "sentiment": 0.735
+      },
+      {
+        "headline": "MI5 chief lists Iran, Russia, AI and terrorists among threats to UK - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.784
+      },
+      {
+        "headline": "Adani's Mumbai airport holds off on winter flight cuts after airline pushback - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      },
+      {
+        "headline": "US chip stocks extend slide as China memory report, AI spending jitters hit sector - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.178
+      },
+      {
+        "headline": "FSSAI to tighten grip on $80 billion online market",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Iran's central bank governor dismisses claims of economic collapse amid US blockade - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.494
+      },
+      {
+        "headline": "Bank of America fined $1.2 billion by US government for failing to police suspicious activity - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.7
+      },
+      {
+        "headline": "Citi profit tops estimates on higher investment banking, services and wealth revenue - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.856
+      },
+      {
+        "headline": "More homebuyers are taking a chance on adjustable-rate mortgages, hoping rates will fall\u2014here\u2019s how to think about that bet",
+        "source": "CNBC",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "Hezbollah outlines financial aid plan for Lebanese with destroyed homes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.494
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Yemen's Houthis vow more attacks on Saudi airports, oil facilities after Aramco HQ hit - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.493
+      },
+      {
+        "headline": "Russian strikes kill one, hit energy facilities in Kyiv, mayor says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.727
+      },
+      {
+        "headline": "Trump campaigns in Alaska, a conservative state feeling the pinch of high energy prices - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Oil prices steady after gains on Iran's new tactics to target tankers - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "US blockade keeps Iranian crude exports at zero in October, report says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.572
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "UnitedHealth Group tops estimates, hikes profit outlook as insurer manages high medical costs",
+        "source": "CNBC",
+        "sentiment": 0.735
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "US consumer prices accelerate in September on costlier gasoline; core CPI firmer - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "We're adding to a consumer staples stock in advance of a big catalyst",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Qatar Airways suspends Riyadh, Dammam flights as airport attacks disrupt air travel - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "We're adding to a consumer staples stock in advance of a big catalyst",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Abu Dhabi's IRH seeks more mining assets in Zambia - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.245
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Iran reportedly fortifies nuclear sites as it prepares for possible U.S. strikes after midterms",
+        "source": "CNBC",
+        "sentiment": -0.361
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Netanyahu says he is not seeking to attack Iran again before Israel election - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.372
+      },
+      {
+        "headline": "India's wholesale inflation rises faster than expected at 11.4% in September - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran executes monarchist convicted of armed attacks during war, judiciary news outlet says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.778
+      },
+      {
+        "headline": "Zelenskiy seeks new talks with US envoys on ending Russia war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Airport attacks put aviation in crosshairs of geopolitical conflicts",
+        "source": "CNBC",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "Former Air NZ boss Greg Foran slashes jobs at US grocer Kroger in new head role",
+        "source": "Bloomberg",
+        "sentiment": -0.202
+      }
+    ]
+  },
+  "timestamp": "2026-10-14T11:40:44.928273"
+}
