@@ -6,23 +6,33 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 17 |
-| Total Picks | 49 |
-| Record | 16W - 21L - 12P |
+| Weeks Tracked | 18 |
+| Total Picks | 52 |
+| Record | 17W - 23L - 12P |
 | Win Rate | 33% |
-| Total Invested | $24,137.00 |
-| Total Returned | $18,240.00 |
-| **Net P&L** | **$-5,897.00** |
-| **ROI** | **-24.43%** |
+| Total Invested | $25,807.00 |
+| Total Returned | $18,398.00 |
+| **Net P&L** | **$-7,409.00** |
+| **ROI** | **-28.71%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
 | Best | ZS | 2026-08-10 | +$1,244.00 (+143.7%) |
-| Worst | PANW | 2026-07-06 | $-938.00 (-100.0%) |
+| Worst | MSFT | 2026-10-12 | $-957.00 (-100.0%) |
 
 ---
 
 ## Weekly Results
+
+### Week of 2026-10-12 (exp. 2026-10-16)
+
+**1W-2L-0P** | Cost: $1,670.00 | Return: $158.00 | **P&L: $-1,512.00 (-90.5%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | MSFT | CALL | $535.00 | $9.57 | $529.05 | $0.00 | -$957.00 | LOSS |
+| 2 | SHOP | CALL | $175.00 | $6.55 | $169.52 | $0.00 | -$655.00 | LOSS |
+| 3 | RIVN | PUT | $14.00 | $0.58 | $12.42 | $1.58 | +$100.00 | WIN |
 
 ### Week of 2026-09-28 (exp. 2026-10-02)
 
@@ -194,4 +204,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-10-02 19:55 ET*
+*Last updated: 2026-10-16 18:26 ET*

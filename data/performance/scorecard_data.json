@@ -2183,19 +2183,193 @@
       "graded_at": "2026-10-02T19:55:38.743201",
       "grader_version": 4,
       "grader_git_sha": "d11fe873e8a53d70fd031d3c002528c0d96e4d09"
+    },
+    {
+      "pick_date": "2026-10-12",
+      "expiry": "2026-10-16",
+      "picks": [
+        {
+          "ticker": "MSFT",
+          "direction": "call",
+          "strike": 535.0,
+          "entry_premium": 9.57,
+          "entry_cost": 957.0,
+          "closing_price": 529.05,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -957.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": 3.39,
+            "spy_week_move_pct": -1.99,
+            "rsi_at_entry": 70.09,
+            "premium_pct_of_spot": 1.77
+          },
+          "entry_features": {
+            "composite_score": 73.5,
+            "confidence": 0.435,
+            "raw_confidence": 0.667,
+            "scan_rank": 0.8078,
+            "friday_score": 0.5937,
+            "iv_rank": 41.4,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.7851,
+              "trend": 0.9235,
+              "volatility": 0.672,
+              "options": 0.9772,
+              "extremity": 0.6041
+            },
+            "scores": {
+              "momentum": 83.47686183125738,
+              "mean_reversion": 75.0,
+              "regime_bias": 50.0,
+              "trend_persistence": 95.0,
+              "iv_mispricing": 55.0,
+              "flow_conviction": 80.0,
+              "event_risk": 60.0,
+              "liquidity": 77.03042,
+              "strike_efficiency": 75.0,
+              "theta_cost": 53.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "SHOP",
+          "direction": "call",
+          "strike": 175.0,
+          "entry_premium": 6.55,
+          "entry_cost": 655.0,
+          "closing_price": 169.52,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -655.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": 12.85,
+            "spy_week_move_pct": -1.99,
+            "rsi_at_entry": 76.97,
+            "premium_pct_of_spot": 3.65
+          },
+          "entry_features": {
+            "composite_score": 69.82,
+            "confidence": 0.413,
+            "raw_confidence": 0.483,
+            "scan_rank": 0.7421,
+            "friday_score": 0.652,
+            "iv_rank": 44.5,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 1.0,
+              "trend": 0.6392,
+              "volatility": 0.6012,
+              "options": 0.6442,
+              "extremity": 0.6538
+            },
+            "scores": {
+              "momentum": 98.0429096016548,
+              "mean_reversion": 75.0,
+              "regime_bias": 50.0,
+              "trend_persistence": 70.0,
+              "iv_mispricing": 55.0,
+              "flow_conviction": 50.0,
+              "event_risk": 60.0,
+              "liquidity": 65.39656,
+              "strike_efficiency": 75.0,
+              "theta_cost": 53.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "RIVN",
+          "direction": "put",
+          "strike": 14.0,
+          "entry_premium": 0.58,
+          "entry_cost": 57.99999999999999,
+          "closing_price": 12.42,
+          "exit_value_per_share": 1.58,
+          "exit_value_total": 158.0,
+          "pnl": 100.0,
+          "pnl_pct": 172.41,
+          "result": "WIN",
+          "entry_signal": "ADJUST",
+          "diagnostics": {
+            "pre_run_5d_pct": -2.38,
+            "spy_week_move_pct": -1.99,
+            "rsi_at_entry": 29.6,
+            "premium_pct_of_spot": 4.28
+          },
+          "entry_features": {
+            "composite_score": 67.93,
+            "confidence": 0.413,
+            "raw_confidence": 0.323,
+            "scan_rank": 0.7134,
+            "friday_score": 0.6534,
+            "iv_rank": 21.2,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.9022,
+              "trend": 0.6711,
+              "volatility": 0.5724,
+              "options": 0.7397,
+              "extremity": 0.4955
+            },
+            "scores": {
+              "momentum": 91.35590236607706,
+              "mean_reversion": 75.0,
+              "regime_bias": 50.0,
+              "trend_persistence": 85.0,
+              "iv_mispricing": 38.46,
+              "flow_conviction": 40.0,
+              "event_risk": 63.0,
+              "liquidity": 55.60256,
+              "strike_efficiency": 75.0,
+              "theta_cost": 53.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        }
+      ],
+      "total_cost": 1670.0,
+      "total_exit": 158.0,
+      "total_pnl": -1512.0,
+      "total_return_pct": -90.54,
+      "wins": 1,
+      "losses": 2,
+      "partials": 0,
+      "win_rate": 0.3333,
+      "traded_count": 0,
+      "traded_cost": 0,
+      "traded_pnl": 0,
+      "traded_return_pct": 0,
+      "traded_wins": 0,
+      "traded_losses": 0,
+      "traded_partials": 0,
+      "graded_at": "2026-10-16T18:26:00.813729",
+      "grader_version": 4,
+      "grader_git_sha": "32645ec548a5addd3b9b10617e1e85e9b72e73e4"
     }
   ],
   "all_time": {
-    "total_weeks": 17,
-    "total_picks": 49,
-    "wins": 16,
-    "losses": 21,
+    "total_weeks": 18,
+    "total_picks": 52,
+    "wins": 17,
+    "losses": 23,
     "partials": 12,
-    "win_rate": 0.3265,
-    "total_invested": 24137.0,
-    "total_returned": 18240.0,
-    "total_pnl": -5897.0,
-    "total_return_pct": -24.43,
+    "win_rate": 0.3269,
+    "total_invested": 25807.0,
+    "total_returned": 18398.0,
+    "total_pnl": -7409.0,
+    "total_return_pct": -28.71,
     "best_pick": {
       "ticker": "ZS",
       "date": "2026-08-10",
@@ -2203,9 +2377,9 @@
       "pnl_pct": 143.65
     },
     "worst_pick": {
-      "ticker": "PANW",
-      "date": "2026-07-06",
-      "pnl": -938.0,
+      "ticker": "MSFT",
+      "date": "2026-10-12",
+      "pnl": -957.0,
       "pnl_pct": -100.0
     },
     "traded_picks": 19,
