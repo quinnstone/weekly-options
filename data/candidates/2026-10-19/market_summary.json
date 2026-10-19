@@ -1,0 +1,327 @@
+{
+  "vix": {
+    "current": 18.510000228881836,
+    "previous_close": 19.989999771118164,
+    "change": -1.48,
+    "change_pct": -7.4,
+    "trend_20d": "Date\n2026-09-22 00:00:00-05:00    14.210000\n2026-09-23 00:00:00-05:00    15.180000\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.510000\nName: Close, dtype: float64",
+    "sma_20": 15.91,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 18.510000228881836,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.53,
+    "rsp_return_1d": -0.23,
+    "breadth_spread_1d": -0.76,
+    "spy_return_5d": -1.39,
+    "rsp_return_5d": 0.19,
+    "breadth_spread_5d": 1.58,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.31,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.499,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 21.7,
+    "regime_days": 6,
+    "persistence_score": 0.6
+  },
+  "skew": {
+    "skew": 168.59,
+    "skew_sma20": 148.51,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 20.08
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.057,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 2968288,
+    "spy_put_volume": 3136194
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 18.06999969482422,
+    "vix": 18.5,
+    "vix3m": 19.709999084472656
+  },
+  "cot_positioning": {
+    "net_position": -115841,
+    "percentile": 47.1,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 1.44,
+      "return_1d": -0.69,
+      "signal": "headwind"
+    },
+    "us_dollar": {
+      "return_5d": -0.16,
+      "return_1d": 0.19,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 6.11,
+      "return_1d": 0.43,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Meta apologizes after suspending \"No Kings\" Instagram account - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      },
+      {
+        "headline": "Credit stress is threatening to unwind the AI bull. All eyes are on Oracle to hold the line",
+        "source": "CNBC",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "AI trade reversal pierces Asia\u2019s star picks-and-shovels stocks",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "OpenAI poaches another SpaceX sales lead focused on AI",
+        "source": "Bloomberg",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Apple says iPhone Duo demand extraordinary after delivery delays",
+        "source": "Bloomberg",
+        "sentiment": -0.128
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "UK housing market showing signs of mortgage rates impact, Rightmove says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Israeli settlers attack Palestinians, European diplomats in West Bank, Belgium says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "Israeli settlers burn olive trees, injure journalist in West Bank attack - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "Israeli settlers attack Palestinians during West Bank olive harvest - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Trump's Russia sanctions waiver eases India's energy woes, lifts trade deal chances - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "COMMENTARY: Asian refiners' pain is Middle East oil producers' problem - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "Oil slips from five-month highs with Hormuz crossings, Russian sanctions waiver in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil lifts Saudi bourse; Egypt tumbles on regional tensions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "Turkey will get some diesel from US-Russia supply deal, energy minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.273
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "UK housing market showing signs of mortgage rates impact, Rightmove says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Tens of thousands march in Lisbon over housing and living costs - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "We're downgrading this retail stock after a big comeback. Plus, AI names slide again",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "World Food Programme cuts aid to 500,000 Palestinians in Gaza, cites funding shortages - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Global food inflation is expected to intensify as supply shocks pile up - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Here's who Netflix just brought in to run content \u2014 and what it means for the streamer",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "UK housing market showing signs of mortgage rates impact, Rightmove says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Explainer: What's behind Egypt's move towards possible military involvement in Saudi-Yemen conflict? - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "UK urges firms not to take part in E1 settlement tender or risk sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "Morning Bid: Markets left to figure out sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Egypt says ready to back Saudi Arabia in war against Iran-allied Houthis - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Trump endorses Netanyahu in close Israeli election - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "Rubio says Trump to take up to 60 days to weigh Russia sanctions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Zelenskiy criticizes Trump's waiver of sanctions on Russia as 'wrong' - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "Schwab to create 'tax-aware' strategy that's been attracting billions from wealthy investors",
+        "source": "CNBC",
+        "sentiment": 0.772
+      }
+    ]
+  },
+  "timestamp": "2026-10-19T13:57:04.833386"
+}

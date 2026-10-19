@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-19",
+  "market_context": {
+    "vix": 18.510000228881836,
+    "regime": "normal",
+    "trend": "rising",
+    "holding_window": {
+      "has_earnings_risk": false,
+      "has_fomc": false,
+      "has_cpi_nfp": false,
+      "high_impact_count": 0,
+      "events": [],
+      "risk_level": "low",
+      "event_days": []
+    },
+    "regime_persistence": {
+      "is_stable": true,
+      "transition_direction": null,
+      "vix_5d_change_pct": 21.7,
+      "regime_days": 6,
+      "persistence_score": 0.6
+    },
+    "macro_edge": {
+      "has_edge": true,
+      "confidence_multiplier": 0.85,
+      "regime": "normal",
+      "reasons": [
+        "VIX normal (18.5) \u2014 lower directional edge"
+      ]
+    }
+  },
+  "picks": [
+    {
+      "ticker": "RIVN",
+      "direction": "put",
+      "strike": 12.5,
+      "expiry": "2026-10-23",
+      "premium": 0.41,
+      "composite_score": 69.85,
+      "confidence": 0.468,
+      "current_price": 12.24,
+      "breakeven": 12.09,
+      "breakeven_move_pct": 1.27,
+      "expected_daily_move_pct": 4.35,
+      "estimated_delta": -0.51,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (0.41) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.3% move to $12.09 (weekly expected move: 9.7%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 70.16,
+        "momentum": 81.99,
+        "reversion": 57.12,
+        "model_std": 10.16,
+        "consensus": "moderate"
+      },
+      "scores": {
+        "momentum": 96.21365950450304,
+        "mean_reversion": 75.0,
+        "regime_bias": 65.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 33.4,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.45822,
+        "strike_efficiency": 75.0,
+        "theta_cost": 53.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|put|unknown|oversold|trending|expensive"
+      },
+      "active_regime": "normal"
+    },
+    {
+      "ticker": "IWM",
+      "direction": "put",
+      "strike": 275.0,
+      "expiry": "2026-10-23",
+      "premium": 4.4,
+      "composite_score": 69.48,
+      "confidence": 0.493,
+      "current_price": 271.23,
+      "breakeven": 270.6,
+      "breakeven_move_pct": 0.23,
+      "expected_daily_move_pct": 1.25,
+      "estimated_delta": -0.507,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (4.40) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 0.2% move to $270.60 (weekly expected move: 2.8%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 70.29,
+        "momentum": 85.08,
+        "reversion": 52.25,
+        "model_std": 13.43,
+        "consensus": "moderate"
+      },
+      "scores": {
+        "momentum": 80.20241097394498,
+        "mean_reversion": 63.104,
+        "regime_bias": 65.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 30.0,
+        "flow_conviction": 100.0,
+        "event_risk": 60.0,
+        "liquidity": 76.623,
+        "strike_efficiency": 55.0,
+        "theta_cost": 45.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|put|unknown|oversold|trending|expensive"
+      },
+      "active_regime": "normal"
+    },
+    {
+      "ticker": "KO",
+      "direction": "call",
+      "strike": 91.0,
+      "expiry": "2026-10-23",
+      "premium": 2.84,
+      "composite_score": 68.27,
+      "confidence": 0.468,
+      "current_price": 93.89,
+      "breakeven": 93.84,
+      "breakeven_move_pct": -0.05,
+      "expected_daily_move_pct": 1.45,
+      "estimated_delta": 0.516,
+      "entry": {
+        "method": "limit_monday_open",
+        "wait_minutes": 20,
+        "instruction": "Enter Monday morning. Wait 15-20 min after open for spread to tighten. Limit order at mid (2.84) or better. Skip if gap > 2%."
+      },
+      "exit": {
+        "profit_targets": {
+          "day_1": 40,
+          "day_2": 35,
+          "day_3": 25,
+          "day_4": 15
+        },
+        "stop_loss_pct": 50,
+        "delta_stop": 0.1,
+        "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires -0.0% move to $93.84 (weekly expected move: 3.2%)."
+      },
+      "earnings_warning": false,
+      "ensemble": {
+        "linear": 67.93,
+        "momentum": 75.94,
+        "reversion": 61.27,
+        "model_std": 6.0,
+        "consensus": "moderate"
+      },
+      "scores": {
+        "momentum": 87.86176965548381,
+        "mean_reversion": 75.0,
+        "regime_bias": 47.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.19512,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      },
+      "pattern": {
+        "adjustment": 0,
+        "pattern_win_rate": null,
+        "pattern_observations": 0,
+        "pattern_key": "normal|call|unknown|overbought|trending|fair"
+      },
+      "active_regime": "normal"
+    }
+  ],
+  "generated_at": "2026-10-19T13:58:46.734588"
+}

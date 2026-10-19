@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-19",
+  "picks": [
+    {
+      "ticker": "RIVN",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 69.85,
+      "direction_confidence": 0.468,
+      "scores": {
+        "momentum": 96.21365950450304,
+        "mean_reversion": 75.0,
+        "regime_bias": 65.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 33.4,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.45822,
+        "strike_efficiency": 75.0,
+        "theta_cost": 53.0
+      }
+    },
+    {
+      "ticker": "IWM",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 69.48,
+      "direction_confidence": 0.493,
+      "scores": {
+        "momentum": 80.20241097394498,
+        "mean_reversion": 63.104,
+        "regime_bias": 65.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 30.0,
+        "flow_conviction": 100.0,
+        "event_risk": 60.0,
+        "liquidity": 76.623,
+        "strike_efficiency": 55.0,
+        "theta_cost": 45.0
+      }
+    },
+    {
+      "ticker": "KO",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 68.27,
+      "direction_confidence": 0.468,
+      "scores": {
+        "momentum": 87.86176965548381,
+        "mean_reversion": 75.0,
+        "regime_bias": 47.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 50.0,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.19512,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    }
+  ],
+  "recorded_at": "2026-10-19T13:58:47.084822"
+}
