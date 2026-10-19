@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "RIVN",
+    "direction": "put",
+    "strike": 12.5,
+    "original_premium": 0.3,
+    "original_price": 12.24,
+    "signal": "GO",
+    "detail": "Early action confirms put thesis (-0.8% since open). Premium moved -27% ($0.41 \u2192 $0.30). Adjust limit order accordingly.",
+    "current_price": 12.39,
+    "new_delta": 0.555,
+    "new_premium": 0.3,
+    "gap_pct": 0.64,
+    "timestamp": "2026-10-19T15:38:53.406473"
+  },
+  {
+    "ticker": "IWM",
+    "direction": "put",
+    "strike": 275.0,
+    "original_premium": 4.4,
+    "original_price": 271.23,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.76 (price moved from $271.23 to $271.64). Consider re-selecting strike closer to current price.",
+    "current_price": 271.64,
+    "new_delta": 0.76,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-19T15:38:53.741164"
+  },
+  {
+    "ticker": "KO",
+    "direction": "call",
+    "strike": 91.0,
+    "original_premium": 2.84,
+    "original_price": 93.89,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 0.90 (price moved from $93.89 to $93.46). Consider re-selecting strike closer to current price.",
+    "current_price": 93.46,
+    "new_delta": 0.896,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-19T15:38:54.143275"
+  }
+]
