@@ -1,0 +1,32 @@
+{
+  "positions": [
+    {
+      "ticker": "RIVN",
+      "direction": "put",
+      "strike": 12.5,
+      "entry_price": 12.24,
+      "current_price": 12.41,
+      "entry_premium": 0.3,
+      "current_option_price": 0.29,
+      "current_delta": 0.548,
+      "stock_move_pct": 1.39,
+      "option_return_pct": -3.3,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: -3% (target: 35% today). Stock moved +1.4%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 1,
+    "avg_return_pct": -3.3,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}
