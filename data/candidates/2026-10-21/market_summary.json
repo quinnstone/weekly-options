@@ -1,0 +1,323 @@
+{
+  "vix": {
+    "current": 16.579999923706055,
+    "previous_close": 17.309999465942383,
+    "change": -0.73,
+    "change_pct": -4.22,
+    "trend_20d": "Date\n2026-09-24 00:00:00-05:00    15.670000\n2026-09-25 00:00:00-05:00    14.870000\n2026-09-28 00:00:00-05:00    16.070000\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.580000\nName: Close, dtype: float64",
+    "sma_20": 16.13,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.579999923706055,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.47,
+    "rsp_return_1d": 0.28,
+    "breadth_spread_1d": -0.19,
+    "spy_return_5d": 0.4,
+    "rsp_return_5d": 2.07,
+    "breadth_spread_5d": 1.66,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {},
+  "credit_spread": {},
+  "financial_conditions": {},
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -1.72,
+    "regime_days": 8,
+    "persistence_score": 0.8
+  },
+  "skew": {
+    "skew": 160.4,
+    "skew_sma20": 150.28,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 10.12
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.841,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 1986285,
+    "spy_put_volume": 1671003
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 15.390000343322754,
+    "vix": 16.579999923706055,
+    "vix3m": 18.649999618530273
+  },
+  "cot_positioning": {
+    "net_position": -115841,
+    "percentile": 47.1,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.29,
+      "return_1d": 0.09,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.19,
+      "return_1d": 0.16,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 1.14,
+      "return_1d": -0.93,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 0,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "OpenAI expands ChatGPT Ads to 26 new countries as diversification push accelerates",
+        "source": "CNBC",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Investors are questioning neoclouds' business model but Nebius says AI computing prices are rising",
+        "source": "CNBC",
+        "sentiment": -0.052
+      },
+      {
+        "headline": "Obsessed with CoreWeave and the AI trade? You're missing out on some great stocks",
+        "source": "CNBC",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "We're booking big profits in an AI stock and trimming a credit-exposed bank",
+        "source": "CNBC",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Stocks try for back-to-back gains \u2014 plus, Qnity gets iPhone business from Apple",
+        "source": "CNBC",
+        "sentiment": 0.34
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Bank of England's Greene says inflation risks are bigger than thought - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "We're booking big profits in an AI stock and trimming a credit-exposed bank",
+        "source": "CNBC",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "US bank J.P. Morgan facilitates Syrian deal for Saudi oil products - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Google Cloud outage in UK eases after impacting digital banks, public sector websites - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Google Cloud outage takes down C and other banks in UK",
+        "source": "Bloomberg",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "COMMENTARY: China uses crude stockpiles, but rising oil imports may curtail draws - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.329
+      },
+      {
+        "headline": "Saudi crude oil exports hit five-month high in August, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.572
+      },
+      {
+        "headline": "UK's FTSE 100 pauses as hot inflation report outweighs energy boost - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "EXCLUSIVE: US aims to loan about a third of heating oil reserve in bid to tame prices - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.303
+      },
+      {
+        "headline": "Indian Oil to trim Middle East oil imports under annual deals amid Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Novo's next-generation obesity drug shows 25% weight loss in women in late-stage analysis",
+        "source": "CNBC",
+        "sentiment": -0.318
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "GE Aerospace raises 2026 profit forecast as services strength drives growth - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.827
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "United Airlines slashes 2026 profit outlook on fuel prices, but travelers keep booking despite higher fares",
+        "source": "CNBC",
+        "sentiment": 0.351
+      },
+      {
+        "headline": "US single-family housing starts, building permits tumble in September - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Portuguese police clear housing protest camps, arresting 55 - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Iran says Saudi Arabia, Houthis have not answered mediation offer - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Draymond Green says he's 'not Steph Curry,' wants to play another year even if he leaves Golden State Warriors",
+        "source": "CNBC",
+        "sentiment": 0.34
+      }
+    ],
+    "macro": [
+      {
+        "headline": "The political ad wars are still being fought over the airwaves even as digital gains share",
+        "source": "CNBC",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Israel's election may change its leader, but not Iran war policy - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.639
+      },
+      {
+        "headline": "Yemen's Houthis deny launching drones towards Saudi Arabia's Medina - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Pound gains against dollar, euro as inflation data cements future rate hike bets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "UK inflation jumps to highest in nearly a year at 3.5% - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Japan shifting to wage-driven inflation phase, finance minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Israel's Ben-Gvir poised for election gains as young voters turn to far right - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.527
+      },
+      {
+        "headline": "Ahead of elections, Bessent says a Democrat-led Congress could do little to stop Trump agenda - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.232
+      }
+    ]
+  },
+  "timestamp": "2026-10-21T11:48:43.344794"
+}
