@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 18 |
-| Total Picks | 52 |
-| Record | 17W - 23L - 12P |
+| Weeks Tracked | 19 |
+| Total Picks | 55 |
+| Record | 18W - 24L - 13P |
 | Win Rate | 33% |
-| Total Invested | $25,807.00 |
-| Total Returned | $18,398.00 |
-| **Net P&L** | **$-7,409.00** |
-| **ROI** | **-28.71%** |
+| Total Invested | $26,561.00 |
+| Total Returned | $18,636.00 |
+| **Net P&L** | **$-7,925.00** |
+| **ROI** | **-29.84%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-10-19 (exp. 2026-10-23)
+
+**1W-1L-1P** | Cost: $754.00 | Return: $238.00 | **P&L: $-516.00 (-68.4%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | RIVN | PUT | $12.50 | $0.30 | $11.83 | $0.67 | +$37.00 | WIN |
+| 2 | IWM | PUT | $275.00 | $4.40 | $275.75 | $0.00 | -$440.00 | LOSS |
+| 3 | KO | CALL | $91.00 | $2.84 | $92.71 | $1.71 | -$113.00 | PARTIAL |
 
 ### Week of 2026-10-12 (exp. 2026-10-16)
 
@@ -204,4 +214,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-10-16 18:56 ET*
+*Last updated: 2026-10-23 18:50 ET*
