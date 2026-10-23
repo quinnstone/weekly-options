@@ -3722,6 +3722,21 @@
         "option_return_pct": 56.7,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-10-23T13:59:24.457558",
+      "week": "2026-W42",
+      "agent": "position_monitor",
+      "ticker": "RIVN",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "CRITICAL",
+        "option_return_pct": 66.7,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
