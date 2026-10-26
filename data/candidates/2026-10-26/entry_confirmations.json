@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "T",
+    "direction": "put",
+    "strike": 21.5,
+    "original_premium": 0.62,
+    "original_price": 20.83,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.52 to 1.00 (price moved from $20.83 to $20.87). Consider re-selecting strike closer to current price.",
+    "current_price": 20.87,
+    "new_delta": 1.0,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-26T15:44:19.369124"
+  },
+  {
+    "ticker": "WMT",
+    "direction": "call",
+    "strike": 118.0,
+    "original_premium": 2.42,
+    "original_price": 119.7,
+    "signal": "ADJUST",
+    "detail": "Delta shifted from 0.51 to 0.74 (price moved from $119.70 to $119.99). Consider re-selecting strike closer to current price.",
+    "current_price": 119.99,
+    "new_delta": 0.738,
+    "new_premium": null,
+    "gap_pct": null,
+    "timestamp": "2026-10-26T15:44:19.713784"
+  },
+  {
+    "ticker": "RIOT",
+    "direction": "put",
+    "strike": 14.0,
+    "original_premium": 1.33,
+    "original_price": 12.8,
+    "signal": "SKIP",
+    "detail": "Gap -3.1% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 12.73,
+    "new_delta": 0.859,
+    "new_premium": null,
+    "gap_pct": -3.11,
+    "timestamp": "2026-10-26T15:44:19.994575"
+  }
+]
