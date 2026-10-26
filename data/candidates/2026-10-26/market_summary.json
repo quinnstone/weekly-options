@@ -1,0 +1,313 @@
+{
+  "vix": {
+    "current": 18.350000381469727,
+    "previous_close": 19.450000762939453,
+    "change": -1.1,
+    "change_pct": -5.66,
+    "trend_20d": "Date\n2026-09-29 00:00:00-05:00    16.040001\n2026-09-30 00:00:00-05:00    16.340000\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.350000\nName: Close, dtype: float64",
+    "sma_20": 16.65,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 18.350000381469727,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.69,
+    "rsp_return_1d": 0.22,
+    "breadth_spread_1d": -0.46,
+    "spy_return_5d": -0.17,
+    "rsp_return_5d": 1.7,
+    "breadth_spread_5d": 1.87,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.38,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.496,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": -0.43,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 151.8,
+    "skew_sma20": 151.15,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": 0.65
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.884,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 3016261,
+    "spy_put_volume": 2667645
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 17.809999465942383,
+    "vix": 18.360000610351562,
+    "vix3m": 19.90999984741211
+  },
+  "cot_positioning": {
+    "net_position": -114702,
+    "percentile": 47.1,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 1.95,
+      "return_1d": 0.44,
+      "signal": "headwind"
+    },
+    "us_dollar": {
+      "return_5d": 0.29,
+      "return_1d": 0.09,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 4.04,
+      "return_1d": -1.43,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Cracking AI trade has Wall Street looking for a hedge. An ex-Citadel quant may have the answer",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "More pain may be coming for the AI trade. Why I\u2019m not giving up on it",
+        "source": "CNBC",
+        "sentiment": -0.684
+      },
+      {
+        "headline": "AI funding fears rattle Wall Street. Here's how we're adjusting our portfolio",
+        "source": "CNBC",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "UAE's Ras Al Khaimah shuts all beaches as neighbours grapple with oil spill - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Apple\u2019s iPhone Duo hits stores in face of short supply and high demand",
+        "source": "Bloomberg",
+        "sentiment": -0.128
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Mortgage rates above 7% are the 'new normal'\u2014here's why",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold rises as lower oil prices ease inflation fears ahead of Fed meeting - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Morning Bid: Elections, central banks and earnings on the menu - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Bank of Japan's hawkish pause to leave scope for December hike - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.052
+      },
+      {
+        "headline": "I paid off $11,000 of credit card debt in 18 months while still traveling, shopping and living my life",
+        "source": "CNBC",
+        "sentiment": 0.026
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Galp, Moeve scrap downstream merger as Iran war boosts refinery valuations - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      },
+      {
+        "headline": "Oil spill off UAE widens, satellite images show, prompting more beach closures - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Gold rises as lower oil prices ease inflation fears ahead of Fed meeting - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Houthis say they attacked Saudi oil pumping stations, Riyadh airport as fighting intensifies - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "IEA's Birol does not expect energy markets to return to pre-war levels in 2027 - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.206
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "I paid off $11,000 of credit card debt in 18 months while still traveling, shopping and living my life",
+        "source": "CNBC",
+        "sentiment": 0.026
+      },
+      {
+        "headline": "Should you travel together? Ask these questions before booking: 'It'll save you time, money and disappointment'",
+        "source": "CNBC",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "Retail investors are not more sophisticated than 30 years ago, says former hedge fund manager",
+        "source": "CNBC",
+        "sentiment": -0.484
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold rises as lower oil prices ease inflation fears ahead of Fed meeting - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Netanyahu touts Trump endorsement on eve of vote, suggests they may restart war on Iran - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "Hezbollah readies for new regional war with funds from Iran, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Russia says Ukraine has repeatedly struck Oleshky with artillery and drones ahead of local ceasefire - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "UK sanctions 15 commanders from rival Sudan factions over wartime rape - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.691
+      },
+      {
+        "headline": "Who are the leading candidates in Israel's election? - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Trump says Canada tariff deal coming 'soon' at Michigan border rally - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Zelenskiy says US fully resumes warnings on ballistic strikes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.61
+      },
+      {
+        "headline": "Iran has ramped up efforts to target US personnel, intelligence memo warns - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      }
+    ]
+  },
+  "timestamp": "2026-10-26T13:53:28.407556"
+}

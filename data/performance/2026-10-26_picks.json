@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-26",
+  "picks": [
+    {
+      "ticker": "T",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 78.76,
+      "direction_confidence": 0.495,
+      "scores": {
+        "momentum": 93.61745057458873,
+        "mean_reversion": 75.0,
+        "regime_bias": 65.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 85.5,
+        "flow_conviction": 40.0,
+        "event_risk": 63.0,
+        "liquidity": 65.3383,
+        "strike_efficiency": 65.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "WMT",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 70.08,
+      "direction_confidence": 0.522,
+      "scores": {
+        "momentum": 76.29683695921734,
+        "mean_reversion": 65.0,
+        "regime_bias": 47.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 55.0,
+        "flow_conviction": 50.0,
+        "event_risk": 63.0,
+        "liquidity": 75.60642,
+        "strike_efficiency": 75.0,
+        "theta_cost": 53.0
+      }
+    },
+    {
+      "ticker": "RIOT",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 67.81,
+      "direction_confidence": 0.495,
+      "scores": {
+        "momentum": 95.30887039043375,
+        "mean_reversion": 65.0,
+        "regime_bias": 65.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 21.66,
+        "flow_conviction": 65.0,
+        "event_risk": 60.0,
+        "liquidity": 65.63926,
+        "strike_efficiency": 75.0,
+        "theta_cost": 45.0
+      }
+    }
+  ],
+  "recorded_at": "2026-10-26T13:55:11.814624"
+}
