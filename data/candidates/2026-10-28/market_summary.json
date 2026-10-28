@@ -1,0 +1,342 @@
+{
+  "vix": {
+    "current": 17.389999389648438,
+    "previous_close": 17.520000457763672,
+    "change": -0.13,
+    "change_pct": -0.74,
+    "trend_20d": "Date\n2026-10-01 00:00:00-05:00    16.389999\n2026-10-02 00:00:00-05:00    15.310000\n2026-10-05 00:00:00-05:00    15.520000\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    17.389999\nName: Close, dtype: float64",
+    "sma_20": 16.78,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 17.389999389648438,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 0.25,
+    "rsp_return_1d": -0.08,
+    "breadth_spread_1d": -0.33,
+    "spy_return_5d": -0.2,
+    "rsp_return_5d": 0.33,
+    "breadth_spread_5d": 0.53,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.65,
+    "yield_10y": 4.99,
+    "spread_2s10s": 0.34,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.18,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.487,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": true,
+    "transition_direction": null,
+    "vix_5d_change_pct": 4.26,
+    "regime_days": 10,
+    "persistence_score": 1.0
+  },
+  "skew": {
+    "skew": 149.22,
+    "skew_sma20": 151.62,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -2.4
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.999,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 1112507,
+    "spy_put_volume": 1111812
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "contango",
+    "vix9d": 16.579999923706055,
+    "vix": 17.389999389648438,
+    "vix3m": 19.350000381469727
+  },
+  "cot_positioning": {
+    "net_position": -114702,
+    "percentile": 47.1,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.44,
+      "return_1d": -0.31,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": 0.67,
+      "return_1d": -0.1,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 3.84,
+      "return_1d": 2.97,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "South Korea media commission fines Google and Apple over app payment systems - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "AI debt fears ease ahead of Oracle, Alphabet and Amazon updates. Here's what to watch.",
+        "source": "CNBC",
+        "sentiment": -0.273
+      },
+      {
+        "headline": "What's behind the AI trade comeback \u2014 plus, our take on Intel's latest deal",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "AI investment boom powers US business spending on equipment in September - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Santoli: We are nearing a now-or-never moment for the AI trade to rebound",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Namibia raises key interest rate to cushion second-round effects from high fuel prices - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      },
+      {
+        "headline": "Indian central bank likely intervenes to support rupee as oil prices weigh, traders say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      },
+      {
+        "headline": "POLL Strong dollar, high yields drag on gold outlook, but central-bank demand lends support - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      },
+      {
+        "headline": "US stock futures gain as oil pulls back ahead of Fed decision - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.527
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Indian central bank likely intervenes to support rupee as oil prices weigh, traders say - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      },
+      {
+        "headline": "Oil prices rise about 2% as Yemen fighting stokes supply fears - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      },
+      {
+        "headline": "Yemen's Houthis say they hit Saudi Ras Tanura oil refinery with missile - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US energy firms to produce record natgas in 2026 as global demand soars - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "World to add less clean energy capacity this year, renewables agency chief says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.499
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Iran's Revolutionary Court sentences director Panahi to jail term, travel ban - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.527
+      },
+      {
+        "headline": "Traders are betting big against this restaurant giant into earnings",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "France to exempt retailers from replacing diesel released from reserves - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "UK's Healey says he will help households by scrapping fixed gas charges - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Food and household brands warn of more price hikes as Iran war costs bite - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "South Korea media commission fines Google and Apple over app payment systems - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran sees only unacceptable ideas in latest mediation to end war, official says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.784
+      },
+      {
+        "headline": "Qatar says Iran needs to show good intentions for mediation efforts to succeed - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.727
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "POLL Strong dollar, high yields drag on gold outlook, but central-bank demand lends support - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.542
+      },
+      {
+        "headline": "JSW Steel expects 8%-9% gain in second-half volume, CEO says",
+        "source": "Bloomberg",
+        "sentiment": 0.527
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Brazil's Flavio Bolsonaro arrives in US after election defeat - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.459
+      },
+      {
+        "headline": "Turkey warns against further attacks by Russia, Ukraine on Black Sea vessels - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      },
+      {
+        "headline": "Houthis strike Yemen's Aden airport after evacuation warning - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Iranians cut essentials and put dreams on hold as war-hit economy bites - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Brazil Supreme Court says no search warrant issued against Senator Flavio Bolsonaro - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.34
+      },
+      {
+        "headline": "As Iran war drags on, airlines pull back on fuel hedges and warn on fares - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "Unilever flags price hikes as Iran war costs stack up - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "US costs of Iran war rise to over $47 billion, according to Pentagon estimate - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ]
+  },
+  "timestamp": "2026-10-28T12:57:32.142198"
+}

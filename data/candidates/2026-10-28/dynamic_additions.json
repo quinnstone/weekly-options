@@ -1,0 +1,102 @@
+[
+  {
+    "ticker": "RBLX",
+    "source": "earnings_this_week, news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FTNT",
+    "source": "earnings_this_week, news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SHOP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "UBER",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "SNAP",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TTD",
+    "source": "news_buzz, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "ICE",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "KO",
+    "source": "earnings_this_week, unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "REGN",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "GILD",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PINS",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "TWLO",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BIIB",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "GEHC",
+    "source": "earnings_this_week, news_buzz",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "BABA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "MARA",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "RIOT",
+    "source": "unusual_options_volume",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "CL",
+    "source": "earnings_this_week",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "PSX",
+    "source": "earnings_this_week",
+    "sector": "dynamic"
+  },
+  {
+    "ticker": "FCX",
+    "source": "earnings_this_week",
+    "sector": "dynamic"
+  }
+]
