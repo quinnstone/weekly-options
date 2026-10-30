@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 19 |
-| Total Picks | 55 |
-| Record | 18W - 24L - 13P |
+| Weeks Tracked | 20 |
+| Total Picks | 58 |
+| Record | 19W - 24L - 15P |
 | Win Rate | 33% |
-| Total Invested | $26,561.00 |
-| Total Returned | $18,636.00 |
-| **Net P&L** | **$-7,925.00** |
-| **ROI** | **-29.84%** |
+| Total Invested | $26,998.00 |
+| Total Returned | $19,315.00 |
+| **Net P&L** | **$-7,683.00** |
+| **ROI** | **-28.46%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-10-26 (exp. 2026-10-30)
+
+**1W-0L-2P** | Cost: $437.00 | Return: $679.00 | **P&L: +$242.00 (+55.4%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | T | PUT | $21.50 | $0.62 | $21.41 | $0.09 | -$53.00 | PARTIAL |
+| 2 | WMT | CALL | $118.00 | $2.42 | $123.51 | $5.51 | +$309.00 | WIN |
+| 3 | RIOT | PUT | $14.00 | $1.33 | $12.81 | $1.19 | -$14.00 | PARTIAL |
 
 ### Week of 2026-10-19 (exp. 2026-10-23)
 
@@ -214,4 +224,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-10-23 19:23 ET*
+*Last updated: 2026-10-30 19:26 ET*
