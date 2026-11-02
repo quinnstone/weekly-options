@@ -1,0 +1,331 @@
+{
+  "vix": {
+    "current": 21.219999313354492,
+    "previous_close": 19.420000076293945,
+    "change": 1.8,
+    "change_pct": 9.27,
+    "trend_20d": "Date\n2026-10-06 00:00:00-05:00    15.010000\n2026-10-07 00:00:00-05:00    15.080000\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    16.910000\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.219999\nName: Close, dtype: float64",
+    "sma_20": 17.29,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "elevated",
+    "vix_level": 21.219999313354492,
+    "description": "Elevated volatility - wider strikes, larger premiums available",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": -0.47,
+    "rsp_return_1d": 0.76,
+    "breadth_spread_1d": 1.23,
+    "spy_return_5d": -1.73,
+    "rsp_return_5d": 1.23,
+    "breadth_spread_5d": 2.96,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {},
+  "credit_spread": {
+    "hy_oas": 3.44,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.487,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "escalating",
+    "vix_5d_change_pct": 15.39,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 149.76,
+    "skew_sma20": 152.61,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -2.85
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.247,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 3786597,
+    "spy_put_volume": 4721068
+  },
+  "vix_term_structure": {
+    "term_structure": "backwardation",
+    "near_term": "backwardation",
+    "far_term": "flat",
+    "vix9d": 22.719999313354492,
+    "vix": 21.219999313354492,
+    "vix3m": 21.610000610351562
+  },
+  "cot_positioning": {
+    "net_position": -102499,
+    "percentile": 51.0,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 0.12,
+      "return_1d": -0.13,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.5,
+      "return_1d": -0.09,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -4.23,
+      "return_1d": -7.04,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "2 of our banks are at the heart of this week's biggest tech deals",
+        "source": "CNBC",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "Apple reports after the bell. Options traders expect a big move",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Options traders are getting anxious on Palantir and Apple ahead of earnings",
+        "source": "CNBC",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "CrowdStrike lands an upgrade, and Jim Cramer's advice on Apple ahead of earnings",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oracle files to sell $20 billion in new stock, bonds to finance AI buildout",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "2 of our banks are at the heart of this week's biggest tech deals",
+        "source": "CNBC",
+        "sentiment": 0.637
+      },
+      {
+        "headline": "Bank of England poised to raise rates but may push back on bets for more - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "FTSE 100 notches fourth straight day of gains as oil slides on US-Iran deal hopes - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.727
+      },
+      {
+        "headline": "TotalEnergies says Iran war could accelerate energy transition - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      },
+      {
+        "headline": "Freed from OPEC quotas, UAE says oil exports have risen as it hosts industry event - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      },
+      {
+        "headline": "COMMENTARY: Asia's crude oil imports back to pre-war levels but refined fuels lag - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.665
+      },
+      {
+        "headline": "SNAPSHOT US stock index futures jump as oil falls about 6% - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "We're trimming a rallying industrial stock, looking for its next catalyst post-spinoff",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Abu Dhabi's ADNOC, G42 sign deal with OpenAI as Sam Altman travels to UAE - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Xiaomi's October EV deliveries top 50,000, hit 2026 monthly high - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Jim Cramer says it's time to look beyond tech. Here are 4 consumer stocks he likes",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "The rise of the 15-foot skeleton\u2014how a viral novelty became a Halloween staple",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Iran, Qatari mediators hold third day of talks to end US-Iran war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Iranian envoys meet Qatari mediators as threat looms of US strikes after midterms - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.758
+      },
+      {
+        "headline": "Iranian official says US attacked fishing boats off Qeshm Island, state media reports - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.459
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold rises over 2% from one-year low on softer oil prices; US midterms in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Erdogan says South Korea could partner in Turkey's Sinop nuclear project, Yonhap reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Sectors bracing for a pivot as US midterm elections loom - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.226
+      },
+      {
+        "headline": "Yemen's Houthis say they launched drones towards Saudi Arabia's Dammam airport - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Stock market after midterm elections: What S&P 500 history shows",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran says contacts over ending war continue after talks finish with no breakthrough - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.727
+      },
+      {
+        "headline": "Trump's Iran threat renews Gulf fears of a war it didn't choose - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.878
+      },
+      {
+        "headline": "US voters in a sour economic mood heading into midterm elections - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "New Zealand early voting surges ahead of November 7 election - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Democratic Rep. Stevens endorses Rogers over El-Sayed in Michigan Senate election",
+        "source": "CNBC",
+        "sentiment": 0.34
+      }
+    ]
+  },
+  "timestamp": "2026-11-02T16:02:19.657374"
+}
