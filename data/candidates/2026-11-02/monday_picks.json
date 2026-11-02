@@ -1405,7 +1405,7 @@
     },
     "strike": 16.5,
     "expiry": "2026-11-06",
-    "premium": 0.59,
+    "premium": 0.54,
     "confidence": 0.494,
     "current_price": 16.6,
     "breakeven": 17.09,
@@ -1429,7 +1429,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 3.0% move to $17.09 (weekly expected move: 10.6%)."
     },
-    "git_sha": "8f9f680a52b491c048d7d203a77e8851559ade97"
+    "git_sha": "8f9f680a52b491c048d7d203a77e8851559ade97",
+    "original_premium_premarket": 0.59
   },
   {
     "ticker": "GOOG",
@@ -2107,7 +2108,7 @@
     },
     "strike": 280.0,
     "expiry": "2026-11-06",
-    "premium": 5.03,
+    "premium": 4.64,
     "confidence": 0.522,
     "current_price": 278.04,
     "breakeven": 274.97,
@@ -2131,6 +2132,7 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.1% move to $274.97 (weekly expected move: 6.0%)."
     },
-    "git_sha": "8f9f680a52b491c048d7d203a77e8851559ade97"
+    "git_sha": "8f9f680a52b491c048d7d203a77e8851559ade97",
+    "original_premium_premarket": 5.03
   }
 ]
