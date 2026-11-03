@@ -1,0 +1,49 @@
+{
+  "positions": [
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": 16.5,
+      "entry_price": 16.6,
+      "current_price": 16.78,
+      "entry_premium": 0.54,
+      "current_option_price": 0.58,
+      "current_delta": 0.633,
+      "stock_move_pct": 1.11,
+      "option_return_pct": 7.4,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 7% (target: 35% today). Stock moved +1.1%."
+    },
+    {
+      "ticker": "GOOG",
+      "direction": "put",
+      "strike": 280.0,
+      "entry_price": 278.04,
+      "current_price": 278.27,
+      "entry_premium": 4.64,
+      "current_option_price": 4.88,
+      "current_delta": 0.567,
+      "stock_move_pct": 0.08,
+      "option_return_pct": 5.2,
+      "days_held": 1,
+      "today_target_pct": 35,
+      "price_source": "bid_ask_mid",
+      "status": "HOLD",
+      "detail": "P&L: 5% (target: 35% today). Stock moved +0.1%."
+    }
+  ],
+  "alerts": [],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 2,
+    "avg_return_pct": 6.3,
+    "targets_hit": 0,
+    "stops_hit": 0,
+    "urgency": "ROUTINE",
+    "day": "Tuesday",
+    "days_to_expiry": 4
+  }
+}

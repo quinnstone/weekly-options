@@ -3842,6 +3842,36 @@
         "option_return_pct": 22.8,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-11-03T18:51:37.281442",
+      "week": "2026-W44",
+      "agent": "position_monitor",
+      "ticker": "SOFI",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 7.4,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-11-03T18:51:37.284033",
+      "week": "2026-W44",
+      "agent": "position_monitor",
+      "ticker": "GOOG",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 5.2,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
