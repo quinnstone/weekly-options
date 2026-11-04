@@ -1,0 +1,311 @@
+{
+  "vix": {
+    "current": 16.690000534057617,
+    "previous_close": 20.829999923706055,
+    "change": -4.14,
+    "change_pct": -19.88,
+    "trend_20d": "Date\n2026-10-08 00:00:00-05:00    15.410000\n2026-10-09 00:00:00-05:00    14.840000\n2026-10-12 00:00:00-05:00    15.210000\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    16.910000\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.150000\n2026-11-03 00:00:00-06:00    20.830000\n2026-11-04 00:00:00-06:00    16.690001\nFreq: B, Name: Close, dtype: float64",
+    "sma_20": 17.65,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 16.690000534057617,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 1.83,
+    "rsp_return_1d": 1.74,
+    "breadth_spread_1d": -0.08,
+    "spy_return_5d": -0.54,
+    "rsp_return_5d": 2.6,
+    "breadth_spread_5d": 3.14,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.74,
+    "yield_10y": 5.13,
+    "spread_2s10s": 0.39,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.4,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.459,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -1.3,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 150.01,
+    "skew_sma20": 153.54,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -3.53
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.971,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 3054473,
+    "spy_put_volume": 2967231
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 15.489999771118164,
+    "vix": 16.690000534057617,
+    "vix3m": 18.889999389648438
+  },
+  "cot_positioning": {
+    "net_position": -102499,
+    "percentile": 51.0,
+    "signal": "neutral",
+    "trend": "building",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -0.01,
+      "return_1d": 0.46,
+      "signal": "neutral"
+    },
+    "us_dollar": {
+      "return_5d": -0.46,
+      "return_1d": -0.36,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -13.27,
+      "return_1d": -7.78,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Chinese chipmaker YMTC puts IPO on hold as weaker markets weigh, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "COMMENTARY: Trading Day: AI trade rebounds, midterms awaited - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "COMMENTARY: On AI and Iran, Trump risks bombing himself in the foot - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Jim Cramer says this bank stock is a buy after its post-election pullback",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "India says PepsiCo, Monster marketed with 'energy drink' label to dupe consumers - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "Oil tumbles as investors weigh end to Iran war after US Democrats' midterm elections sweep - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Marathon profit beats estimates on soaring margins; strikes $4.2 billion refinery deal with CVR - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Gulf oil flows dip in October from post-Iran war high, data shows - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Oil services firms face major cost pressure from Iran crisis, execs say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.763
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Every look from the CFDA Fashion Awards - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.459
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Spain's transport minister says he will resign after latest deadly train crash - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.625
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "India says PepsiCo, Monster marketed with 'energy drink' label to dupe consumers - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "From grains to chicken and milk, India faces prolonged food inflation - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "US has no immediate plan to strike Iran, Trump tells FT - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "COMMENTARY: Morning Bid: Midterms and mediation - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold gains 3% as dollar slides after Democratic midterm gains - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.586
+      },
+      {
+        "headline": "Gold edges lower again as dollar, yields strengthen; US midterms in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.026
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Democrats, Trump face off after elections as Washington heads for divided government - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "India's IndiGo may fast-track some overseas growth as westward flights disrupted - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Trump acknowledges role of Iran war in Democratic sweep in midterm elections - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "COMMENTARY: Asia hopes Democrats can provide relief from Trump's Iran war, tariffs - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.25
+      },
+      {
+        "headline": "Breakingviews - COMMENTARY: Election flop leaves Donald Trump a wounded animal - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Dollar falls after Democrats take US Congress in midterm elections - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "PODCAST: Election Day, US Israel aid, Europe bomb threats (Updated) - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "Election Day: Here is the No. 1 issue we're watching as a signal for stocks",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ]
+  },
+  "timestamp": "2026-11-04T13:23:39.708958"
+}
