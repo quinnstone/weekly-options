@@ -1,0 +1,52 @@
+{
+  "positions": [
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": 16.5,
+      "entry_price": 16.6,
+      "current_price": 16.02,
+      "entry_premium": 0.54,
+      "current_option_price": 0.12,
+      "current_delta": 0.187,
+      "stock_move_pct": -3.46,
+      "option_return_pct": -77.8,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -78% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "GOOG",
+      "direction": "put",
+      "strike": 280.0,
+      "entry_price": 278.04,
+      "current_price": 281.72,
+      "entry_premium": 4.64,
+      "current_option_price": 2.63,
+      "current_delta": 0.385,
+      "stock_move_pct": 1.32,
+      "option_return_pct": -43.3,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -43% \u2014 approaching stop. Watch closely."
+    }
+  ],
+  "alerts": [
+    "SOFI: STOP LOSS HIT (-78%)",
+    "GOOG: APPROACHING STOP (-43%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 2,
+    "avg_return_pct": -60.5,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
