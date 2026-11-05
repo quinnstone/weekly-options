@@ -1,0 +1,52 @@
+{
+  "positions": [
+    {
+      "ticker": "SOFI",
+      "direction": "call",
+      "strike": 16.5,
+      "entry_price": 16.6,
+      "current_price": 17.39,
+      "entry_premium": 0.54,
+      "current_option_price": 0.97,
+      "current_delta": 0.839,
+      "stock_move_pct": 4.76,
+      "option_return_pct": 79.6,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "TARGET_HIT",
+      "detail": "Up 80% \u2014 at or above 25% day-3 target. Consider taking profit."
+    },
+    {
+      "ticker": "GOOG",
+      "direction": "put",
+      "strike": 280.0,
+      "entry_price": 278.04,
+      "current_price": 287.4,
+      "entry_premium": 4.64,
+      "current_option_price": 0.83,
+      "current_delta": 0.181,
+      "stock_move_pct": 3.37,
+      "option_return_pct": -82.1,
+      "days_held": 2,
+      "today_target_pct": 25,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -82% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "SOFI: TARGET HIT (80% vs 25% target)",
+    "GOOG: STOP LOSS HIT (-82%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 2,
+    "avg_return_pct": -1.2,
+    "targets_hit": 1,
+    "stops_hit": 1,
+    "urgency": "ROUTINE",
+    "day": "Wednesday",
+    "days_to_expiry": 3
+  }
+}
