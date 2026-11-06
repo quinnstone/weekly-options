@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 20 |
-| Total Picks | 58 |
-| Record | 19W - 24L - 15P |
-| Win Rate | 33% |
-| Total Invested | $26,998.00 |
-| Total Returned | $19,315.00 |
-| **Net P&L** | **$-7,683.00** |
-| **ROI** | **-28.46%** |
+| Weeks Tracked | 21 |
+| Total Picks | 61 |
+| Record | 19W - 26L - 16P |
+| Win Rate | 31% |
+| Total Invested | $28,228.00 |
+| Total Returned | $19,337.00 |
+| **Net P&L** | **$-8,891.00** |
+| **ROI** | **-31.50%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-11-02 (exp. 2026-11-06)
+
+**0W-2L-1P** | Cost: $1,230.00 | Return: $22.00 | **P&L: $-1,208.00 (-98.2%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | GOOGL | PUT | $285.00 | $7.12 | $284.78 | $0.22 | -$690.00 | PARTIAL |
+| 2 | SOFI | CALL | $16.50 | $0.54 | $16.21 | $0.00 | -$54.00 | LOSS |
+| 3 | GOOG | PUT | $280.00 | $4.64 | $283.93 | $0.00 | -$464.00 | LOSS |
 
 ### Week of 2026-10-26 (exp. 2026-10-30)
 
@@ -224,4 +234,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-10-30 19:56 ET*
+*Last updated: 2026-11-06 18:55 ET*
