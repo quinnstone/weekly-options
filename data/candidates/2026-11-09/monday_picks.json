@@ -1114,7 +1114,7 @@
     },
     "strike": 61.0,
     "expiry": "2026-11-13",
-    "premium": 3.05,
+    "premium": 2.82,
     "confidence": 0.338,
     "current_price": 59.37,
     "breakeven": 57.95,
@@ -1138,7 +1138,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 2.4% move to $57.95 (weekly expected move: 15.0%)."
     },
-    "git_sha": "986ab6eb1aa91dc3c35360d1ea38cc4e31e89fff"
+    "git_sha": "986ab6eb1aa91dc3c35360d1ea38cc4e31e89fff",
+    "original_premium_premarket": 3.05
   },
   {
     "ticker": "XYZ",
@@ -1842,7 +1843,7 @@
     },
     "strike": 88.0,
     "expiry": "2026-11-13",
-    "premium": 2.16,
+    "premium": 2.31,
     "confidence": 0.435,
     "current_price": 88.56,
     "breakeven": 90.16,
@@ -1866,7 +1867,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.8% move to $90.16 (weekly expected move: 7.0%)."
     },
-    "git_sha": "986ab6eb1aa91dc3c35360d1ea38cc4e31e89fff"
+    "git_sha": "986ab6eb1aa91dc3c35360d1ea38cc4e31e89fff",
+    "original_premium_premarket": 2.16
   },
   {
     "ticker": "NVDA",

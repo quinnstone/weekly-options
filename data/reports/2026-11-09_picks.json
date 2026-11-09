@@ -36,7 +36,7 @@
       "direction": "put",
       "strike": 61.0,
       "expiry": "2026-11-13",
-      "premium": 3.05,
+      "premium": 2.82,
       "composite_score": 75.12,
       "confidence": 0.338,
       "current_price": 59.37,
@@ -93,7 +93,7 @@
       "direction": "call",
       "strike": 88.0,
       "expiry": "2026-11-13",
-      "premium": 2.16,
+      "premium": 2.31,
       "composite_score": 73.2,
       "confidence": 0.435,
       "current_price": 88.56,
@@ -203,5 +203,5 @@
       "active_regime": "normal"
     }
   ],
-  "generated_at": "2026-11-09T16:46:11.253911"
+  "generated_at": "2026-11-09T18:16:25.093247"
 }

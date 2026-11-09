@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "INTC",
+    "direction": "put",
+    "strike": 61.0,
+    "original_premium": 2.82,
+    "original_price": 59.37,
+    "signal": "GO",
+    "detail": "Price moving against thesis (+4.3% since open). Proceed with caution or wait for reversal.",
+    "current_price": 59.38,
+    "new_delta": 0.615,
+    "new_premium": 2.82,
+    "gap_pct": 1.15,
+    "timestamp": "2026-11-09T18:16:23.370327"
+  },
+  {
+    "ticker": "XYZ",
+    "direction": "call",
+    "strike": 88.0,
+    "original_premium": 2.31,
+    "original_price": 88.56,
+    "signal": "GO",
+    "detail": "Early action confirms call thesis (+1.8% since open).",
+    "current_price": 88.56,
+    "new_delta": 0.559,
+    "new_premium": 2.31,
+    "gap_pct": 1.78,
+    "timestamp": "2026-11-09T18:16:23.727348"
+  },
+  {
+    "ticker": "NVDA",
+    "direction": "put",
+    "strike": 180.0,
+    "original_premium": 5.65,
+    "original_price": 178.67,
+    "signal": "SKIP",
+    "detail": "Gap -7.9% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 178.6,
+    "new_delta": 0.535,
+    "new_premium": null,
+    "gap_pct": -7.91,
+    "timestamp": "2026-11-09T18:16:24.171997"
+  }
+]
