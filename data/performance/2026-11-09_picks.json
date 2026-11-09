@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-09",
+  "picks": [
+    {
+      "ticker": "INTC",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 75.12,
+      "direction_confidence": 0.338,
+      "scores": {
+        "momentum": 81.23832462503951,
+        "mean_reversion": 75.0,
+        "regime_bias": 60.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 75.25,
+        "flow_conviction": 40.0,
+        "event_risk": 65.0,
+        "liquidity": 79.55422,
+        "strike_efficiency": 60.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "XYZ",
+      "direction": "call",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 73.2,
+      "direction_confidence": 0.435,
+      "scores": {
+        "momentum": 99.89120982493762,
+        "mean_reversion": 74.216,
+        "regime_bias": 42.0,
+        "trend_persistence": 70.0,
+        "iv_mispricing": 74.60000000000001,
+        "flow_conviction": 50.0,
+        "event_risk": 63.0,
+        "liquidity": 35.08566,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.09,
+      "direction_confidence": 0.413,
+      "scores": {
+        "momentum": 97.78897426145065,
+        "mean_reversion": 75.0,
+        "regime_bias": 60.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 25.0,
+        "flow_conviction": 75.0,
+        "event_risk": 60.0,
+        "liquidity": 89.22572,
+        "strike_efficiency": 65.0,
+        "theta_cost": 37.0
+      }
+    }
+  ],
+  "recorded_at": "2026-11-09T16:46:11.500458"
+}

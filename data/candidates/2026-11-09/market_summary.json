@@ -1,0 +1,356 @@
+{
+  "vix": {
+    "current": 19.920000076293945,
+    "previous_close": 25.639999389648438,
+    "change": -5.72,
+    "change_pct": -22.31,
+    "trend_20d": "Date\n2026-10-13 00:00:00-05:00    15.270000\n2026-10-14 00:00:00-05:00    16.870001\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    16.910000\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.150000\n2026-11-03 00:00:00-06:00    20.830000\n2026-11-04 00:00:00-06:00    16.610001\n2026-11-05 00:00:00-06:00    28.180000\n2026-11-06 00:00:00-06:00    25.639999\n2026-11-09 00:00:00-06:00    19.920000\nFreq: B, Name: Close, dtype: float64",
+    "sma_20": 19.06,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 19.920000076293945,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 2.37,
+    "rsp_return_1d": 2.27,
+    "breadth_spread_1d": -0.1,
+    "spy_return_5d": 0.08,
+    "rsp_return_5d": 0.44,
+    "breadth_spread_5d": 0.36,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.74,
+    "yield_10y": 5.13,
+    "spread_2s10s": 0.39,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.42,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.459,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": -5.82,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 153.55,
+    "skew_sma20": 153.96,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -0.41
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.957,
+    "market_pc_state": "neutral",
+    "spy_call_volume": 4528868,
+    "spy_put_volume": 4332671
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "flat",
+    "vix9d": 19.8799991607666,
+    "vix": 19.920000076293945,
+    "vix3m": 20.850000381469727
+  },
+  "cot_positioning": {
+    "net_position": -93907,
+    "percentile": 54.9,
+    "signal": "neutral",
+    "trend": "stable",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 1.05,
+      "return_1d": 0.05,
+      "signal": "headwind"
+    },
+    "us_dollar": {
+      "return_5d": -0.14,
+      "return_1d": -0.55,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": -9.81,
+      "return_1d": -3.87,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "We're adding a consumer stock to diversify beyond the volatile AI trade",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Why Jim Cramer believes Nvidia is still valuable despite the CEO affair controversy",
+        "source": "CNBC",
+        "sentiment": 0.477
+      },
+      {
+        "headline": "COP31 to open in Turkey, with climate goals under pressure from war and AI - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.727
+      },
+      {
+        "headline": "Meta chief strategy officer Dave Wehner leaves to join AI infrastructure startup Fireworks as CFO",
+        "source": "CNBC",
+        "sentiment": 0.296
+      },
+      {
+        "headline": "AI crush is powering one stock to sky-high valuations",
+        "source": "CNBC",
+        "sentiment": -0.153
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Children\u2019s Place files for bankruptcy protection, seeks buyer",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Asian stocks steady as AI, Mideast jitters recede; dollar firm on Fed bets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Houthi attack damages Aramco building in Riyadh's financial district - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "Mark Cuban says he doesn\u2019t \u2018give a f---' about growing his net worth\u2014a healthy mindset for non-billionaires too, a financial therapist says",
+        "source": "CNBC",
+        "sentiment": 0.527
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Gold gains as lower oil prices ease inflation fears - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      },
+      {
+        "headline": "Indian shares inch higher to close at 8-month high as crude oil drops - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.361
+      },
+      {
+        "headline": "Oil falls as Trump signals restraint on Iran despite fresh shipping attacks - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.114
+      },
+      {
+        "headline": "Iraq has reached understandings with US to allow oil exports through Hormuz, minister says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Crude gains on worries about renewed US attacks on Iran - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.791
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Houthi-run health ministry says airstrikes kill 33 near Yemen capital - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.691
+      },
+      {
+        "headline": "Mark Cuban says he doesn\u2019t \u2018give a f---' about growing his net worth\u2014a healthy mindset for non-billionaires too, a financial therapist says",
+        "source": "CNBC",
+        "sentiment": 0.527
+      },
+      {
+        "headline": "Sen. Chris Murphy released from hospital after stroke, will miss votes for 'several weeks' as he rehabs",
+        "source": "CNBC",
+        "sentiment": -0.153
+      },
+      {
+        "headline": "Family offices boost startup investments in October, backing women's health and caregivers",
+        "source": "CNBC",
+        "sentiment": 0.421
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Meta chief strategy officer Dave Wehner leaves to join AI infrastructure startup Fireworks as CFO",
+        "source": "CNBC",
+        "sentiment": 0.296
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "We're adding a consumer stock to diversify beyond the volatile AI trade",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "World\u2019s No. 1 restaurant crowned as contest comes under increasing scrutiny",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "Trump to meet Iran war mediator Qatar, no imminent deal seen to end the war - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.875
+      },
+      {
+        "headline": "Explosions heard in areas in southern Iran, Iranian media report - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Qatar says its mediation efforts between US and Iran continue to prevent escalation - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.026
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold gains as lower oil prices ease inflation fears - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.026
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Iran sent nuclear proposal to the US via Qatar, senior Iranian official tells Reuters - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Goodyear Tire CEO Mark Stewart steps down as company continues turnaround plan",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "UAE's Gargash warns of prolonged regional uncertainty, says US-Iran settlement appears difficult - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.649
+      },
+      {
+        "headline": "With Stephen Miller at the helm, Trump charts a course for conflict - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.318
+      },
+      {
+        "headline": "Decisive election. Dramatic stock swings. How we handled the market last week",
+        "source": "CNBC",
+        "sentiment": 0.226
+      },
+      {
+        "headline": "US Treasury sanctions Canadian money services firms over Iran-related transactions - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.202
+      },
+      {
+        "headline": "Top House Oversight Democrat warns Trump family to 'lawyer up'",
+        "source": "CNBC",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "Bomb threats warning 'the clock is ticking' disrupt TV channels across Europe - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.813
+      },
+      {
+        "headline": "Iran war spurs crackdown on clerics in tiny Gulf state Bahrain - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      }
+    ]
+  },
+  "timestamp": "2026-11-09T16:44:34.187936"
+}
