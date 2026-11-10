@@ -4058,6 +4058,36 @@
         "option_return_pct": -6.5,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-11-10T18:54:07.294840",
+      "week": "2026-W45",
+      "agent": "position_monitor",
+      "ticker": "INTC",
+      "mechanical_signal": "HOLD",
+      "agent_signal": "HOLD",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": 24.8,
+        "has_agent_analysis": false
+      }
+    },
+    {
+      "timestamp": "2026-11-10T18:54:07.298948",
+      "week": "2026-W45",
+      "agent": "position_monitor",
+      "ticker": "XYZ",
+      "mechanical_signal": "STOP_HIT",
+      "agent_signal": "STOP_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ROUTINE",
+        "option_return_pct": -76.6,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
