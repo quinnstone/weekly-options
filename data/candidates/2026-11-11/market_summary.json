@@ -1,0 +1,334 @@
+{
+  "vix": {
+    "current": 17.559999465942383,
+    "previous_close": 19.459999084472656,
+    "change": -1.9,
+    "change_pct": -9.76,
+    "trend_20d": "Date\n2026-10-15 00:00:00-05:00    16.459999\n2026-10-16 00:00:00-05:00    19.990000\n2026-10-19 00:00:00-05:00    18.440001\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    16.910000\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.150000\n2026-11-03 00:00:00-06:00    20.830000\n2026-11-04 00:00:00-06:00    16.610001\n2026-11-05 00:00:00-06:00    28.180000\n2026-11-06 00:00:00-06:00    25.639999\n2026-11-09 00:00:00-06:00    19.920000\n2026-11-10 00:00:00-06:00    19.459999\n2026-11-11 00:00:00-06:00    17.559999\nFreq: B, Name: Close, dtype: float64",
+    "sma_20": 19.31,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "normal",
+    "vix_level": 17.559999465942383,
+    "description": "Normal volatility - standard setups work well",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": 1.55,
+    "rsp_return_1d": 0.73,
+    "breadth_spread_1d": -0.82,
+    "spy_return_5d": -0.68,
+    "rsp_return_5d": -0.37,
+    "breadth_spread_5d": 0.31,
+    "breadth_signal": "neutral"
+  },
+  "yields": {
+    "yield_2y": 4.74,
+    "yield_10y": 5.13,
+    "spread_2s10s": 0.39,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.34,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.459,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "choppy",
+    "vix_5d_change_pct": 5.72,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 151.12,
+    "skew_sma20": 153.55,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -2.43
+  },
+  "market_put_call": {
+    "market_pc_ratio": 0.688,
+    "market_pc_state": "bullish",
+    "spy_call_volume": 2989628,
+    "spy_put_volume": 2057192
+  },
+  "vix_term_structure": {
+    "term_structure": "contango",
+    "near_term": "contango",
+    "far_term": "contango",
+    "vix9d": 16.1200008392334,
+    "vix": 17.559999465942383,
+    "vix3m": 19.5
+  },
+  "cot_positioning": {
+    "net_position": -93907,
+    "percentile": 54.9,
+    "signal": "neutral",
+    "trend": "stable",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.26,
+      "return_1d": 0.02,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 1.49,
+      "return_1d": 0.69,
+      "signal": "headwind"
+    },
+    "crude_oil": {
+      "return_5d": -3.78,
+      "return_1d": 0.82,
+      "signal": "neutral"
+    },
+    "composite": "risk_off",
+    "headwinds": 2,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Tired of spending time fixing other people's AI slop at work? How to talk to them about it",
+        "source": "CNBC",
+        "sentiment": -0.44
+      },
+      {
+        "headline": "Ex-Google recruiter: You're answering 'Tell me about yourself?' all wrong, and other job interview mistakes\u2014do this instead",
+        "source": "CNBC",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "'Markets bottom on bad news' maxim rings true as chip stocks rally amid Nvidia scandal",
+        "source": "CNBC",
+        "sentiment": -0.557
+      },
+      {
+        "headline": "PODCAST: Hegseth, FBI Nvidia probe, Anthropic valuation (Updated) - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "White House nominates Palantir's LoSapio to lead Homeland Security's cyber agency - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Mortgage rates jump sharply higher, after easing for four straight weeks. Here's why",
+        "source": "CNBC",
+        "sentiment": 0.44
+      },
+      {
+        "headline": "Wall St ends lower as hot inflation data, Fed comments heighten rate worries - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.612
+      },
+      {
+        "headline": "Fed officials open door to a half-percentage-point rate hike as inflation worsens - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "GE Vernova sellers have it all wrong \u2014 plus, why Fed rate hike odds are soaring",
+        "source": "CNBC",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "Fed to raise rates once more in December as inflation risks stay high: Reuters poll - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.273
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "OPEC+ oil output in October nears pre-Iran war rate, led by Saudi Arabia - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.599
+      },
+      {
+        "headline": "Oil up 2% as Iran official says country will keep enriched nuclear material - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Poland's Orlen ends long-term QatarEnergy LNG contract over delivery failure - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      },
+      {
+        "headline": "European shares near record high as lower oil prices boost sentiment - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.402
+      },
+      {
+        "headline": "PODCAST: Oil's well that ends well - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.494
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "US House blocks bid to impeach Defense Secretary Hegseth - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Consumers are showing signs of strain even as they keep spending, CNBC/NRF Retail Monitor shows",
+        "source": "CNBC",
+        "sentiment": -0.052
+      }
+    ],
+    "Consumer Staples": [
+      {
+        "headline": "American Airlines brings fresh food back to NY-Chicago first class for first time since 2019",
+        "source": "CNBC",
+        "sentiment": 0.318
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold prices ease as focus shifts to US inflation data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.361
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Iran will not allow enriched nuclear material to leave the country, security chief says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.137
+      },
+      {
+        "headline": "Oil up 2% as Iran official says country will keep enriched nuclear material - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Canada reimposes sanctions on 11 Iranian entities for contributing to nuclear activities - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Gulf markets rise as investors assess Iran war, shipping risks - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.718
+      },
+      {
+        "headline": "Iran warns of domestic gas shortages from war this winter - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.71
+      },
+      {
+        "headline": "COMMENTARY: Trump\u2019s Iran war pause is as costly as new strikes - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.778
+      },
+      {
+        "headline": "US Treasury chief Bessent moved to military base after Iranian threats, sources say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.25
+      },
+      {
+        "headline": "Most Americans want new Democratic Congress to end Trump's Iran war, Reuters/Ipsos poll finds - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.514
+      },
+      {
+        "headline": "Fed's Logan calls for two more rate hikes, possibly rapidly - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Instant view: Hot October inflation report rattles markets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "France summons Iran envoy over supermarket fridge hack, warns of response - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      }
+    ]
+  },
+  "timestamp": "2026-11-11T13:18:52.628267"
+}
