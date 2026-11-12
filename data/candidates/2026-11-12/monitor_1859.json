@@ -1,0 +1,52 @@
+{
+  "positions": [
+    {
+      "ticker": "INTC",
+      "direction": "put",
+      "strike": 61.0,
+      "entry_price": 59.37,
+      "current_price": 61.22,
+      "entry_premium": 2.82,
+      "current_option_price": 0.94,
+      "current_delta": 0.445,
+      "stock_move_pct": 3.12,
+      "option_return_pct": -66.7,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "bid_ask_mid",
+      "status": "STOP_HIT",
+      "detail": "Down -67% \u2014 stop loss triggered at -50%. Close position."
+    },
+    {
+      "ticker": "XYZ",
+      "direction": "call",
+      "strike": 88.0,
+      "entry_price": 88.56,
+      "current_price": 82.29,
+      "entry_premium": 2.31,
+      "current_option_price": 0.02,
+      "current_delta": 0.01,
+      "stock_move_pct": -7.09,
+      "option_return_pct": -99.1,
+      "days_held": 3,
+      "today_target_pct": 15,
+      "price_source": "last_price",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "INTC: STOP LOSS HIT (-67%)",
+    "XYZ: STOP LOSS HIT (-99%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 2,
+    "avg_return_pct": -82.9,
+    "targets_hit": 0,
+    "stops_hit": 2,
+    "urgency": "ELEVATED",
+    "day": "Thursday",
+    "days_to_expiry": 2
+  }
+}
