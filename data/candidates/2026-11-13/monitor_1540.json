@@ -1,0 +1,52 @@
+{
+  "positions": [
+    {
+      "ticker": "INTC",
+      "direction": "put",
+      "strike": 61.0,
+      "entry_price": 59.37,
+      "current_price": 59.29,
+      "entry_premium": 2.82,
+      "current_option_price": 1.58,
+      "current_delta": null,
+      "stock_move_pct": -0.13,
+      "option_return_pct": -44.0,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "bid_ask_mid",
+      "status": "WARNING",
+      "detail": "Down -44% \u2014 approaching stop. Watch closely."
+    },
+    {
+      "ticker": "XYZ",
+      "direction": "call",
+      "strike": 88.0,
+      "entry_price": 88.56,
+      "current_price": 84.4,
+      "entry_premium": 2.31,
+      "current_option_price": 0.03,
+      "current_delta": 0.018,
+      "stock_move_pct": -4.69,
+      "option_return_pct": -98.7,
+      "days_held": 4,
+      "today_target_pct": 10,
+      "price_source": "last_price",
+      "status": "STOP_HIT",
+      "detail": "Down -99% \u2014 stop loss triggered at -50%. Close position."
+    }
+  ],
+  "alerts": [
+    "INTC: APPROACHING STOP (-44%)",
+    "XYZ: STOP LOSS HIT (-99%)"
+  ],
+  "agent_analysis": "",
+  "summary": {
+    "total_positions": 2,
+    "avg_return_pct": -71.3,
+    "targets_hit": 0,
+    "stops_hit": 1,
+    "urgency": "CRITICAL",
+    "day": "Friday",
+    "days_to_expiry": 1
+  }
+}
