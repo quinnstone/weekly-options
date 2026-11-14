@@ -244,4 +244,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-11-13 19:36 ET*
+*Last updated: 2026-11-13 19:57 ET*
