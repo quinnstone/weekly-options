@@ -6,14 +6,14 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 21 |
-| Total Picks | 61 |
-| Record | 19W - 26L - 16P |
+| Weeks Tracked | 22 |
+| Total Picks | 64 |
+| Record | 20W - 27L - 17P |
 | Win Rate | 31% |
-| Total Invested | $28,228.00 |
-| Total Returned | $19,337.00 |
-| **Net P&L** | **$-8,891.00** |
-| **ROI** | **-31.50%** |
+| Total Invested | $29,306.00 |
+| Total Returned | $21,186.00 |
+| **Net P&L** | **$-8,120.00** |
+| **ROI** | **-27.71%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
@@ -23,6 +23,16 @@ Hypothetical results assuming 1 contract purchased per pick.
 ---
 
 ## Weekly Results
+
+### Week of 2026-11-09 (exp. 2026-11-13)
+
+**1W-1L-1P** | Cost: $1,078.00 | Return: $1,849.00 | **P&L: +$771.00 (+71.5%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | INTC | PUT | $61.00 | $2.82 | $59.66 | $1.34 | -$148.00 | PARTIAL |
+| 2 | XYZ | CALL | $88.00 | $2.31 | $84.58 | $0.00 | -$231.00 | LOSS |
+| 3 | NVDA | PUT | $180.00 | $5.65 | $162.85 | $17.15 | +$1,150.00 | WIN |
 
 ### Week of 2026-11-02 (exp. 2026-11-06)
 
@@ -234,4 +244,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-11-06 19:10 ET*
+*Last updated: 2026-11-13 19:36 ET*
