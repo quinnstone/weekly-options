@@ -1820,7 +1820,7 @@
     },
     "strike": 285.0,
     "expiry": "2026-11-20",
-    "premium": 7.2,
+    "premium": 6.71,
     "confidence": 0.551,
     "current_price": 281.26,
     "breakeven": 277.8,
@@ -1844,7 +1844,8 @@
       "delta_stop": 0.1,
       "instruction": "Time-decay-aware exits: take 40% day-1 / 35% day-2 / 25% day-3 / 15% day-4 profit. Hard stop at 50% loss. Exit if delta < 0.10. Breakeven requires 1.2% move to $277.80 (weekly expected move: 6.9%)."
     },
-    "git_sha": "957d89a6cb5c9ea1412e5fc4860b9b74e0ffbec7"
+    "git_sha": "957d89a6cb5c9ea1412e5fc4860b9b74e0ffbec7",
+    "original_premium_premarket": 7.2
   },
   {
     "ticker": "MRVL",

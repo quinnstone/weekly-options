@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "INTC",
+    "direction": "put",
+    "strike": 56.0,
+    "original_premium": 2.58,
+    "original_price": 55.47,
+    "signal": "SKIP",
+    "detail": "Gap -5.0% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 55.46,
+    "new_delta": 0.521,
+    "new_premium": null,
+    "gap_pct": -4.99,
+    "timestamp": "2026-11-16T18:11:50.466136"
+  },
+  {
+    "ticker": "GOOG",
+    "direction": "put",
+    "strike": 285.0,
+    "original_premium": 6.71,
+    "original_price": 281.26,
+    "signal": "GO",
+    "detail": "Early action confirms put thesis (-3.2% since open).",
+    "current_price": 281.29,
+    "new_delta": 0.611,
+    "new_premium": 6.71,
+    "gap_pct": -0.7,
+    "timestamp": "2026-11-16T18:11:50.690072"
+  },
+  {
+    "ticker": "MRVL",
+    "direction": "put",
+    "strike": 150.0,
+    "original_premium": 9.65,
+    "original_price": 145.36,
+    "signal": "SKIP",
+    "detail": "Gap -5.7% exceeds 2% threshold \u2014 move may be priced in",
+    "current_price": 145.43,
+    "new_delta": 0.591,
+    "new_premium": null,
+    "gap_pct": -5.67,
+    "timestamp": "2026-11-16T18:11:50.896091"
+  }
+]
