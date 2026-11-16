@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-16",
+  "picks": [
+    {
+      "ticker": "INTC",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 74.97,
+      "direction_confidence": 0.522,
+      "scores": {
+        "momentum": 89.98810150627371,
+        "mean_reversion": 75.0,
+        "regime_bias": 70.0,
+        "trend_persistence": 95.0,
+        "iv_mispricing": 70.75,
+        "flow_conviction": 40.0,
+        "event_risk": 65.0,
+        "liquidity": 78.36772,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "GOOG",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 68.13,
+      "direction_confidence": 0.551,
+      "scores": {
+        "momentum": 64.56933988581406,
+        "mean_reversion": 63.28,
+        "regime_bias": 70.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 60.75,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 76.4739,
+        "strike_efficiency": 75.0,
+        "theta_cost": 37.0
+      }
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "put",
+      "selected_strike": null,
+      "selected_expiry": null,
+      "estimated_premium": null,
+      "composite_score": 71.19,
+      "direction_confidence": 0.522,
+      "scores": {
+        "momentum": 92.48744025096853,
+        "mean_reversion": 74.104,
+        "regime_bias": 70.0,
+        "trend_persistence": 85.0,
+        "iv_mispricing": 55.75,
+        "flow_conviction": 40.0,
+        "event_risk": 60.0,
+        "liquidity": 65.71844,
+        "strike_efficiency": 75.0,
+        "theta_cost": 47.0
+      }
+    }
+  ],
+  "recorded_at": "2026-11-16T16:27:22.063405"
+}

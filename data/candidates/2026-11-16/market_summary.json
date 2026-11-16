@@ -1,0 +1,307 @@
+{
+  "vix": {
+    "current": 23.049999237060547,
+    "previous_close": 19.299999237060547,
+    "change": 3.75,
+    "change_pct": 19.43,
+    "trend_20d": "Date\n2026-10-20 00:00:00-05:00    17.309999\n2026-10-21 00:00:00-05:00    16.680000\n2026-10-22 00:00:00-05:00    19.030001\n2026-10-23 00:00:00-05:00    19.450001\n2026-10-26 00:00:00-05:00    18.389999\n2026-10-27 00:00:00-05:00    17.520000\n2026-10-28 00:00:00-05:00    16.910000\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.150000\n2026-11-03 00:00:00-06:00    20.830000\n2026-11-04 00:00:00-06:00    16.610001\n2026-11-05 00:00:00-06:00    28.180000\n2026-11-06 00:00:00-06:00    25.639999\n2026-11-09 00:00:00-06:00    19.920000\n2026-11-10 00:00:00-06:00    19.459999\n2026-11-11 00:00:00-06:00    17.490000\n2026-11-12 00:00:00-06:00    18.700001\n2026-11-13 00:00:00-06:00    19.299999\n2026-11-16 00:00:00-06:00    23.049999\nFreq: B, Name: Close, dtype: float64",
+    "sma_20": 19.61,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "elevated",
+    "vix_level": 23.049999237060547,
+    "description": "Elevated volatility - wider strikes, larger premiums available",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": -1.91,
+    "rsp_return_1d": -1.01,
+    "breadth_spread_1d": 0.9,
+    "spy_return_5d": -1.69,
+    "rsp_return_5d": -0.91,
+    "breadth_spread_5d": 0.78,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.74,
+    "yield_10y": 5.13,
+    "spread_2s10s": 0.39,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.23,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.462,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "escalating",
+    "vix_5d_change_pct": 15.71,
+    "regime_days": 1,
+    "persistence_score": 0.1
+  },
+  "skew": {
+    "skew": 147.14,
+    "skew_sma20": 151.55,
+    "skew_state": "extreme_fear",
+    "skew_vs_sma": -4.41
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.459,
+    "market_pc_state": "bearish",
+    "spy_call_volume": 3601173,
+    "spy_put_volume": 5254579
+  },
+  "vix_term_structure": {
+    "term_structure": "mixed",
+    "near_term": "flat",
+    "far_term": "flat",
+    "vix9d": 23.190000534057617,
+    "vix": 23.049999237060547,
+    "vix3m": 23.1299991607666
+  },
+  "cot_positioning": {
+    "net_position": -107862,
+    "percentile": 45.1,
+    "signal": "neutral",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": -1.85,
+      "return_1d": 0.0,
+      "signal": "tailwind"
+    },
+    "us_dollar": {
+      "return_5d": 1.41,
+      "return_1d": 0.2,
+      "signal": "headwind"
+    },
+    "crude_oil": {
+      "return_5d": -1.0,
+      "return_1d": -3.81,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 1
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Eli Lilly makes a deal outside obesity. Plus, another word of caution on Nvidia",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Jim Cramer says J&J is a 'metaphor for what's working' in the stock market",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Market's Nvidia obsession obscuring an opportunity in this name",
+        "source": "CNBC",
+        "sentiment": 0.103
+      },
+      {
+        "headline": "We're booking huge profits on a tech winner and making a chip stock swap",
+        "source": "CNBC",
+        "sentiment": 0.84
+      },
+      {
+        "headline": "Nvidia's Colette Kress confronts key questions in first earnings report since Jensen Huang\u2019s exit",
+        "source": "CNBC",
+        "sentiment": -0.226
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "Bank of Canada Governor Macklem to step down once term ends in 2027 - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Fed 'has some work to do on inflation,' KC Fed chief says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Yemen's Houthis say they launched ballistic missiles towards Riyadh airport, financial centre - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "Iran\u2019s proxy in Iraq rakes in hundreds of millions through oil smuggling - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "U.S. crude oil declines to $87 a barrel on recovering Middle East exports",
+        "source": "CNBC",
+        "sentiment": -0.572
+      },
+      {
+        "headline": "COMMENTARY: War-torn present clouds Saudi Arabia's post-oil future - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil falls as recovering Middle East exports bolster surplus outlook - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Oil prices set for second straight weekly drop on signs of growing supply surplus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Bulgaria rescues crew from capsized wheat ship in Black Sea, transport ministry says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.318
+      },
+      {
+        "headline": "Rising rents draw Wall Street money to industrial outdoor storage lot investments across the U.S.",
+        "source": "CNBC",
+        "sentiment": 0.0
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Rivian, Lucid, Scout CEOs aren\u2019t counting on Democrats to restore EV federal support after midterm wins",
+        "source": "CNBC",
+        "sentiment": 0.823
+      },
+      {
+        "headline": "US air travel disruptions to persist until late on Sunday, FAA head says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "Retailers are turning to entertainment to win shoppers\u2019 attention",
+        "source": "CNBC",
+        "sentiment": 0.765
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Trump to raise nuclear-arms cuts with Putin, Xi on Thursday, White House says - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.296
+      }
+    ],
+    "Real Estate": [
+      {
+        "headline": "UK property asking prices fall more than usual in November, Rightmove says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "macro": [
+      {
+        "headline": "Iranian leaders fret over public mood as gas shortages add to war ills - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.67
+      },
+      {
+        "headline": "Dollar extends rally, yen looks past soft Japan GDP data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      },
+      {
+        "headline": "Yemeni government force retreats from strait in major setback in war against Houthis - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.633
+      },
+      {
+        "headline": "Saudi-led coalition intercepts missiles towards Riyadh, drones in Eastern Province - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "US denies Iran's claim that it attacked early-warning radar in Bahrain - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.7
+      }
+    ]
+  },
+  "timestamp": "2026-11-16T16:25:51.610049"
+}
