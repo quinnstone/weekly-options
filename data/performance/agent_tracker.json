@@ -4308,6 +4308,21 @@
         "option_return_pct": 11.8,
         "has_agent_analysis": false
       }
+    },
+    {
+      "timestamp": "2026-11-19T16:55:06.814695",
+      "week": "2026-W46",
+      "agent": "position_monitor",
+      "ticker": "GOOG",
+      "mechanical_signal": "TARGET_HIT",
+      "agent_signal": "TARGET_HIT",
+      "override": false,
+      "outcome": null,
+      "context": {
+        "urgency": "ELEVATED",
+        "option_return_pct": 110.4,
+        "has_agent_analysis": false
+      }
     }
   ],
   "weekly_summaries": []
