@@ -3053,19 +3053,193 @@
       "graded_at": "2026-11-13T19:57:23.182283",
       "grader_version": 4,
       "grader_git_sha": "cdff79428168d8e3ad70c80cfe8c5e496a712d52"
+    },
+    {
+      "pick_date": "2026-11-16",
+      "expiry": "2026-11-20",
+      "picks": [
+        {
+          "ticker": "INTC",
+          "direction": "put",
+          "strike": 56.0,
+          "entry_premium": 2.58,
+          "entry_cost": 258.0,
+          "closing_price": NaN,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -258.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "SKIP",
+          "diagnostics": {
+            "pre_run_5d_pct": 6.01,
+            "spy_week_move_pct": NaN,
+            "rsi_at_entry": 29.7,
+            "premium_pct_of_spot": 4.65
+          },
+          "entry_features": {
+            "composite_score": 74.97,
+            "confidence": 0.522,
+            "raw_confidence": 0.382,
+            "scan_rank": 0.6987,
+            "friday_score": 0.6411,
+            "iv_rank": 60.7,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.76,
+              "trend": 0.9234,
+              "volatility": 0.358,
+              "options": 0.85,
+              "extremity": 0.408
+            },
+            "scores": {
+              "momentum": 89.98810150627371,
+              "mean_reversion": 75.0,
+              "regime_bias": 70.0,
+              "trend_persistence": 95.0,
+              "iv_mispricing": 70.75,
+              "flow_conviction": 40.0,
+              "event_risk": 65.0,
+              "liquidity": 78.36772,
+              "strike_efficiency": 75.0,
+              "theta_cost": 37.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        },
+        {
+          "ticker": "GOOG",
+          "direction": "put",
+          "strike": 285.0,
+          "entry_premium": 6.71,
+          "entry_cost": 671.0,
+          "closing_price": NaN,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -671.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "GO",
+          "diagnostics": {
+            "pre_run_5d_pct": 3.03,
+            "spy_week_move_pct": NaN,
+            "rsi_at_entry": 33.4,
+            "premium_pct_of_spot": 2.39
+          },
+          "entry_features": {
+            "composite_score": 68.13,
+            "confidence": 0.551,
+            "raw_confidence": 0.583,
+            "scan_rank": 0.6696,
+            "friday_score": 0.6439,
+            "iv_rank": 55.8,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.4936,
+              "trend": 0.8569,
+              "volatility": 0.672,
+              "options": 0.9469,
+              "extremity": 0.3085
+            },
+            "scores": {
+              "momentum": 64.56933988581406,
+              "mean_reversion": 63.28,
+              "regime_bias": 70.0,
+              "trend_persistence": 85.0,
+              "iv_mispricing": 60.75,
+              "flow_conviction": 40.0,
+              "event_risk": 60.0,
+              "liquidity": 76.4739,
+              "strike_efficiency": 75.0,
+              "theta_cost": 37.0
+            },
+            "ensemble_consensus": "strong"
+          }
+        },
+        {
+          "ticker": "MRVL",
+          "direction": "put",
+          "strike": 150.0,
+          "entry_premium": 9.65,
+          "entry_cost": 965.0,
+          "closing_price": NaN,
+          "exit_value_per_share": 0,
+          "exit_value_total": 0,
+          "pnl": -965.0,
+          "pnl_pct": -100.0,
+          "result": "LOSS",
+          "entry_signal": "SKIP",
+          "diagnostics": {
+            "pre_run_5d_pct": 11.02,
+            "spy_week_move_pct": NaN,
+            "rsi_at_entry": 32.37,
+            "premium_pct_of_spot": 6.64
+          },
+          "entry_features": {
+            "composite_score": 71.19,
+            "confidence": 0.522,
+            "raw_confidence": 0.434,
+            "scan_rank": 0.673,
+            "friday_score": 0.6215,
+            "iv_rank": 50.8,
+            "narrative_lean": null,
+            "narrative_conflict": null,
+            "scan_components": {
+              "momentum": 0.76,
+              "trend": 0.8474,
+              "volatility": 0.388,
+              "options": 0.8344,
+              "extremity": 0.3033
+            },
+            "scores": {
+              "momentum": 92.48744025096853,
+              "mean_reversion": 74.104,
+              "regime_bias": 70.0,
+              "trend_persistence": 85.0,
+              "iv_mispricing": 55.75,
+              "flow_conviction": 40.0,
+              "event_risk": 60.0,
+              "liquidity": 65.71844,
+              "strike_efficiency": 75.0,
+              "theta_cost": 47.0
+            },
+            "ensemble_consensus": "moderate"
+          }
+        }
+      ],
+      "total_cost": 1894.0,
+      "total_exit": 0,
+      "total_pnl": -1894.0,
+      "total_return_pct": -100.0,
+      "wins": 0,
+      "losses": 3,
+      "partials": 0,
+      "win_rate": 0.0,
+      "traded_count": 1,
+      "traded_cost": 671.0,
+      "traded_pnl": -671.0,
+      "traded_return_pct": -100.0,
+      "traded_wins": 0,
+      "traded_losses": 1,
+      "traded_partials": 0,
+      "graded_at": "2026-11-20T20:02:08.191234",
+      "grader_version": 4,
+      "grader_git_sha": "83d43569b59ea4cece634989e3276e7c937fedff"
     }
   ],
   "all_time": {
-    "total_weeks": 22,
-    "total_picks": 64,
+    "total_weeks": 23,
+    "total_picks": 67,
     "wins": 20,
-    "losses": 27,
+    "losses": 30,
     "partials": 17,
-    "win_rate": 0.3125,
-    "total_invested": 29306.0,
+    "win_rate": 0.2985,
+    "total_invested": 31200.0,
     "total_returned": 21186.0,
-    "total_pnl": -8120.0,
-    "total_return_pct": -27.71,
+    "total_pnl": -10014.0,
+    "total_return_pct": -32.1,
     "best_pick": {
       "ticker": "ZS",
       "date": "2026-08-10",
@@ -3073,18 +3247,18 @@
       "pnl_pct": 143.65
     },
     "worst_pick": {
-      "ticker": "MSFT",
-      "date": "2026-10-12",
-      "pnl": -957.0,
+      "ticker": "MRVL",
+      "date": "2026-11-16",
+      "pnl": -965.0,
       "pnl_pct": -100.0
     },
-    "traded_picks": 24,
+    "traded_picks": 25,
     "traded_wins": 7,
-    "traded_losses": 12,
+    "traded_losses": 13,
     "traded_partials": 5,
-    "traded_win_rate": 0.2917,
-    "traded_invested": 10614.0,
-    "traded_pnl": -3335.0,
-    "traded_return_pct": -31.42
+    "traded_win_rate": 0.28,
+    "traded_invested": 11285.0,
+    "traded_pnl": -4006.0,
+    "traded_return_pct": -35.5
   }
 }

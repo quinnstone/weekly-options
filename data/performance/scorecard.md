@@ -6,23 +6,33 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 | Metric | Value |
 |--------|-------|
-| Weeks Tracked | 22 |
-| Total Picks | 64 |
-| Record | 20W - 27L - 17P |
-| Win Rate | 31% |
-| Total Invested | $29,306.00 |
+| Weeks Tracked | 23 |
+| Total Picks | 67 |
+| Record | 20W - 30L - 17P |
+| Win Rate | 30% |
+| Total Invested | $31,200.00 |
 | Total Returned | $21,186.00 |
-| **Net P&L** | **$-8,120.00** |
-| **ROI** | **-27.71%** |
+| **Net P&L** | **$-10,014.00** |
+| **ROI** | **-32.10%** |
 
 | | Ticker | Date | P&L |
 |--|--------|------|-----|
 | Best | ZS | 2026-08-10 | +$1,244.00 (+143.7%) |
-| Worst | MSFT | 2026-10-12 | $-957.00 (-100.0%) |
+| Worst | MRVL | 2026-11-16 | $-965.00 (-100.0%) |
 
 ---
 
 ## Weekly Results
+
+### Week of 2026-11-16 (exp. 2026-11-20)
+
+**0W-3L-0P** | Cost: $1,894.00 | Return: $0.00 | **P&L: $-1,894.00 (-100.0%)**
+
+| # | Ticker | Dir | Strike | Entry | Close | Exit Val | P&L | Result |
+|---|--------|-----|--------|-------|-------|----------|-----|--------|
+| 1 | INTC | PUT | $56.00 | $2.58 | $nan | $0.00 | -$258.00 | LOSS |
+| 2 | GOOG | PUT | $285.00 | $6.71 | $nan | $0.00 | -$671.00 | LOSS |
+| 3 | MRVL | PUT | $150.00 | $9.65 | $nan | $0.00 | -$965.00 | LOSS |
 
 ### Week of 2026-11-09 (exp. 2026-11-13)
 
@@ -244,4 +254,4 @@ Hypothetical results assuming 1 contract purchased per pick.
 
 ---
 
-*Last updated: 2026-11-13 19:57 ET*
+*Last updated: 2026-11-20 20:02 ET*
