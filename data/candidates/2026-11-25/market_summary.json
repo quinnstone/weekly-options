@@ -1,0 +1,341 @@
+{
+  "vix": {
+    "current": 27.809999465942383,
+    "previous_close": 26.360000610351562,
+    "change": 1.45,
+    "change_pct": 5.5,
+    "trend_20d": "Date\n2026-10-29 00:00:00-05:00    17.200001\n2026-10-30 00:00:00-05:00    19.420000\n2026-11-02 00:00:00-06:00    21.150000\n2026-11-03 00:00:00-06:00    20.830000\n2026-11-04 00:00:00-06:00    16.610001\n2026-11-05 00:00:00-06:00    28.180000\n2026-11-06 00:00:00-06:00    25.639999\n2026-11-09 00:00:00-06:00    19.920000\n2026-11-10 00:00:00-06:00    19.459999\n2026-11-11 00:00:00-06:00    17.490000\n2026-11-12 00:00:00-06:00    18.700001\n2026-11-13 00:00:00-06:00    19.299999\n2026-11-16 00:00:00-06:00    22.910000\n2026-11-17 00:00:00-06:00    25.459999\n2026-11-18 00:00:00-06:00    24.559999\n2026-11-19 00:00:00-06:00    28.440001\n2026-11-20 00:00:00-06:00    35.889999\n2026-11-23 00:00:00-06:00    26.620001\n2026-11-24 00:00:00-06:00    26.360001\n2026-11-25 00:00:00-06:00    27.809999\nFreq: B, Name: Close, dtype: float64",
+    "sma_20": 23.1,
+    "trend_direction": "rising"
+  },
+  "vix_regime": {
+    "regime": "high",
+    "vix_level": 27.809999465942383,
+    "description": "High volatility - large swings likely, reduce position size",
+    "trend_direction": "rising"
+  },
+  "breadth": {
+    "spy_return_1d": -0.39,
+    "rsp_return_1d": 0.83,
+    "breadth_spread_1d": 1.22,
+    "spy_return_5d": -1.95,
+    "rsp_return_5d": 0.14,
+    "breadth_spread_5d": 2.09,
+    "breadth_signal": "broad_rally"
+  },
+  "yields": {
+    "yield_2y": 4.74,
+    "yield_10y": 5.13,
+    "spread_2s10s": 0.39,
+    "curve_signal": "normal"
+  },
+  "credit_spread": {
+    "hy_oas": 3.72,
+    "credit_state": "normal"
+  },
+  "financial_conditions": {
+    "nfci": -0.444,
+    "conditions_state": "normal"
+  },
+  "economic_events": [
+    {
+      "event": "FOMC",
+      "date": "",
+      "impact": "high",
+      "description": "Federal Reserve interest rate decision \u2014 dominates all markets"
+    },
+    {
+      "event": "CPI",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer Price Index \u2014 major inflation indicator"
+    },
+    {
+      "event": "PPI",
+      "date": "",
+      "impact": "high",
+      "description": "Producer Price Index \u2014 inflation leading indicator"
+    },
+    {
+      "event": "NFP",
+      "date": "",
+      "impact": "high",
+      "description": "Non-Farm Payrolls (first Friday of month) \u2014 major jobs data"
+    },
+    {
+      "event": "PCE",
+      "date": "",
+      "impact": "high",
+      "description": "Personal Consumption Expenditures \u2014 Fed's preferred inflation gauge"
+    },
+    {
+      "event": "GDP",
+      "date": "",
+      "impact": "high",
+      "description": "Gross Domestic Product \u2014 quarterly economic growth"
+    },
+    {
+      "event": "JOLTS",
+      "date": "",
+      "impact": "high",
+      "description": "Job Openings \u2014 labor market health"
+    },
+    {
+      "event": "Retail Sales",
+      "date": "",
+      "impact": "high",
+      "description": "Consumer spending indicator"
+    },
+    {
+      "event": "Jobless Claims",
+      "date": "",
+      "impact": "high",
+      "description": "Weekly unemployment claims (every Thursday)"
+    }
+  ],
+  "has_high_impact_event": true,
+  "holding_window": {
+    "has_earnings_risk": false,
+    "has_fomc": false,
+    "has_cpi_nfp": false,
+    "high_impact_count": 0,
+    "events": [],
+    "risk_level": "low",
+    "event_days": []
+  },
+  "regime_persistence": {
+    "is_stable": false,
+    "transition_direction": "escalating",
+    "vix_5d_change_pct": 13.44,
+    "regime_days": 3,
+    "persistence_score": 0.3
+  },
+  "skew": {
+    "skew": 139.16,
+    "skew_sma20": 147.37,
+    "skew_state": "elevated",
+    "skew_vs_sma": -8.21
+  },
+  "market_put_call": {
+    "market_pc_ratio": 1.054,
+    "market_pc_state": "cautious",
+    "spy_call_volume": 4714932,
+    "spy_put_volume": 4971038
+  },
+  "vix_term_structure": {
+    "term_structure": "backwardation",
+    "near_term": "flat",
+    "far_term": "backwardation",
+    "vix9d": 28.899999618530273,
+    "vix": 27.860000610351562,
+    "vix3m": 26.170000076293945
+  },
+  "cot_positioning": {
+    "net_position": -68846,
+    "percentile": 70.6,
+    "signal": "long",
+    "trend": "unwinding",
+    "weeks_of_data": 52
+  },
+  "macro_surprise": {
+    "signal": "unavailable"
+  },
+  "cross_asset": {
+    "bonds_20y": {
+      "return_5d": 2.51,
+      "return_1d": 1.07,
+      "signal": "headwind"
+    },
+    "us_dollar": {
+      "return_5d": -0.09,
+      "return_1d": -0.09,
+      "signal": "neutral"
+    },
+    "crude_oil": {
+      "return_5d": 1.25,
+      "return_1d": 3.24,
+      "signal": "neutral"
+    },
+    "composite": "mixed",
+    "headwinds": 1,
+    "tailwinds": 0
+  },
+  "sector_news": {
+    "Technology": [
+      {
+        "headline": "Nvidia leads tech sell-off as Huang comeback rally fizzles and AI concerns return",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Anthropic's stock has been a clunker post-IPO. Why that matters for the AI trade",
+        "source": "CNBC",
+        "sentiment": 0.026
+      },
+      {
+        "headline": "Nasdaq futures slide over 2% as AI losses deepen; inflation data in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.402
+      },
+      {
+        "headline": "Liesman: Nvidia whiplash tests Kevin Warsh\u2019s push to read market signals",
+        "source": "CNBC",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "EU plans \u20ac50 billion tech fund to challenge US and China, FT reports - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.077
+      }
+    ],
+    "Financials": [
+      {
+        "headline": "UK financial watchdog delivers AI warning as Meta launches adapted Muse - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      }
+    ],
+    "Energy": [
+      {
+        "headline": "EXCLUSIVE: Boehly signs US-backed share swap deal to buy Lukoil global assets - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.629
+      },
+      {
+        "headline": "Oil prices rise over 1% after Houthis say they attacked Saudi refinery - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.459
+      },
+      {
+        "headline": "Investors led by U.S. billionaire Todd Boehly to buy Lukoil's oil and gas assets outside Russia, sources say",
+        "source": "CNBC",
+        "sentiment": 0.178
+      },
+      {
+        "headline": "Yemen's Houthis claim attack on Saudi Arabia's largest refinery - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.477
+      },
+      {
+        "headline": "Britons face soaring energy bills after 26% price cap hike - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.273
+      }
+    ],
+    "Health Care": [
+      {
+        "headline": "Roche expects approved cancer pill to become its best-selling drug - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.382
+      }
+    ],
+    "Industrials": [
+      {
+        "headline": "Russian government official warns of Ukrainian drone attacks on utility infrastructure this winter - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      },
+      {
+        "headline": "Houthis hit Riyadh's tallest tower, 11 wounded, Saudi Civil defense says - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.128
+      }
+    ],
+    "Consumer Discretionary": [
+      {
+        "headline": "Secondhand shopping is going mainstream this holiday season as consumers seek value",
+        "source": "CNBC",
+        "sentiment": 0.673
+      },
+      {
+        "headline": "'I'm going to drive': FAA outage and high fares reshape Thanksgiving travel plans - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Retail turnarounds are taking hold just in time for the holiday season",
+        "source": "CNBC",
+        "sentiment": 0.402
+      },
+      {
+        "headline": "China's BYD in talks to buy French car factory from Ineos Automotive - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Communication Services": [
+      {
+        "headline": "UK is moving military aircraft to hangars at night over possible drone threats, media reports say - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.421
+      }
+    ],
+    "Materials": [
+      {
+        "headline": "Gold slips on stronger dollar, US inflation data in focus - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Gold is doing something strange. Here's one way to play it",
+        "source": "CNBC",
+        "sentiment": 0.153
+      },
+      {
+        "headline": "Congo mining forum announces $965 million in sector financing - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      }
+    ],
+    "Utilities": [
+      {
+        "headline": "Russian government official warns of Ukrainian drone attacks on utility infrastructure this winter - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.511
+      }
+    ],
+    "macro": [
+      {
+        "headline": "US third-quarter economic growth revised sharply higher; inflation broadening out - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.382
+      },
+      {
+        "headline": "Catalan separatist Puigdemont to return to Spain after election - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Iran says ships hit mines in Hormuz, warns vessels to coordinate passage - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.103
+      },
+      {
+        "headline": "India's Chartered Speed targets December IPO after Iran war disruption - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.751
+      },
+      {
+        "headline": "Risk-off mood lifts dollar ahead of inflation data - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.0
+      },
+      {
+        "headline": "Saudi-led coalition issues evacuation warning for Yemen's Hodeidah port - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.34
+      },
+      {
+        "headline": "UK warns of Russian sabotage threat to companies that supply Ukraine - Reuters",
+        "source": "Reuters",
+        "sentiment": -0.802
+      },
+      {
+        "headline": "Trump awards Rudy Giuliani the Medal of Freedom - Reuters",
+        "source": "Reuters",
+        "sentiment": 0.883
+      }
+    ]
+  },
+  "timestamp": "2026-11-25T15:20:36.780385"
+}
